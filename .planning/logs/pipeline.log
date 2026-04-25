@@ -1,0 +1,72 @@
+[1;33m[ultra][0m run-manifest init failed; pipeline continues without traceability
+
+  ╔══════════════════════════════════════════╗
+  ║   Ultra Start Template — Full Pipeline   ║
+  ╠══════════════════════════════════════════╣
+  ║  Opus 4.6 + Gemini 3.1 Pro + GPT 5.4   ║
+  ╚══════════════════════════════════════════╝
+
+[0;34m[ultra][0m Step 0: Business Genesis — Quick Strategic Context (not a gate)
+[0;34m[ultra][0m Quick strategic context (single model — Gemini/Codex not available)...
+Done. Two files produced:
+
+- **`.planning/GENESIS.md`** — one-page strategic context covering all 7 genesis questions: assumptions (7 items), value chain position, SEO-first distribution hypothesis, compounding-data moat hypothesis, target user profile, primary success metric (paid subs/month, break-even at ~25/mo), and scope exclusions table (9 items).
+
+- **`BUSINESS.md`** — updated with refined assumptions (now 7, with risk context added), sharper moat hypothesis (volume thresholds, key risk noted), and a pointer to the new GENESIS.md.
+[0;32m[ultra][0m Genesis complete: .planning/GENESIS.md
+[0;34m[ultra][0m Step 1: Business Intake
+[1;33m[ultra][0m INTAKE-BRIEF.md already exists. Skipping intake. Delete it to re-run.
+[0;34m[ultra][0m Step 2: Multi-LLM Research Sprint (parallel)
+[0;34m[ultra][0m Launching research tracks in parallel (skipping tracks with existing output)...
+[0;34m[ultra][0m Waiting for running research tracks...
+[0;32m[ultra][0m   Landscape research complete
+[0;32m[ultra][0m   Regulatory research complete
+[0;32m[ultra][0m   Implementation research complete
+[0;34m[ultra][0m Synthesizing research...
+Synthesis complete. Written to `/Volumes/Big & Fast/Coding Projects/CivicState/.planning/research/SYNTHESIS.md`.
+[0;32m[ultra][0m Research synthesis complete: .planning/research/SYNTHESIS.md
+[0;34m[ultra][0m Gemini not available — falling back to Claude for classification...
+[0;34m[ultra][0m Protocols detected: audit_existing,map_codebase
+[0;34m[ultra][0m Step 4f: Existing State Audit (migration/recovery)
+[0;34m[ultra][0m Auditing existing infrastructure, data, and content (Gemini — broad scan)...
+Existing state audit written to `/Volumes/Big & Fast/Coding Projects/CivicState/.planning/existing-state.md`. Key findings:
+
+- **Greenfield build** — zero application code exists. `src/` and `public/` are empty placeholders.
+- **Template layer intact** — Ultra Start Template v1.2.0 with 2,678 lines of orchestrator shell, CI workflows, test suite (bats + pytest), quality hooks, and AutoUX loop. All functional and to be preserved.
+- **No databases provisioned** — full 7-table PostgreSQL schema is designed in MASTER_PLAN.md §16 but no Prisma schema or migrations exist.
+- **No infrastructure deployed** — no droplet, no Vercel project, no DNS, no Stripe/Clerk/Postmark integrations.
+- **Single commit** on the repo — the Master Build Plan v2.1 import.
+- **MASTER_PLAN.md** (63KB) is the primary build blueprint covering product spec, API routes, agent pipeline, pricing, and phased build plan across 22 sections.
+[0;32m[ultra][0m Existing state audit complete: .planning/existing-state.md
+[0;34m[ultra][0m Step 3: Autonomous Consensus (pre-answer GSD questions)
+[0;34m[ultra][0m Pre-answering anticipated GSD questions...
+PRE-ANSWER PROTOCOL complete. Wrote 6 DECISION.md files to `.planning/consensus/`:
+
+| Slug | Question | Decision | Confidence |
+|------|----------|----------|------------|
+| `wire-checkpoint-into-dispatch` | Wire checkpoint.sh into step dispatch? | **A) Leave deferred** — Intake Brief is explicit, unanimous | High |
+| `add-source-order-smoke-test` | Add source-order smoke test? | **A) Add bats test** — 2-of-3 tracks recommend, low cost, high value | High |
+| `document-classify-implicit-dependency` | Document classify.sh implicit dep? | **A) Add header warning** — addresses Risk #1, zero regression risk | High |
+| `namespace-library-functions` | Namespace library functions? | **B) Keep as-is** — internal tool, breaking change, scope creep | High |
+| `verification-strategy` | How to verify the extraction? | **`make test && make lint`** + smoke test | High |
+| `scope-boundary-v1-vs-deferred` | What's v1 vs deferred? | **Verify extraction + smoke test + header warning; 8 items deferred** | High |
+
+All 6 decisions are unanimous (3-of-3 agreement) and ready for Gemini/Codex review per Mode 1 of the Autonomous Consensus Protocol.
+[0;34m[ultra][0m Reviewing consensus decisions (parallel)...
+[0;32m[ultra][0m   Review 1 complete
+[0;32m[ultra][0m   Review 2 complete
+[0;34m[ultra][0m Synthesizing final consensus...
+All 6 DECISION.md files updated. Summary of consensus synthesis:
+
+| Question | Opus | Codex | Gemini | Result | Key Additions |
+|----------|------|-------|--------|--------|---------------|
+| add-source-order-smoke-test | ✅ | ✅ | ✅ | **UNANIMOUS — Proceed** | Dedicated `test_source_order_smoke.bats` file; use existing mock infra |
+| document-classify-implicit-dependency | ✅ | ✅ | ✅ | **UNANIMOUS — Proceed** | Agreed combined header format with DEPENDS + WARNING lines |
+| namespace-library-functions | ✅ keep | ✅ keep | ✅ keep | **UNANIMOUS — No namespacing** | — |
+| scope-boundary-v1-vs-deferred | ✅ | ✅ | ✅ | **UNANIMOUS — Proceed** | Scope enforcement rule (reject plans touching non-v1 files); ≤3 phase bound |
+| verification-strategy | ✅ | ✅ | ✅ | **UNANIMOUS — Proceed** | Decision updated: `make test` → `make test && make lint` per both reviewers |
+| wire-checkpoint-into-dispatch | ✅ | ✅ | ✅ | **UNANIMOUS — Defer** | — |
+[0;32m[ultra][0m Consensus complete: 6 decisions made
+[0;34m[ultra][0m Step 5: GSD Project Initialization
+[0;34m[ultra][0m Launching /gsd-new-project --auto with full context...
+Error: Reached max turns (25)  [plan] Attempt 1/3 failed. Retrying in 30s...
