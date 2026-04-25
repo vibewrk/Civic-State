@@ -31,7 +31,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   5. SPF/DKIM/DMARC DNS records are live on civicstate.com and domain warming emails are sending via Postmark
 **Plans**: 7 plans
 Plans:
-- [ ] 01-01-PLAN.md -- Monorepo scaffold with pnpm workspaces and shared TypeScript config
+- [x] 01-01-PLAN.md -- Monorepo scaffold with pnpm workspaces and shared TypeScript config
 - [ ] 01-02-PLAN.md -- Database schema (Prisma), CryptoService, HMAC, append-only enforcement
 - [ ] 01-03-PLAN.md -- Docker Compose stack (5 containers), Nginx, Dockerfiles, PM2
 - [ ] 01-04-PLAN.md -- Clerk auth integration (frontend + backend), three-tier route protection
