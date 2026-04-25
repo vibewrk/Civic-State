@@ -11,12 +11,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **INFRA-01**: Monorepo initialized with workspaces (apps/web, apps/api, apps/worker, packages/shared)
 - [x] **INFRA-02**: Docker Compose stack running on DigitalOcean (API, Worker, PostgreSQL, Redis, Nginx containers)
-- [ ] **INFRA-03**: GitHub Actions CI/CD pipeline (lint, test, build, deploy to droplet)
+- [x] **INFRA-03**: GitHub Actions CI/CD pipeline (lint, test, build, deploy to droplet)
 - [x] **INFRA-04**: Nginx reverse proxy with SSL (Certbot/Let's Encrypt) on api.civicstate.com
 - [ ] **INFRA-05**: Next.js 15 frontend deployed on Vercel with automatic deployments from main
 - [x] **INFRA-06**: Sentry error tracking configured for frontend and backend
 - [x] **INFRA-07**: Health check endpoint (GET /api/health) with uptime monitoring
-- [ ] **INFRA-08**: Daily pg_dump backups to DigitalOcean Spaces (30-day retention)
+- [x] **INFRA-08**: Daily pg_dump backups to DigitalOcean Spaces (30-day retention)
 
 ### Database & Data Model
 
@@ -79,8 +79,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **DLVR-01**: Delivery Agent (Haiku 4.5) formats and sends letters via Postmark API
 - [ ] **DLVR-02**: Each letter sent as individual email (no BCC, no bulk) with personalized content
-- [ ] **DLVR-03**: SPF/DKIM/DMARC configured on civicstate.com from day one
-- [ ] **DLVR-04**: 2-4 week domain warming period before first user email to government
+- [x] **DLVR-03**: SPF/DKIM/DMARC configured on civicstate.com from day one
+- [x] **DLVR-04**: 2-4 week domain warming period before first user email to government
 - [ ] **DLVR-05**: Per-domain bounce tracking; pause sending if bounce rate exceeds 10% for any domain
 - [ ] **DLVR-06**: Postmark delivery webhooks track Delivered, Bounced, SpamComplaint events per email
 - [ ] **DLVR-07**: Spam complaint triggers immediate suppression of that official + operator alert
@@ -193,12 +193,12 @@ Updated during roadmap creation.
 |-------------|-------|--------|
 | INFRA-01 | Phase 1 | Complete (01-01) |
 | INFRA-02 | Phase 1 | Complete |
-| INFRA-03 | Phase 1 | Pending |
+| INFRA-03 | Phase 1 | Complete (01-07) |
 | INFRA-04 | Phase 1 | Complete |
 | INFRA-05 | Phase 1 | Pending |
 | INFRA-06 | Phase 1 | Complete (01-06) |
 | INFRA-07 | Phase 1 | Complete |
-| INFRA-08 | Phase 1 | Pending |
+| INFRA-08 | Phase 1 | Complete (01-07) |
 | DATA-01 | Phase 1 | Complete (01-02) |
 | DATA-02 | Phase 1 | Complete (01-02) |
 | DATA-03 | Phase 1 | Complete (01-02) |
@@ -219,8 +219,8 @@ Updated during roadmap creation.
 | AGNT-05 | Phase 1 | Complete |
 | AGNT-06 | Phase 1 | Complete |
 | AGNT-07 | Phase 1 | Complete |
-| DLVR-03 | Phase 1 | Pending |
-| DLVR-04 | Phase 1 | Pending |
+| DLVR-03 | Phase 1 | Complete (01-07) |
+| DLVR-04 | Phase 1 | Complete (01-07) |
 | SUBM-01 | Phase 2 | Pending |
 | SUBM-02 | Phase 2 | Pending |
 | SUBM-03 | Phase 2 | Pending |

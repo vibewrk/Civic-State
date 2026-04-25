@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-04-25)
 ## Current Position
 
 Phase: 1 of 4 (Foundation)
-Plan: 7 of 7 in current phase
-Status: Executing
-Last activity: 2026-04-25 -- Plan 01-05 (OpenClaw Agent Engine) complete
+Plan: 7 of 7 in current phase (COMPLETE)
+Status: Phase 1 Complete
+Last activity: 2026-04-25 -- Plan 01-07 (CI/CD + Backup + DNS + Submissions) complete
 
-Progress: [████████░░] 86%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
-- Average duration: 17 min
-- Total execution time: 1.75 hours
+- Total plans completed: 7
+- Average duration: 15 min
+- Total execution time: 1.82 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 6 | 102 min | 17 min |
+| 01-foundation | 7 | 106 min | 15 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (37 min), 01-03 (3 min), 01-06 (4 min), 01-04 (6 min), 01-05 (3 min)
-- Trend: Improving
+- Last 5 plans: 01-03 (3 min), 01-06 (4 min), 01-04 (6 min), 01-05 (3 min), 01-07 (4 min)
+- Trend: Stable
 
 *Updated after each plan completion*
 
@@ -42,6 +42,9 @@ Progress: [████████░░] 86%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
+- Replaced template ci.yml with application-level CI (pnpm + Prisma + typecheck + test)
+- Test submission endpoint uses placeholder user with upsert to satisfy FK constraint
+- Zod v4 uses .issues not .errors for validation error details
 - Domain warming (SPF/DKIM/DMARC + Postmark) must start in Phase 1 -- needs 2-4 weeks lead time before first user delivery in Phase 3
 - COARSE granularity: 4 phases covering 80 requirements
 - Split deployment: Next.js on Vercel, Express+Worker on DigitalOcean Docker Compose
@@ -79,5 +82,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-04-25
-Stopped at: Completed 01-05-PLAN.md (OpenClaw Agent Engine)
-Resume file: .planning/phases/01-foundation/01-07-PLAN.md
+Stopped at: Completed 01-07-PLAN.md (CI/CD + Backup + DNS + Submissions) -- Phase 1 COMPLETE
+Resume file: .planning/phases/02-ai-pipeline/ (Phase 2 planning needed)

@@ -12,7 +12,7 @@ CivicState delivers the full pipeline from civic frustration to official action 
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Monorepo, Docker, CI/CD, database, auth, agent engine, domain warming
+- [x] **Phase 1: Foundation** - Monorepo, Docker, CI/CD, database, auth, agent engine, domain warming
 - [ ] **Phase 2: AI Pipeline** - Submission wizard, officials directory, research, citation verification, letter drafting, content moderation
 - [ ] **Phase 3: Payment & Delivery** - Stripe checkout, treasury, Postmark email delivery, bounce tracking
 - [ ] **Phase 4: Dashboard & Compliance** - User dashboard, admin tools, legal pages, audit enforcement
@@ -37,7 +37,7 @@ Plans:
 - [x] 01-04-PLAN.md -- Clerk auth integration (frontend + backend), three-tier route protection
 - [x] 01-05-PLAN.md -- OpenClaw agent engine (BullMQ, state machine, 5 agent skeletons)
 - [x] 01-06-PLAN.md -- Next.js 15 frontend with shadcn/ui, navy+gold theme, Sentry, Plausible
-- [ ] 01-07-PLAN.md -- CI/CD pipelines, backup script, DNS setup, end-to-end test endpoint
+- [x] 01-07-PLAN.md -- CI/CD pipelines, backup script, DNS setup, end-to-end test endpoint
 **UI hint**: yes
 
 ### Phase 2: AI Pipeline
@@ -86,7 +86,7 @@ Phases execute in numeric order: 1 -> 1.1 -> 2 -> 2.1 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
-| 1. Foundation | 6/7 | In Progress | - |
+| 1. Foundation | 7/7 | Complete | 2026-04-25 |
 | 2. AI Pipeline | 0/TBD | Not started | - |
 | 3. Payment & Delivery | 0/TBD | Not started | - |
 | 4. Dashboard & Compliance | 0/TBD | Not started | - |
