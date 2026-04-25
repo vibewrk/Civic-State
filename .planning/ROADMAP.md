@@ -34,7 +34,7 @@ Plans:
 - [x] 01-01-PLAN.md -- Monorepo scaffold with pnpm workspaces and shared TypeScript config
 - [x] 01-02-PLAN.md -- Database schema (Prisma), CryptoService, HMAC, append-only enforcement
 - [x] 01-03-PLAN.md -- Docker Compose stack (5 containers), Nginx, Dockerfiles, PM2
-- [ ] 01-04-PLAN.md -- Clerk auth integration (frontend + backend), three-tier route protection
+- [x] 01-04-PLAN.md -- Clerk auth integration (frontend + backend), three-tier route protection
 - [ ] 01-05-PLAN.md -- OpenClaw agent engine (BullMQ, state machine, 5 agent skeletons)
 - [x] 01-06-PLAN.md -- Next.js 15 frontend with shadcn/ui, navy+gold theme, Sentry, Plausible
 - [ ] 01-07-PLAN.md -- CI/CD pipelines, backup script, DNS setup, end-to-end test endpoint
@@ -86,7 +86,7 @@ Phases execute in numeric order: 1 -> 1.1 -> 2 -> 2.1 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
-| 1. Foundation | 4/7 | In Progress | - |
+| 1. Foundation | 5/7 | In Progress | - |
 | 2. AI Pipeline | 0/TBD | Not started | - |
 | 3. Payment & Delivery | 0/TBD | Not started | - |
 | 4. Dashboard & Compliance | 0/TBD | Not started | - |

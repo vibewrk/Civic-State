@@ -30,12 +30,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Authentication
 
-- [ ] **AUTH-01**: User can create account via Clerk (Google, Apple social login or email magic link)
-- [ ] **AUTH-02**: User session persists across browser refresh (Clerk session management)
-- [ ] **AUTH-03**: Admin role (platform operator) provisioned via Clerk RBAC
-- [ ] **AUTH-04**: JWT validation on Express API via Clerk middleware (public, protected, admin route tiers)
-- [ ] **AUTH-05**: Submission wizard steps 1-4 accessible without authentication
-- [ ] **AUTH-06**: Authentication required before payment (step 5)
+- [x] **AUTH-01**: User can create account via Clerk (Google, Apple social login or email magic link)
+- [x] **AUTH-02**: User session persists across browser refresh (Clerk session management)
+- [x] **AUTH-03**: Admin role (platform operator) provisioned via Clerk RBAC
+- [x] **AUTH-04**: JWT validation on Express API via Clerk middleware (public, protected, admin route tiers)
+- [x] **AUTH-05**: Submission wizard steps 1-4 accessible without authentication
+- [x] **AUTH-06**: Authentication required before payment (step 5)
 
 ### Submission & Research
 
@@ -206,12 +206,12 @@ Updated during roadmap creation.
 | DATA-05 | Phase 1 | Complete (01-02) |
 | DATA-06 | Phase 1 | Complete (01-02) |
 | DATA-07 | Phase 1 | Complete (01-02) |
-| AUTH-01 | Phase 1 | Pending |
-| AUTH-02 | Phase 1 | Pending |
-| AUTH-03 | Phase 1 | Pending |
-| AUTH-04 | Phase 1 | Pending |
-| AUTH-05 | Phase 1 | Pending |
-| AUTH-06 | Phase 1 | Pending |
+| AUTH-01 | Phase 1 | Complete (01-04) |
+| AUTH-02 | Phase 1 | Complete (01-04) |
+| AUTH-03 | Phase 1 | Complete (01-04) |
+| AUTH-04 | Phase 1 | Complete (01-04) |
+| AUTH-05 | Phase 1 | Complete (01-04) |
+| AUTH-06 | Phase 1 | Complete (01-04) |
 | AGNT-01 | Phase 1 | Pending |
 | AGNT-02 | Phase 1 | Pending |
 | AGNT-03 | Phase 1 | Pending |
