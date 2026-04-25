@@ -20,13 +20,13 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Database & Data Model
 
-- [ ] **DATA-01**: PostgreSQL 16 schema with Prisma ORM (users, submissions, campaigns, letters, officials, payments, deliveries, ledger_entries, audit_logs, jobs)
-- [ ] **DATA-02**: Application-level AES-256-GCM encryption for Tier 1 fields (letter_content, full_name, issue_description, desired_outcome) via CryptoService
-- [ ] **DATA-03**: Encryption key stored outside database (environment variable), with key rotation capability
-- [ ] **DATA-04**: Append-only tables (ledger_entries, audit_logs, agent_action_logs) enforced via PostgreSQL rules
-- [ ] **DATA-05**: HMAC checksums on append-only rows for tamper detection
-- [ ] **DATA-06**: Monthly partitioning on audit/ledger tables
-- [ ] **DATA-07**: Soft deletes with deleted_at timestamp; hard deletion only via CCPA/GDPR process (72-hour SLA)
+- [x] **DATA-01**: PostgreSQL 16 schema with Prisma ORM (users, submissions, campaigns, letters, officials, payments, deliveries, ledger_entries, audit_logs, jobs)
+- [x] **DATA-02**: Application-level AES-256-GCM encryption for Tier 1 fields (letter_content, full_name, issue_description, desired_outcome) via CryptoService
+- [x] **DATA-03**: Encryption key stored outside database (environment variable), with key rotation capability
+- [x] **DATA-04**: Append-only tables (ledger_entries, audit_logs, agent_action_logs) enforced via PostgreSQL rules
+- [x] **DATA-05**: HMAC checksums on append-only rows for tamper detection
+- [x] **DATA-06**: Monthly partitioning on audit/ledger tables
+- [x] **DATA-07**: Soft deletes with deleted_at timestamp; hard deletion only via CCPA/GDPR process (72-hour SLA)
 
 ### Authentication
 
@@ -199,13 +199,13 @@ Updated during roadmap creation.
 | INFRA-06 | Phase 1 | Pending |
 | INFRA-07 | Phase 1 | Pending |
 | INFRA-08 | Phase 1 | Pending |
-| DATA-01 | Phase 1 | Pending |
-| DATA-02 | Phase 1 | Pending |
-| DATA-03 | Phase 1 | Pending |
-| DATA-04 | Phase 1 | Pending |
-| DATA-05 | Phase 1 | Pending |
-| DATA-06 | Phase 1 | Pending |
-| DATA-07 | Phase 1 | Pending |
+| DATA-01 | Phase 1 | Complete (01-02) |
+| DATA-02 | Phase 1 | Complete (01-02) |
+| DATA-03 | Phase 1 | Complete (01-02) |
+| DATA-04 | Phase 1 | Complete (01-02) |
+| DATA-05 | Phase 1 | Complete (01-02) |
+| DATA-06 | Phase 1 | Complete (01-02) |
+| DATA-07 | Phase 1 | Complete (01-02) |
 | AUTH-01 | Phase 1 | Pending |
 | AUTH-02 | Phase 1 | Pending |
 | AUTH-03 | Phase 1 | Pending |

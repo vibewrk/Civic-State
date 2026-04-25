@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-04-25)
 ## Current Position
 
 Phase: 1 of 4 (Foundation)
-Plan: 1 of 7 in current phase
+Plan: 2 of 7 in current phase
 Status: Executing
-Last activity: 2026-04-25 -- Plan 01-01 (Monorepo scaffold) complete
+Last activity: 2026-04-25 -- Plan 01-02 (Database + CryptoService) complete
 
-Progress: [█░░░░░░░░░] 14%
+Progress: [██░░░░░░░░] 29%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 49 min
-- Total execution time: 0.8 hours
+- Total plans completed: 2
+- Average duration: 43 min
+- Total execution time: 1.4 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 1 | 49 min | 49 min |
+| 01-foundation | 2 | 86 min | 43 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (49 min)
-- Trend: N/A (first plan)
+- Last 5 plans: 01-01 (49 min), 01-02 (37 min)
+- Trend: Improving
 
 *Updated after each plan completion*
 
@@ -48,6 +48,9 @@ Recent decisions affecting current work:
 - Removed deprecated baseUrl from tsconfig.base.json for TypeScript 6 compatibility
 - Express type annotation required for cross-workspace type portability in TS6
 - Approved build scripts for prisma, esbuild, sentry-cli, sharp, clerk, msgpackr-extract
+- Prisma 7 requires prisma.config.ts for datasource URL (url no longer in schema.prisma)
+- Prisma 7 requires @prisma/adapter-pg driver adapter instead of direct URL connection
+- Generated Prisma client excluded from git (regenerated on install)
 
 ### Pending Todos
 
@@ -69,5 +72,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-04-25
-Stopped at: Completed 01-01-PLAN.md (Monorepo scaffold)
-Resume file: .planning/phases/01-foundation/01-02-PLAN.md
+Stopped at: Completed 01-02-PLAN.md (Database + CryptoService)
+Resume file: .planning/phases/01-foundation/01-03-PLAN.md
