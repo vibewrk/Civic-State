@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-typecheck-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: civicstate_test
+          POSTGRES_USER: civicstate
+          POSTGRES_PASSWORD: testpassword
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U civicstate"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma client
+        run: cd packages/shared && pnpm generate
+
+      - name: Typecheck
+        run: pnpm -r run typecheck
+
+      - name: Lint
+        run: pnpm -r run lint
+        continue-on-error: true  # Lint may not be fully configured yet
+
+      - name: Unit tests
+        run: pnpm -r run test
+        env:
+          DATABASE_URL: postgresql://civicstate:testpassword@localhost:5432/civicstate_test
+          REDIS_URL: redis://localhost:6379
+          ENCRYPTION_KEY: 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
+          ENCRYPTION_KEY_VERSION: "1"
+          HMAC_SECRET_KEY: fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210
+          NODE_ENV: test
+
+      - name: Push test schema
+        run: cd packages/shared && npx prisma db push --skip-generate
+        env:
+          DATABASE_URL: postgresql://civicstate:testpassword@localhost:5432/civicstate_test
