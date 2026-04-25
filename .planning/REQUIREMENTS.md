@@ -14,7 +14,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **INFRA-03**: GitHub Actions CI/CD pipeline (lint, test, build, deploy to droplet)
 - [x] **INFRA-04**: Nginx reverse proxy with SSL (Certbot/Let's Encrypt) on api.civicstate.com
 - [ ] **INFRA-05**: Next.js 15 frontend deployed on Vercel with automatic deployments from main
-- [ ] **INFRA-06**: Sentry error tracking configured for frontend and backend
+- [x] **INFRA-06**: Sentry error tracking configured for frontend and backend
 - [x] **INFRA-07**: Health check endpoint (GET /api/health) with uptime monitoring
 - [ ] **INFRA-08**: Daily pg_dump backups to DigitalOcean Spaces (30-day retention)
 
@@ -196,7 +196,7 @@ Updated during roadmap creation.
 | INFRA-03 | Phase 1 | Pending |
 | INFRA-04 | Phase 1 | Complete |
 | INFRA-05 | Phase 1 | Pending |
-| INFRA-06 | Phase 1 | Pending |
+| INFRA-06 | Phase 1 | Complete (01-06) |
 | INFRA-07 | Phase 1 | Complete |
 | INFRA-08 | Phase 1 | Pending |
 | DATA-01 | Phase 1 | Complete (01-02) |

@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-04-25)
 ## Current Position
 
 Phase: 1 of 4 (Foundation)
-Plan: 3 of 7 in current phase
+Plan: 6 of 7 in current phase
 Status: Executing
-Last activity: 2026-04-25 -- Plan 01-03 (Docker Compose Stack) complete
+Last activity: 2026-04-25 -- Plan 01-06 (Frontend + Sentry + Plausible) complete
 
-Progress: [███░░░░░░░] 43%
+Progress: [██████░░░░] 57%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 30 min
-- Total execution time: 1.5 hours
+- Total plans completed: 4
+- Average duration: 24 min
+- Total execution time: 1.6 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 3 | 89 min | 30 min |
+| 01-foundation | 4 | 93 min | 23 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (49 min), 01-02 (37 min), 01-03 (3 min)
+- Last 5 plans: 01-01 (49 min), 01-02 (37 min), 01-03 (3 min), 01-06 (4 min)
 - Trend: Improving
 
 *Updated after each plan completion*
@@ -48,6 +48,9 @@ Recent decisions affecting current work:
 - Removed deprecated baseUrl from tsconfig.base.json for TypeScript 6 compatibility
 - Express type annotation required for cross-workspace type portability in TS6
 - Approved build scripts for prisma, esbuild, sentry-cli, sharp, clerk, msgpackr-extract
+- Tailwind v4 CSS-first config with @theme block (not tailwind.config.ts)
+- HSL CSS custom properties for shadcn/ui (raw CSS, not @apply for base styles)
+- TypeScript 6 CSS module declaration for side-effect imports
 - Prisma 7 requires prisma.config.ts for datasource URL (url no longer in schema.prisma)
 - Prisma 7 requires @prisma/adapter-pg driver adapter instead of direct URL connection
 - Generated Prisma client excluded from git (regenerated on install)
@@ -75,5 +78,5 @@ Items acknowledged and carried forward from previous milestone close:
 ## Session Continuity
 
 Last session: 2026-04-25
-Stopped at: Completed 01-03-PLAN.md (Docker Compose Stack)
-Resume file: .planning/phases/01-foundation/01-04-PLAN.md
+Stopped at: Completed 01-06-PLAN.md (Frontend + Sentry + Plausible)
+Resume file: .planning/phases/01-foundation/01-07-PLAN.md
