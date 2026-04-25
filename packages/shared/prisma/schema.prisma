@@ -1,0 +1,252 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ──────────────────────────────────────────
+// Core User & Submission Models
+// ──────────────────────────────────────────
+
+model User {
+  id        String   @id @default(uuid()) @db.Uuid
+  clerkId   String   @unique
+  email     String   @unique
+  fullName  String?  // Encrypted at app level (Tier 1)
+  role      String   @default("user")
+  deletedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  submissions Submission[]
+  campaigns   Campaign[]
+  payments    Payment[]
+  auditLogs   AuditLog[]
+
+  @@index([clerkId])
+  @@index([email])
+}
+
+model Submission {
+  id               String   @id @default(uuid()) @db.Uuid
+  userId           String   @db.Uuid
+  issueDescription String   // Encrypted at app level (Tier 1)
+  desiredOutcome   String   // Encrypted at app level (Tier 1)
+  zipCode          String
+  isAnonymous      Boolean  @default(true)
+  status           String   @default("submitted")
+  deletedAt        DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  user      User       @relation(fields: [userId], references: [id])
+  campaigns Campaign[]
+  jobs      Job[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([zipCode])
+}
+
+model Campaign {
+  id            String   @id @default(uuid()) @db.Uuid
+  submissionId  String   @db.Uuid
+  userId        String   @db.Uuid
+  status        String   @default("draft")
+  pricingTier   String
+  officialCount Int
+  deletedAt     DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  submission Submission @relation(fields: [submissionId], references: [id])
+  user       User       @relation(fields: [userId], references: [id])
+  letters    Letter[]
+  payments   Payment[]
+
+  @@index([submissionId])
+  @@index([userId])
+  @@index([status])
+}
+
+model Letter {
+  id            String   @id @default(uuid()) @db.Uuid
+  campaignId    String   @db.Uuid
+  officialId    String   @db.Uuid
+  content       String   // Encrypted at app level (Tier 1)
+  status        String   @default("draft")
+  aiDisclosure  Boolean  @default(true)
+  deletedAt     DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  campaign   Campaign   @relation(fields: [campaignId], references: [id])
+  official   Official   @relation(fields: [officialId], references: [id])
+  deliveries Delivery[]
+
+  @@index([campaignId])
+  @@index([officialId])
+  @@index([status])
+}
+
+model Official {
+  id             String    @id @default(uuid()) @db.Uuid
+  name           String
+  title          String
+  email          String
+  jurisdiction   String
+  level          String    // federal, state, local
+  district       String
+  state          String
+  party          String
+  phone          String?
+  sourceApi      String
+  bounceCount    Int       @default(0)
+  optedOut       Boolean   @default(false)
+  lastVerifiedAt DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  letters Letter[]
+
+  @@index([email])
+  @@index([level])
+  @@index([state])
+  @@index([jurisdiction])
+}
+
+model Payment {
+  id                     String   @id @default(uuid()) @db.Uuid
+  campaignId             String   @db.Uuid
+  userId                 String   @db.Uuid
+  stripeSessionId        String?
+  stripePaymentIntentId  String?
+  amount                 Int      // cents
+  currency               String   @default("usd")
+  status                 String   @default("pending")
+  deletedAt              DateTime?
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  campaign Campaign @relation(fields: [campaignId], references: [id])
+  user     User     @relation(fields: [userId], references: [id])
+
+  @@index([campaignId])
+  @@index([userId])
+  @@index([stripeSessionId])
+  @@index([status])
+}
+
+model Delivery {
+  id                String    @id @default(uuid()) @db.Uuid
+  letterId          String    @db.Uuid
+  postmarkMessageId String?
+  status            String    @default("queued")
+  sentAt            DateTime?
+  deliveredAt       DateTime?
+  bouncedAt         DateTime?
+  bounceType        String?
+  spamComplaintAt   DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  letter Letter @relation(fields: [letterId], references: [id])
+
+  @@index([letterId])
+  @@index([status])
+  @@index([postmarkMessageId])
+}
+
+// ──────────────────────────────────────────
+// Append-Only Tables (no updatedAt, no deletedAt)
+// Enforced via PostgreSQL triggers (see sql/append_only_rules.sql)
+// HMAC checksums for tamper detection (see packages/shared/src/hmac.ts)
+// ──────────────────────────────────────────
+
+model LedgerEntry {
+  id           String   @id @default(uuid()) @db.Uuid
+  type         String
+  amount       Int      // cents
+  currency     String   @default("usd")
+  reference    String
+  description  String
+  jobId        String?  @db.Uuid
+  hmacChecksum String
+  createdAt    DateTime @default(now())
+
+  @@index([type])
+  @@index([jobId])
+  @@index([createdAt])
+}
+
+model AuditLog {
+  id           String   @id @default(uuid()) @db.Uuid
+  userId       String?  @db.Uuid
+  action       String
+  resource     String
+  resourceId   String
+  details      Json
+  hmacChecksum String
+  createdAt    DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([action])
+  @@index([resource])
+  @@index([resourceId])
+  @@index([createdAt])
+}
+
+model AgentActionLog {
+  id           String   @id @default(uuid()) @db.Uuid
+  jobId        String   @db.Uuid
+  agent        String
+  action       String
+  result       Json
+  modelUsed    String
+  inputTokens  Int
+  outputTokens Int
+  durationMs   Int
+  hmacChecksum String
+  createdAt    DateTime @default(now())
+
+  @@index([jobId])
+  @@index([agent])
+  @@index([createdAt])
+}
+
+// ──────────────────────────────────────────
+// Job Processing
+// ──────────────────────────────────────────
+
+model Job {
+  id           String    @id @default(uuid()) @db.Uuid
+  submissionId String    @db.Uuid
+  parentJobId  String?   @db.Uuid
+  type         String
+  status       String    @default("submitted")
+  queue        String
+  priority     Int       @default(0)
+  attempts     Int       @default(0)
+  maxAttempts  Int       @default(3)
+  result       Json?
+  error        String?
+  startedAt    DateTime?
+  completedAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  submission Submission @relation(fields: [submissionId], references: [id])
+  parentJob  Job?       @relation("JobHierarchy", fields: [parentJobId], references: [id])
+  childJobs  Job[]      @relation("JobHierarchy")
+
+  @@index([submissionId])
+  @@index([parentJobId])
+  @@index([status])
+  @@index([queue])
+  @@index([type])
+}

@@ -19,11 +19,12 @@
     "clean": "rm -rf dist generated"
   },
   "dependencies": {
+    "dotenv": "^17.4.2",
     "prisma": "^7.8.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "typescript": "^6.0.0",
-    "@types/node": "^22.0.0"
+    "@types/node": "^22.0.0",
+    "typescript": "^6.0.0"
   }
 }
