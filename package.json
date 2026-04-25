@@ -1,0 +1,57 @@
+{
+  "name": "civicstate",
+  "version": "0.0.0",
+  "description": "CivicState — AI-powered civic advocacy platform. Turns civic concerns into researched, citation-backed letters delivered to government officials.",
+  "type": "module",
+  "bin": {
+    "ultra-start-init": "./bin/ultra-start-init.js",
+    "ultra-start-upgrade": "./bin/ultra-start-upgrade.js"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "pnpm -r --parallel run dev",
+    "build": "pnpm -r run build",
+    "lint": "pnpm -r run lint",
+    "typecheck": "pnpm -r run typecheck",
+    "test": "pnpm -r run test",
+    "clean": "pnpm -r run clean",
+    "test:bash": "make test-bash",
+    "test:python": "make test-python",
+    "format": "make format",
+    "ci": "make ci",
+    "autoux:eval": "python autoux/run.py --dry-run --max-iterations 1",
+    "autoux:run": "python autoux/run.py --max-iterations 20",
+    "autoux:overnight": "PYTHONUNBUFFERED=1 python autoux/run.py --max-iterations 100 2>&1 | tee autoux/run.log",
+    "autoux:self-improve": "python autoux/self_improve.py",
+    "quality:install-hooks": "cp quality/pre-commit-multi-llm.sh .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit",
+    "pipeline": "./orchestrator/full-pipeline.sh",
+    "pipeline:fasttrack": "./orchestrator/full-pipeline.sh --step fasttrack",
+    "pipeline:watcher": "./orchestrator/full-pipeline.sh --step watcher",
+    "pipeline:trio-all": "TRIO_EVERY_STEP=1 ./orchestrator/full-pipeline.sh",
+    "rebuild": "./orchestrator/rebuild.sh --full",
+    "rebuild:capture": "./orchestrator/rebuild.sh --capture",
+    "rebuild:analyze": "./orchestrator/rebuild.sh --analyze",
+    "rebuild:verify": "./orchestrator/rebuild.sh --verify",
+    "pom": "./orchestrator/pom.sh",
+    "pom:current": "./orchestrator/pom.sh --current",
+    "pom:gsd-gate": "./orchestrator/pom.sh --gsd-gate",
+    "manifest:check": "node bin/ultra-start-upgrade.js --check-manifest-coverage",
+    "upgrade": "node bin/ultra-start-upgrade.js",
+    "upgrade:dry-run": "node bin/ultra-start-upgrade.js --dry-run",
+    "setup": "test -d .git || git init && git submodule update --init --recursive && npm run quality:install-hooks && mkdir -p .planning src tests docs public && (command -v pnpm >/dev/null && pnpm install --silent 2>/dev/null || npm install --silent 2>/dev/null || true) && echo 'Template ready. Paste your idea into .planning/raw-intake.md then run: npm run pipeline'"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.0",
+    "@types/node": "^22.0.0"
+  },
+  "keywords": [
+    "civicstate",
+    "civic-tech",
+    "multi-llm",
+    "openclaw"
+  ],
+  "license": "SEE LICENSE IN LICENSE"
+}
