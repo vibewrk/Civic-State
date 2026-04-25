@@ -10,12 +10,12 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Infrastructure
 
 - [x] **INFRA-01**: Monorepo initialized with workspaces (apps/web, apps/api, apps/worker, packages/shared)
-- [ ] **INFRA-02**: Docker Compose stack running on DigitalOcean (API, Worker, PostgreSQL, Redis, Nginx containers)
+- [x] **INFRA-02**: Docker Compose stack running on DigitalOcean (API, Worker, PostgreSQL, Redis, Nginx containers)
 - [ ] **INFRA-03**: GitHub Actions CI/CD pipeline (lint, test, build, deploy to droplet)
-- [ ] **INFRA-04**: Nginx reverse proxy with SSL (Certbot/Let's Encrypt) on api.civicstate.com
+- [x] **INFRA-04**: Nginx reverse proxy with SSL (Certbot/Let's Encrypt) on api.civicstate.com
 - [ ] **INFRA-05**: Next.js 15 frontend deployed on Vercel with automatic deployments from main
 - [ ] **INFRA-06**: Sentry error tracking configured for frontend and backend
-- [ ] **INFRA-07**: Health check endpoint (GET /api/health) with uptime monitoring
+- [x] **INFRA-07**: Health check endpoint (GET /api/health) with uptime monitoring
 - [ ] **INFRA-08**: Daily pg_dump backups to DigitalOcean Spaces (30-day retention)
 
 ### Database & Data Model
@@ -192,12 +192,12 @@ Updated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | INFRA-01 | Phase 1 | Complete (01-01) |
-| INFRA-02 | Phase 1 | Pending |
+| INFRA-02 | Phase 1 | Complete |
 | INFRA-03 | Phase 1 | Pending |
-| INFRA-04 | Phase 1 | Pending |
+| INFRA-04 | Phase 1 | Complete |
 | INFRA-05 | Phase 1 | Pending |
 | INFRA-06 | Phase 1 | Pending |
-| INFRA-07 | Phase 1 | Pending |
+| INFRA-07 | Phase 1 | Complete |
 | INFRA-08 | Phase 1 | Pending |
 | DATA-01 | Phase 1 | Complete (01-02) |
 | DATA-02 | Phase 1 | Complete (01-02) |
