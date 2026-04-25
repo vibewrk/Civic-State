@@ -125,13 +125,13 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Agent Engine (OpenClaw)
 
-- [ ] **AGNT-01**: BullMQ-based agent orchestration with parent-child job pattern (submission = parent, agent steps = children)
-- [ ] **AGNT-02**: State machine for job lifecycle: submitted -> classifying -> researching -> drafting -> payment_pending -> paid -> delivering -> delivered
-- [ ] **AGNT-03**: Configurable model selection per agent (environment variable override for testing)
-- [ ] **AGNT-04**: Prompt caching enabled for shared system prompts across agents
-- [ ] **AGNT-05**: Token usage logged per agent per job for cost tracking
-- [ ] **AGNT-06**: Agent actions logged to agent_action_logs table (timestamp, job_id, agent, action, result)
-- [ ] **AGNT-07**: PM2 process management within containers (auto-restart, memory limits, log rotation)
+- [x] **AGNT-01**: BullMQ-based agent orchestration with parent-child job pattern (submission = parent, agent steps = children)
+- [x] **AGNT-02**: State machine for job lifecycle: submitted -> classifying -> researching -> drafting -> payment_pending -> paid -> delivering -> delivered
+- [x] **AGNT-03**: Configurable model selection per agent (environment variable override for testing)
+- [x] **AGNT-04**: Prompt caching enabled for shared system prompts across agents
+- [x] **AGNT-05**: Token usage logged per agent per job for cost tracking
+- [x] **AGNT-06**: Agent actions logged to agent_action_logs table (timestamp, job_id, agent, action, result)
+- [x] **AGNT-07**: PM2 process management within containers (auto-restart, memory limits, log rotation)
 
 ### Legal & Compliance
 
@@ -212,13 +212,13 @@ Updated during roadmap creation.
 | AUTH-04 | Phase 1 | Complete (01-04) |
 | AUTH-05 | Phase 1 | Complete (01-04) |
 | AUTH-06 | Phase 1 | Complete (01-04) |
-| AGNT-01 | Phase 1 | Pending |
-| AGNT-02 | Phase 1 | Pending |
-| AGNT-03 | Phase 1 | Pending |
-| AGNT-04 | Phase 1 | Pending |
-| AGNT-05 | Phase 1 | Pending |
-| AGNT-06 | Phase 1 | Pending |
-| AGNT-07 | Phase 1 | Pending |
+| AGNT-01 | Phase 1 | Complete |
+| AGNT-02 | Phase 1 | Complete |
+| AGNT-03 | Phase 1 | Complete |
+| AGNT-04 | Phase 1 | Complete |
+| AGNT-05 | Phase 1 | Complete |
+| AGNT-06 | Phase 1 | Complete |
+| AGNT-07 | Phase 1 | Complete |
 | DLVR-03 | Phase 1 | Pending |
 | DLVR-04 | Phase 1 | Pending |
 | SUBM-01 | Phase 2 | Pending |
