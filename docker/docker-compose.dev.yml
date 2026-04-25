@@ -1,0 +1,39 @@
+services:
+  postgres:
+    ports:
+      - "5432:5432"
+
+  redis:
+    ports:
+      - "6379:6379"
+
+  api:
+    image: civicstate-api:dev
+    build:
+      context: ..
+      dockerfile: docker/api.Dockerfile
+      target: base
+    volumes:
+      - ../apps/api/src:/app/apps/api/src
+      - ../packages/shared/src:/app/packages/shared/src
+    command: pnpm --filter api dev
+    environment:
+      NODE_ENV: development
+      CORS_ORIGIN: http://localhost:3000
+
+  worker:
+    image: civicstate-worker:dev
+    build:
+      context: ..
+      dockerfile: docker/worker.Dockerfile
+      target: base
+    volumes:
+      - ../apps/worker/src:/app/apps/worker/src
+      - ../packages/shared/src:/app/packages/shared/src
+    command: pnpm --filter worker dev
+    environment:
+      NODE_ENV: development
+
+  nginx:
+    profiles:
+      - production

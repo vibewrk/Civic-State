@@ -1,0 +1,17 @@
+node_modules
+.git
+.planning
+.claude
+.gemini
+.codex
+.ultra
+orchestrator
+autoux
+quality
+docs
+*.md
+.env
+.env.*
+!.env.example
+dist
+.next
