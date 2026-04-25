@@ -1,3 +1,4 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
@@ -14,16 +15,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="min-h-screen bg-background font-sans antialiased">
-        {children}
-        <Script
-          defer
-          data-domain="civicstate.com"
-          src="https://plausible.io/js/script.js"
-          strategy="afterInteractive"
-        />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className="min-h-screen bg-background font-sans antialiased">
+          {children}
+          <Script
+            defer
+            data-domain="civicstate.com"
+            src="https://plausible.io/js/script.js"
+            strategy="afterInteractive"
+          />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
