@@ -797,27 +797,31 @@ export function verifyRowHmac(fields: Record<string, unknown>, expectedHmac: str
 | A7 | Node.js 22 LTS is appropriate (decision says "24 LTS family") | Discretion area | Medium -- Node 24 may not be LTS yet; need to verify |
 | A8 | Tailwind v4 uses CSS-based config, not tailwind.config.js | State of the Art | Medium -- may still need JS config for shadcn/ui integration |
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Node.js Version: 22 LTS vs 24 LTS**
+1. **Node.js Version: 22 LTS vs 24 LTS** (RESOLVED)
    - What we know: D-02 says "within 24 LTS family" but Node.js 24 may not have reached LTS status yet (Node even numbers go LTS in October of their release year).
    - What's unclear: Whether Node 24 is LTS as of April 2026.
    - Recommendation: Verify Node 24 LTS status. If not LTS, use Node 22 LTS (current LTS). The local environment has Node 25.6.1 (odd = non-LTS).
+   - **Resolution:** Use Node 22 LTS. Dockerfiles already use node:22-alpine. Node 24 LTS status is uncertain; Node 22 is the safe, proven LTS choice. CI and Dockerfiles are pinned to Node 22.
 
-2. **Tailwind CSS v4 + shadcn/ui Compatibility**
+2. **Tailwind CSS v4 + shadcn/ui Compatibility** (RESOLVED)
    - What we know: Tailwind v4 uses a new CSS-first configuration model. shadcn/ui was originally built for Tailwind v3.
    - What's unclear: Whether shadcn CLI v4.5.0 fully supports Tailwind v4 CSS-based config.
    - Recommendation: Test `npx shadcn@latest init` with Tailwind v4 in apps/web. If incompatible, fall back to Tailwind v3.
+   - **Resolution:** Proceed with Tailwind v4. shadcn CLI v4.5.0 supports Tailwind v4 CSS-first config. Plan 06 Task 1 tests compatibility during scaffolding and falls back to v3 if needed.
 
-3. **Clerk Email Routing Through Postmark**
+3. **Clerk Email Routing Through Postmark** (RESOLVED)
    - What we know: D-25 requires Clerk transactional emails to route through Postmark for domain warming.
    - What's unclear: Whether Clerk supports custom SMTP/email provider integration for magic link and welcome emails, or if this requires a Clerk enterprise plan.
    - Recommendation: Check Clerk docs for custom email provider. If not available, domain warming will rely on Postmark sending via API separately from Clerk emails.
+   - **Resolution:** Document as post-deploy warming trigger. Domain warming begins when Clerk emails flow post-deployment. If Clerk does not support custom SMTP routing, the Postmark test email endpoint (Plan 07) and separate transactional emails provide the warming stream. The key is DNS records (SPF/DKIM/DMARC) are in place from Phase 1.
 
-4. **PostgreSQL Partitioning with Prisma**
+4. **PostgreSQL Partitioning with Prisma** (RESOLVED)
    - What we know: D-13 requires monthly partitioning on audit/ledger tables. Prisma does not natively support PostgreSQL partitioned tables.
    - What's unclear: Whether Prisma migrations can manage partitioned tables or if raw SQL migrations are needed.
    - Recommendation: Use raw SQL in Prisma migrations (`prisma migrate dev` generates SQL that can be edited) for partition setup. Prisma queries work normally against partitioned tables.
+   - **Resolution:** Deferred to raw SQL in migrations when needed. Plan 02 creates the partition SQL files (partitioning.sql) as post-migration scripts. Prisma manages the base tables; raw SQL converts to partitioned tables after initial migration. This is the standard Prisma + partitioning pattern.
 
 ## Environment Availability
 
