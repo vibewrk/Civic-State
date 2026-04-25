@@ -1,0 +1,81 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# Prisma generated client (regenerated via `pnpm run generate`)
+packages/shared/generated/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE (keep .vscode for shared settings)
+.idea/
+
+# AutoUX runtime artifacts
+autoux/run.log
+autoux/results.tsv
+autoux/__pycache__/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OpenClaw workspace (per-project, not template)
+.openclaw/workspace/
+
+# GSD state (per-project, not template)
+# NOTE: .planning/phases/ is NOT gitignored — phase plans are project artifacts that must be committed
+.planning/research/
+.planning/reports/
+.planning/forensics/
+.planning/reviews/
+.planning/review/
+.planning/ownership/
+.planning/.gate-*.fail
+.planning/.run-build-head
+.planning/.rollback-log.jsonl
+.planning/decisions/
+.planning/consensus/
+.planning/stakeholders/
+.planning/ai-pipelines/
+.planning/integrations/
+.planning/pom/
+.planning/rebuild/
+.planning/codebase/
+
+# Pipeline runtime artifacts
+.planning/.protocol-classification.txt
+.planning/pipeline-errors.log
+.planning/watcher-log.md
+.planning/MEMORY.md
+.planning/LESSONS.md
+.planning/progress.json
+
+# AutoResearch results
+results.tsv
+
+# Keep these GSD files in template
+!.planning/PROJECT.md
+!.planning/REQUIREMENTS.md
+!.planning/ROADMAP.md
+!.planning/STATE.md
+!.planning/raw-intake.md
+
+# Lock files (include for reproducibility)
+!package-lock.json
+!pnpm-lock.yaml
+!uv.lock

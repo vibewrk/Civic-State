@@ -19,7 +19,9 @@
     "clean": "rm -rf dist generated"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
     "dotenv": "^17.4.2",
+    "pg": "^8.20.0",
     "prisma": "^7.8.0",
     "zod": "^4.3.6"
   },
