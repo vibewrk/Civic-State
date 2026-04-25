@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-50: #E8ECF4;
+  --color-navy-100: #C5CEE0;
+  --color-navy-200: #9EADCC;
+  --color-navy-300: #7790B8;
+  --color-navy-400: #5A7BA8;
+  --color-navy-500: #3B5998;
+  --color-navy-600: #2B3F6C;
+  --color-navy-700: #1B2A4A;
+  --color-navy-800: #121D33;
+  --color-navy-900: #09101D;
+
+  --color-gold-50: #FBF6E8;
+  --color-gold-100: #F3E8C1;
+  --color-gold-200: #EAD896;
+  --color-gold-300: #D4B86A;
+  --color-gold-400: #C5A34E;
+  --color-gold-500: #A68832;
+  --color-gold-600: #8A7029;
+  --color-gold-700: #6E5920;
+  --color-gold-800: #524218;
+  --color-gold-900: #362C10;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 46% 20%;
+    --primary: 220 46% 20%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 42 50% 54%;
+    --secondary-foreground: 220 46% 20%;
+    --accent: 42 50% 54%;
+    --accent-foreground: 220 46% 20%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 46% 20%;
+    --radius: 0.5rem;
+    --card: 0 0% 100%;
+    --card-foreground: 220 46% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 46% 20%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
