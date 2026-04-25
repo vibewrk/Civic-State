@@ -22,6 +22,29 @@ Thumbs.db
 
 # IDE (keep .vscode for shared settings)
 .idea/
+*.swp
+*.swo
+*~
+
+# Docker volumes (local)
+docker/pgdata/
+docker/redisdata/
+
+# Certificates (local dev)
+docker/nginx/certbot/
+
+# Logs
+*.log
+pm2-*.log
+
+# Test coverage
+coverage/
+
+# Sentry
+.sentryclirc
+
+# Vercel
+.vercel
 
 # AutoUX runtime artifacts
 autoux/run.log
