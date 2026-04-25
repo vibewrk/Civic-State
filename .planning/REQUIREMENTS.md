@@ -191,13 +191,104 @@ Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (populated by roadmapper) | | |
+| INFRA-01 | Phase 1 | Pending |
+| INFRA-02 | Phase 1 | Pending |
+| INFRA-03 | Phase 1 | Pending |
+| INFRA-04 | Phase 1 | Pending |
+| INFRA-05 | Phase 1 | Pending |
+| INFRA-06 | Phase 1 | Pending |
+| INFRA-07 | Phase 1 | Pending |
+| INFRA-08 | Phase 1 | Pending |
+| DATA-01 | Phase 1 | Pending |
+| DATA-02 | Phase 1 | Pending |
+| DATA-03 | Phase 1 | Pending |
+| DATA-04 | Phase 1 | Pending |
+| DATA-05 | Phase 1 | Pending |
+| DATA-06 | Phase 1 | Pending |
+| DATA-07 | Phase 1 | Pending |
+| AUTH-01 | Phase 1 | Pending |
+| AUTH-02 | Phase 1 | Pending |
+| AUTH-03 | Phase 1 | Pending |
+| AUTH-04 | Phase 1 | Pending |
+| AUTH-05 | Phase 1 | Pending |
+| AUTH-06 | Phase 1 | Pending |
+| AGNT-01 | Phase 1 | Pending |
+| AGNT-02 | Phase 1 | Pending |
+| AGNT-03 | Phase 1 | Pending |
+| AGNT-04 | Phase 1 | Pending |
+| AGNT-05 | Phase 1 | Pending |
+| AGNT-06 | Phase 1 | Pending |
+| AGNT-07 | Phase 1 | Pending |
+| DLVR-03 | Phase 1 | Pending |
+| DLVR-04 | Phase 1 | Pending |
+| SUBM-01 | Phase 2 | Pending |
+| SUBM-02 | Phase 2 | Pending |
+| SUBM-03 | Phase 2 | Pending |
+| SUBM-04 | Phase 2 | Pending |
+| SUBM-05 | Phase 2 | Pending |
+| SUBM-06 | Phase 2 | Pending |
+| SUBM-07 | Phase 2 | Pending |
+| SUBM-08 | Phase 2 | Pending |
+| SUBM-09 | Phase 2 | Pending |
+| SUBM-10 | Phase 2 | Pending |
+| OFCL-01 | Phase 2 | Pending |
+| OFCL-02 | Phase 2 | Pending |
+| OFCL-03 | Phase 2 | Pending |
+| OFCL-04 | Phase 2 | Pending |
+| OFCL-05 | Phase 2 | Pending |
+| OFCL-06 | Phase 2 | Pending |
+| LETR-01 | Phase 2 | Pending |
+| LETR-02 | Phase 2 | Pending |
+| LETR-03 | Phase 2 | Pending |
+| LETR-04 | Phase 2 | Pending |
+| LETR-05 | Phase 2 | Pending |
+| LETR-06 | Phase 2 | Pending |
+| MODR-01 | Phase 2 | Pending |
+| MODR-02 | Phase 2 | Pending |
+| MODR-03 | Phase 2 | Pending |
+| MODR-04 | Phase 2 | Pending |
+| MODR-05 | Phase 2 | Pending |
+| PAY-01 | Phase 3 | Pending |
+| PAY-02 | Phase 3 | Pending |
+| PAY-03 | Phase 3 | Pending |
+| PAY-04 | Phase 3 | Pending |
+| DLVR-01 | Phase 3 | Pending |
+| DLVR-02 | Phase 3 | Pending |
+| DLVR-05 | Phase 3 | Pending |
+| DLVR-06 | Phase 3 | Pending |
+| DLVR-07 | Phase 3 | Pending |
+| DLVR-08 | Phase 3 | Pending |
+| TRSY-01 | Phase 3 | Pending |
+| TRSY-02 | Phase 3 | Pending |
+| TRSY-03 | Phase 3 | Pending |
+| TRSY-04 | Phase 3 | Pending |
+| TRSY-05 | Phase 3 | Pending |
+| TRSY-06 | Phase 3 | Pending |
+| TRSY-07 | Phase 3 | Pending |
+| DASH-01 | Phase 4 | Pending |
+| DASH-02 | Phase 4 | Pending |
+| DASH-03 | Phase 4 | Pending |
+| DASH-04 | Phase 4 | Pending |
+| DASH-05 | Phase 4 | Pending |
+| ADMN-01 | Phase 4 | Pending |
+| ADMN-02 | Phase 4 | Pending |
+| ADMN-03 | Phase 4 | Pending |
+| ADMN-04 | Phase 4 | Pending |
+| ADMN-05 | Phase 4 | Pending |
+| ADMN-06 | Phase 4 | Pending |
+| ADMN-07 | Phase 4 | Pending |
+| ADMN-08 | Phase 4 | Pending |
+| LGAL-01 | Phase 4 | Pending |
+| LGAL-02 | Phase 4 | Pending |
+| LGAL-03 | Phase 4 | Pending |
+| LGAL-04 | Phase 4 | Pending |
+| LGAL-05 | Phase 4 | Pending |
 
 **Coverage:**
-- v1 requirements: 80 total
-- Mapped to phases: 0
-- Unmapped: 80
+- v1 requirements: 92 total
+- Mapped to phases: 92
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-04-25*
-*Last updated: 2026-04-25 after initial definition*
+*Last updated: 2026-04-25 after roadmap creation*
