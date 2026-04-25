@@ -1,7 +1,7 @@
 {
   "name": "civicstate",
   "version": "0.0.0",
-  "description": "CivicState — AI-powered civic advocacy platform. Turns civic concerns into researched, citation-backed letters delivered to government officials.",
+  "description": "CivicState \u2014 AI-powered civic advocacy platform. Turns civic concerns into researched, citation-backed letters delivered to government officials.",
   "type": "module",
   "bin": {
     "ultra-start-init": "./bin/ultra-start-init.js",
@@ -53,5 +53,16 @@
     "multi-llm",
     "openclaw"
   ],
-  "license": "SEE LICENSE IN LICENSE"
+  "license": "SEE LICENSE IN LICENSE",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@prisma/engines",
+      "prisma",
+      "esbuild",
+      "@sentry/cli",
+      "sharp",
+      "@clerk/shared",
+      "msgpackr-extract"
+    ]
+  }
 }
