@@ -7,6 +7,8 @@ import { clerkAuth } from "./middleware/auth.js";
 import healthRouter from "./routes/health.js";
 import submissionsRouter from "./routes/submissions.js";
 import officialsRouter from "./routes/officials.js";
+import webhooksRouter from "./routes/webhooks.js";
+import paymentsRouter from "./routes/payments.js";
 
 // Initialize Sentry before any other middleware
 initSentry();
@@ -22,6 +24,11 @@ app.use(
     credentials: true,
   })
 );
+
+// Stripe webhook must be registered BEFORE express.json() — it needs raw body
+// for signature verification. The route uses its own express.raw() parser.
+app.use(webhooksRouter);
+
 app.use(express.json());
 
 // Clerk middleware — applies to all routes (per D-17)
@@ -31,6 +38,7 @@ app.use(clerkAuth);
 app.use(healthRouter);
 app.use(submissionsRouter);
 app.use(officialsRouter);
+app.use(paymentsRouter);
 
 // Example protected route (placeholder for future routes)
 // app.get('/api/submissions', requireAuth(), submissionsHandler);

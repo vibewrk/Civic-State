@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Monorepo, Docker, CI/CD, database, auth, agent engine, domain warming
 - [x] **Phase 2: AI Pipeline** - Submission wizard, officials directory, research, citation verification, letter drafting, content moderation
-- [ ] **Phase 3: Payment & Delivery** - Stripe checkout, treasury, Postmark email delivery, bounce tracking
+- [x] **Phase 3: Payment & Delivery** - Stripe checkout, treasury, Postmark email delivery, bounce tracking
 - [ ] **Phase 4: Dashboard & Compliance** - User dashboard, admin tools, legal pages, audit enforcement
 
 ## Phase Details
@@ -70,7 +70,12 @@ Plans:
   3. Spam complaints trigger immediate official suppression and operator alert; replies route to the correct campaign via reply+{id}@civicstate.com
   4. The Treasury agent records every payment to the append-only ledger, enforces job-level budget ceilings (150% overage pause), and runs daily reconciliation with discrepancy alerts
   5. The operator receives a daily P&L email and Mercury balance alerts at $2,000 warning and $500 emergency thresholds
-**Plans**: TBD
+**Plans**: 4 plans
+Plans:
+- [x] 03-01-PLAN.md -- Stripe payment integration (pricing tiers, Checkout sessions, webhook fulfillment)
+- [x] 03-02-PLAN.md -- Delivery agent + Postmark (individual emails, bounce tracking, spam suppression)
+- [x] 03-03-PLAN.md -- Treasury agent (ledger recording, budget auth, reconciliation, P&L alerts)
+- [x] 03-04-PLAN.md -- Payment UI (Stripe Checkout redirect, success/cancel pages)
 **UI hint**: yes
 
 ### Phase 4: Dashboard & Compliance
@@ -95,5 +100,5 @@ Phases execute in numeric order: 1 -> 1.1 -> 2 -> 2.1 -> 3 -> 4
 |-------|---------------|--------|-----------|
 | 1. Foundation | 7/7 | Complete | 2026-04-25 |
 | 2. AI Pipeline | 6/6 | Complete | 2026-04-25 |
-| 3. Payment & Delivery | 0/TBD | Not started | - |
+| 3. Payment & Delivery | 4/4 | Complete | 2026-04-25 |
 | 4. Dashboard & Compliance | 0/TBD | Not started | - |

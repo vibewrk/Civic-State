@@ -25,6 +25,7 @@
     "ioredis": "^5.10.1",
     "postmark": "^4.0.7",
     "shared": "workspace:*",
+    "stripe": "^22.1.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {

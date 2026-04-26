@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/card";
 import {
   getLetterPreviews,
+  createPaymentSession,
   type LetterPreview as LetterPreviewType,
   type LetterPreviewResponse,
 } from "@/lib/api";
@@ -35,6 +36,22 @@ export function LetterPreview({ submissionId }: LetterPreviewProps) {
   const [error, setError] = useState<string | null>(null);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
   const [selectedTier, setSelectedTier] = useState<PricingTier>("single");
+  const [paying, setPaying] = useState(false);
+  const [payError, setPayError] = useState<string | null>(null);
+
+  async function handlePayment() {
+    setPaying(true);
+    setPayError(null);
+    try {
+      const session = await createPaymentSession(submissionId, selectedTier);
+      window.location.href = session.checkoutUrl;
+    } catch (err) {
+      setPayError(
+        err instanceof Error ? err.message : "Payment failed. Please try again."
+      );
+      setPaying(false);
+    }
+  }
 
   useEffect(() => {
     async function fetchPreviews() {
@@ -140,12 +157,16 @@ export function LetterPreview({ submissionId }: LetterPreviewProps) {
           <Button
             className="w-full bg-gold-500 text-navy-800 hover:bg-gold-400 font-semibold text-base py-6"
             size="lg"
+            disabled={paying}
+            onClick={handlePayment}
           >
-            Proceed to Payment - ${tierPrice}
+            {paying ? "Creating checkout session..." : `Proceed to Payment - $${tierPrice}`}
           </Button>
-          <p className="text-xs text-center text-muted-foreground">
-            Payment processing will be available in Phase 3. This is a preview.
-          </p>
+          {payError && (
+            <p className="text-xs text-center text-destructive">
+              {payError}
+            </p>
+          )}
         </CardFooter>
       </Card>
 

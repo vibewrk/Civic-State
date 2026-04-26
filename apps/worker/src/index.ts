@@ -3,6 +3,11 @@ import { researcherWorker } from './agents/researcher.js';
 import { drafterWorker } from './agents/drafter.js';
 import { deliveryWorker } from './agents/delivery.js';
 import { treasuryWorker } from './agents/treasury.js';
+import {
+  reconciliationWorker,
+  reconciliationQueue,
+  registerReconciliationSchedule,
+} from './agents/reconciliation.js';
 
 console.log('CivicState OpenClaw worker starting...');
 console.log(
@@ -13,8 +18,14 @@ console.log(
     drafterWorker.name,
     deliveryWorker.name,
     treasuryWorker.name,
+    reconciliationWorker.name,
   ].join(', '),
 );
+
+// Register repeatable job schedules
+registerReconciliationSchedule().catch((err) => {
+  console.error('Failed to register reconciliation schedule:', err);
+});
 
 // Graceful shutdown
 const shutdown = async () => {
@@ -25,6 +36,8 @@ const shutdown = async () => {
     drafterWorker.close(),
     deliveryWorker.close(),
     treasuryWorker.close(),
+    reconciliationWorker.close(),
+    reconciliationQueue.close(),
   ]);
   process.exit(0);
 };

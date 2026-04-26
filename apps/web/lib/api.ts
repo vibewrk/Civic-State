@@ -89,3 +89,23 @@ export async function lookupOfficials(
 ): Promise<Official[]> {
   return request<Official[]>(`/api/officials?zipCode=${zipCode}`);
 }
+
+// --- Payment ---
+
+export interface PaymentSession {
+  checkoutUrl: string;
+  sessionId: string;
+}
+
+export async function createPaymentSession(
+  submissionId: string,
+  pricingTier: PricingTier
+): Promise<PaymentSession> {
+  return request<PaymentSession>(`/api/submissions/${submissionId}/pay`, {
+    method: "POST",
+    body: JSON.stringify({ pricingTier }),
+    credentials: "include",
+  });
+}
+
+type PricingTier = "single" | "three" | "all";
