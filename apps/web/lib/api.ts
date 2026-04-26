@@ -109,3 +109,93 @@ export async function createPaymentSession(
 }
 
 type PricingTier = "single" | "three" | "all";
+
+// --- Dashboard / Campaign Types ---
+
+export interface CampaignDelivery {
+  id: string;
+  status: string;
+  sentAt: string | null;
+  deliveredAt: string | null;
+  bouncedAt: string | null;
+  bounceType: string | null;
+}
+
+export interface CampaignOfficial {
+  id: string;
+  name: string;
+  title: string;
+  email: string;
+  jurisdiction: string;
+  level: string;
+  district: string | null;
+  state: string | null;
+  party: string | null;
+  phone?: string | null;
+}
+
+export interface CampaignLetter {
+  id: string;
+  status: string;
+  official: CampaignOfficial;
+  delivery: CampaignDelivery | null;
+}
+
+export interface CampaignSubmission {
+  id: string;
+  issueDescription: string;
+  desiredOutcome: string;
+  zipCode: string;
+  isAnonymous: boolean;
+  status: string;
+  createdAt: string;
+}
+
+export interface CampaignPayment {
+  id: string;
+  amount: number;
+  currency: string;
+  status: string;
+  createdAt: string;
+}
+
+export interface Campaign {
+  id: string;
+  status: string;
+  pricingTier: string;
+  officialCount: number;
+  createdAt: string;
+  updatedAt: string;
+  submission: CampaignSubmission;
+  letters: CampaignLetter[];
+  payments?: CampaignPayment[];
+}
+
+// --- Dashboard API functions ---
+
+export async function getCampaigns(): Promise<Campaign[]> {
+  const data = await request<{ campaigns: Campaign[] }>("/api/campaigns", {
+    credentials: "include",
+  });
+  return data.campaigns;
+}
+
+export async function getCampaign(id: string): Promise<Campaign> {
+  const data = await request<{ campaign: Campaign }>(
+    `/api/campaigns/${id}`,
+    { credentials: "include" }
+  );
+  return data.campaign;
+}
+
+export async function toggleAnonymity(
+  campaignId: string
+): Promise<{ isAnonymous: boolean }> {
+  return request<{ isAnonymous: boolean }>(
+    `/api/campaigns/${campaignId}/anonymity`,
+    {
+      method: "PATCH",
+      credentials: "include",
+    }
+  );
+}

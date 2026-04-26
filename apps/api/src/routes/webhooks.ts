@@ -302,4 +302,123 @@ router.post(
   },
 );
 
+// ──────────────────────────────────────────
+// POST /api/webhooks/postmark/inbound — Postmark inbound email webhook (DASH-04)
+// Handles reply emails sent to reply+{campaignId}@civicstate.com
+// ──────────────────────────────────────────
+router.post(
+  '/api/webhooks/postmark/inbound',
+  express.json(),
+  async (req, res) => {
+    try {
+      const event = req.body;
+      const toAddress: string | undefined = event.To || event.OriginalRecipient;
+      const fromAddress: string | undefined = event.From || event.FromFull?.Email;
+      const subject: string | undefined = event.Subject;
+      const textBody: string | undefined = event.TextBody;
+      const htmlBody: string | undefined = event.HtmlBody;
+      const messageId: string | undefined = event.MessageID;
+
+      if (!toAddress) {
+        return res.status(400).json({ error: 'Missing To address' });
+      }
+
+      // Parse campaignId from reply+{campaignId}@civicstate.com
+      const replyMatch = toAddress.match(/reply\+([a-f0-9-]+)@/i);
+      if (!replyMatch) {
+        console.log(`[Webhook/Postmark/Inbound] Non-reply address: ${toAddress}`);
+        return res.status(200).json({ received: true, matched: false });
+      }
+
+      const campaignId = replyMatch[1];
+      const { prisma } = await import('shared');
+
+      // Verify campaign exists
+      const campaign = await prisma.campaign.findUnique({
+        where: { id: campaignId },
+        select: { id: true, userId: true },
+      });
+
+      if (!campaign) {
+        console.warn(`[Webhook/Postmark/Inbound] No campaign found for ID: ${campaignId}`);
+        return res.status(200).json({ received: true, matched: false });
+      }
+
+      // Store the reply as an AuditLog entry (no Reply model in schema)
+      const replyDetails = {
+        type: 'official_reply',
+        campaignId,
+        from: fromAddress,
+        subject: subject || '(no subject)',
+        textBody: textBody ? textBody.substring(0, 5000) : null,
+        htmlBody: htmlBody ? htmlBody.substring(0, 10000) : null,
+        postmarkMessageId: messageId,
+        receivedAt: new Date().toISOString(),
+      };
+
+      const hmacFields = {
+        userId: campaign.userId,
+        action: 'reply.received',
+        resource: 'campaign',
+        resourceId: campaignId,
+        details: JSON.stringify(replyDetails),
+      };
+
+      const hmacChecksum = computeRowHmac(hmacFields);
+
+      await prisma.auditLog.create({
+        data: {
+          userId: campaign.userId,
+          action: 'reply.received',
+          resource: 'campaign',
+          resourceId: campaignId,
+          details: replyDetails,
+          hmacChecksum,
+        },
+      });
+
+      // Send notification email to the user about the reply
+      try {
+        const user = await prisma.user.findUnique({
+          where: { id: campaign.userId },
+          select: { email: true },
+        });
+
+        if (user?.email) {
+          const { ServerClient } = await import('postmark');
+          const token = process.env.POSTMARK_SERVER_TOKEN;
+          if (token) {
+            const postmarkClient = new ServerClient(token);
+            await postmarkClient.sendEmail({
+              From: 'noreply@civicstate.com',
+              To: user.email,
+              Subject: `You received a reply on your CivicState campaign`,
+              TextBody: [
+                'Good news! An official has replied to your letter.',
+                '',
+                `From: ${fromAddress || 'Unknown'}`,
+                `Subject: ${subject || '(no subject)'}`,
+                '',
+                'Log in to your dashboard to view the full reply:',
+                `${process.env.CORS_ORIGIN || 'https://civicstate.com'}/dashboard/campaigns/${campaignId}`,
+              ].join('\n'),
+              MessageStream: 'outbound',
+            });
+          }
+        }
+      } catch (notifyErr) {
+        // Non-fatal — log but don't fail the webhook
+        console.warn('[Webhook/Postmark/Inbound] Failed to send notification:', notifyErr);
+      }
+
+      console.log(`[Webhook/Postmark/Inbound] Reply stored for campaign ${campaignId} from ${fromAddress}`);
+      res.status(200).json({ received: true, campaignId });
+    } catch (err) {
+      console.error('[Webhook/Postmark/Inbound] Processing error:', err);
+      // Always return 200 to prevent Postmark from retrying on processing errors
+      res.status(200).json({ received: true, error: 'processing_error' });
+    }
+  },
+);
+
 export default router;

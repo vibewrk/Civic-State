@@ -3,12 +3,21 @@ import cors from "cors";
 import helmet from "helmet";
 import * as Sentry from "@sentry/node";
 import { initSentry } from "./lib/sentry.js";
-import { clerkAuth } from "./middleware/auth.js";
+import { clerkAuth, requireAdmin } from "./middleware/auth.js";
+import { requireAuth } from "@clerk/express";
 import healthRouter from "./routes/health.js";
 import submissionsRouter from "./routes/submissions.js";
 import officialsRouter from "./routes/officials.js";
 import webhooksRouter from "./routes/webhooks.js";
 import paymentsRouter from "./routes/payments.js";
+import campaignsRouter from "./routes/campaigns.js";
+import adminRouter from "./routes/admin.js";
+import complianceRouter from "./routes/compliance.js";
+import { createBullBoard } from "@bull-board/api";
+import { BullMQAdapter } from "@bull-board/api/bullMQAdapter";
+import { ExpressAdapter } from "@bull-board/express";
+import { Queue } from "bullmq";
+import Redis from "ioredis";
 
 // Initialize Sentry before any other middleware
 initSentry();
@@ -39,12 +48,35 @@ app.use(healthRouter);
 app.use(submissionsRouter);
 app.use(officialsRouter);
 app.use(paymentsRouter);
+app.use(campaignsRouter);
 
-// Example protected route (placeholder for future routes)
-// app.get('/api/submissions', requireAuth(), submissionsHandler);
+// Compliance routes (require user auth — CCPA endpoints)
+app.use(complianceRouter);
 
-// Example admin route (placeholder)
-// app.get('/api/admin/queue', requireAuth(), requireAdmin, adminQueueHandler);
+// Admin routes (require admin role)
+app.use(adminRouter);
+
+// ── Bull Board — queue monitoring UI at /api/admin/queues ─────────────
+const bullBoardRedis = new Redis(process.env.REDIS_URL || "redis://localhost:6379", {
+  maxRetriesPerRequest: null,
+  enableReadyCheck: false,
+});
+
+const queueNames = ["classifier", "researcher", "drafter", "delivery", "treasury", "reconciliation"];
+const bullQueues = queueNames.map(
+  (name) => new BullMQAdapter(new Queue(name, { connection: bullBoardRedis }))
+);
+
+const serverAdapter = new ExpressAdapter();
+serverAdapter.setBasePath("/api/admin/queues");
+
+createBullBoard({
+  queues: bullQueues,
+  serverAdapter,
+});
+
+// Protect Bull Board behind admin auth
+app.use("/api/admin/queues", requireAuth(), requireAdmin, serverAdapter.getRouter());
 
 // Sentry error handler must be after all routes
 Sentry.setupExpressErrorHandler(app);
