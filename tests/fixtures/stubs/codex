@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Mock Codex CLI — same contract as tests/fixtures/stubs/claude.
+# See that file for env vars.
+
+set -e
+: "${MOCK_CALL_LOG:=/tmp/mock-calls.log}"
+: "${MOCK_CALL_DIR:=/tmp/mock-calls}"
+mkdir -p "$MOCK_CALL_DIR"
+
+call_n=$(ls "$MOCK_CALL_DIR" 2>/dev/null | wc -l | tr -d ' ')
+printf '%s\n' "codex $*" >> "$MOCK_CALL_LOG"
+printf '%s\n' "$@" > "$MOCK_CALL_DIR/${call_n}-codex.argv"
+if [ ! -t 0 ]; then
+  cat > "$MOCK_CALL_DIR/${call_n}-codex.stdin" 2>/dev/null || true
+fi
+
+[ -n "${MOCK_CODEX_SLEEP:-}" ] && [ "${MOCK_CODEX_SLEEP}" != "0" ] && sleep "$MOCK_CODEX_SLEEP"
+
+_combined="$*"
+for _fname in codex.md DECISION.md parity-report-codex.md parity-report.md \
+              api-surface.md content-inventory.md; do
+  _paths=$(printf '%s\n' "$_combined" | grep -oE '[^[:space:]]*'"$_fname" 2>/dev/null || true)
+  if [ -n "$_paths" ]; then
+    while IFS= read -r _p; do
+      [ -z "$_p" ] && continue
+      _parent=$(dirname "$_p")
+      mkdir -p "$_parent" 2>/dev/null || true
+      printf '# stub output from mock codex\n' > "$_p" 2>/dev/null || true
+    done <<< "$_paths"
+  fi
+done
+
+[ -n "${MOCK_CODEX_STDERR:-}" ] && printf '%s\n' "${MOCK_CODEX_STDERR}" >&2
+printf '%s\n' "${MOCK_CODEX_STDOUT:-ok}"
+exit "${MOCK_CODEX_EXIT:-0}"

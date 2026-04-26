@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+# Mock Claude CLI — records its invocations to $MOCK_CALL_LOG and
+# $MOCK_CALL_DIR so bats tests can assert what was called with what.
+#
+# Scripted behavior env vars (per-call):
+#   MOCK_CLAUDE_EXIT=N       — exit with this code (default 0)
+#   MOCK_CLAUDE_STDOUT=str   — emit this on stdout (default "ok")
+#   MOCK_CLAUDE_SLEEP=sec    — sleep before exit (default 0, use for bg tests)
+#   MOCK_CLAUDE_STDERR=str   — emit this on stderr (default "")
+
+set -e
+: "${MOCK_CALL_LOG:=/tmp/mock-calls.log}"
+: "${MOCK_CALL_DIR:=/tmp/mock-calls}"
+mkdir -p "$MOCK_CALL_DIR"
+
+# Record the call
+call_n=$(ls "$MOCK_CALL_DIR" 2>/dev/null | wc -l | tr -d ' ')
+printf '%s\n' "claude $*" >> "$MOCK_CALL_LOG"
+printf '%s\n' "$@" > "$MOCK_CALL_DIR/${call_n}-claude.argv"
+if [ ! -t 0 ]; then
+  cat > "$MOCK_CALL_DIR/${call_n}-claude.stdin" 2>/dev/null || true
+fi
+
+# Optional sleep (lets tests assert backgrounding actually works)
+[ -n "${MOCK_CLAUDE_SLEEP:-}" ] && [ "${MOCK_CLAUDE_SLEEP}" != "0" ] && sleep "$MOCK_CLAUDE_SLEEP"
+
+# If any arg (including inside a multiline prompt string) references a
+# destination file with a known filename, create it with stub content so
+# the caller's existence-check probes pass. The pattern scan handles both
+# "arg = /path/file.md" and "arg = 'Write your answer to /path/file.md'".
+_combined="$*"
+for _fname in opus.md DECISION.md parity-report-opus.md parity-report-gemini.md \
+              parity-report-codex.md parity-report.md user-flows.md \
+              stack-analysis.md seo-audit.md api-surface.md content-inventory.md \
+              build-review.md GENESIS.md INTAKE-BRIEF.md SYNTHESIS.md ROADMAP.md; do
+  # Extract paths ending in $_fname from the combined argv. Use grep -oE to
+  # pull non-whitespace tokens followed by the filename.
+  _paths=$(printf '%s\n' "$_combined" | grep -oE '[^[:space:]]*'"$_fname" 2>/dev/null || true)
+  if [ -n "$_paths" ]; then
+    while IFS= read -r _p; do
+      [ -z "$_p" ] && continue
+      _parent=$(dirname "$_p")
+      mkdir -p "$_parent" 2>/dev/null || true
+      printf '# stub output from mock claude\n' > "$_p" 2>/dev/null || true
+    done <<< "$_paths"
+  fi
+done
+
+# Emit scripted stderr (if any)
+[ -n "${MOCK_CLAUDE_STDERR:-}" ] && printf '%s\n' "${MOCK_CLAUDE_STDERR}" >&2
+
+# Emit scripted stdout
+printf '%s\n' "${MOCK_CLAUDE_STDOUT:-ok}"
+
+exit "${MOCK_CLAUDE_EXIT:-0}"

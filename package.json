@@ -14,6 +14,7 @@
     "lint": "pnpm -r run lint",
     "typecheck": "pnpm -r run typecheck",
     "test": "pnpm -r run test",
+    "test:unit": "vitest run",
     "clean": "pnpm -r run clean",
     "test:bash": "make test-bash",
     "test:python": "make test-python",
@@ -45,7 +46,8 @@
   },
   "devDependencies": {
     "typescript": "^6.0.0",
-    "@types/node": "^22.0.0"
+    "@types/node": "^22.0.0",
+    "vitest": "^4.1.5"
   },
   "keywords": [
     "civicstate",

@@ -1,0 +1,7 @@
+{
+  "head": "abc123def456",
+  "changed_files": ["src/auth.ts", "src/api/users.ts", "src/cart.ts"],
+  "models": ["opus", "gemini", "codex"],
+  "timestamp": "2026-04-09T17:00:00Z",
+  "tree_hash": "deadbeef1234"
+}

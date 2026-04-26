@@ -42,6 +42,29 @@ export type CampaignStatus = 'draft' | 'pending_payment' | 'paid' | 'delivering'
 /** Ledger entry types */
 export type LedgerEntryType = 'payment' | 'refund' | 'api_cost' | 'postage' | 'adjustment';
 
+/** A government official record returned from API lookups */
+export interface OfficialRecord {
+  id?: string;
+  name: string;
+  title: string;
+  email: string;
+  jurisdiction: string;
+  level: JurisdictionLevel;
+  district: string;
+  state: string;
+  party: string;
+  phone?: string;
+  sourceApi: string;
+  optedOut?: boolean;
+}
+
+/** Result of looking up officials for a ZIP code */
+export interface OfficialLookupResult {
+  officials: OfficialRecord[];
+  coverage: Record<JurisdictionLevel, number>;
+  confidenceLabel: string;
+}
+
 /** Audit log action categories */
 export type AuditAction =
   | 'user.created'
@@ -49,6 +72,8 @@ export type AuditAction =
   | 'user.deleted'
   | 'submission.created'
   | 'submission.flagged'
+  | 'submission.blocked'
+  | 'submission.moderated'
   | 'campaign.created'
   | 'campaign.paid'
   | 'letter.drafted'
@@ -60,3 +85,18 @@ export type AuditAction =
   | 'admin.rejected'
   | 'official.opted_out'
   | 'official.bounced';
+
+/** Content moderation tier — three-tier pipeline result */
+export type ModerationTier = 'block' | 'flag' | 'pass';
+
+/** Reason categories for moderation decisions */
+export type ModerationReason =
+  | 'threat_of_violence'
+  | 'illegal_activity'
+  | 'harassment'
+  | 'hate_speech'
+  | 'self_harm'
+  | 'explicit_content'
+  | 'spam'
+  | 'policy_violation'
+  | 'clean';

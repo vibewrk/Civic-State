@@ -1,0 +1,1 @@
+{"file": "src/foo.ts", "line": 1, "severity": "CRITICAL", "finding": "something", "rec": "fix it"}

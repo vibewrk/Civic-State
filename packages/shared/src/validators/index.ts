@@ -53,6 +53,22 @@ export const paymentStatusSchema = z.enum([
   'refunded',
 ]);
 
+/** Content moderation tier */
+export const moderationTierSchema = z.enum(['block', 'flag', 'pass']);
+
+/** Content moderation reason */
+export const moderationReasonSchema = z.enum([
+  'threat_of_violence',
+  'illegal_activity',
+  'harassment',
+  'hate_speech',
+  'self_harm',
+  'explicit_content',
+  'spam',
+  'policy_violation',
+  'clean',
+]);
+
 /** UUID v4 validation */
 export const uuidSchema = z.string().uuid();
 

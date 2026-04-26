@@ -1,0 +1,6 @@
+Here are my findings:
+
+```json
+{"file": "src/cart.ts", "line": 10, "severity": "major", "finding": "Race condition on quantity update", "rec": "Use optimistic lock or transaction"}
+{"file": "src/cart.ts", "line": 25, "severity": "nit", "finding": "Unused import", "rec": "Remove lodash import"}
+```

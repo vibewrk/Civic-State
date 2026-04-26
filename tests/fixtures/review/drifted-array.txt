@@ -1,0 +1,4 @@
+[
+  {"file": "src/api.ts", "line": 1, "severity": "minor", "finding": "Missing version header", "rec": "Add API-Version header middleware"},
+  {"file": "src/api.ts", "line": 50, "severity": "major", "finding": "SQL injection vector in raw query", "rec": "Parameterize the query"}
+]

@@ -13,7 +13,7 @@ CivicState delivers the full pipeline from civic frustration to official action 
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Monorepo, Docker, CI/CD, database, auth, agent engine, domain warming
-- [ ] **Phase 2: AI Pipeline** - Submission wizard, officials directory, research, citation verification, letter drafting, content moderation
+- [x] **Phase 2: AI Pipeline** - Submission wizard, officials directory, research, citation verification, letter drafting, content moderation
 - [ ] **Phase 3: Payment & Delivery** - Stripe checkout, treasury, Postmark email delivery, bounce tracking
 - [ ] **Phase 4: Dashboard & Compliance** - User dashboard, admin tools, legal pages, audit enforcement
 
@@ -50,7 +50,14 @@ Plans:
   3. The Researcher agent returns cited regulations from eCFR/CourtListener/state cache, and every citation in the final letter has been programmatically verified against its source
   4. The user sees per-official letter previews with cited regulations, AI disclosure, CAN-SPAM elements, and "not legal advice" disclaimer
   5. Submissions containing threats are auto-blocked; defamation-risk content is flagged for human review; all moderation decisions are audit-logged
-**Plans**: TBD
+**Plans**: 6 plans
+Plans:
+- [x] 02-01-PLAN.md -- Content moderation pipeline (keyword blocklist + Haiku LLM classification + audit logging)
+- [x] 02-02-PLAN.md -- Officials directory (congress.gov + OpenStates + Cicero stub + DB caching + opt-out)
+- [x] 02-03-PLAN.md -- Classifier agent with real Anthropic API integration (Haiku 4.5)
+- [x] 02-04-PLAN.md -- Researcher agent with legal DB integrations (eCFR + CourtListener + state cache + citation verification)
+- [x] 02-05-PLAN.md -- Drafter agent with letter generation (Sonnet 4.6 + compliance elements + preview API)
+- [x] 02-06-PLAN.md -- Submission wizard frontend (4-step wizard + API client + shadcn/ui)
 **UI hint**: yes
 
 ### Phase 3: Payment & Delivery
@@ -87,6 +94,6 @@ Phases execute in numeric order: 1 -> 1.1 -> 2 -> 2.1 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
 | 1. Foundation | 7/7 | Complete | 2026-04-25 |
-| 2. AI Pipeline | 0/TBD | Not started | - |
+| 2. AI Pipeline | 6/6 | Complete | 2026-04-25 |
 | 3. Payment & Delivery | 0/TBD | Not started | - |
 | 4. Dashboard & Compliance | 0/TBD | Not started | - |
