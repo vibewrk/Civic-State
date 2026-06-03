@@ -1,0 +1,28 @@
+{
+  "schema": "binary-star.lifecycle.v1",
+  "repository": "vibewrk/Civic-State",
+  "lifecycle_phase": "BUILD",
+  "directive": "FORWARD",
+  "prerequisites_verified": true,
+  "source_issue": 1,
+  "source_issue_title": "Factory admission: Civic-State (brownfield)",
+  "currency": {
+    "checked_at": "2026-06-03T14:03:18Z",
+    "default_branch_head": "5e30dbef98cff23f82e2be39eb0c5af634302d4d",
+    "current_enough_for_slice": true
+  },
+  "thesis": {
+    "adopted_documents": [
+      "MASTER_PLAN.md",
+      ".planning/PROJECT.md",
+      ".planning/ROADMAP.md",
+      ".planning/STATE.md"
+    ],
+    "protected_from_admission_rewrite": true
+  },
+  "next": {
+    "status": "admission complete",
+    "owner": "Binary Star worker",
+    "next_action": "verify admission artifacts and route issue to quorum/POM verification"
+  }
+}
