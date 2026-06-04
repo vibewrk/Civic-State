@@ -16,6 +16,10 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: AI Pipeline** - Submission wizard, officials directory, research, citation verification, letter drafting, content moderation
 - [x] **Phase 3: Payment & Delivery** - Stripe checkout, treasury, Postmark email delivery, bounce tracking
 - [x] **Phase 4: Dashboard & Compliance** - User dashboard, admin tools, legal pages, audit enforcement
+- [ ] **Phase 5: Cause Board MVP (v3)** - Cause/Signature schema, public board, signing, moderation tier extension, Drafter petition/letter/postcard variants
+- [ ] **Phase 6: Crowdfunding & Escrow (v3)** - Stripe Connect (platform-owns-funds) contribute flow, Contribution model, threshold tracking, refund state machine
+- [ ] **Phase 7: Threshold-Triggered Multi-Channel Dispatch (v3)** - Lob integration, delivery channel split, state-machine extension, threshold-met → dispatch chain
+- [ ] **Phase 8: SEO/Share Surface + Cause-Author Dashboard (v3)** - OG metadata, sitemap, cause-author dashboard, admin cause-moderation queue, compliance extensions
 
 ## Phase Details
 
@@ -95,10 +99,86 @@ Plans:
 - [x] 04-03-PLAN.md -- Legal compliance (Privacy Policy, ToS, CCPA deletion, data retention)
 **UI hint**: yes
 
+### Phase 5: Cause Board MVP (v3)
+**Goal**: Anyone can create a cause, see it on the public board, sign it (anonymous or named), and have it pass moderation before publish. No money flows yet — this is the cause + signature primitive layer.
+**Depends on**: Phase 4 (v2.1 foundation shipped)
+**Requirements**: CAUSE-01..11, SIGN-01..06, MOD-V3-01..06, ENGN-01 (state-machine cause-side), ENGN-06 (Drafter extension)
+**Success Criteria** (what must be TRUE):
+  1. A user can create a cause draft, the cause body + petition pass the moderation pipeline (including new political_classifier + named_individual tiers), and the cause publishes to `/causes/[slug]`
+  2. Anyone can sign a cause (anonymous or named); per-email-per-cause dedup is enforced; named co-signers appear on the cause page
+  3. Drafter agent emits petition + letter + postcard copy variants at cause draft time; all three are persisted on the cause
+  4. Cause public page displays cause body, target officials, signature count, paid-influence disclosure (skeleton — no $ yet), and constituent-to-elected-official posture statement
+  5. Admin can review the cause-moderation queue, approve/reject/edit causes pre-publish; all moderation decisions are audit-logged
+**Plans**: 5 (proposed)
+Plans (proposed; mapped from MASTER_PLAN §18.x decomposed-issue table):
+- [ ] 05-01-PLAN.md -- Cause/Signature Prisma schema + cause moderation tier (5a, 5d schema halves)
+- [ ] 05-02-PLAN.md -- Cause CRUD API + signature endpoints + officials snapshot at publish (5b)
+- [ ] 05-03-PLAN.md -- Drafter agent extension (petition + letter + postcard + mailer copy variants)
+- [ ] 05-04-PLAN.md -- /causes public board + /causes/[slug] + /causes/new (5c)
+- [ ] 05-05-PLAN.md -- /admin/causes moderation queue + paid-influence disclosure skeleton (5d UI half)
+**UI hint**: yes
+
+### Phase 6: Crowdfunding & Escrow (v3)
+**Goal**: Contributors can pay into a cause via Stripe Checkout (platform-owns-funds posture), contributions accumulate in escrow, threshold-met detection fires; refund-on-failure works for all failure paths (expiry, withdrawn, moderation-rejected).
+**Depends on**: Phase 5
+**Requirements**: FUND-01..09, CONN-01..04, ENGN-02 (BullMQ queues), ENGN-03 (advisory lock), CAUSE-08 (expiry), CAUSE-09 (withdraw), LGAL-V3-01, LGAL-V3-02, LGAL-V3-05 (Stripe AUP), ledger schema extension
+**Success Criteria** (what must be TRUE):
+  1. Stripe Connect (platform-owns-funds) configured and AUP-confirmed for political/advocacy at platform-merchant level
+  2. Contributors complete Stripe Checkout; contributions are recorded as CONTRIBUTION ledger rows with HMAC checksums; escrow_balance updates atomically per cause
+  3. Threshold check fires on every contribution; cause transitions funding → threshold_met when escrow_balance >= funding_goal
+  4. Refund flow exercised in tests for: threshold_failed (expiry), withdrawn, moderation_rejected; mass-refund per contributor via Stripe Refunds API; ledger REFUND_* entries created; per-contributor email notifications fire
+  5. Per-cause chargeback rate dashboard live; auto-pause + operator alert at >1%
+**Plans**: 4 (proposed)
+Plans (proposed):
+- [ ] 06-01-PLAN.md -- Contribution + RefundEvent Prisma schema + ledger_entries.cause_id (6a)
+- [ ] 06-02-PLAN.md -- Stripe Connect contribute flow + webhook handler + application_fee (6b)
+- [ ] 06-03-PLAN.md -- Treasury extension: cause escrow + threshold check + refund state machine (6c)
+- [ ] 06-04-PLAN.md -- /causes/[slug]/contribute UX + progress bar + refund-disclosure copy (6d)
+**UI hint**: yes
+**Pre-launch gate**: Stripe Connect political/advocacy AUP confirmation [NEEDS VENDOR-TOS VERIFICATION 2026-06]; platform-fee disclosure copy [NEEDS HUMAN/LEGAL REVIEW]
+
+### Phase 7: Threshold-Triggered Multi-Channel Dispatch (v3)
+**Goal**: When a cause hits its funding threshold, multi-channel dispatch fires automatically. Letters/postcards via Lob; emails via Postmark. Per-mailing tracking, bounce handling, partial-refund on partial failure, full-refund on total failure.
+**Depends on**: Phase 6
+**Requirements**: MAIL-01..09, BULK-01..07, ENGN-04 (idempotency), ENGN-05 (transitions audit-logged), ENGN-06 (Drafter mailer copy), LGAL-V3-05 (Lob AUP), per-official cap-per-window (MAIL-06), proportional partial-refund (FUND-08, refund_partial via 12.13)
+**Success Criteria** (what must be TRUE):
+  1. Lob (postcards + letters) integration live and AUP-confirmed for advocacy mail; Lob webhook handler tracks USPS delivery scan per piece
+  2. Delivery agent split into channel handlers (postmark/lob); cause-dispatch enqueues per-channel-per-official Mailing rows; per-official cap-per-window (default N=2/M=30d) enforced
+  3. Threshold-met → dispatch chain (Drafter copy variants → per-channel send → Treasury platform_fee + per-vendor expense ledger entries); state-machine transitions threshold_met → dispatching → dispatched
+  4. Partial-failure handling: per-mailing skip reasons logged; proportional refund per contributor; cause status dispatched if any sent, dispatch_failed if none sent
+  5. Lob spend reconciled against ledger daily; total dispatch operational without manual intervention for a successful cause
+**Plans**: 4 (proposed)
+Plans (proposed):
+- [ ] 07-01-PLAN.md -- apps/api/src/lib/mail/lob.ts + Lob webhook handler (7a)
+- [ ] 07-02-PLAN.md -- Delivery agent channel split + Mailing table + per-official cap-per-window (7b)
+- [ ] 07-03-PLAN.md -- Engine state-machine extension (threshold/dispatch transitions) + idempotency (7c)
+- [ ] 07-04-PLAN.md -- Drafter mailer copy variants + per-channel content moderation pass (7d)
+**UI hint**: partial (admin dispatch-report views)
+**Pre-launch gate**: Lob advocacy-mail AUP confirmation [NEEDS VENDOR-TOS VERIFICATION 2026-06]
+
+### Phase 8: SEO/Share Surface + Cause-Author Dashboard (v3)
+**Goal**: Every cause is an indexable + shareable SEO surface; cause authors have a dashboard to track their causes; admin tooling for cause-moderation queue + paid-influence disclosure auditing; compliance extensions for political CAN-SPAM + per-jurisdiction lobbying-disclosure trigger logic.
+**Depends on**: Phase 5 (UI bones), Phase 7 (dispatch report data)
+**Requirements**: SHARE-01..08, DASH-V3-01..03, ADMN-V3-01..05, MOD-V3-07, MOD-V3-08, LGAL-V3-03, LGAL-V3-04, LGAL-V3-06, LGAL-V3-07
+**Success Criteria** (what must be TRUE):
+  1. Every published cause has OG metadata + Twitter Card + Schema.org markup; /sitemap.xml includes all funding + dispatched causes; Google Search Console submission automated
+  2. /dashboard/causes shows all causes by signed-in user with status, signers, contributors, funding progress, dispatch report; cause author can withdraw cause with refund confirmation
+  3. /admin/causes/moderation extended queue; /admin/disclosures paid-influence disclosure audit view; per-cause chargeback rate dashboard; per-jurisdiction monthly aggregate spend dashboard
+  4. Political CAN-SPAM variant disclosure templates per state (legal-reviewable); per-jurisdiction lobbying-disclosure threshold table populated (legal-reviewable); Treasury auto-aggregates monthly per-jurisdiction spend; auto-alert at 70%, auto-pause at 90%
+  5. Per-official cap-per-window enforcement audit view; constituent-to-elected-official posture statement on every cause page
+**Plans**: 4 (proposed)
+Plans (proposed):
+- [ ] 08-01-PLAN.md -- OG + Schema.org + sitemap + share counters (8a)
+- [ ] 08-02-PLAN.md -- /dashboard/causes cause-author view (DASH-V3-01..03)
+- [ ] 08-03-PLAN.md -- /admin/causes/moderation + /admin/disclosures + admin dashboards (8b)
+- [ ] 08-04-PLAN.md -- Political CAN-SPAM variant + per-jurisdiction lobbying logic + per-official cap audit (8c)
+**UI hint**: yes
+**Pre-launch gate**: Per-jurisdiction lobbying-disclosure trigger logic + political CAN-SPAM variant copy [NEEDS HUMAN/LEGAL REVIEW]
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 1.1 -> 2 -> 2.1 -> 3 -> 4
+Phases execute in numeric order: 1 -> 1.1 -> 2 -> 2.1 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
@@ -106,3 +186,9 @@ Phases execute in numeric order: 1 -> 1.1 -> 2 -> 2.1 -> 3 -> 4
 | 2. AI Pipeline | 6/6 | Complete | 2026-04-25 |
 | 3. Payment & Delivery | 4/4 | Complete | 2026-04-25 |
 | 4. Dashboard & Compliance | 3/3 | Complete | 2026-04-25 |
+| 5. Cause Board MVP (v3) | 0/5 | Pending — v3 thesis pivot 2026-06-03 | — |
+| 6. Crowdfunding & Escrow (v3) | 0/4 | Pending — gated on Stripe AUP review | — |
+| 7. Threshold-Triggered Multi-Channel Dispatch (v3) | 0/4 | Pending — gated on Lob AUP review | — |
+| 8. SEO/Share Surface + Cause-Author Dashboard (v3) | 0/4 | Pending — gated on lobbying-disclosure legal review | — |
+
+> **v3 thesis pivot 2026-06-03 (issue #12)**: Phases 5–8 added per `MASTER_PLAN.md` v3.0 §18 and §24. Each v3 phase has a pre-launch gate flagged with [NEEDS HUMAN/LEGAL REVIEW] or [NEEDS VENDOR-TOS VERIFICATION 2026-06] that must clear before BUILD ships to production.

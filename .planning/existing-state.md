@@ -1,5 +1,7 @@
 # Existing State Audit
 
+> **Staleness note (2026-06-03 — issue #12).** This audit was written before any application code existed (pre-Phase-1). All "Zero" / "Greenfield" / "0 tables implemented" / "no application source code" claims below are **OUT OF DATE**. Phases 1–4 of the v2.1 thesis shipped 2026-04-25 (commit `5e30dbe`); the repo now contains a working Express API + Next.js frontend + Postgres schema + agent engine + Stripe + Postmark + Clerk + admin tooling. Recent and accurate state is captured in `.planning/STATE.md` (Phase 1–4 marked Complete) and `.planning/ROADMAP.md` (now including v3 Phases 5–8 per the 2026-06-03 thesis revision). Treat this file as a **pre-implementation audit snapshot** rather than current truth. Do not derive currency assumptions from it. The v3 thesis revision (issue #12) layers Phases 5–8 on top of the shipped v2.1 foundation; nothing here is discarded but the "0 implemented" claims no longer apply.
+
 ## Infrastructure
 - Current hosting: No production infrastructure deployed yet. Plan calls for DigitalOcean Droplet (8 vCPU / 16 GB RAM / 320 GB NVMe, NYC3, ~$96/mo) for backend + Vercel for Next.js frontend.
 - Databases: None provisioned. Plan specifies PostgreSQL 16 (Docker container on droplet initially, managed PostgreSQL at scale) + Redis (Docker container for BullMQ job queue).
