@@ -106,3 +106,23 @@ Phases execute in numeric order: 1 -> 1.1 -> 2 -> 2.1 -> 3 -> 4
 | 2. AI Pipeline | 6/6 | Complete | 2026-04-25 |
 | 3. Payment & Delivery | 4/4 | Complete | 2026-04-25 |
 | 4. Dashboard & Compliance | 3/3 | Complete | 2026-04-25 |
+
+## Currentness Refresh: 2026-06-05
+
+Issue #20 reconciled this roadmap with the Phase 1-4 summaries and the 2026-06-05 claim preflight. The original four build phases remain complete from repo evidence, but the project is not production-current until account, deployment, provider, and deliverability truth is verified.
+
+### Launch Readiness Gates
+
+| Gate | Current repo truth | Next slice |
+|------|--------------------|------------|
+| Frontend deployment | Phase 1 verification found API deployment evidence but no Vercel project config or frontend deploy proof. | Verify/remediate Vercel deployment path. |
+| Live credentials | Code references Clerk, Stripe, Postmark, Anthropic, OpenStates, congress.gov, Sentry, Plausible, Mercury, DigitalOcean, and Vercel, but runtime account state is unknown. | Run a live credential/runtime inventory without exposing secrets. |
+| Local officials provider | Federal/state integrations exist; local provider remains Cicero stub/vendor decision. | Evaluate Cicero vs BallotReady and recommend one launch path. |
+| Deliverability | DNS setup docs and Postmark integration exist; live DNS/domain warming is not verified from repo files. | Verify DNS, Postmark stream, inbound/reply routing, and warming status. |
+| AI provider currentness | Model IDs are implementation assumptions in repo history. | Verify current model/API names and update config/docs only after official confirmation. |
+| Public campaign/SEO | Historical master plan discusses opt-in publication, but launch authority is not settled. | Run a public campaign/SEO decision gate before building or promoting it. |
+| Observability/readiness | Sentry/Plausible/health/reconciliation paths exist; production dashboards and alerts are unknown. | Production readiness and observability pass. |
+
+### Next-Wave Drafts
+
+Schema-valid draft issue bodies are staged under `.binary-star/plans/issue-20/` for the gates above. They are drafts only; this execution did not create GitHub issues directly or mark any work approved.

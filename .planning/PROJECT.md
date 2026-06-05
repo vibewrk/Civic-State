@@ -1,5 +1,11 @@
 # CivicState
 
+## Currentness Note: 2026-06-05
+
+Issue #20 refreshed this planning file after the repo completed the original Phase 1-4 build sequence on 2026-04-25. Treat the implementation as repo-complete for the original v1 feature plan, but not production-current. Live deployment, credentials, provider contracts, AI model names, pricing authority, domain warming, analytics, and production readiness require separate verification.
+
+The active project thesis is a community-funded civic-action board and letter platform. Public campaign/SEO behavior, local officials provider selection, and production launch decisions remain gated.
+
 ## What This Is
 
 CivicState is a web platform that turns any civic concern into a researched, citation-backed, professionally-drafted letter delivered to the correct government officials — in minutes, for $5-$25. It serves ordinary US residents who want their government to act on a policy issue, enforcement failure, or legislative demand, but don't know the law, the right officials, or formal letter-writing conventions.
@@ -12,30 +18,40 @@ CivicState is a web platform that turns any civic concern into a researched, cit
 
 ### Validated
 
-(None yet — ship to validate)
+Repo build evidence validates that the original v1 feature surfaces were implemented across Phase 1-4 summaries. Market, willingness-to-pay, production deliverability, and live provider/account assumptions remain unvalidated.
 
 ### Active
 
-- [ ] Guided issue submission wizard (free text + desired outcome + ZIP)
-- [ ] Official lookup via hybrid API (congress.gov + OpenStates + Cicero/BallotReady)
-- [ ] AI-powered regulation research with verified citations (eCFR + curated state cache + CourtListener)
-- [ ] Professional letter drafting with cited regulations (Sonnet 4.6)
-- [ ] Letter preview with official targets and regulatory citations
-- [ ] Hardcoded pricing tiers ($5 single / $15 three-pack / $25 full-spread)
-- [ ] One-time Stripe Checkout payment
-- [ ] Email delivery via Postmark with SPF/DKIM/DMARC
-- [ ] Per-official delivery status tracking
-- [ ] User dashboard with campaign list and statuses (Clerk auth)
-- [ ] Content moderation (auto-block threats + human review queue)
-- [ ] Mandatory citation verification pipeline before delivery
-- [ ] Treasury basics (append-only ledger, daily reconciliation, balance alerts)
-- [ ] Admin queue for flagged submissions
-- [ ] CAN-SPAM compliance (opt-out mechanism, physical address, accurate headers)
-- [ ] Privacy policy, Terms of Service, AI disclosure in all letters
-- [ ] Application-level encryption (AES-256-GCM) for Tier 1 data
-- [ ] Append-only audit log with tamper detection (HMAC checksums)
-- [ ] Official opt-out enforcement (platform-wide suppression)
-- [ ] 5 OpenClaw agents: Classifier, Researcher, Drafter, Delivery, Treasury
+- [x] Guided issue submission wizard (free text + desired outcome + ZIP)
+- [x] Official lookup via hybrid API surface (congress.gov + OpenStates + Cicero integration stub)
+- [x] AI-powered regulation research with citation verification pipeline
+- [x] Professional letter drafting with cited regulations
+- [x] Letter preview with official targets and regulatory citations
+- [x] Hardcoded pricing tier UI/API surface
+- [x] One-time Stripe Checkout payment path
+- [x] Email delivery path via Postmark with bounce/reply webhook handling
+- [x] Per-official delivery status tracking
+- [x] User dashboard with campaign list and statuses (Clerk auth)
+- [x] Content moderation (auto-block threats + human review queue)
+- [x] Mandatory citation verification pipeline before delivery
+- [x] Treasury basics (append-only ledger, daily reconciliation, balance alerts)
+- [x] Admin queue for flagged submissions
+- [x] CAN-SPAM compliance surfaces (opt-out mechanism, physical address, accurate headers)
+- [x] Privacy policy, Terms of Service, AI disclosure in letters/pages
+- [x] Application-level encryption (AES-256-GCM) for Tier 1 data
+- [x] Append-only audit log with tamper detection (HMAC checksums)
+- [x] Official opt-out enforcement surface
+- [x] 5 OpenClaw agents plus reconciliation worker
+
+### Gated Before Launch
+
+- [ ] Vercel deployment path verified or remediated for `apps/web`
+- [ ] Live credential/runtime verification for all production providers
+- [ ] Cicero vs BallotReady local officials provider selected and tested
+- [ ] Postmark/DNS/domain warming verified against live account state
+- [ ] Current AI model/API names and cost assumptions verified from official provider docs
+- [ ] Public campaign/SEO decision approved or explicitly deferred
+- [ ] Production observability and readiness pass completed
 
 ### Out of Scope
 
@@ -93,25 +109,27 @@ CivicState is a web platform that turns any civic concern into a researched, cit
 
 ## Key Decisions
 
+Historical outcomes below were originally marked pending. The repo has since implemented the selected architecture across Phase 1-4, but business/account/provider authority remains gated where noted.
+
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Modular monolith (not microservices) | Single droplet, 50-5k submissions/mo. BullMQ provides async decoupling. Workspace boundaries enforce module separation. | — Pending |
-| Next.js 15 (not 14 or 16) | 14 is two versions behind; 16 may have ecosystem compat issues. 15 has stable App Router + improved caching. | — Pending |
-| Express.js (not Hono/Fastify) | Largest middleware ecosystem (Clerk, Stripe, Bull Board). Specified by user. DX differences minimal at this scale. | — Pending |
-| 5 agents, not 8 | 8 agents consume 50-70% of 8-week budget. Pricer/Publisher/Framing Reviewer replaceable with simpler alternatives. | — Pending |
-| Hybrid officials API (congress.gov + OpenStates + Cicero) | Google Civic API dead since April 2025. Free APIs cover federal/state; paid provider needed for local. | — Pending |
-| Curated state statute cache (not Justia scraping) | Justia has no API. Curated cache is reliable and verifiable. Phase 2 evaluates paid legal providers. | — Pending |
-| App-level AES-256-GCM encryption for Tier 1 | Political opinion data is among most sensitive PII. Key stored outside DB. Encrypted fields not SQL-searchable (acceptable). | — Pending |
-| CAN-SPAM commercial classification | Cost of compliance is trivial; cost of non-compliance is existential ($51k/violation). | — Pending |
-| Auth at payment, not before preview | Shows value (letter previews) before friction (account creation). Increases conversion. | — Pending |
-| No guest checkout | Delivery tracking, response handling, CCPA deletion all require authenticated user identity. | — Pending |
-| Job-level treasury pre-auth (not per-API-call) | Per-call auth adds unacceptable latency. Job budget ceiling + 150% overage check provides safety. | — Pending |
-| REST API (not GraphQL/tRPC) | Simple CRUD + job status polling. Cross-host setup (Vercel <> DO) makes tRPC less natural. | — Pending |
-| Tiered AI model routing | Haiku for simple tasks, Sonnet for research/drafting. 55% cost savings. Configurable per agent. | — Pending |
-| Treat all emails as commercial (CAN-SPAM) | Debatable status, but full compliance cost is negligible vs $51k/violation risk. | — Pending |
-| Three-tier data retention | Tier 1: until user deletes (72h SLA). Financial/audit: 7 years. Agent logs: 24 months. | — Pending |
-| Reply capture without AI summarization (Phase 1) | Reply formats vary wildly. Raw text display still provides value. AI parsing deferred to Phase 2. | — Pending |
-| Three-tier content moderation | Auto-block threats, flag defamation/misconduct for human review, pass everything else. Non-partisan. | — Pending |
+| Modular monolith (not microservices) | Single droplet, 50-5k submissions/mo. BullMQ provides async decoupling. Workspace boundaries enforce module separation. | Implemented in repo |
+| Next.js 15 (not 14 or 16) | 14 is two versions behind; 16 may have ecosystem compat issues. 15 has stable App Router + improved caching. | Implemented in repo |
+| Express.js (not Hono/Fastify) | Largest middleware ecosystem (Clerk, Stripe, Bull Board). Specified by user. DX differences minimal at this scale. | Implemented in repo |
+| 5 agents, not 8 | 8 agents consume 50-70% of 8-week budget. Pricer/Publisher/Framing Reviewer replaceable with simpler alternatives. | Implemented in repo |
+| Hybrid officials API (congress.gov + OpenStates + Cicero) | Google Civic API dead since April 2025. Free APIs cover federal/state; paid provider needed for local. | Partially implemented; provider decision gated |
+| Curated state statute cache (not Justia scraping) | Justia has no API. Curated cache is reliable and verifiable. Phase 2 evaluates paid legal providers. | Implemented in repo |
+| App-level AES-256-GCM encryption for Tier 1 | Political opinion data is among most sensitive PII. Key stored outside DB. Encrypted fields not SQL-searchable (acceptable). | Implemented in repo |
+| CAN-SPAM commercial classification | Cost of compliance is trivial; cost of non-compliance is existential. | Implemented as compliance posture; legal authority gated |
+| Auth at payment, not before preview | Shows value before friction. | Implemented in repo |
+| No guest checkout | Delivery tracking, response handling, CCPA deletion all require authenticated user identity. | Implemented in repo |
+| Job-level treasury pre-auth (not per-API-call) | Per-call auth adds unacceptable latency. Job budget ceiling + 150% overage check provides safety. | Implemented in repo |
+| REST API (not GraphQL/tRPC) | Simple CRUD + job status polling. | Implemented in repo |
+| Tiered AI model routing | Haiku for simple tasks, Sonnet for research/drafting. Configurable per agent. | Implemented in repo; model currentness gated |
+| Treat all emails as commercial (CAN-SPAM) | Compliance cost is low versus downside risk. | Implemented as compliance posture; legal authority gated |
+| Three-tier data retention | Tier 1: until user deletes (72h SLA). Financial/audit: 7 years. Agent logs: 24 months. | Implemented in repo |
+| Reply capture without AI summarization (Phase 1) | Reply formats vary wildly. Raw text display still provides value. | Implemented in repo |
+| Three-tier content moderation | Auto-block threats, flag defamation/misconduct for human review, pass everything else. Non-partisan. | Implemented in repo |
 
 ## Evolution
 

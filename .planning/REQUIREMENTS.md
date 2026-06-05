@@ -1,7 +1,12 @@
 # Requirements: CivicState
 
 **Defined:** 2026-04-25
+**Currentness refreshed:** 2026-06-05
 **Core Value:** AI-powered regulation research with verified legal citations, automatic official targeting from ZIP code, and one-click transactional delivery — the full pipeline from civic frustration to official action, accessible to any individual for $5-$25.
+
+## Currentness Note
+
+The original v1 feature requirements were implemented across the Phase 1-4 summaries by 2026-04-25. This file keeps the original requirement IDs for traceability while distinguishing repo implementation from launch readiness. External production truth remains gated for deployment, credentials, live provider accounts, model/API names, pricing, analytics, compliance authority, and email deliverability.
 
 ## v1 Requirements
 
@@ -187,7 +192,7 @@ Deferred to future release. Tracked but not in current roadmap.
 
 ## Traceability
 
-Updated during roadmap creation.
+Updated during issue #20 roadmap refresh.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
@@ -195,7 +200,7 @@ Updated during roadmap creation.
 | INFRA-02 | Phase 1 | Complete |
 | INFRA-03 | Phase 1 | Complete (01-07) |
 | INFRA-04 | Phase 1 | Complete |
-| INFRA-05 | Phase 1 | Pending |
+| INFRA-05 | Phase 1 | Blocked: no Vercel deployment proof in repo |
 | INFRA-06 | Phase 1 | Complete (01-06) |
 | INFRA-07 | Phase 1 | Complete |
 | INFRA-08 | Phase 1 | Complete (01-07) |
@@ -221,68 +226,68 @@ Updated during roadmap creation.
 | AGNT-07 | Phase 1 | Complete |
 | DLVR-03 | Phase 1 | Complete (01-07) |
 | DLVR-04 | Phase 1 | Complete (01-07) |
-| SUBM-01 | Phase 2 | Pending |
-| SUBM-02 | Phase 2 | Pending |
-| SUBM-03 | Phase 2 | Pending |
-| SUBM-04 | Phase 2 | Pending |
-| SUBM-05 | Phase 2 | Pending |
-| SUBM-06 | Phase 2 | Pending |
-| SUBM-07 | Phase 2 | Pending |
-| SUBM-08 | Phase 2 | Pending |
-| SUBM-09 | Phase 2 | Pending |
-| SUBM-10 | Phase 2 | Pending |
-| OFCL-01 | Phase 2 | Pending |
-| OFCL-02 | Phase 2 | Pending |
-| OFCL-03 | Phase 2 | Pending |
-| OFCL-04 | Phase 2 | Pending |
-| OFCL-05 | Phase 2 | Pending |
-| OFCL-06 | Phase 2 | Pending |
-| LETR-01 | Phase 2 | Pending |
-| LETR-02 | Phase 2 | Pending |
-| LETR-03 | Phase 2 | Pending |
-| LETR-04 | Phase 2 | Pending |
-| LETR-05 | Phase 2 | Pending |
-| LETR-06 | Phase 2 | Pending |
-| MODR-01 | Phase 2 | Pending |
-| MODR-02 | Phase 2 | Pending |
-| MODR-03 | Phase 2 | Pending |
-| MODR-04 | Phase 2 | Pending |
-| MODR-05 | Phase 2 | Pending |
-| PAY-01 | Phase 3 | Pending |
-| PAY-02 | Phase 3 | Pending |
-| PAY-03 | Phase 3 | Pending |
-| PAY-04 | Phase 3 | Pending |
-| DLVR-01 | Phase 3 | Pending |
-| DLVR-02 | Phase 3 | Pending |
-| DLVR-05 | Phase 3 | Pending |
-| DLVR-06 | Phase 3 | Pending |
-| DLVR-07 | Phase 3 | Pending |
-| DLVR-08 | Phase 3 | Pending |
-| TRSY-01 | Phase 3 | Pending |
-| TRSY-02 | Phase 3 | Pending |
-| TRSY-03 | Phase 3 | Pending |
-| TRSY-04 | Phase 3 | Pending |
-| TRSY-05 | Phase 3 | Pending |
-| TRSY-06 | Phase 3 | Pending |
-| TRSY-07 | Phase 3 | Pending |
-| DASH-01 | Phase 4 | Pending |
-| DASH-02 | Phase 4 | Pending |
-| DASH-03 | Phase 4 | Pending |
-| DASH-04 | Phase 4 | Pending |
-| DASH-05 | Phase 4 | Pending |
-| ADMN-01 | Phase 4 | Pending |
-| ADMN-02 | Phase 4 | Pending |
-| ADMN-03 | Phase 4 | Pending |
-| ADMN-04 | Phase 4 | Pending |
-| ADMN-05 | Phase 4 | Pending |
-| ADMN-06 | Phase 4 | Pending |
-| ADMN-07 | Phase 4 | Pending |
-| ADMN-08 | Phase 4 | Pending |
-| LGAL-01 | Phase 4 | Pending |
-| LGAL-02 | Phase 4 | Pending |
-| LGAL-03 | Phase 4 | Pending |
-| LGAL-04 | Phase 4 | Pending |
-| LGAL-05 | Phase 4 | Pending |
+| SUBM-01 | Phase 2 | Complete (02-06) |
+| SUBM-02 | Phase 2 | Complete (02-06) |
+| SUBM-03 | Phase 2 | Complete (02-06) |
+| SUBM-04 | Phase 2 | Complete (02-03) |
+| SUBM-05 | Phase 2 | Complete (02-04) |
+| SUBM-06 | Phase 2 | Complete (02-04) |
+| SUBM-07 | Phase 2 | Complete (02-04) |
+| SUBM-08 | Phase 2 | Complete (02-04) |
+| SUBM-09 | Phase 2 | Complete (02-05, 02-06) |
+| SUBM-10 | Phase 2 | Complete (02-01/API rate limiting surface) |
+| OFCL-01 | Phase 2 | Complete (02-02); live API key gated |
+| OFCL-02 | Phase 2 | Complete (02-02); live API key gated |
+| OFCL-03 | Phase 2 | Provider decision gated |
+| OFCL-04 | Phase 2 | Complete (02-02) |
+| OFCL-05 | Phase 2 | Complete (02-02, 02-06) |
+| OFCL-06 | Phase 2 | Complete (02-02, 03-02) |
+| LETR-01 | Phase 2 | Complete (02-05) |
+| LETR-02 | Phase 2 | Complete (02-05) |
+| LETR-03 | Phase 2 | Complete (02-05, 04-03) |
+| LETR-04 | Phase 2 | Complete (02-05) |
+| LETR-05 | Phase 2 | Complete (02-05, 02-06) |
+| LETR-06 | Phase 2 | Complete (02-06) |
+| MODR-01 | Phase 2 | Complete (02-01) |
+| MODR-02 | Phase 2 | Complete (02-01) |
+| MODR-03 | Phase 2 | Complete (02-01) |
+| MODR-04 | Phase 2 | Complete (02-01) |
+| MODR-05 | Phase 2 | Complete (02-01) |
+| PAY-01 | Phase 3 | Complete (03-01, 03-04); pricing authority gated |
+| PAY-02 | Phase 3 | Complete (03-01, 03-04); live Stripe gated |
+| PAY-03 | Phase 3 | Complete (03-01); live Stripe gated |
+| PAY-04 | Phase 3 | Complete (03-03); pricing authority gated |
+| DLVR-01 | Phase 3 | Complete (03-02); live Postmark gated |
+| DLVR-02 | Phase 3 | Complete (03-02); live Postmark gated |
+| DLVR-05 | Phase 3 | Complete (03-02); production bounce truth gated |
+| DLVR-06 | Phase 3 | Complete (03-02); live Postmark gated |
+| DLVR-07 | Phase 3 | Complete (03-02); live Postmark gated |
+| DLVR-08 | Phase 3 | Complete (03-02, 04-01); inbound domain gated |
+| TRSY-01 | Phase 3 | Complete (03-03) |
+| TRSY-02 | Phase 3 | Complete (03-03) |
+| TRSY-03 | Phase 3 | Complete (03-03) |
+| TRSY-04 | Phase 3 | Complete (03-03); live Stripe/Mercury gated |
+| TRSY-05 | Phase 3 | Complete (03-03); live Stripe/Mercury gated |
+| TRSY-06 | Phase 3 | Placeholder/gated on Mercury access |
+| TRSY-07 | Phase 3 | Complete (03-03); operator email gated |
+| DASH-01 | Phase 4 | Complete (04-01) |
+| DASH-02 | Phase 4 | Complete (04-01) |
+| DASH-03 | Phase 4 | Complete (04-01) |
+| DASH-04 | Phase 4 | Complete (04-01); live Postmark gated |
+| DASH-05 | Phase 4 | Complete (04-01) |
+| ADMN-01 | Phase 4 | Complete (04-02) |
+| ADMN-02 | Phase 4 | Complete (04-02) |
+| ADMN-03 | Phase 4 | Complete (04-02) |
+| ADMN-04 | Phase 4 | Complete (04-02) |
+| ADMN-05 | Phase 4 | Complete (04-02) |
+| ADMN-06 | Phase 4 | Complete (04-02) |
+| ADMN-07 | Phase 4 | Complete (04-02) |
+| ADMN-08 | Phase 4 | Complete (04-02); live Postmark gated |
+| LGAL-01 | Phase 4 | Complete (04-03); legal authority gated |
+| LGAL-02 | Phase 4 | Complete (04-03); legal authority gated |
+| LGAL-03 | Phase 4 | Complete (04-03); legal authority gated |
+| LGAL-04 | Phase 4 | Complete (04-03) |
+| LGAL-05 | Phase 4 | Complete (04-03) |
 
 **Coverage:**
 - v1 requirements: 92 total
@@ -291,4 +296,4 @@ Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-04-25*
-*Last updated: 2026-04-25 after roadmap creation*
+*Last updated: 2026-06-05 during issue #20 roadmap refresh*

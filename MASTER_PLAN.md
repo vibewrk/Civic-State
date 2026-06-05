@@ -3,6 +3,20 @@
 
 > **Changelog v2.1:** Further simplified to a thinner CivicState v1. Removed subscriptions from the active plan. Defaulted launch delivery to email only. Demoted community interaction, coalition features, certified mail, and automated follow-up loops to future considerations. Publication is opt-in and read-only.
 
+> **Currentness overlay — 2026-06-05:** This master plan is historical strategy context, not launch authority. The repo completed the original Phase 1-4 build sequence on 2026-04-25, and issue #20 refreshed the operative roadmap/business artifacts. Where this file mentions Google Civic Information API, Justia scraping, dynamic Pricer/Publisher/Framing Reviewer launch scope, Claude model names, pricing, deployment, SEO publication, or account/provider state, defer to `.planning/ROADMAP.md`, `.planning/STATE.md`, `.planning/BUSINESS_PLAN.md`, and the next-wave issue drafts until fresh owner verification exists.
+
+## 0. Current Launch Gates
+
+Before treating this plan as production-ready, verify:
+
+- `apps/web` deployment path on Vercel.
+- Live credentials and account configuration for Clerk, Stripe, Postmark, Anthropic, OpenStates, congress.gov, DigitalOcean, Vercel, Mercury, Sentry, and Plausible.
+- Cicero vs BallotReady local officials provider choice and coverage.
+- DNS, Postmark stream, inbound reply routing, and domain warming status.
+- Current official AI model/API names and cost assumptions.
+- Public campaign/SEO launch decision.
+- Production monitoring, alerting, backup, and runbook readiness.
+
 ---
 
 ## Table of Contents
