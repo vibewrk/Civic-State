@@ -1,0 +1,220 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "$schema": "schemas/business-plan-gate.v1.schema.json",
+  "projectId": "brooks-history",
+  "actualWorkspaceProduct": "civicstate",
+  "repo": "RPLogic-Inc/brookss-history",
+  "one_liner": "AI civic letters for constituents: prove paid demand and gov-email delivery before scaling.",
+  "oneLiner": "AI civic letters for constituents: prove paid demand and gov-email delivery before scaling.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history-business-2026-06-15"
+  },
+  "status": "needs-revision",
+  "directive": "Use BUSINESS.md as the current EIR seed plan; operator merge is required before authority upgrades. Resolve dispatch/project-id mismatch before pitching externally.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record",
+  "research": {
+    "mode": "workspace-only",
+    "sources": [
+      "BUSINESS.md",
+      "ROADMAP.md",
+      "DECISIONS.md",
+      "MASTER_PLAN.md",
+      ".planning/PROJECT.md",
+      ".planning/ROADMAP.md",
+      ".planning/STATE.md",
+      ".planning/GENESIS.md",
+      "package.json",
+      "apps/api/src/routes/submissions.ts",
+      "apps/api/src/routes/payments.ts",
+      "apps/api/src/routes/officials.ts",
+      "apps/worker/src/agents/researcher.ts",
+      "apps/worker/src/agents/drafter.ts",
+      "apps/worker/src/agents/delivery.ts",
+      "packages/shared/prisma/schema.prisma",
+      "scripts/setup-dns.md",
+      "dispatch registry notes"
+    ],
+    "methods": [
+      "Read prior planning artifacts and master plan.",
+      "Inspected implemented API, worker, payment, delivery, moderation, officials, and Prisma surfaces.",
+      "Used repo files as evidence and labeled external market claims as assumptions.",
+      "Recorded the dispatch/project-id mismatch as a surprise spike."
+    ],
+    "networkResearch": false
+  },
+  "planningMethod": "EIR genesis upgrade from repository evidence, bottom-up market model, reconciled unit economics, and validation-gated roadmap.",
+  "customer": {
+    "primary": "U.S. resident with a concrete civic concern, desired outcome, and ZIP code.",
+    "segments": [
+      "Residents with local service, zoning, transit, school, enforcement, or policy concerns.",
+      "Future organizations such as HOAs and nonprofits, explicitly out of launch scope."
+    ],
+    "pain": "They do not know the right official, applicable law, formal framing, or delivery path."
+  },
+  "market": {
+    "method": "Bottom-up from metro reach, annual paid incidence, repeat issues, and average package price.",
+    "beachheadSOM": "USD 120,000/year [assumption: 3 metros x 250,000 households x 1.0 percent x USD 16]",
+    "initialSAM": "USD 2,025,000/year [assumption: 25 metros x 300,000 households x 1.5 percent x USD 18]",
+    "consumerTAMProxy": "USD 18,000,000/year [assumption: 100 metros x 500,000 households x 1.0 percent x 2 issues x USD 18]",
+    "caveat": "Consumer-only market may be too small unless repeat use or organization/API revenue validates."
+  },
+  "businessModel": {
+    "launchStream": "One-time paid letter packages.",
+    "pricing": [
+      "USD 5 single [evidence: apps/api/src/routes/payments.ts]",
+      "USD 15 three-pack [evidence: apps/api/src/routes/payments.ts]",
+      "USD 25 full-spread [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "futureStreams": [
+      "Human-reviewed complex sends [assumption: packaging still unvalidated]",
+      "Organization/API access [assumption: future wedge, not launch scope]"
+    ]
+  },
+  "financialModel": {
+    "revenueAssumptions": [
+      "USD 15 launch ARPP [assumption: 25 percent single, 50 percent three-pack, 25 percent full-spread]",
+      "Launch year revenue USD 34,560 [assumption: 180 monthly paid submissions x USD 16 x 12 months]",
+      "Expansion year revenue USD 600,000 [assumption: 2,500 monthly paid submissions x USD 20 x 12 months]"
+    ],
+    "costAssumptions": [
+      "COGS plus Stripe equals 12 percent of revenue [evidence: MASTER_PLAN.md]",
+      "Fixed platform starts near USD 200/month [evidence: MASTER_PLAN.md]",
+      "Local official data may add USD 100 to USD 500/month [evidence: .planning/PROJECT.md]"
+    ],
+    "sensitivityTests": [
+      "If conversion is 1 percent instead of 3 percent, revenue falls by about 67 percent [assumption: funnel math].",
+      "If COGS plus payment fees are 25 percent instead of 12 percent, launch-year EBITDA falls by USD 4,493 [assumption: model delta].",
+      "If local data costs USD 500/month instead of USD 250/month, annual fixed cost rises by USD 3,000 [assumption: provider-cost delta]."
+    ]
+  },
+  "alternatives": [
+    "Manual official contact.",
+    "Resistbot.",
+    "Change.org.",
+    "Quorum/VoterVoice.",
+    "LegalZoom or attorney help for formal legal documents."
+  ],
+  "antiPlan": {
+    "holes": [
+      {
+        "hole": "Users may not pay for something they can do manually or through free tools.",
+        "mitigation": "Validate preview-to-paid conversion before scaling.",
+        "residualRisk": "High until real paid cohorts exist."
+      },
+      {
+        "hole": "Government-email deliverability may make the core promise unreliable.",
+        "mitigation": "SPF/DKIM/DMARC, Postmark, bounce thresholds, and domain monitoring.",
+        "residualRisk": "High because inbox placement is externally controlled."
+      },
+      {
+        "hole": "Citation errors could damage trust and create legal-adjacent risk.",
+        "mitigation": "Search-bound research and citation verification before drafting.",
+        "residualRisk": "Medium because source coverage can still be incomplete."
+      },
+      {
+        "hole": "Consumer-only market may be too small for venture returns.",
+        "mitigation": "Treat organization/API revenue as a separate validation gate.",
+        "residualRisk": "High until signed pilots exist."
+      }
+    ]
+  },
+  "strategy": "Prove paid consumer demand and delivery reliability in narrow metros before adding community, coalition, certified mail, or organization features.",
+  "goToMarket": {
+    "firstCustomers": "First 100 customers from operator distribution, local civic threads, neighborhood newsletters, and issue-specific search pages [assumption].",
+    "channels": [
+      "Operator-led local beta [assumption]",
+      "Long-tail SEO from opt-in public civic records [evidence: .planning/GENESIS.md]",
+      "Local issue communities [assumption]"
+    ],
+    "doNotDoYet": [
+      "Paid acquisition before conversion proof.",
+      "Community features before moderation capacity.",
+      "Organization/API sales before consumer delivery is stable."
+    ]
+  },
+  "operatorWorkflow": {
+    "daily": "Review flagged submissions, bounces, spam complaints, failed jobs, and treasury reconciliation.",
+    "weekly": "Review conversion, coverage, delivery, chargeback, and margin gates.",
+    "escalation": "Stop new feature work after repeated gate misses and diagnose the failing gate."
+  },
+  "constraints": [
+    "Workspace-only plan; no external market research performed.",
+    "Civic content is politically sensitive and must avoid harassment, defamation, and legal-advice posture.",
+    "Launch uses fixed Stripe tiers in the repo, not dynamic pricing.",
+    "Official-data source choice remains an open spike.",
+    "Registry says watchlist / personal research asset, not near-term investible BOS until operator confirmation.",
+    "Dispatch project id and repo name do not match the CivicState workspace content."
+  ],
+  "metrics": {
+    "previewToPaidConversion": "3 percent [evidence: .planning/PROJECT.md]",
+    "deliveryAcceptance": "85 percent [evidence: .planning/PROJECT.md]",
+    "federalStateCoverage": "95 percent [evidence: .planning/PROJECT.md]",
+    "localCoverage": "60 percent [evidence: .planning/PROJECT.md]",
+    "chargebackRate": "below 0.5 percent [evidence: .planning/PROJECT.md]"
+  },
+  "aiWorkGovernance": {
+    "rules": [
+      "Researcher may only cite provided source results.",
+      "Citation verification strips unverified citations.",
+      "Drafter includes AI disclosure, disclaimer, and CAN-SPAM footer.",
+      "Moderation blocks threats and flags risky submissions."
+    ],
+    "evidence": [
+      "apps/worker/src/agents/researcher.ts",
+      "apps/worker/src/agents/drafter.ts",
+      "apps/api/src/lib/moderation.ts"
+    ]
+  },
+  "unknowns": [
+    "Live willingness to pay.",
+    "Government-domain inbox placement.",
+    "Local official data provider economics.",
+    "Operator review load.",
+    "Repeat purchase behavior.",
+    "WrkPlug adoption timing.",
+    "Whether the registry should point this dispatch to CivicState or a different Brooks History asset."
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Beachhead SOM is USD 120,000/year.",
+      "basis": "Bottom-up metro model.",
+      "evidenceOrAssumption": "assumption",
+      "test": "Measure beta metro revenue."
+    },
+    {
+      "claim": "Users will pay implemented tiers.",
+      "basis": "Repo pricing exists, demand unvalidated.",
+      "evidenceOrAssumption": "mixed",
+      "test": "First 100 paid submissions."
+    },
+    {
+      "claim": "COGS plus Stripe equals 12 percent of revenue.",
+      "basis": "Prior master-plan model.",
+      "evidenceOrAssumption": "evidence",
+      "test": "Treasury actuals by campaign."
+    },
+    {
+      "claim": "One operator can manage launch exceptions.",
+      "basis": "Prior project constraint.",
+      "evidenceOrAssumption": "assumption",
+      "test": "Review queue age and volume."
+    },
+    {
+      "claim": "WrkPlug shared rails lower infra and CAC.",
+      "basis": "Platform posture.",
+      "evidenceOrAssumption": "assumption",
+      "test": "Operator adoption decision and migration estimate."
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-15",
+      "change": "EIR genesis soul created from repo evidence after scrutiny gaps."
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "next": "Operator/POM review, registry mismatch resolution, then beta validation instrumentation and official-data spike."
+  }
+}
