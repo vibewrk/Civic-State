@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "wrk.thesis-review.v1",
+  "projectId": "civicstate",
+  "date": "2026-06-15",
+  "status": "needs-revision",
+  "thesis": "CivicState wins if residents pay USD 5 to USD 25 [evidence: apps/api/src/routes/payments.ts] to turn civic concerns into researched, citation-backed letters delivered to the right officials.",
+  "one_liner": "AI civic letters for constituents: prove paid demand and gov-email delivery before scaling.",
+  "honestyMode": "workspace-only; repo evidence cited; external market claims treated as assumptions",
+  "evidenceSources": [
+    "BUSINESS.md",
+    "ROADMAP.md",
+    "DECISIONS.md",
+    "MASTER_PLAN.md",
+    ".planning/PROJECT.md",
+    ".planning/ROADMAP.md",
+    ".planning/STATE.md",
+    ".planning/GENESIS.md"
+  ],
+  "currentVerdict": {
+    "rating": "conditional-go",
+    "score": "62/100 [assumption: EIR scoring judgment]",
+    "reason": "Implementation surface is real, but live paid demand, deliverability, official coverage, and review workload are unvalidated."
+  },
+  "mustProve": [
+    "Preview-to-paid conversion reaches 3 percent [evidence: .planning/PROJECT.md].",
+    "Government-email delivery acceptance reaches 85 percent [evidence: .planning/PROJECT.md].",
+    "Federal/state official coverage reaches 95 percent [evidence: .planning/PROJECT.md].",
+    "Local official coverage reaches 60 percent [evidence: .planning/PROJECT.md].",
+    "Chargeback rate stays below 0.5 percent [evidence: .planning/PROJECT.md]."
+  ],
+  "killCriteria": [
+    "Users do not pay after preview at the target gate.",
+    "Government inboxes reject or ignore the delivery path.",
+    "Citation verification cannot find enough reliable sources for common issues.",
+    "Moderation and abuse load exceeds one-operator launch capacity."
+  ],
+  "nextReview": "2026-09-30 [assumption: beta validation review date]"
+}
