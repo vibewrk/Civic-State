@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "one_liner": "CivicState is a paid civic-letter utility with code, but no demand or delivery proof yet.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-business-plan",
+    "basis": "Root BUSINESS.md created from workspace-only repo review on 2026-06-16 [assumption: current worker runtime date]."
+  },
+  "status": "proposed",
+  "directive": "Use BUSINESS.md as the proposed business soul until operator merge/adoption; do not pitch as investible until identity, demand, deliverability, and compliance are validated.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12 [evidence: brief instruction]; see the PR's POM record",
+  "research": {
+    "mode": "workspace-only, no network",
+    "sources": [
+      "BUSINESS.md [evidence]",
+      "ROADMAP.md [evidence]",
+      "DECISIONS.md [evidence]",
+      "MASTER_PLAN.md [evidence]",
+      ".planning/PROJECT.md [evidence]",
+      ".planning/GENESIS.md [evidence]",
+      ".planning/REQUIREMENTS.md [evidence]",
+      ".planning/ROADMAP.md [evidence]",
+      "apps/api/src/routes/payments.ts [evidence]",
+      "apps/api/src/routes/webhooks.ts [evidence]",
+      "apps/worker/src/lib/treasury.ts [evidence]",
+      "packages/shared/prisma/schema.prisma [evidence]",
+      "tests/payment.test.ts [evidence]",
+      "tests/citation-verifier.test.ts [evidence]",
+      "tests/delivery.test.ts [evidence]",
+      "dispatch registry note [evidence]"
+    ],
+    "methods": [
+      "Read root and planning soul sources where present.",
+      "Compared stale planning state with current app code.",
+      "Tagged every external market claim as assumption because network was unavailable.",
+      "Used repo code and tests as evidence only for implemented surface, not market validation."
+    ]
+  },
+  "planningMethod": "Bottom-up validation plan: prove identity, customer payment, official coverage, deliverability, and compliance before scale claims.",
+  "customer": {
+    "definition": "US residents with specific civic issues who want researched, cited, routed constituent letters [evidence: .planning/PROJECT.md].",
+    "segments": [
+      "Renters, parents, neighborhood advocates, small business owners, and local-service complainants [assumption: civic-use-case inference]."
+    ],
+    "validationStatus": "No workspace evidence of users, paid submissions, or conversion."
+  },
+  "market": {
+    "tam": "$75,000,000 [assumption: 250,000,000 US adults x 2% paid intent x $15 AOV]",
+    "sam": "$7,500,000 [assumption: 50,000,000 reachable civically engaged residents x 1% paid intent x $15 AOV]",
+    "som": "$150,000 [assumption: 10,000 paid submissions x $15 AOV]",
+    "method": "Directional bottom-up model only; all population and intent figures are assumptions due to no network access."
+  },
+  "businessModel": {
+    "current": "One-time transaction pricing: $5, $15, $25 [evidence: apps/api/src/routes/payments.ts].",
+    "marginFloor": "40% net margin floor [evidence: .planning/PROJECT.md].",
+    "costEstimates": "$0.20, $0.40, $0.60 internal tier cost estimates [evidence: apps/worker/src/lib/treasury.ts].",
+    "future": "Organization dashboards and API access only after the individual paid loop works [assumption: EIR sequencing]."
+  },
+  "financialModel": {
+    "revenueAssumptions": [
+      "Average order value is $15 [evidence: apps/api/src/routes/payments.ts].",
+      "Launch year paid submissions are 600 [assumption: validation scenario].",
+      "Expansion year paid submissions are 2,400 [assumption: repeatable niche GTM scenario].",
+      "Scale-test year paid submissions are 7,200 [assumption: niche product working but not venture scale]."
+    ],
+    "costAssumptions": [
+      "Direct COGS uses $0.60 per submission as the highest internal estimate [evidence: apps/worker/src/lib/treasury.ts].",
+      "Launch operating cost is $18,000 [assumption: low-cash operator/legal/tools budget].",
+      "Scale-test operating cost is $72,000 [assumption: support, data QA, compliance, and vendor spend]."
+    ],
+    "sensitivityTests": [
+      "If conversion is below 3% [evidence: .planning/PROJECT.md], pause scale.",
+      "If inbox placement is below 85% [evidence: .planning/PROJECT.md], stop affected delivery claims.",
+      "If chargebacks exceed 0.5% [evidence: .planning/PROJECT.md], narrow use cases and revise refund policy.",
+      "If direct COGS exceeds $3.00 per submission [assumption: cost shock test], the $5 tier becomes fragile."
+    ],
+    "summary": "Launch year revenue $9,000 [assumption: 600 x $15], expansion revenue $36,000 [assumption: 2,400 x $15], scale-test revenue $108,000 [assumption: 7,200 x $15]."
+  },
+  "alternatives": [
+    "Manual official email and webforms [assumption: civic workflow substitute].",
+    "Resistbot [assumption: category knowledge, network disabled].",
+    "Quorum, VoterVoice, FiscalNote, and Phone2Action-style platforms [assumption: category knowledge, network disabled].",
+    "General AI writing assistants [assumption: category knowledge, network disabled]."
+  ],
+  "antiPlan": {
+    "holes": [
+      "Users may not pay for civic letters.",
+      "Government inbox deliverability may fail.",
+      "AI citation or legal-adjacent drafting risk may be unacceptable.",
+      "Official data coverage, especially local, may be incomplete.",
+      "Project identity mismatch may make the wrk.vc dossier unsafe to publish."
+    ],
+    "mitigations": [
+      "Run paid beta before building more features.",
+      "Measure inbox placement, bounce rate, refunds, and complaints.",
+      "Keep citation verification, moderation, disclaimers, and human review in the critical path.",
+      "Use a narrow geography or issue category first.",
+      "Require operator confirmation of CivicState versus brooks-history identity."
+    ],
+    "residualRisks": [
+      "High demand risk until paid conversion is observed.",
+      "High deliverability risk until government domains are measured.",
+      "Material compliance risk until legal review is evidenced."
+    ]
+  },
+  "strategy": "Treat as a validation candidate: prove a narrow paid letter loop before adding enterprise, community, certified mail, or automated follow-up features.",
+  "goToMarket": {
+    "firstCustomers": "Founder-led outreach to local forums, neighborhood groups, civic newsletters, tenant/renter communities, and issue-specific groups [assumption: EIR GTM hypothesis].",
+    "primaryFunnel": "Issue form, research preview, letter preview, checkout, delivery status [evidence: .planning/PROJECT.md; apps/web/components/wizard/letter-preview.tsx].",
+    "channelSequence": "Manual outreach first, SEO second, paid acquisition only after conversion and deliverability data [assumption: EIR sequencing]."
+  },
+  "operatorWorkflow": {
+    "daily": "Review flagged submissions, delivery failures, treasury reconciliation, and official opt-outs [evidence: apps/api/src/routes/admin.ts; apps/worker/src/lib/treasury.ts].",
+    "constraints": "No 24/7 staffing [evidence: .planning/PROJECT.md]; operator handles exceptions within 24 hours [evidence: .planning/PROJECT.md]."
+  },
+  "constraints": [
+    "Registry says watchlist personal/research asset, not near-term investible [evidence: dispatch registry note].",
+    "Network unavailable; all external market claims are assumptions.",
+    "Civic/legal-adjacent content requires moderation, citation verification, disclaimers, and likely legal review [evidence: apps/api/src/lib/moderation.ts; apps/worker/src/agents/researcher.ts; apps/web/app/terms/page.tsx]."
+  ],
+  "metrics": [
+    "Preview-to-checkout conversion >= 3% [evidence: .planning/PROJECT.md].",
+    "Government inbox placement >= 85% [evidence: .planning/PROJECT.md].",
+    "Federal/state official coverage >= 95% [evidence: .planning/PROJECT.md].",
+    "Local official coverage >= 60% [evidence: .planning/PROJECT.md].",
+    "Domain bounce rate below 10% [evidence: apps/worker/src/agents/delivery.ts].",
+    "Chargeback rate below 0.5% [evidence: .planning/PROJECT.md]."
+  ],
+  "aiWorkGovernance": {
+    "rules": [
+      "Researcher may only cite provided search results [evidence: apps/worker/src/agents/researcher.ts].",
+      "Unverified citations are stripped [evidence: apps/worker/src/agents/researcher.ts].",
+      "Drafter includes AI disclosure and not-legal-advice disclaimer [evidence: apps/worker/src/agents/drafter.ts].",
+      "Threats and risky content go through moderation and admin review [evidence: apps/api/src/lib/moderation.ts; apps/api/src/routes/admin.ts]."
+    ]
+  },
+  "unknowns": [
+    "Whether this repo should be CivicState or brooks-history.",
+    "Whether users pay after seeing the preview.",
+    "Whether government official email delivery works at acceptable rates.",
+    "Whether local official data is complete enough for the core job.",
+    "Whether legal/compliance review supports live paid operation."
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Customers will pay for routed civic letters.",
+      "basis": "Repo pricing and product thesis.",
+      "evidenceOrAssumption": "$5 to $25 pricing [evidence: apps/api/src/routes/payments.ts]; willingness to pay is unvalidated [assumption].",
+      "test": "Paid beta with measured preview-to-checkout conversion."
+    },
+    {
+      "claim": "Market can support a small paid utility.",
+      "basis": "Bottom-up scenario.",
+      "evidenceOrAssumption": "$150,000 SOM [assumption: 10,000 paid submissions x $15 AOV].",
+      "test": "Monthly paid submissions and repeat behavior."
+    },
+    {
+      "claim": "Direct COGS remain low.",
+      "basis": "Treasury estimates.",
+      "evidenceOrAssumption": "$0.60 highest internal cost estimate [evidence: apps/worker/src/lib/treasury.ts].",
+      "test": "Compare actual ledger costs to estimates."
+    },
+    {
+      "claim": "Deliverability is sufficient.",
+      "basis": "Planning gate.",
+      "evidenceOrAssumption": "85% inbox placement target [evidence: .planning/PROJECT.md].",
+      "test": "Seeded delivery campaign and domain monitoring."
+    },
+    {
+      "claim": "WrkPlug reduces duplicate rails.",
+      "basis": "Dispatch platform posture.",
+      "evidenceOrAssumption": "[assumption: WrkPlug Phase Zero not signed in workspace].",
+      "test": "Operator confirms platform contract and integration plan."
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-16 [assumption: current worker runtime date]",
+      "change": "Created proposed EIR soul upgrade from workspace-only evidence."
+    }
+  ],
+  "roadmapGate": {
+    "next": "approved-for-roadmap",
+    "reason": "ROADMAP.md is aligned to BUSINESS.md and scoped to validation work; authority remains proposed until operator merge."
+  }
+}

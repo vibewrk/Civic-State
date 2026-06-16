@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "ultra-start.thesis-review.v1",
+  "project": "CivicState / registry-dispatched brooks-history",
+  "status": "proposed",
+  "reviewDate": "2026-06-16 [assumption: current worker runtime date]",
+  "one_liner": "CivicState has a buildable civic-letter loop, but not validated investibility.",
+  "thesis": "Users may pay $5 to $25 [evidence: apps/api/src/routes/payments.ts] for researched, cited, routed constituent letters if conversion, deliverability, official coverage, and compliance clear validation gates.",
+  "verdict": "watchlist-validation-only",
+  "evidence": [
+    "Repo implements app/API/worker/shared monorepo [evidence: apps/; packages/shared/].",
+    "Pricing tiers exist in code [evidence: apps/api/src/routes/payments.ts].",
+    "Citation verification and delivery tests exist [evidence: tests/citation-verifier.test.ts; tests/delivery.test.ts].",
+    "Registry note says personal/research asset and not near-term investible [evidence: dispatch registry note]."
+  ],
+  "assumptions": [
+    "External market size is directional only because network was unavailable.",
+    "WrkPlug client posture depends on operator/platform confirmation.",
+    "CivicState identity must be confirmed against brooks-history registry dispatch."
+  ],
+  "validationGates": [
+    "Preview-to-checkout conversion >= 3% [evidence: .planning/PROJECT.md].",
+    "Government inbox placement >= 85% [evidence: .planning/PROJECT.md].",
+    "Federal/state official coverage >= 95% and local coverage >= 60% [evidence: .planning/PROJECT.md].",
+    "Chargeback rate below 0.5% [evidence: .planning/PROJECT.md]."
+  ],
+  "decision": "Do not pitch as near-term investible until operator identity confirmation and market validation are complete."
+}
