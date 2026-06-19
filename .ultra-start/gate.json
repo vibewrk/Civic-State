@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "snapshot": "Watchlist CivicState: code-present civic-letter product, market and identity still unvalidated.",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "seed": "BUSINESS.md",
+    "observedProductName": "CivicState [evidence: package.json; .planning/PROJECT.md]"
+  },
+  "status": "proposed",
+  "authority": {
+    "level": "proposed",
+    "note": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record"
+  },
+  "adoption": {
+    "required": "operator merge",
+    "notClaimed": "adopted"
+  },
+  "research": {
+    "mode": "workspace-only, no network",
+    "sources": [
+      ".planning/PROJECT.md",
+      ".planning/ROADMAP.md",
+      ".planning/GENESIS.md",
+      ".planning/STATE.md",
+      "MASTER_PLAN.md",
+      "package.json",
+      "packages/shared/prisma/schema.prisma",
+      "apps/api/src/routes/submissions.ts",
+      "apps/api/src/routes/officials.ts",
+      "apps/api/src/routes/payments.ts",
+      "apps/api/src/routes/webhooks.ts",
+      "apps/worker/src/agents/researcher.ts",
+      "apps/worker/src/agents/delivery.ts",
+      "tests/payment.test.ts",
+      "tests/campaigns.test.ts",
+      "registry dispatch"
+    ],
+    "methods": [
+      "read existing soul/planning files",
+      "read representative code and tests",
+      "tagged repo/registry facts as evidence",
+      "tagged all external or future-facing market claims as assumptions"
+    ]
+  },
+  "scrutinyGapsFixed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "thesis": {
+    "current": "US residents may pay for a bundled civic workflow: issue classification, official targeting, legal-source research, citation verification, letter drafting, payment, delivery, and tracking [evidence: .planning/PROJECT.md; apps/api/src/routes/submissions.ts; apps/worker/src/agents/researcher.ts].",
+    "status": "unvalidated",
+    "operatorConstraint": "Registry says watchlist personal/research asset; operator must confirm whether to pitch as a business [evidence: registry dispatch]."
+  },
+  "customer": {
+    "primary": "Individual US resident with a specific civic concern [evidence: .planning/GENESIS.md].",
+    "excluded": "Legal advice seekers, claim filers, organizations, business advocacy, private-individual targeting, harassment or threats [evidence: MASTER_PLAN.md; .planning/PROJECT.md]."
+  },
+  "marketSizing": {
+    "tam": "Not asserted; no sourced TAM available in workspace-only mode [assumption: no network research].",
+    "method": "Bottom-up funnel model using qualified visitors x paid conversion x average order value [assumption: validation model].",
+    "validationFloor": "1,000 qualified monthly visitors x 3% paid conversion x $13.50 AOV = $405 monthly revenue [assumption: visitor count and AOV mix; evidence: .planning/PROJECT.md for 3% gate; apps/api/src/routes/payments.ts for prices]."
+  },
+  "revenueModel": {
+    "pricing": "$5, $15, and $25 one-time tiers [evidence: apps/api/src/routes/payments.ts; tests/payment.test.ts].",
+    "unitEconomics": "Single package: $5.00 revenue, $0.20 test cost, $4.80 gross profit, 96% gross margin [evidence: tests/payment.test.ts; assumption: arithmetic].",
+    "controls": "40% net margin floor planned, but hardcoded route does not calculate live fee-inclusive margin [evidence: .planning/PROJECT.md; apps/api/src/routes/payments.ts]."
+  },
+  "competition": [
+    "Resistbot [evidence: MASTER_PLAN.md]",
+    "Change.org [evidence: MASTER_PLAN.md]",
+    "LegalZoom [evidence: MASTER_PLAN.md]",
+    "Quorum [evidence: .planning/PROJECT.md]",
+    "VoterVoice [evidence: .planning/PROJECT.md]"
+  ],
+  "goToMarket": {
+    "initial": "SEO-first, driven by opt-in public campaign pages and social sharing [evidence: .planning/GENESIS.md; MASTER_PLAN.md].",
+    "risk": "No workspace evidence of traffic, indexed campaign pages, paid conversion, or CAC [assumption: validation gap]."
+  },
+  "validationGates": [
+    {
+      "gate": "willingnessToPay",
+      "target": ">=3% paid conversion [evidence: .planning/PROJECT.md]",
+      "status": "unvalidated"
+    },
+    {
+      "gate": "deliverability",
+      "target": ">=85% inbox placement on .gov domains [evidence: .planning/PROJECT.md]",
+      "status": "unvalidated"
+    },
+    {
+      "gate": "chargebacks",
+      "target": "<0.5% chargeback rate [evidence: .planning/PROJECT.md]",
+      "status": "unvalidated"
+    }
+  ],
+  "riskRegister": {
+    "holes": [
+      "Identity mismatch: registry says brooks-history, repo says CivicState [evidence: registry dispatch; package.json].",
+      "Demand not validated with paid customers [evidence: .planning/PROJECT.md].",
+      "Government email deliverability may fail [evidence: .planning/PROJECT.md; apps/worker/src/agents/delivery.ts].",
+      "Citation hallucination or unsafe legal framing could damage trust [evidence: apps/worker/src/agents/researcher.ts].",
+      "Official data coverage is not proven nationwide [evidence: apps/api/src/lib/officials/lookup.ts]."
+    ],
+    "mitigations": [
+      "Operator identity ruling before external pitch.",
+      "Paid beta scorecard for conversion, delivery, response, and support load.",
+      "Seeded deliverability test before scaling.",
+      "Adversarial citation suite and human review for all-failed verification.",
+      "Coverage confidence display and provider evaluation for local officials."
+    ],
+    "residualRisks": [
+      "Users may not pay even if the product works.",
+      "Officials may opt out or treat AI-generated letters as spam.",
+      "Compliance requirements may require legal counsel and higher operating cost."
+    ]
+  },
+  "assumptions": [
+    "SEO can produce qualified demand [assumption: planning hypothesis, not measured].",
+    "A 40/40/20 tier mix can support $13.50 AOV [assumption: model only].",
+    "One operator can review flagged submissions within 24 hours [evidence: .planning/REQUIREMENTS.md; assumption: workload unproven]."
+  ],
+  "freshness": {
+    "asOf": "2026-06-19 [evidence: wrk.dog dispatch current_date]",
+    "externalClaims": "All external market claims are assumptions because network research is unavailable.",
+    "staleSources": "MASTER_PLAN.md is March 2026 and .planning files are dated 2026-04-25 [evidence: MASTER_PLAN.md; .planning/PROJECT.md]."
+  },
+  "roadmap": {
+    "path": "ROADMAP.md",
+    "shape": "buildable next slice with traceable checkbox items",
+    "nextFocus": "identity ruling, paid beta instrumentation, fee-inclusive margin checks, deliverability, citation safety, operator queue proof"
+  },
+  "decisions": {
+    "path": "DECISIONS.md",
+    "entry": "2026-06-19 - EIR soul upgrade (wrk.dog)"
+  },
+  "documents": {
+    "business": "BUSINESS.md",
+    "roadmap": "ROADMAP.md",
+    "decisions": "DECISIONS.md",
+    "gate": ".ultra-start/gate.json"
+  }
+}
