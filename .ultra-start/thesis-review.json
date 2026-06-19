@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "wrk.thesis-review.v1",
+  "projectId": "brooks-history",
+  "productName": "CivicState",
+  "asOf": "2026-06-19 [evidence: dispatch current_date]",
+  "status": "needs-revision",
+  "currentThesis": "CivicState can become a paid civic-action workflow if users pay $5 to $25 for researched, citation-backed official letters [evidence: apps/api/src/routes/payments.ts], but the thesis remains unproven until demand, deliverability, legal posture, and operator intent are validated [assumption: workspace audit].",
+  "honestyLabel": "Evidence-backed for repo implementation; assumption-led for market demand and investability.",
+  "evidence": [
+    "Pricing tiers exist [evidence: apps/api/src/routes/payments.ts]",
+    "Submission, research, drafting, payment, delivery, dashboard, admin, and compliance surfaces exist [evidence: implementation files]",
+    "Registry marks asset as Watchlist and personal/research, not near-term investible BOS [evidence: dispatch registry notes]"
+  ],
+  "assumptions": [
+    "Users will pay for civic-letter delivery",
+    "Official email deliverability can meet 85.0% [assumption: validation threshold]",
+    "Preview-to-pay conversion can meet 2.0% [assumption: validation threshold]",
+    "WrkPlug Phase 0 may become the preferred platform posture [assumption: not signed]"
+  ],
+  "decisionNeeded": "Operator must confirm whether this repo should pitch CivicState as a business or remain a research/personal asset.",
+  "nextReview": "2026-07-15 [assumption: operator validation schedule]"
+}

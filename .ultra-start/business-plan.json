@@ -1,0 +1,225 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "one_liner": "CivicState is a Watchlist civic-letter workflow until paid demand and deliverability are proven.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history",
+    "productName": "CivicState",
+    "asOf": "2026-06-19 [evidence: dispatch current_date]"
+  },
+  "status": "needs-revision",
+  "directive": "Upgrade the thin soul into an evidence-labeled, operator-gated business plan without claiming investability.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12 [evidence: dispatch brief]; see the PR's POM record",
+  "research": {
+    "mode": "workspace-only",
+    "sources": [
+      "dispatch brief and registry notes [evidence]",
+      "BUSINESS.md [evidence]",
+      "ROADMAP.md [evidence]",
+      ".planning/PROJECT.md [evidence]",
+      ".planning/ROADMAP.md [evidence]",
+      ".planning/GENESIS.md [evidence]",
+      "MASTER_PLAN.md [evidence]",
+      "package.json [evidence]",
+      "apps/api/src/routes/submissions.ts [evidence]",
+      "apps/api/src/routes/officials.ts [evidence]",
+      "apps/api/src/routes/payments.ts [evidence]",
+      "apps/worker/src/agents/researcher.ts [evidence]",
+      "apps/worker/src/agents/drafter.ts [evidence]",
+      "apps/worker/src/agents/delivery.ts [evidence]",
+      "packages/shared/prisma/schema.prisma [evidence]"
+    ],
+    "methods": [
+      "Read existing planning docs and implementation files [evidence: workspace audit]",
+      "Separated repo-evidenced implementation from external market assumptions [assumption: no network allowed]",
+      "Built bottom-up financial and market model from implemented pricing tiers [evidence: apps/api/src/routes/payments.ts]"
+    ]
+  },
+  "planningMethod": {
+    "approach": "Bottom-up, validation-gated, assumption-led model",
+    "freshness": "As of 2026-06-19 [evidence: dispatch current_date]",
+    "honestyRule": "Repo files are evidence for what exists; external market claims are assumptions."
+  },
+  "customer": {
+    "primary": "US resident with a specific civic concern who wants research, drafting, routing, and delivery handled [evidence: .planning/PROJECT.md]",
+    "segments": [
+      "Housing, environmental, public-safety, zoning, school-policy, and enforcement concerns [assumption: category mix from planning docs and state cache]",
+      "High-intent organic-search visitors [assumption: distribution hypothesis]"
+    ],
+    "unvalidated": [
+      "Willingness to pay [assumption: no customer evidence found]",
+      "Repeat usage [assumption: no cohort evidence found]",
+      "Trust in AI-assisted civic letters [assumption: no user research found]"
+    ]
+  },
+  "market": {
+    "tam": "$15,000,000 annual gross revenue [assumption: 1,000,000 paid civic-letter events x $15 blended price]",
+    "sam": "$750,000 annual gross revenue [assumption: 50,000 reachable events x $15 blended price]",
+    "som": "$36,000 annual gross revenue [assumption: 2,400 paid submissions x $15 blended price]",
+    "method": "Bottom-up event model; not externally verified due workspace-only mode."
+  },
+  "businessModel": {
+    "pricing": [
+      "$5 single-official tier [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three-official tier [evidence: apps/api/src/routes/payments.ts]",
+      "$25 full-spread tier [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "streams": [
+      "Transactional paid submissions [evidence: apps/api/src/routes/payments.ts]",
+      "Future API/organization access deferred [evidence: .planning/PROJECT.md]"
+    ],
+    "grossMargin": "90.9% modeled before fixed overhead [assumption: $15.00 blended price and $1.36 modeled variable cost]"
+  },
+  "financialModel": {
+    "revenueAssumptions": [
+      "$15 blended price [assumption: midpoint of implemented tiers]",
+      "2.0% preview-to-pay conversion in base case [assumption: validation threshold]",
+      "2,400 annual paid submissions in base case [assumption: 200/month x 12]"
+    ],
+    "costAssumptions": [
+      "$1.36 variable cost per paid submission [assumption: modeled payment, AI, and email burden]",
+      "$600/month fixed tools and hosting in base case [assumption: only $96/month droplet is repo-evidenced]",
+      "$12,000/year operator time in base case [assumption: exception handling is not free]"
+    ],
+    "sensitivityTests": [
+      "0.5% conversion causes 75.0% lower revenue than 2.0% conversion [assumption: proportional math]",
+      "70.0% email acceptance likely creates refund/support pressure [assumption: deliverability risk]",
+      "60.0% local official coverage is the minimum to preserve local-problem differentiation [assumption: prior planning threshold]"
+    ],
+    "cases": [
+      {
+        "name": "Bear",
+        "revenue": "$9,000 [assumption: 600 x $15]",
+        "operatingResult": "-$5,016 [assumption: revenue minus modeled variable and fixed/operator cost]"
+      },
+      {
+        "name": "Base",
+        "revenue": "$36,000 [assumption: 2,400 x $15]",
+        "operatingResult": "$13,536 [assumption: revenue minus modeled variable and fixed/operator cost]"
+      },
+      {
+        "name": "Bull",
+        "revenue": "$180,000 [assumption: 12,000 x $15]",
+        "operatingResult": "$109,680 [assumption: revenue minus modeled variable and fixed/operator cost]"
+      }
+    ]
+  },
+  "alternatives": [
+    "Manual outreach by the user [assumption: obvious substitute]",
+    "Resistbot [assumption: known civic-tech substitute, not network-verified]",
+    "Change.org [assumption: known petition substitute, not network-verified]",
+    "LegalZoom [assumption: known document-workflow substitute, not network-verified]",
+    "Quorum / VoterVoice [assumption: named incumbent category from prior planning]"
+  ],
+  "antiPlan": {
+    "holes": [
+      "No paid customer evidence found [assumption: workspace audit]",
+      "No deliverability evidence found [assumption: workspace audit]",
+      "No legal review evidence found [assumption: workspace audit]",
+      "Registry says personal/research asset rather than near-term investible BOS [evidence: dispatch registry notes]"
+    ],
+    "mitigations": [
+      "Operator ruling before pitching as a business",
+      "Paid preview cohort before scaling",
+      "Delivery sandbox and Postmark evidence before public launch",
+      "Legal review before live civic communications"
+    ],
+    "residualRisks": [
+      "Users may prefer free tools or manual outreach",
+      "Officials may reject or ignore platform-generated email",
+      "Citation-backed letters may still create legal-adjacent liability",
+      "WrkPlug platform posture may conflict with current direct integrations"
+    ]
+  },
+  "strategy": {
+    "focus": "Validate a narrow paid civic-letter workflow before adding community, enterprise, multilingual, certified mail, or autonomous follow-up loops.",
+    "platformPosture": "Target WrkPlug client posture under D-032 [assumption: brief-required posture]; current code uses direct Clerk, Stripe, and Postmark integrations [evidence: implementation files]."
+  },
+  "goToMarket": {
+    "firstChannel": "Issue-specific organic search pages [assumption: distribution hypothesis]",
+    "firstCustomers": "100 paid submissions [assumption: validation target]",
+    "wedge": "Preview-first citation-backed letters for specific civic problems [evidence: wizard and drafter files]"
+  },
+  "operatorWorkflow": {
+    "cadence": "Daily exception review [assumption: one-operator launch model]",
+    "queues": [
+      "Flagged submissions [evidence: apps/api/src/lib/moderation.ts]",
+      "Admin official maintenance [evidence: apps/web/app/admin/officials/page.tsx]",
+      "Treasury/reconciliation [evidence: apps/worker/src/agents/treasury.ts]"
+    ]
+  },
+  "constraints": [
+    "Workspace-only research; no external market verification",
+    "Registry Watchlist sensitivity [evidence: dispatch registry notes]",
+    "Political/civic content requires moderation and non-legal-advice posture [evidence: drafter and moderation files]",
+    "Direct integrations may later need WrkPlug migration [assumption: platform posture]"
+  ],
+  "metrics": [
+    "Preview-to-pay conversion: 2.0% target [assumption: validation threshold]",
+    "Official email accepted/delivered rate: 85.0% target [assumption: prior plan threshold]",
+    "Local official coverage: 60.0% target [assumption: prior plan threshold]",
+    "Paid submissions: 100 first-cohort target [assumption: validation target]",
+    "Gross margin: 85.0%+ target [assumption: model threshold]"
+  ],
+  "aiWorkGovernance": {
+    "disclosure": "AI disclosure included in letter composition [evidence: apps/worker/src/agents/drafter.ts]",
+    "citationPolicy": "Researcher may only cite provided sources and strips unverified citations [evidence: apps/worker/src/agents/researcher.ts]",
+    "moderation": "Block, flag, pass moderation pipeline [evidence: apps/api/src/lib/moderation.ts]"
+  },
+  "unknowns": [
+    "Whether operator wants this pitched as a business",
+    "Whether users pay",
+    "Whether government inbox deliverability works",
+    "Whether legal posture is sufficient",
+    "Whether WrkPlug migration is required"
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Paid demand exists",
+      "basis": "Implemented pricing and workflow",
+      "evidenceOrAssumption": "$5/$15/$25 tiers are evidence; demand is assumption",
+      "test": "100 paid submissions [assumption: validation target]"
+    },
+    {
+      "claim": "SEO can acquire users",
+      "basis": "Prior genesis distribution hypothesis",
+      "evidenceOrAssumption": "Assumption",
+      "test": "Measure search impressions by 2026-09-30 [assumption: schedule]"
+    },
+    {
+      "claim": "Citation workflow differentiates",
+      "basis": "Implemented researcher and drafter constraints",
+      "evidenceOrAssumption": "Implementation evidence; customer value assumption",
+      "test": "Post-delivery trust/refund survey"
+    },
+    {
+      "claim": "One operator can manage launch",
+      "basis": "Admin and moderation tooling",
+      "evidenceOrAssumption": "Implementation evidence; workload assumption",
+      "test": "Measure daily minutes for 30 days [assumption: test duration]"
+    },
+    {
+      "claim": "WrkPlug lowers duplicated platform burden",
+      "basis": "Brief-required platform posture",
+      "evidenceOrAssumption": "Assumption",
+      "test": "Operator platform decision by 2026-07-15 [assumption: schedule]"
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-19 [evidence: dispatch current_date]",
+      "change": "Created EIR soul upgrade and gate artifacts.",
+      "author": "wrk.dog EIR worker"
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "next": [
+      "Operator ruling on business vs research asset",
+      "Runtime readiness audit",
+      "First paid cohort instrumentation",
+      "Deliverability and legal review"
+    ],
+    "notApprovedForRoadmap": true
+  }
+}
