@@ -1,0 +1,179 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "status": "proposed",
+  "shortSummary": "Watchlist civic-letter utility; business case depends on paid beta, delivery, coverage, and operator intent.",
+  "project": {
+    "id": "brooks-history",
+    "repository": "RPLogic-Inc/brookss-history",
+    "seed": {
+      "path": "BUSINESS.md",
+      "type": "soul-plan"
+    }
+  },
+  "authority": {
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record",
+    "operatorMergeRequired": true,
+    "notAdoptedByThisWorker": true
+  },
+  "registryContext": {
+    "classification": "Watchlist",
+    "note": "Personal/research asset, not near-term investible BOS unless operator confirms it should pitch as a business."
+  },
+  "sourcesAndMethods": [
+    {
+      "source": "MASTER_PLAN.md",
+      "method": "Read as original product and financial plan evidence."
+    },
+    {
+      "source": ".planning/PROJECT.md",
+      "method": "Read as existing soul narrative, constraints, market verdict, validation gates, and decisions."
+    },
+    {
+      "source": ".planning/ROADMAP.md",
+      "method": "Read as historical implementation roadmap."
+    },
+    {
+      "source": ".planning/existing-state.md",
+      "method": "Read as stale audit evidence and explicitly compared against current repo files."
+    },
+    {
+      "source": "apps/, packages/, tests/",
+      "method": "Sampled current implementation evidence for payment, schema, worker state, admin, compliance, and tests."
+    },
+    {
+      "source": "worker dispatch registry note",
+      "method": "Used as registry sensitivity and investability constraint."
+    }
+  ],
+  "honestyPolicy": {
+    "workspaceOnly": true,
+    "externalMarketClaims": "Tagged as assumptions because network research was unavailable.",
+    "factoryOutputAsEvidence": false
+  },
+  "thesis": {
+    "current": "CivicState packages official targeting, citation-backed research, letter drafting, payment, and tracked delivery for residents with civic issues.",
+    "investmentReadiness": "Not ready; Watchlist until operator intent and market validation are proven.",
+    "surpriseSpikes": [
+      "Older audit says zero application code; current repo contains web/API/worker/schema/tests.",
+      "Registry note explicitly says personal/research asset, not near-term investible BOS.",
+      "Compliance export code appears to reference fields that do not match the current Prisma schema."
+    ]
+  },
+  "customerDefinition": {
+    "launchCustomer": "United States resident with a specific civic issue who wants official outreach handled for a small single-payment fee.",
+    "excludedCustomers": [
+      "Advocacy organizations",
+      "Campaigns",
+      "Law firms",
+      "Businesses sending civic submissions",
+      "Legal filing customers"
+    ],
+    "evidence": [
+      ".planning/GENESIS.md",
+      ".planning/PROJECT.md"
+    ]
+  },
+  "marketSizing": {
+    "method": "Bottom-up assumption model because no external research is available in workspace-only mode.",
+    "addressableIntentEvents": "500,000 annual paid-intent events [assumption: placeholder for United States resident civic issues; no external source available offline]",
+    "serviceableReachableEvents": "50,000 annual reachable events [assumption: ten percent of assumed addressable intent]",
+    "earlyObtainablePaidSubmissions": "5,000 annual paid submissions [assumption: one percent of assumed addressable intent]",
+    "earlyAnnualGrossRevenue": "$65,000 [assumption: 5,000 submissions times $13 blended price]"
+  },
+  "revenueModel": {
+    "type": "Single-payment transactional checkout",
+    "implementedTiers": [
+      "$5 single official [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three officials [evidence: apps/api/src/routes/payments.ts]",
+      "$25 all matched officials [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "deferredModels": [
+      "Subscriptions",
+      "Organization API",
+      "Crowdfunding",
+      "Physical mail",
+      "Coalition/community features"
+    ]
+  },
+  "financialFigures": {
+    "actualRevenue": "$0 [evidence: .planning/existing-state.md; no production revenue evidence found]",
+    "planningScenario": "$5,200 monthly gross revenue [assumption: 400 paid submissions times $13 blended price]",
+    "variableCost": "$160 monthly variable cost [assumption: 400 submissions times $0.40 blended job cost]",
+    "backendHosting": "$96 per month [evidence: .planning/PROJECT.md]",
+    "dataProvider": "$100-$500 per month [assumption: inherited from .planning/PROJECT.md; not externally verified]",
+    "reserve": "$1,500 reserve [evidence: .planning/PROJECT.md]"
+  },
+  "goToMarket": {
+    "sequence": [
+      "Closed beta with directly recruited residents.",
+      "Measure checkout conversion against the 3% gate [evidence: .planning/PROJECT.md].",
+      "Measure deliverability against the 85% gate [evidence: .planning/PROJECT.md].",
+      "Expand into consented public pages and SEO only after moderation and data quality are proven."
+    ],
+    "paidAcquisition": "Do not start before conversion and deliverability are proven."
+  },
+  "competition": [
+    {
+      "name": "Resistbot",
+      "claim": "Closest citizen messaging substitute [assumption: characterization inherited from .planning/PROJECT.md; not externally verified offline]."
+    },
+    {
+      "name": "Quorum",
+      "claim": "Enterprise public affairs substitute [assumption: characterization inherited from .planning/PROJECT.md; not externally verified offline]."
+    },
+    {
+      "name": "VoterVoice",
+      "claim": "Enterprise grassroots advocacy substitute [assumption: characterization inherited from .planning/PROJECT.md; not externally verified offline]."
+    },
+    {
+      "name": "Manual email/search",
+      "claim": "Free substitute with high user effort [assumption: no user research in repo]."
+    }
+  ],
+  "risksAntiPlan": {
+    "holes": [
+      {
+        "hole": "No observed paying customers.",
+        "mitigation": "Closed beta with Stripe test and then live payment validation.",
+        "residualRisk": "Users may like the concept but refuse to pay."
+      },
+      {
+        "hole": "Government inbox delivery and official response quality unproven.",
+        "mitigation": "Instrument bounce, spam complaint, deliverability, and reply rates.",
+        "residualRisk": "Officials may ignore or filter AI-assisted correspondence."
+      },
+      {
+        "hole": "Legal-adjacent content can create defamation, threat, privacy, and advice-risk exposure.",
+        "mitigation": "Keep moderation, citation verification, disclaimers, and admin review as launch blockers.",
+        "residualRisk": "False negatives or citation errors could still create trust damage."
+      },
+      {
+        "hole": "Standalone market may be too small for venture outcomes.",
+        "mitigation": "Treat as Watchlist until repeatable acquisition and expansion paths are proven.",
+        "residualRisk": "It may remain a useful tool rather than an investible company."
+      }
+    ],
+    "antiPlan": "Do not pitch as investment-ready, scale paid ads, sell to organizations, or claim moat until paid conversion, delivery, coverage, and exception workload are proven."
+  },
+  "assumptionLedger": [
+    "Residents will pay $5-$25 for the workflow [assumption pending beta].",
+    "Email-first delivery is enough [assumption pending deliverability and reply data].",
+    "AI citations can be verified reliably [assumption pending defect-rate measurement].",
+    "One operator can handle flagged content [assumption pending queue-age and review-time data].",
+    "The operator wants this pitched as a business [assumption pending operator confirmation]."
+  ],
+  "roadmapAlignment": {
+    "path": "ROADMAP.md",
+    "buildableShape": "Single-worker validation items mapped to BUSINESS.md headings."
+  },
+  "decisionLog": {
+    "path": "DECISIONS.md",
+    "entry": "2026-06-19 EIR soul upgrade (wrk.dog)"
+  },
+  "freshness": {
+    "asOf": "2026-06-19 [evidence: dispatch current_date]",
+    "staleInputsFlagged": [
+      ".planning/existing-state.md"
+    ]
+  }
+}
