@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "summary120": "Watchlist civic-letter asset: real app code, unproven paid demand, deliverability, and legal posture.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history"
+  },
+  "status": "needs-revision",
+  "directive": "Operator must validate whether this is a business pitch or personal/research asset before investible status.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record",
+  "research": {
+    "mode": "workspace-only",
+    "sources": [
+      "user dispatch and registry note [evidence]",
+      "BUSINESS.md [evidence]",
+      "ROADMAP.md [evidence]",
+      ".planning/PROJECT.md [evidence]",
+      ".planning/GENESIS.md [evidence]",
+      ".planning/ROADMAP.md [evidence]",
+      ".planning/existing-state.md [evidence]",
+      "package.json [evidence]",
+      "apps/api/src/index.ts [evidence]",
+      "apps/api/src/routes/payments.ts [evidence]",
+      "apps/api/src/routes/submissions.ts [evidence]",
+      "apps/worker/src/index.ts [evidence]",
+      "apps/worker/src/agents/delivery.ts [evidence]",
+      "apps/worker/src/agents/drafter.ts [evidence]",
+      "packages/shared/prisma/schema.prisma [evidence]",
+      "tests directory [evidence]"
+    ],
+    "methods": [
+      "Read existing planning soul and current implementation files.",
+      "Tagged repo and dispatch facts as evidence.",
+      "Tagged every external market or finance claim as assumption because network access was disabled."
+    ]
+  },
+  "planningMethod": "Bottom-up, validation-gated EIR plan using current repo implementation as product evidence and workspace-only assumptions for market sizing.",
+  "customer": {
+    "definition": "US residents with one concrete civic concern who need official targeting, legal/regulatory research, drafting, and delivery help [evidence: .planning/PROJECT.md]",
+    "buyer": "Citizen sender, not the government official [evidence: .planning/GENESIS.md]",
+    "unvalidated": [
+      "Willingness to pay $5, $15, or $25 [evidence: apps/api/src/routes/payments.ts]",
+      "Repeat purchase frequency [assumption: no cohort data in repo]",
+      "Tolerance for AI-assisted drafting [assumption: no user research in repo]"
+    ]
+  },
+  "market": {
+    "tam": "$75,000,000 annual transaction value from 5,000,000 paid campaigns times $15 AOV [assumption: workspace-only bottom-up scenario]",
+    "sam": "$900,000 annual serviceable revenue from 50,000 reachable early users times 1.2 campaigns times $15 AOV [assumption: operator-scale launch model]",
+    "som": "$72,000 annual revenue from 4,800 campaigns times $15 AOV by 2027-06-30 [assumption: validation target based on planning scale]",
+    "gates": [
+      "3% paid conversion [evidence: .planning/PROJECT.md]",
+      "85% inbox placement [evidence: .planning/PROJECT.md]",
+      "95% federal/state and 60% local official coverage [evidence: .planning/PROJECT.md]"
+    ]
+  },
+  "businessModel": {
+    "pricing": "$5 single, $15 three-pack, $25 full-spread [evidence: apps/api/src/routes/payments.ts]",
+    "streams": [
+      "One-time citizen campaign purchases [evidence: apps/api/src/routes/payments.ts]",
+      "Future API or organization access only after citizen loop validation [evidence: .planning/GENESIS.md]"
+    ],
+    "marginPosture": "Prior soul claimed 88% to 92% or 91% gross margin, but repo has no production cost proof [evidence: .planning/GENESIS.md; .planning/PROJECT.md]"
+  },
+  "financialModel": {
+    "revenueAssumptions": [
+      "Average order value remains $15 because current tiers are $5, $15, and $25 [evidence: apps/api/src/routes/payments.ts]",
+      "2027 base paid campaigns reach 4,800, producing $72,000 revenue at $15 AOV [assumption: 400 per month times 12 months]",
+      "Paid conversion reaches 3% before scale spend [evidence: .planning/PROJECT.md]"
+    ],
+    "costAssumptions": [
+      "Variable cost modeled at 10% of revenue until measured [assumption: conservative workspace-only model]",
+      "DigitalOcean backend host is about $96 per month in prior planning [evidence: .planning/PROJECT.md; .planning/existing-state.md]",
+      "Prior max burn was listed as $132.50 per month but is unverified operationally [evidence: .planning/PROJECT.md]"
+    ],
+    "sensitivityTests": [
+      "Downside demand: 100 paid campaigns at $15 AOV equals $1,500 revenue [assumption: failed launch case]",
+      "Delivery failure: 20% bounce/refund rate materially damages trust and margin [assumption: government inbox risk]",
+      "CAC pressure: $20 paid CAC against $15 AOV is structurally unprofitable [assumption: paid-channel stress test]"
+    ]
+  },
+  "alternatives": [
+    "Manual email or phone calls are free substitutes [assumption: obvious user alternative]",
+    "Resistbot is the closest named civic-letter substitute [evidence: .planning/PROJECT.md]",
+    "Quorum and VoterVoice are named enterprise advocacy incumbents [evidence: .planning/PROJECT.md]",
+    "Change.org is a petition substitute [assumption: general market knowledge, not network verified]"
+  ],
+  "antiPlan": {
+    "holes": [
+      "No paid demand evidence in repo [evidence: no production revenue/user files found]",
+      "Government deliverability and recipient tolerance are unproven [assumption: inbox and spam-risk basis]",
+      "Legal/trust posture is unresolved, including CAN-SPAM contradiction [evidence: .planning/PROJECT.md; apps/web/app/terms/page.tsx]",
+      "Local official data may be stale or expensive [evidence: .planning/PROJECT.md]"
+    ],
+    "mitigations": [
+      "Paid concierge beta before scale [assumption: validation method]",
+      "Bounce gates, opt-out enforcement, Postmark, SPF/DKIM/DMARC [evidence: apps/worker/src/agents/delivery.ts; scripts/setup-dns.md]",
+      "Moderation, citation verification, audit logs, no-legal-advice language [evidence: apps/api/src/lib/moderation.ts; apps/worker/src/lib/legal/citation-verifier.ts; apps/web/app/terms/page.tsx]",
+      "Operator ruling before investible posture [evidence: user dispatch]"
+    ],
+    "residualRisks": [
+      "Users may not pay even if the product works [assumption: market-risk basis]",
+      "Officials may ignore or block AI-assisted letters [assumption: recipient-risk basis]",
+      "The opportunity may top out as a useful small tool, not a venture-scale business [assumption: financial model]"
+    ]
+  },
+  "strategy": "Keep scope narrow: prove paid citizen campaigns, citation reliability, deliverability, and operator workload before adding public pages, organization API, or paid acquisition.",
+  "goToMarket": {
+    "firstWedge": "Hand-recruited civic pain cohorts before SEO [assumption: Watchlist validation sequence]",
+    "first100": "First 100 paid or explicitly comped letter attempts manually recruited and monitored [assumption: validation batch]",
+    "channels": [
+      "Manual outreach [assumption]",
+      "Later SEO from public campaign pages only after moderation and privacy validation [evidence: .planning/GENESIS.md]"
+    ]
+  },
+  "operatorWorkflow": {
+    "routine": "Review flagged submissions, monitor treasury, watch bounces, handle opt-outs and refunds [evidence: apps/api/src/routes/admin.ts; apps/worker/src/agents/delivery.ts]",
+    "constraint": "One-operator workflow remains an unvalidated hypothesis [evidence: .planning/GENESIS.md]"
+  },
+  "constraints": [
+    "Registry Watchlist status and personal/research asset note [evidence: user dispatch]",
+    "No network research; external market claims are assumptions [evidence: user dispatch]",
+    "Political speech, privacy, legal-adjacent content, AI disclosure, and official opt-outs require conservative posture [evidence: apps/web/app/privacy/page.tsx; apps/web/app/terms/page.tsx]"
+  ],
+  "metrics": [
+    "Submit-to-pay conversion target 3% [evidence: .planning/PROJECT.md]",
+    "Inbox placement target 85% [evidence: .planning/PROJECT.md]",
+    "Federal/state coverage target 95% and local coverage target 60% [evidence: .planning/PROJECT.md]",
+    "AOV target $15 [evidence: apps/api/src/routes/payments.ts]",
+    "Refund, chargeback, bounce, complaint, and response rates [assumption: beta scorecard]"
+  ],
+  "aiWorkGovernance": {
+    "disclosure": "Letters include AI disclosure [evidence: apps/worker/src/agents/drafter.ts]",
+    "citationPolicy": "Drafter is instructed to use only provided citations; researcher verifies and strips unverified citations [evidence: apps/worker/src/agents/drafter.ts; apps/worker/src/agents/researcher.ts]",
+    "moderation": "Threats and risky content are blocked or flagged before the pipeline [evidence: apps/api/src/routes/submissions.ts; apps/api/src/lib/moderation.ts]"
+  },
+  "unknowns": [
+    "Whether brooks-history is the intended public project identity or CivicState should remain the product name [evidence: user dispatch; .planning/PROJECT.md]",
+    "Whether operator wants a business pitch [evidence: user dispatch]",
+    "Whether live provider credentials and production infrastructure exist [assumption: not visible in repo]",
+    "Whether legal counsel approves current disclaimers [assumption: no counsel memo in repo]"
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "TAM is $75,000,000 [assumption: workspace-only scenario]",
+      "basis": "5,000,000 paid campaigns times $15 AOV [assumption: workspace-only scenario]",
+      "label": "[assumption: workspace-only scenario]",
+      "test": "Replace with sourced market data and measured paid-intent funnel"
+    },
+    {
+      "claim": "SAM is $900,000 [assumption: operator-scale model]",
+      "basis": "50,000 reachable users times 1.2 campaigns times $15 AOV [assumption: operator-scale model]",
+      "label": "[assumption: operator-scale model]",
+      "test": "Manual cohort conversion and repeat-intent survey"
+    },
+    {
+      "claim": "SOM is $72,000 by 2027-06-30 [assumption: validation target]",
+      "basis": "4,800 annual campaigns times $15 AOV [assumption: validation target]",
+      "label": "[assumption: validation target]",
+      "test": "Track monthly paid campaigns"
+    },
+    {
+      "claim": "3% conversion is a launch gate [evidence: .planning/PROJECT.md]",
+      "basis": "Prior soul gate",
+      "label": "[evidence: .planning/PROJECT.md]",
+      "test": "Instrument funnel"
+    },
+    {
+      "claim": "85% inbox placement is a launch gate [evidence: .planning/PROJECT.md]",
+      "basis": "Prior soul gate",
+      "label": "[evidence: .planning/PROJECT.md]",
+      "test": "Seed and live deliverability reports"
+    },
+    {
+      "claim": "WrkPlug shared rails reduce duplicated infra and CAC",
+      "basis": "Platform posture requested in brief",
+      "label": "[assumption: WrkPlug Phase Zero not signed]",
+      "test": "Operator confirms adoption contract"
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-19 [evidence: user dispatch]",
+      "change": "Created VC-grade Watchlist soul, roadmap, decisions entry, and gate artifact."
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "next": "Validate business-vs-research posture, paid demand, deliverability, official data coverage, and legal posture before investible approval."
+  }
+}

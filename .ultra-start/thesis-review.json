@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "wrk.thesis-review.v1",
+  "status": "needs-revision",
+  "project": "brooks-history",
+  "productName": "CivicState",
+  "reviewDate": "2026-06-19 [evidence: user dispatch]",
+  "one_liner": "AI-assisted civic letters may be useful, but paid demand and deliverability are still unproven.",
+  "currentThesis": "US residents may pay $5, $15, or $25 for researched, citation-backed letters to officials [evidence: apps/api/src/routes/payments.ts], but the asset remains Watchlist until market proof exists [evidence: user dispatch].",
+  "verdict": "Do not mark investible yet; run operator and market validation first.",
+  "evidenceUsed": [
+    "BUSINESS.md [evidence]",
+    "ROADMAP.md [evidence]",
+    "user dispatch and registry note [evidence]",
+    ".planning/PROJECT.md [evidence]",
+    ".planning/GENESIS.md [evidence]",
+    "apps/api/src/routes/payments.ts [evidence]",
+    "apps/worker/src/agents/delivery.ts [evidence]",
+    "packages/shared/prisma/schema.prisma [evidence]"
+  ],
+  "assumptionsToValidate": [
+    "5,000,000 paid-campaign TAM and $75,000,000 transaction value [assumption: workspace-only scenario]",
+    "3% conversion target is enough to justify continued build [evidence: .planning/PROJECT.md]",
+    "85% inbox placement is reachable [evidence: .planning/PROJECT.md]",
+    "One operator can manage flagged review and support below 400 campaigns per month [assumption: prior planning hypothesis]"
+  ],
+  "nextReview": "2026-09-30 [assumption: operator governance milestone]"
+}
