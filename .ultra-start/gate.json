@@ -1,0 +1,233 @@
+{
+  "schemaVersion": "wrk.gate.v1",
+  "projectId": "brooks-history",
+  "projectName": "CivicState / Brooks History",
+  "status": "provisional",
+  "pitchPreview": "CivicState is a provisional civic-letter workflow, not investible until paid demand and delivery prove out.",
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "business-plan-2026-06-19"
+  },
+  "authority": {
+    "level": "provisional",
+    "note": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record"
+  },
+  "createdAt": "2026-06-19",
+  "updatedAt": "2026-06-19",
+  "preparedBy": "wrk.dog fleet EIR worker",
+  "registryContext": {
+    "classification": "Watchlist",
+    "sensitivity": "personal/research asset; not near-term investible BOS unless operator confirms it should pitch as a business",
+    "source": "dispatch registry note"
+  },
+  "sourcesAndMethods": {
+    "mode": "workspace-only; no network research",
+    "methods": [
+      "Read existing planning docs and registry context from dispatch",
+      "Inspected package metadata, web app, API routes, worker agents, Prisma schema, and tests",
+      "Separated repo-backed evidence from assumptions and labeled external market claims as assumptions"
+    ],
+    "sources": [
+      {
+        "path": "package.json",
+        "use": "root product name and metadata"
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "use": "existing product definition, constraints, pricing, validation gates, and market verdict"
+      },
+      {
+        "path": ".planning/REQUIREMENTS.md",
+        "use": "requirements, exclusions, and compliance scope"
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "use": "historical phase roadmap and completion claims"
+      },
+      {
+        "path": ".planning/STATE.md",
+        "use": "stale status and concerns"
+      },
+      {
+        "path": ".planning/existing-state.md",
+        "use": "prior audit that conflicts with current implementation"
+      },
+      {
+        "path": "apps/api/src/routes/payments.ts",
+        "use": "active pricing tiers and Stripe Checkout behavior"
+      },
+      {
+        "path": "apps/api/src/routes/submissions.ts",
+        "use": "submission, moderation, audit, and queue behavior"
+      },
+      {
+        "path": "apps/worker/src/agents/researcher.ts",
+        "use": "legal-source retrieval, citation verification, and human-review flag"
+      },
+      {
+        "path": "packages/shared/prisma/schema.prisma",
+        "use": "data model"
+      },
+      {
+        "path": "tests/payment.test.ts",
+        "use": "pricing and cost-estimate assertions"
+      }
+    ]
+  },
+  "thesis": {
+    "current": "CivicState may be a useful civic-action workflow if it proves paid demand, verified citations, official coverage, deliverability, and operator-safe compliance.",
+    "honestyLabel": "mixed: repo-backed product evidence plus workspace-only assumptions",
+    "evidence": [
+      "BUSINESS.md",
+      ".planning/PROJECT.md",
+      "apps/api/src/routes/submissions.ts",
+      "apps/api/src/routes/payments.ts",
+      "apps/worker/src/agents/researcher.ts"
+    ]
+  },
+  "customerDefinition": {
+    "primary": "US resident with a concrete civic issue who will pay a small one-time fee for research, drafting, routing, and delivery",
+    "economicBuyer": "individual resident",
+    "futureSegmentsDeferred": [
+      "HOAs",
+      "nonprofits",
+      "civic organizations",
+      "third-party API buyers"
+    ],
+    "source": "BUSINESS.md"
+  },
+  "revenueModel": {
+    "type": "one-time transaction fees",
+    "tiers": [
+      {
+        "name": "single",
+        "price": "$5.00 [evidence: apps/api/src/routes/payments.ts]",
+        "officialCount": "1 [evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "name": "three_pack",
+        "price": "$15.00 [evidence: apps/api/src/routes/payments.ts]",
+        "officialCount": "3 [evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "name": "full_spread",
+        "price": "$25.00 [evidence: apps/api/src/routes/payments.ts]",
+        "officialCount": "all matched officials [evidence: apps/api/src/routes/payments.ts]"
+      }
+    ],
+    "validationNeed": "replace route/test economics with ledgered payment, token, delivery, refund, and support data"
+  },
+  "marketSizing": {
+    "method": "bottom-up transaction model",
+    "status": "assumption-only because no network research was available",
+    "scenarios": [
+      {
+        "name": "validation floor",
+        "annualPaidTransactions": "1,200 [assumption: 100 paid submissions/month]",
+        "annualGrossRevenue": "$18,000 [assumption: 1,200 x $15]"
+      },
+      {
+        "name": "niche solo business",
+        "annualPaidTransactions": "12,000 [assumption: 1,000 paid submissions/month]",
+        "annualGrossRevenue": "$180,000 [assumption: 12,000 x $15]"
+      },
+      {
+        "name": "venture proof point",
+        "annualPaidTransactions": "250,000 [assumption: broad SEO reach]",
+        "annualGrossRevenue": "$3,750,000 [assumption: 250,000 x $15]"
+      }
+    ]
+  },
+  "financials": {
+    "knownFigures": [
+      "$5/$15/$25 pricing [evidence: apps/api/src/routes/payments.ts]",
+      "$0.20/$0.40/$0.60 test cost estimates [evidence: tests/payment.test.ts]",
+      "$96/month DigitalOcean plan [evidence: .planning/PROJECT.md]",
+      "$1,500 Mercury reserve [evidence: .planning/PROJECT.md]",
+      "$2,000 warning and $500 emergency balance alerts [evidence: .planning/PROJECT.md]",
+      "40% net margin floor [evidence: .planning/PROJECT.md]"
+    ],
+    "modelIntegrity": "BUSINESS.md includes a reconciled revenue build where submissions x weighted price equals revenue line"
+  },
+  "competition": {
+    "named": [
+      "Resistbot",
+      "Change.org",
+      "LegalZoom",
+      "Quorum",
+      "VoterVoice",
+      "manual constituent outreach"
+    ],
+    "source": "BUSINESS.md; MASTER_PLAN.md; .planning/PROJECT.md"
+  },
+  "goToMarket": {
+    "primary": "SEO-first opt-in public campaign pages",
+    "secondary": "social sharing from public campaign pages",
+    "deferred": [
+      "paid ads",
+      "app stores",
+      "partnerships",
+      "enterprise API",
+      "subscriptions"
+    ],
+    "source": "BUSINESS.md; .planning/GENESIS.md"
+  },
+  "risksAntiPlan": {
+    "holes": [
+      {
+        "hole": "Project identity mismatch between brooks-history and CivicState",
+        "mitigation": "operator must confirm canonical project name before public pitch",
+        "residualRisk": "data-room confusion and wrong investor/customer framing"
+      },
+      {
+        "hole": "No proof of paid demand",
+        "mitigation": "closed beta with real payments and refund tracking",
+        "residualRisk": "consumer willingness to pay may be below viable threshold"
+      },
+      {
+        "hole": "Email deliverability to government domains may fail",
+        "mitigation": "Postmark warming, domain monitoring, bounce gates, and pilot sends",
+        "residualRisk": "official inbox filtering can break the core promise"
+      },
+      {
+        "hole": "Legal-adjacent user content risk",
+        "mitigation": "moderation, disclaimers, human review, and external legal review before launch",
+        "residualRisk": "threats, defamation, and legal-advice confusion remain operationally serious"
+      },
+      {
+        "hole": "Local official coverage depends on provider choice",
+        "mitigation": "Cicero/BallotReady coverage spike",
+        "residualRisk": "local coverage may be too low for customer trust"
+      }
+    ],
+    "antiPlan": "Do not fund paid acquisition, enterprise API, community features, certified mail, or multilingual expansion until paid loop, deliverability, and operator burden are measured."
+  },
+  "roadmap": {
+    "path": "ROADMAP.md",
+    "nextShape": "single-worker-sized validation tasks tied to BUSINESS.md headings",
+    "status": "aligned"
+  },
+  "decisions": {
+    "path": "DECISIONS.md",
+    "entry": "2026-06-19 — EIR soul upgrade (wrk.dog)"
+  },
+  "freshness": {
+    "asOf": "2026-06-19",
+    "externalResearch": "not performed; workspace-only mode",
+    "staleItems": [
+      "external market sizing",
+      "competitor positioning",
+      "deliverability benchmarks",
+      "legal/regulatory conclusions",
+      "official data provider coverage"
+    ]
+  },
+  "honestyLabels": {
+    "policy": "Every quantitative claim in BUSINESS.md is tagged as evidence or assumption.",
+    "externalClaims": "All external market claims are assumption-tagged because no network research was available."
+  },
+  "adoption": {
+    "status": "not adopted until operator merge",
+    "operatorActionRequired": true
+  }
+}
