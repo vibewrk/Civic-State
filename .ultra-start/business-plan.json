@@ -1,0 +1,248 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "one_liner": "CivicState needs paid-demand, deliverability, and identity validation before it is investible.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-business-plan-2026-06-19"
+  },
+  "status": "needs-revision",
+  "directive": "Use BUSINESS.md as the current EIR plan, but do not upgrade authority until operator merge and validation gates clear.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record",
+  "research": {
+    "mode": "workspace-only",
+    "sources": [
+      "worker dispatch registry note",
+      "MASTER_PLAN.md",
+      ".planning/PROJECT.md",
+      ".planning/GENESIS.md",
+      ".planning/STATE.md",
+      ".planning/REQUIREMENTS.md",
+      ".planning/ROADMAP.md",
+      "package.json",
+      "apps/api/src/routes/payments.ts",
+      "apps/api/src/routes/submissions.ts",
+      "apps/api/src/routes/officials.ts",
+      "apps/api/src/lib/moderation.ts",
+      "apps/worker/src/agents/researcher.ts",
+      "apps/worker/src/agents/drafter.ts",
+      "apps/worker/src/agents/delivery.ts",
+      "packages/shared/prisma/schema.prisma"
+    ],
+    "methods": [
+      "Read existing planning and implementation artifacts.",
+      "Separated repository evidence from unverified external market claims.",
+      "Tagged all commercial sizing, conversion, and valuation claims as assumptions.",
+      "No network research was used."
+    ]
+  },
+  "planningMethod": "Bottom-up validation plan: paid submissions x package AOV, then deliverability, coverage, citation quality, and support-load gates.",
+  "customer": {
+    "definition": "U.S. resident with a civic concern who wants researched, citation-backed constituent letters sent to the right officials.",
+    "primaryICP": "Individual constituent, not enterprise advocacy buyer.",
+    "evidence": [
+      ".planning/PROJECT.md",
+      ".planning/GENESIS.md",
+      "apps/web/components/wizard/issue-form.tsx"
+    ],
+    "unknowns": [
+      "Actual willingness to pay",
+      "Repeat usage",
+      "Issue categories with highest conversion"
+    ]
+  },
+  "market": {
+    "tam": "$150,000,000 [assumption: 10,000,000 annual civic-contact jobs x $15 AOV]",
+    "sam": "$15,000,000 [assumption: 1,000,000 digitally reachable, letter-suitable jobs x $15 AOV]",
+    "som": "$360,000 [assumption: 24,000 paid submissions/year x $15 AOV]",
+    "method": "Bottom-up volume assumptions multiplied by repository-evidenced pricing tiers.",
+    "freshness": "As of 2026-06-19 [assumption: worker current date], no external market research was performed."
+  },
+  "businessModel": {
+    "pricing": [
+      "$5 single-official package [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three-official package [evidence: apps/api/src/routes/payments.ts]",
+      "$25 full-spread package [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "aov": "$15 [assumption: tier mix centered on three-official package]",
+    "grossMargin": "90% [assumption: $15 AOV less $1.50 variable cost]",
+    "revenueStreams": [
+      "Paid letter delivery packages",
+      "Priority human review [assumption: deferred]",
+      "Organization API access [assumption: deferred]"
+    ]
+  },
+  "financialModel": {
+    "revenueAssumptions": [
+      "$15 AOV [assumption: package mix]",
+      "1,200 paid submissions in 2026 validation year [assumption: modeled scenario]",
+      "6,000 paid submissions in 2027 operating year [assumption: modeled scenario]",
+      "24,000 paid submissions in 2028 scale year [assumption: modeled scenario]"
+    ],
+    "costAssumptions": [
+      "$1.50 variable cost per paid submission [assumption: modeled scenario]",
+      "$625/month base fixed cash cost in 2026 [assumption: modeled scenario]",
+      "$150,000 headcount cash cost in 2028 [assumption: modeled scenario]"
+    ],
+    "sensitivityTests": [
+      "1% preview-to-payment conversion likely fails the business [assumption: modeled scenario]",
+      "$3.00 variable cost lowers gross margin to 80% [assumption: modeled scenario]",
+      "Below 70% .gov accepted delivery should pause growth [assumption: modeled scenario]",
+      "20%+ human-review rate breaks the one-operator model [assumption: modeled scenario]"
+    ],
+    "threeYearSketch": [
+      {
+        "year": "2026 validation [assumption: modeled year]",
+        "paidSubmissions": "1,200 [assumption: modeled scenario]",
+        "revenue": "$18,000 [assumption: 1,200 x $15]",
+        "cashContribution": "$8,700 [assumption: modeled scenario]"
+      },
+      {
+        "year": "2027 operating [assumption: modeled year]",
+        "paidSubmissions": "6,000 [assumption: modeled scenario]",
+        "revenue": "$90,000 [assumption: 6,000 x $15]",
+        "cashContribution": "$3,000 [assumption: modeled scenario]"
+      },
+      {
+        "year": "2028 scale [assumption: modeled year]",
+        "paidSubmissions": "24,000 [assumption: modeled scenario]",
+        "revenue": "$360,000 [assumption: 24,000 x $15]",
+        "cashContribution": "$64,000 [assumption: modeled scenario]"
+      }
+    ]
+  },
+  "alternatives": [
+    "Manual emails, phone calls, and government contact forms [assumption: modeled scenario]",
+    "Resistbot [assumption: modeled scenario]",
+    "Change.org and iPetitions [assumption: modeled scenario]",
+    "Quorum / VoterVoice / FiscalNote-style advocacy suites [assumption: modeled scenario]",
+    "General AI drafting plus manual send [assumption: modeled scenario]"
+  ],
+  "antiPlan": {
+    "holes": [
+      "Do not pitch as near-term investible until operator confirms this is a business, not only a research asset.",
+      "Do not scale traffic before .gov deliverability and official coverage are measured.",
+      "Do not add social, coalition, subscription, or certified-mail scope before paid letter delivery works."
+    ],
+    "mitigations": [
+      "Run 25 paid non-affiliated submissions before broad launch [assumption: modeled scenario].",
+      "Run 100 ZIP code official-coverage audit [assumption: modeled scenario].",
+      "Require legal-adjacent operator/counsel review before public paid launch [assumption: modeled scenario]."
+    ],
+    "residualRisks": [
+      "Users may not pay.",
+      "Government mail systems may suppress generated letters.",
+      "Citation verification or legal-adjacent boundaries may fail under real use."
+    ]
+  },
+  "strategy": {
+    "current": "Validate the paid CivicState loop, then decide investibility and platform posture.",
+    "positioning": "Individual constituent communication utility, not legal advice, not a lobbying firm, not a petition social network.",
+    "moat": "Verified officials directory, bounce/response history, citation library, and opt-in public campaign archive [assumption: only compounds with volume]."
+  },
+  "goToMarket": {
+    "firstMotion": "Founder-led paid beta with local civic groups, operator networks, and issue-specific communities [assumption: modeled scenario].",
+    "first100Customers": "Direct recruitment and manual concierge support for first 100 paid submissions [assumption: modeled scenario].",
+    "scaleMotion": "SEO from opt-in public campaign pages only after delivery works [assumption: modeled scenario].",
+    "channelsToAvoid": [
+      "Paid ads before conversion proof",
+      "Enterprise sales before individual loop works",
+      "Broad PR before legal-adjacent review"
+    ]
+  },
+  "operatorWorkflow": {
+    "routine": "Review flagged submissions, monitor bounces, reconcile ledger, inspect failed jobs, and maintain official contacts.",
+    "oneOperatorAssumption": "One operator can handle launch volume [assumption: unvalidated].",
+    "failureTrigger": "Human-review rate above 20% [assumption: modeled scenario] requires scope or pricing change."
+  },
+  "constraints": [
+    "Workspace-only research; no network sources.",
+    "Registry note: Watchlist; personal/research asset; not near-term investible BOS unless operator confirms.",
+    "Civic/legal-adjacent sensitivity: avoid legal advice, claim filing, harassment, defamation, and unverified legal conclusions.",
+    "Project identity mismatch: dispatch says brooks-history / brookss-history; repo implements CivicState."
+  ],
+  "metrics": [
+    "Paid submissions/month",
+    "Preview-to-payment conversion, target 3%+ [assumption: modeled scenario]",
+    "Accepted delivery / inbox placement, target 85%+ [assumption: modeled scenario]",
+    "Official coverage, target 95%+ federal/state and 60%+ local [assumption: modeled scenario]",
+    "Citation verified / stripped / all-failed rates",
+    "Human-review rate and minutes per flagged case",
+    "Gross margin, target 88%-92% [evidence: MASTER_PLAN.md; assumption: actuals unknown]"
+  ],
+  "aiWorkGovernance": {
+    "rules": [
+      "Every quantitative market or financial claim must retain evidence or assumption labels.",
+      "AI disclosure appears in generated letters [evidence: apps/worker/src/agents/drafter.ts].",
+      "Unverified citations are stripped or flagged [evidence: apps/worker/src/lib/legal/citation-verifier.ts].",
+      "Threats and high-risk content are blocked or flagged [evidence: apps/api/src/lib/moderation.ts]."
+    ],
+    "limitations": [
+      "No production legal review is present.",
+      "No production model-quality report is present."
+    ]
+  },
+  "unknowns": [
+    "Operator identity/name ruling",
+    "WrkPlug vs standalone platform posture",
+    "Actual production deliverability",
+    "Actual official coverage",
+    "Actual payment conversion",
+    "Actual legal/compliance review outcome",
+    "Whether public campaign SEO can acquire users"
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "$15 AOV [assumption: package mix]",
+      "basis": "Pricing tier mix",
+      "evidenceOrAssumption": "assumption",
+      "test": "Measure AOV after first 100 paid submissions [assumption: validation sample]"
+    },
+    {
+      "claim": "90% gross margin [assumption: modeled margin]",
+      "basis": "$15 AOV [assumption: package mix] and $1.50 variable cost [assumption: variable cost model]",
+      "evidenceOrAssumption": "assumption",
+      "test": "Reconcile first 100 paid jobs [assumption: validation sample]"
+    },
+    {
+      "claim": "SEO can become primary CAC wedge",
+      "basis": "Opt-in public campaign archive",
+      "evidenceOrAssumption": "assumption",
+      "test": "Index 25 public pages and measure impressions [assumption: validation sample]"
+    },
+    {
+      "claim": "One operator can manage launch",
+      "basis": "Exception workflow in plan",
+      "evidenceOrAssumption": "assumption",
+      "test": "Track review queue over 30 days [assumption: validation window]"
+    },
+    {
+      "claim": "Official coverage can meet launch needs",
+      "basis": "Hybrid official lookup code",
+      "evidenceOrAssumption": "assumption",
+      "test": "Run 100 ZIP audit [assumption: validation sample]"
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-19 [assumption: worker current date]",
+      "change": "Created EIR business-plan gate from workspace evidence and registry dispatch.",
+      "author": "wrk.dog fleet worker"
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "requiredBeforeScale": [
+      "Operator identity ruling",
+      "Paid beta",
+      "Coverage audit",
+      "Deliverability gate",
+      "Citation audit",
+      "Legal-adjacent review"
+    ]
+  },
+  "next": [
+    "Operator resolves project identity and business posture by 2026-07-15 [assumption: modeled scenario].",
+    "Run 25 paid non-affiliated submissions by 2026-09-30 [assumption: modeled scenario].",
+    "Run 100 ZIP code coverage audit before public launch [assumption: modeled scenario]."
+  ]
+}

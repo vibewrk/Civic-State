@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "wrk.thesis-review.v1",
+  "status": "needs-revision",
+  "asOf": "2026-06-19 [assumption: worker current date]",
+  "projectId": "brooks-history",
+  "repoIdentity": {
+    "dispatchRepo": "RPLogic-Inc/brookss-history [evidence: worker dispatch]",
+    "implementedProduct": "CivicState [evidence: package.json; evidence: .planning/PROJECT.md]",
+    "rulingNeeded": "Operator must resolve the naming and asset identity mismatch before wrk.vc presentation."
+  },
+  "currentThesis": "CivicState can become a profitable civic-action utility if ordinary U.S. residents will pay $5-$25 [evidence: apps/api/src/routes/payments.ts] for citation-backed constituent letters and the platform proves .gov deliverability, citation accuracy, and low review burden.",
+  "evidence": [
+    "Payment tiers exist in apps/api/src/routes/payments.ts.",
+    "Submission, moderation, official lookup, worker agents, delivery, and treasury code exist under apps/ and packages/shared/.",
+    "Planning docs define validation gates for willingness to pay, deliverability, and official coverage."
+  ],
+  "assumptions": [
+    "Willingness to pay is unvalidated.",
+    "Deliverability is unvalidated.",
+    "Official coverage is unvalidated.",
+    "Citation quality is unvalidated under production load.",
+    "The registry's watchlist/personal-research sensitivity remains in force until operator ruling."
+  ],
+  "killCriteria": [
+    "Preview-to-payment conversion remains below 1% after targeted beta [assumption: modeled scenario].",
+    "Government accepted delivery / inbox placement remains below 70% [assumption: modeled scenario].",
+    "Human review exceeds 20% of submissions at launch volume [assumption: modeled scenario].",
+    "Operator does not confirm this should be pitched as a business [assumption: modeled scenario]."
+  ],
+  "nextReview": "2026-09-30 [assumption: after paid beta milestone]"
+}
