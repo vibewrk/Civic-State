@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "summary": "CivicState is useful civic automation, but still watchlist until paid delivery is proven.",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "actualProductName": "CivicState",
+    "seed": {
+      "path": "BUSINESS.md",
+      "id": "civicstate-business-plan"
+    }
+  },
+  "status": "pending",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption -- operator ruling 2026-06-12; see the PR's POM record",
+  "provenance": {
+    "createdAt": "2026-06-19 [evidence: runner context]",
+    "updatedAt": "2026-06-19 [evidence: runner context]",
+    "mode": "workspace-only; no network",
+    "methods": [
+      "Read root files, hidden planning artifacts, and selected source files [evidence: repo inspection]",
+      "Cited repo and dispatch as evidence; tagged external or forward-looking claims as assumptions [evidence: user brief]",
+      "Created default wrk gate shape because no native gate artifact existed [evidence: repo inspection]"
+    ],
+    "sources": [
+      "BUSINESS.md [evidence: created in this upgrade]",
+      "ROADMAP.md [evidence: created in this upgrade]",
+      "DECISIONS.md [evidence: created in this upgrade]",
+      "MASTER_PLAN.md [evidence: repo file]",
+      ".planning/PROJECT.md [evidence: repo file]",
+      ".planning/REQUIREMENTS.md [evidence: repo file]",
+      ".planning/ROADMAP.md [evidence: repo file]",
+      ".planning/STATE.md [evidence: repo file]",
+      "apps/api, apps/web, apps/worker, packages/shared/prisma/schema.prisma [evidence: repo source]"
+    ]
+  },
+  "thesis": {
+    "current": "A constrained transactional civic-letter product may earn modest cash flow if users pay $5 to $25 per submission [evidence: apps/api/src/routes/payments.ts], but it is not yet venture-ready [assumption: no live market proof in repo].",
+    "investmentReadiness": "watchlist",
+    "operatorSensitivity": "Registry note says personal/research asset and asks operator to confirm whether it should pitch as a business [evidence: dispatch registry note]."
+  },
+  "customerDefinition": {
+    "primary": "Individual US residents with a specific civic issue and desired outcome [evidence: .planning/PROJECT.md].",
+    "excluded": "Legal advice, claim filing, regulatory submission, private-individual targeting, business advocacy, harassment, and defamation-sensitive uses [evidence: MASTER_PLAN.md]."
+  },
+  "revenueModel": {
+    "type": "one-time transactional letter packages [evidence: apps/api/src/routes/payments.ts]",
+    "packages": [
+      "$5 single official [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three officials [evidence: apps/api/src/routes/payments.ts]",
+      "$25 full spread [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "unvalidatedClaims": [
+      "88% to 92% gross margin [assumption: inherited repo model, no live bills]",
+      "$1.20 variable COGS per order [assumption: inherited repo model]",
+      "$200 monthly fixed cost [assumption: inherited repo model]"
+    ]
+  },
+  "marketSizing": {
+    "method": "Bottom-up wedge model, not TAM.",
+    "beachhead": "10,000 relevant annual visitors x 3% paid conversion x $15 average order value = $4,500 annual gross revenue [assumption: placeholder visitors; evidence: conversion gate and pricing from repo].",
+    "scaleCase": "50 comparable wedges x $4,500 = $225,000 annual gross revenue [assumption: unvalidated expansion model].",
+    "conclusion": "Currently too small for VC unless repeat use, organizational buying, higher-ticket workflow, or data/API revenue appears [assumption: EIR judgment]."
+  },
+  "competition": [
+    "Resistbot [assumption: repo-identified substitute, not externally verified]",
+    "Change.org [assumption: repo-identified substitute, not externally verified]",
+    "LegalZoom [assumption: repo-identified substitute, not externally verified]",
+    "Quorum and VoterVoice [assumption: repo-identified enterprise substitutes, pricing unverified]",
+    "Manual email to officials [assumption: user alternative]"
+  ],
+  "financials": {
+    "breakEvenSketch": "25 monthly submissions x $15 AOV = $375 gross revenue; minus $30 variable COGS and $200 fixed cost = $145 before labor [assumption: arithmetic from repo pricing and inherited cost model].",
+    "reserve": "$1,500 Mercury reserve before launch [evidence: MASTER_PLAN.md]",
+    "spendLimits": "$300 daily token cap and $25 single-job escalation threshold [evidence: MASTER_PLAN.md]"
+  },
+  "risksAntiPlan": [
+    "May be useful but not venture-scale [assumption: EIR judgment].",
+    "Government email deliverability can kill the value proposition [evidence: .planning/PROJECT.md].",
+    "Citation hallucination or unverifiable claims can damage trust and create legal exposure [evidence: apps/worker/src/agents/researcher.ts].",
+    "Local official data provider remains unresolved [evidence: .planning/PROJECT.md].",
+    "Do not raise institutional capital, expand community features, or launch nationally before a constrained paid wedge works [assumption: EIR recommendation]."
+  ],
+  "assumptionLedger": [
+    {
+      "assumption": "Users will pay the $5 to $25 package range [evidence: implemented pricing; assumption: demand unproven]",
+      "test": "Real beta checkout"
+    },
+    {
+      "assumption": "3% conversion is reachable [evidence: .planning/PROJECT.md; assumption: not measured]",
+      "test": "Track visitor-to-payment conversion"
+    },
+    {
+      "assumption": "85% government inbox placement is reachable [evidence: .planning/PROJECT.md; assumption: not measured]",
+      "test": "Seed and production deliverability monitoring"
+    },
+    {
+      "assumption": "60% local official coverage is reachable [evidence: .planning/PROJECT.md; assumption: not measured]",
+      "test": "Manual benchmark against provider output"
+    }
+  ],
+  "holesMitigationsResidualRisks": [
+    {
+      "hole": "No live revenue evidence [evidence: repo inspection]",
+      "mitigation": "Run constrained paid beta before investor narrative",
+      "residualRisk": "Users may not pay even if the product works [assumption: market risk]"
+    },
+    {
+      "hole": "Planning artifacts conflict on completion state [evidence: .planning/ROADMAP.md and .planning/STATE.md]",
+      "mitigation": "Use root ROADMAP.md as forward validation roadmap",
+      "residualRisk": "Underlying implementation may be less complete than planned [assumption: execution risk]"
+    },
+    {
+      "hole": "No external market research in this pass [evidence: user brief]",
+      "mitigation": "Mark all market claims as assumptions",
+      "residualRisk": "Competitor, vendor, legal, and market facts may be stale [assumption: freshness risk]"
+    },
+    {
+      "hole": "Legal/compliance boundary is narrow [evidence: MASTER_PLAN.md and moderation code]",
+      "mitigation": "Human review and strict excluded-use policy",
+      "residualRisk": "Edge cases may still create reputational or legal exposure [assumption: compliance risk]"
+    }
+  ],
+  "goToMarket": {
+    "sequence": [
+      "Pick one metro and one issue category [assumption: EIR recommendation]",
+      "Manually verify officials and delivery path [assumption: EIR recommendation]",
+      "Recruit 5 to 10 beta users [assumption: inherited soft-launch design]",
+      "Measure payment, delivery, bounce, reply, refund, and support load [assumption: validation plan]"
+    ]
+  },
+  "roadmap": {
+    "path": "ROADMAP.md",
+    "nextActionsCount": "7 checkbox items [evidence: ROADMAP.md]",
+    "shape": "Single-worker-sized validation actions tied to BUSINESS.md headings [evidence: ROADMAP.md]"
+  },
+  "decisions": {
+    "path": "DECISIONS.md",
+    "entry": "2026-06-19 EIR soul upgrade (wrk.dog) [evidence: DECISIONS.md]"
+  },
+  "freshness": {
+    "asOf": "2026-06-19 [evidence: runner context]",
+    "networkResearch": "none [evidence: user brief]",
+    "staleAreas": [
+      "Vendor pricing after March 2026 [assumption: temporal risk]",
+      "API availability after 2026-04-25 [assumption: temporal risk]",
+      "Competitor positioning [assumption: no network verification]",
+      "Legal disclosure obligations [assumption: no legal review]"
+    ]
+  },
+  "operatorQuestions": [
+    "Should this remain a personal/research asset or be pitched as a business? [evidence: dispatch registry note]",
+    "Which metro and issue category should define the first beta wedge? [assumption: GTM dependency]",
+    "Who will own human review and legal boundary decisions during beta? [assumption: operational dependency]"
+  ]
+}
