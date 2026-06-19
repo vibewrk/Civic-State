@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "wrk.thesis-review.v1",
+  "project": "brooks-history",
+  "productName": "CivicState",
+  "status": "draft",
+  "reviewedAt": "2026-06-19",
+  "thesis": "CivicState can become a paid civic-action utility if residents will pay $5 [evidence: tests/payment.test.ts] to $25 [evidence: tests/payment.test.ts] for researched, citation-backed official correspondence and delivery tracking.",
+  "current": true,
+  "currentRationale": "The implementation and planning files support the CivicState thesis as the current repo substance, but the registry identifies this repo as brooks-history and flags it as a personal/research asset, not near-term investible BOS.",
+  "evidence": [
+    "package.json names civicstate and describes an AI-powered civic advocacy platform.",
+    ".planning/PROJECT.md defines the same civic-letter value proposition.",
+    "apps/api/src/index.ts registers product API surfaces.",
+    "apps/worker/src/index.ts registers OpenClaw-style worker agents.",
+    "tests/payment.test.ts confirms $5 [evidence], $15 [evidence], and $25 [evidence] pricing tiers."
+  ],
+  "assumptions": [
+    "Operator may confirm that brooks-history should be repitched as CivicState.",
+    "Paid demand may exist at the current price points.",
+    "Government inbox delivery and official coverage can meet the planning thresholds."
+  ],
+  "operatorValidationNeeded": [
+    "Confirm or reject CivicState as the active project identity.",
+    "Confirm whether watchlist status can be lifted.",
+    "Approve paid beta validation gates before wrk.vc promotion."
+  ],
+  "nextReviewBy": "2026-09-30"
+}

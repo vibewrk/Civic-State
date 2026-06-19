@@ -1,0 +1,278 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "project": "brooks-history",
+  "productName": "CivicState",
+  "one_liner": "CivicState is a watchlisted paid civic-letter workflow until demand and identity are operator-validated.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-brooks-history-business-plan-2026-06-19"
+  },
+  "status": "draft",
+  "directive": "Treat this as a draft EIR soul upgrade. Operator merge, not this artifact, upgrades authority.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record",
+  "research": {
+    "mode": "workspace-only",
+    "sources": [
+      "dispatch registry notes",
+      "BUSINESS.md",
+      "ROADMAP.md",
+      ".planning/PROJECT.md",
+      ".planning/REQUIREMENTS.md",
+      ".planning/ROADMAP.md",
+      ".planning/GENESIS.md",
+      ".planning/existing-state.md",
+      "MASTER_PLAN.md",
+      "package.json",
+      "apps/api/src/index.ts",
+      "apps/worker/src/index.ts",
+      "packages/shared/prisma/schema.prisma",
+      "tests/payment.test.ts",
+      "tests/api-routes.test.ts",
+      "tests/officials.test.ts"
+    ],
+    "methods": [
+      "Read existing planning and implementation files.",
+      "Separated repo evidence from workspace-only market assumptions.",
+      "Used bottom-up revenue math from pricing tiers and submission volume assumptions.",
+      "Preserved surprise contradictions instead of smoothing them."
+    ],
+    "network": "not used"
+  },
+  "planningMethod": {
+    "marketSizing": "Bottom-up paid civic-letter jobs multiplied by blended AOV; all external demand figures are assumptions.",
+    "financialModel": "Submissions multiplied by AOV minus average variable COGS and fixed platform/vendor costs.",
+    "validation": "Do not promote from draft until conversion, deliverability, coverage, margin, and operator workload are measured."
+  },
+  "customer": {
+    "primary": "United States residents with concrete civic concerns who want help researching, drafting, routing, and delivering official correspondence.",
+    "segments": [
+      "Local enforcement and city-service complaints",
+      "State policy and agency concerns",
+      "Federal constituent correspondence"
+    ],
+    "excluded": [
+      "Legal claimants",
+      "Lobbying firms",
+      "Campaigns",
+      "Businesses using bulk advocacy",
+      "Users seeking legal advice or filings"
+    ],
+    "evidence": [
+      ".planning/PROJECT.md",
+      "apps/web/app/terms/page.tsx"
+    ]
+  },
+  "market": {
+    "tam": {
+      "value": "$12,500,000",
+      "basis": "1,000,000 assumed annual paid civic-letter jobs at $12.50 blended AOV",
+      "honesty": "[assumption: workspace-only national intent placeholder]"
+    },
+    "sam": {
+      "value": "$1,500,000",
+      "basis": "120,000 assumed reachable annual jobs at $12.50 blended AOV",
+      "honesty": "[assumption: reachable SEO/direct slice]"
+    },
+    "som": {
+      "value": "$60,000",
+      "basis": "4,800 annual paid campaigns at $12.50 blended AOV",
+      "honesty": "[evidence: .planning/existing-state.md planning scale; assumption: paid conversion]"
+    }
+  },
+  "businessModel": {
+    "pricing": [
+      {
+        "tier": "single",
+        "price": "$5.00",
+        "officials": 1,
+        "honesty": "[evidence: tests/payment.test.ts]"
+      },
+      {
+        "tier": "three_pack",
+        "price": "$15.00",
+        "officials": 3,
+        "honesty": "[evidence: tests/payment.test.ts]"
+      },
+      {
+        "tier": "full_spread",
+        "price": "$25.00",
+        "officials": "all matched",
+        "honesty": "[evidence: tests/payment.test.ts]"
+      }
+    ],
+    "streams": [
+      "Transactional letter packages",
+      "Deferred priority review",
+      "Deferred API access for organizations"
+    ],
+    "marginFloor": {
+      "value": "40%",
+      "honesty": "[evidence: .planning/PROJECT.md]"
+    }
+  },
+  "financialModel": {
+    "revenueAssumptions": [
+      "Launch year has 3,000 paid submissions at $12.50 AOV for $37,500 revenue [assumption: operator model].",
+      "Growth year has 12,000 paid submissions at $13.75 AOV for $165,000 revenue [assumption: operator model].",
+      "Scale test year has 48,000 paid submissions at $14.25 AOV for $684,000 revenue [assumption: operator model]."
+    ],
+    "costAssumptions": [
+      "Average launch COGS is $2.25 per paid submission [assumption: blended AI/email/review model].",
+      "DigitalOcean launch backend starts near $96/month [evidence: MASTER_PLAN.md].",
+      "Local data/compliance vendors may add $50/month to $500/month [evidence: MASTER_PLAN.md; .planning/PROJECT.md]."
+    ],
+    "sensitivityTests": [
+      "If conversion is 1% instead of 3%, traffic must triple to hit the same revenue [assumption: funnel math].",
+      "If COGS reaches $7.50, launch-year gross profit falls to $15,000 [assumption: model sensitivity].",
+      "If inbox placement is 60% instead of 85%, refunds and trust risk can kill the loop [assumption: deliverability sensitivity]."
+    ]
+  },
+  "alternatives": [
+    {
+      "name": "Manual email and phone calls",
+      "position": "Free incumbent; CivicState must save enough time and uncertainty to justify $5 [evidence: tests/payment.test.ts] to $25 [evidence: tests/payment.test.ts]."
+    },
+    {
+      "name": "Resistbot",
+      "position": "SMS civic messaging substitute; CivicState differentiates through research, citations, preview, payment, and tracking."
+    },
+    {
+      "name": "Change.org",
+      "position": "Petition substitute; CivicState emphasizes individualized letters and routing."
+    },
+    {
+      "name": "LegalZoom",
+      "position": "Document-drafting substitute; CivicState must stay outside legal advice."
+    }
+  ],
+  "antiPlan": {
+    "holes": [
+      "The registry says watchlist and not near-term investible BOS.",
+      "Paid demand is unvalidated.",
+      "Government inbox deliverability may fail.",
+      "AI citation errors can create trust and compliance risk.",
+      "The repo identity conflicts with the product identity."
+    ],
+    "mitigations": [
+      "Require operator ruling before wrk.vc promotion.",
+      "Run a paid beta before scaling.",
+      "Measure inbox placement and bounce suppression before open signup.",
+      "Keep citation verification and human review mandatory.",
+      "Rename, repurpose, or archive based on operator decision."
+    ],
+    "residualRisks": [
+      "This may remain a research asset.",
+      "Payment processors may treat civic content as higher risk.",
+      "Free substitutes may cap willingness to pay.",
+      "A copied UX may outrun CivicState without proprietary data."
+    ]
+  },
+  "strategy": {
+    "focus": "Validate one paid civic-letter workflow before scaling distribution.",
+    "moat": "Verified official contacts, citation library, delivery reputation, and compliance controls.",
+    "doNotDo": [
+      "Paid ads before conversion proof",
+      "Enterprise API before consumer loop",
+      "Legal advice or filing workflows",
+      "Public social features before moderation load is known"
+    ]
+  },
+  "goToMarket": {
+    "first100Customers": "First 100 customers through concierge/manual acquisition plus narrow civic-job SEO tests [assumption: launch channel].",
+    "channels": [
+      "Search pages for specific civic jobs",
+      "Local issue communities and newsletters",
+      "User-approved campaign page sharing"
+    ],
+    "gates": [
+      "3% preview-to-payment conversion [evidence: .planning/PROJECT.md]",
+      "85% inbox placement [evidence: .planning/PROJECT.md]",
+      "95% federal/state and 60% local coverage [evidence: .planning/PROJECT.md]"
+    ]
+  },
+  "operatorWorkflow": {
+    "daily": [
+      "Review flagged submissions.",
+      "Monitor bounce and spam complaint events.",
+      "Review treasury reconciliation.",
+      "Handle official opt-outs."
+    ],
+    "constraint": "No 24/7 staffing is planned [evidence: .planning/PROJECT.md]."
+  },
+  "constraints": [
+    "Workspace-only research; external market claims are assumptions.",
+    "Watchlist registry posture.",
+    "No legal advice, lobbying representation, or claim filings.",
+    "AI disclosure and content moderation are required.",
+    "Payment and delivery must be webhook/audit-log controlled."
+  ],
+  "metrics": [
+    "Paid submissions",
+    "Preview-to-payment conversion",
+    "Inbox placement",
+    "Official coverage",
+    "Citation verification pass rate",
+    "Refund and complaint rate",
+    "Operator minutes per submission",
+    "Gross margin"
+  ],
+  "aiWorkGovernance": {
+    "disclosure": "Every letter includes AI disclosure [evidence: apps/web/app/privacy/page.tsx].",
+    "verification": "Citations must be programmatically verified before use [evidence: .planning/REQUIREMENTS.md].",
+    "moderation": "Threats are blocked and defamation-risk content is flagged [evidence: tests/api-routes.test.ts].",
+    "audit": "Agent and audit logs are modeled in Prisma [evidence: packages/shared/prisma/schema.prisma]."
+  },
+  "unknowns": [
+    "Operator decision on project identity",
+    "Actual willingness to pay",
+    "Actual deliverability to government inboxes",
+    "Actual local official coverage",
+    "Actual COGS under production token usage",
+    "Payment processor risk posture for civic content"
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Blended AOV is $12.50",
+      "basis": "Pricing mix model",
+      "test": "Stripe cohort report"
+    },
+    {
+      "claim": "TAM is $12,500,000",
+      "basis": "Workspace-only national paid-job placeholder",
+      "test": "Replace with sourced market work"
+    },
+    {
+      "claim": "First 100 customers can come from concierge plus SEO",
+      "basis": "Launch channel hypothesis",
+      "test": "Track first acquisition source"
+    },
+    {
+      "claim": "One operator can run launch review",
+      "basis": "Repo planning assumption",
+      "test": "Measure flagged queue minutes"
+    },
+    {
+      "claim": "WrkPlug shared rails reduce infra and CAC burden",
+      "basis": "Portfolio platform hypothesis",
+      "test": "Operator confirms WrkPlug adoption path"
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-19",
+      "change": "Created EIR soul upgrade gate from workspace evidence.",
+      "author": "wrk.dog fleet worker"
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "reason": "Roadmap is buildable but project identity, demand, deliverability, and market proof remain unvalidated.",
+    "next": "Operator ruling plus paid beta validation."
+  },
+  "next": [
+    "Resolve brooks-history versus CivicState identity.",
+    "Run closed paid beta.",
+    "Measure conversion, deliverability, official coverage, COGS, and operator workload.",
+    "Update gate after operator merge."
+  ]
+}
