@@ -1,0 +1,236 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "one_liner": "CivicState is a watchlist civic-letter workflow: built surface exists, paid demand unproven.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history/civicstate-soul-2026-06-19"
+  },
+  "status": "needs-revision",
+  "directive": "Use BUSINESS.md as the current soul for operator review; do not present as approved or investible until market evidence is added.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record [evidence: dispatch brief]",
+  "research": {
+    "mode": "workspace-only-no-network",
+    "sources": [
+      {
+        "path": "BUSINESS.md",
+        "use": "EIR synthesis and current plan"
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "use": "Existing product thesis, requirements, constraints, pricing, and decisions"
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "use": "Existing phase narrative and stale completion claims"
+      },
+      {
+        "path": ".planning/REQUIREMENTS.md",
+        "use": "Requirement status, margin floor, bounce thresholds, compliance constraints"
+      },
+      {
+        "path": "apps/api/src/index.ts",
+        "use": "Implemented API route surface"
+      },
+      {
+        "path": "apps/worker/src/index.ts",
+        "use": "Registered worker agents"
+      },
+      {
+        "path": "packages/shared/prisma/schema.prisma",
+        "use": "Implemented data model"
+      },
+      {
+        "path": "dispatch registry note",
+        "use": "Watchlist and personal/research asset constraint"
+      }
+    ],
+    "methods": [
+      "Compared stale planning docs against current code files",
+      "Separated repo evidence from workspace-only assumptions",
+      "Used bottom-up validation sizing instead of external TAM",
+      "Checked financial model arithmetic for package revenue"
+    ]
+  },
+  "planningMethod": "Evidence-first EIR rewrite: preserve true repo narrative, tag unsupported market claims as assumptions, and force validation gates before investibility.",
+  "thesis": {
+    "current": "CivicState may become a paid civic letter workflow if users pay for researched, citation-backed official outreach and delivery risk stays manageable.",
+    "evidenceState": "Implementation exists; demand and production economics are not evidenced.",
+    "asOf": "2026-06-19 [evidence: runner current_date]"
+  },
+  "customer": {
+    "primary": "US resident with a specific civic issue who wants a researched letter to relevant officials.",
+    "excluded": [
+      "Legal advice seekers",
+      "Legal filing or claim-filing users",
+      "Users needing a social network or organizing platform at launch"
+    ],
+    "evidence": "Defined in .planning/PROJECT.md and BUSINESS.md"
+  },
+  "market": {
+    "sizingMethod": "Bottom-up validation model because workspace has no external market research.",
+    "launchWedge": "500 visitors/month x 3% conversion x $15 blended package = $225/month [assumption: BUSINESS.md validation model]",
+    "treatment": "Unproven until conversion, deliverability, official response, and refund metrics exist."
+  },
+  "businessModel": {
+    "streams": [
+      "$5 single-official package [evidence: .planning/REQUIREMENTS.md]",
+      "$15 three-official package [evidence: .planning/REQUIREMENTS.md]",
+      "$25 broader package [evidence: .planning/REQUIREMENTS.md]",
+      "Future API or organizational access only after consumer workflow validation [evidence: .planning/PROJECT.md out-of-scope]"
+    ],
+    "marginDiscipline": "40% net margin floor [evidence: .planning/REQUIREMENTS.md PAY-04]",
+    "status": "No workspace evidence of paid revenue."
+  },
+  "financialModel": {
+    "summary": "Year A revenue $13,500 [assumption: BUSINESS.md]; Year B revenue $57,600 [assumption: BUSINESS.md]; Year C revenue $216,000 [assumption: BUSINESS.md].",
+    "revenueAssumptions": [
+      "Average paid packages/month: 75, 300, then 1,000 [assumption: BUSINESS.md]",
+      "Blended package price: $15, $16, then $18 [assumption: BUSINESS.md]",
+      "Conversion target begins at 3% [evidence: .planning/PROJECT.md validation gate]"
+    ],
+    "costAssumptions": [
+      "Direct cost starts at 25% of revenue until measured [assumption: BUSINESS.md]",
+      "Infrastructure/tools start at $250/month blended [assumption: BUSINESS.md]",
+      "Operator/review labor starts at $12,000/year [assumption: BUSINESS.md]"
+    ],
+    "sensitivityTests": [
+      "Conversion at 1% cuts the 500-visitor launch model from $225/month to $75/month [assumption: BUSINESS.md]",
+      "Blended price at $5 cuts Year B revenue from $57,600 to $18,000 [assumption: BUSINESS.md]",
+      "Human review at 20 minutes/package makes Year C ops-limited [assumption: BUSINESS.md]"
+    ]
+  },
+  "alternatives": [
+    "Keep as personal/research civic AI asset if paid conversion fails.",
+    "Reposition as internal wrk.vc compliance/research demo if deliverability or legal risk blocks consumer launch.",
+    "Sell or partner the workflow to civic organizations only after the individual path proves safe."
+  ],
+  "antiPlan": {
+    "holes": [
+      "Users may not pay because free outreach and advocacy channels are good enough.",
+      "Legal, moderation, harassment, or defamation risk may exceed revenue.",
+      "Government-domain deliverability may fail, making the paid promise unreliable.",
+      "The claimed data moat does not exist at low volume."
+    ],
+    "mitigations": [
+      "Closed beta with explicit paid conversion gate.",
+      "Mandatory moderation, AI disclosure, not-legal-advice language, and citation verification.",
+      "SPF/DKIM/DMARC, domain warming, bounce thresholds, opt-out suppression, and spam complaint handling.",
+      "Do not claim moat until official directory quality, citation reuse, and public archive data accumulate."
+    ],
+    "residualRisks": [
+      "Operator may still need legal review for edge cases.",
+      "Local official data quality may remain weak.",
+      "Political or sensitive content can create reputational risk even when lawful."
+    ]
+  },
+  "strategy": {
+    "position": "Watchlist asset, validation-first.",
+    "nearTerm": "Reconcile implementation, run controlled paid-flow tests, and collect safety/deliverability metrics.",
+    "doNotDo": [
+      "Do not scale sends before deliverability evidence.",
+      "Do not present as legal advice.",
+      "Do not pitch as approved BOS-grade investible business."
+    ]
+  },
+  "goToMarket": {
+    "firstCustomers": "Direct beta and narrow SEO tests, not paid ads or partnerships.",
+    "firstCustomerPlan": "25 direct beta packages, 50 SEO/direct-intent packages, 25 repeatability packages [assumption: BUSINESS.md]",
+    "metrics": [
+      "visitor-to-preview conversion",
+      "preview-to-paid conversion",
+      "refund and chargeback rate",
+      "delivered/bounced/spam complaint rates",
+      "official response rate"
+    ]
+  },
+  "operatorWorkflow": {
+    "humanRole": "Review flagged submissions, monitor treasury exceptions, resolve deliverability failures, and validate official directory issues.",
+    "automation": "BullMQ agents handle classification, research, drafting, delivery, treasury, and reconciliation where configured.",
+    "constraints": "No 24/7 staffing is evidenced [evidence: .planning/GENESIS.md lean-operator assumption]; escalation thresholds must protect the operator."
+  },
+  "constraints": [
+    "Workspace-only run, no external research.",
+    "Registry says watchlist and personal/research asset.",
+    "Commercial civic communications require caution around opt-outs, disclaimers, moderation, and sensitive data.",
+    "Repo identity mismatch: dispatch says brooks-history, repo content says CivicState."
+  ],
+  "metrics": {
+    "validation": [
+      "3% paid conversion gate [evidence: .planning/PROJECT.md]",
+      "85% inbox placement target [evidence: .planning/PROJECT.md]",
+      "95% federal/state official coverage target [evidence: .planning/PROJECT.md]",
+      "60% local official coverage target [evidence: .planning/PROJECT.md]",
+      "10% bounce pause threshold [evidence: .planning/REQUIREMENTS.md]"
+    ],
+    "financial": [
+      "40% net margin floor [evidence: .planning/REQUIREMENTS.md]",
+      "150% budget overage pause [evidence: .planning/REQUIREMENTS.md]",
+      "$1,500 reserve [evidence: .planning/PROJECT.md]"
+    ]
+  },
+  "aiWorkGovernance": {
+    "rules": [
+      "AI output is never treated as evidence.",
+      "External market claims stay assumptions in workspace-only mode.",
+      "Citation verification and stripped unverified citations are required before delivery.",
+      "AI disclosure must appear in letters."
+    ],
+    "evidence": "BUSINESS.md and .planning/REQUIREMENTS.md"
+  },
+  "unknowns": [
+    "Actual production readiness of every API route and worker.",
+    "Live Stripe/Postmark/Clerk configuration and domain status.",
+    "Customer willingness to pay.",
+    "True deliverability to government domains.",
+    "Whether operator wants to pitch as business or keep as research asset."
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Users will pay for researched civic letters.",
+      "basis": "Repo pricing plan and EIR judgment.",
+      "type": "assumption",
+      "test": "Preview-to-paid conversion in closed beta."
+    },
+    {
+      "claim": "SEO can become an acquisition channel.",
+      "basis": ".planning/GENESIS.md distribution hypothesis.",
+      "type": "assumption",
+      "test": "Track organic impressions and paid conversions."
+    },
+    {
+      "claim": "One operator can handle exceptions.",
+      "basis": "Existing lean operator plan.",
+      "type": "assumption",
+      "test": "Measure flagged queue depth and review minutes."
+    },
+    {
+      "claim": "Deliverability can be controlled.",
+      "basis": "SPF/DKIM/DMARC and bounce requirements.",
+      "type": "assumption",
+      "test": "Measure sent, delivered, bounced, spam complaint, and reply rates."
+    },
+    {
+      "claim": "CivicState is not near-term investible.",
+      "basis": "Registry watchlist note and no customer evidence.",
+      "type": "evidence-plus-judgment",
+      "test": "Upgrade after paid usage and safety metrics exist."
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-19 [evidence: runner current_date]",
+      "change": "EIR soul upgrade created gate artifact and aligned BUSINESS/ROADMAP/DECISIONS.",
+      "author": "wrk.dog EIR worker"
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "reason": "Root roadmap now exists, but operator must verify implementation readiness and validation evidence."
+  },
+  "next": [
+    "Operator resolves brooks-history vs CivicState identity mismatch.",
+    "Run implementation readiness audit against API, worker, database, env, and tests.",
+    "Execute controlled paid-flow beta.",
+    "Record market and safety metrics back into BUSINESS.md."
+  ]
+}

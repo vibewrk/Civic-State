@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "wrk.thesis-review.v1",
+  "status": "needs-revision",
+  "asOf": "2026-06-19 [evidence: runner current_date]",
+  "project": "brooks-history / CivicState identity mismatch",
+  "currentThesis": "CivicState can become a paid civic-letter workflow if users pay for researched, citation-backed official outreach and delivery/compliance risk remains manageable.",
+  "evidenceState": {
+    "repoEvidence": [
+      "Express API routes exist [evidence: apps/api/src/index.ts]",
+      "Worker agents exist [evidence: apps/worker/src/index.ts]",
+      "Prisma schema exists [evidence: packages/shared/prisma/schema.prisma]",
+      "Pricing appears in planning and UI [evidence: .planning/REQUIREMENTS.md; apps/web/app/page.tsx]"
+    ],
+    "missingEvidence": [
+      "No customer interviews or paid conversion data in workspace",
+      "No production traffic or revenue export in workspace",
+      "No live deliverability metrics in workspace",
+      "No operator ruling that this should be pitched as a business"
+    ]
+  },
+  "decision": "Keep on watchlist until operator validates business intent, paid demand, deliverability, and risk controls.",
+  "nextTests": [
+    "Resolve repo identity mismatch",
+    "Run controlled end-to-end paid delivery test",
+    "Measure preview-to-paid conversion",
+    "Measure bounce, spam complaint, opt-out, and official response rates"
+  ]
+}
