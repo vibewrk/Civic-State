@@ -1,0 +1,252 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "snapshot": "Watchlist CivicState: code exists, but business status waits on paid beta proof.",
+  "briefThesis": "CivicState is code-real but not investible until conversion, coverage, and delivery are proven.",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "observedProductName": "CivicState [evidence: package.json; .planning/PROJECT.md]",
+    "seed": {
+      "path": "BUSINESS.md",
+      "id": "civicstate-business-plan-2026-06-19"
+    }
+  },
+  "status": "proposed",
+  "authority": {
+    "level": "proposed",
+    "note": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record"
+  },
+  "adoption": {
+    "status": "not_adopted",
+    "required": "operator merge",
+    "note": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record"
+  },
+  "research": {
+    "mode": "workspace-only, no network",
+    "sources": [
+      { "path": "BUSINESS.md", "type": "soul", "label": "evidence" },
+      { "path": "ROADMAP.md", "type": "soul", "label": "evidence" },
+      { "path": "DECISIONS.md", "type": "soul", "label": "evidence" },
+      { "path": ".planning/PROJECT.md", "type": "planning", "label": "evidence" },
+      { "path": ".planning/GENESIS.md", "type": "planning", "label": "evidence" },
+      { "path": ".planning/ROADMAP.md", "type": "planning", "label": "evidence" },
+      { "path": ".planning/STATE.md", "type": "planning", "label": "evidence" },
+      { "path": ".planning/REQUIREMENTS.md", "type": "planning", "label": "evidence" },
+      { "path": "MASTER_PLAN.md", "type": "planning", "label": "evidence" },
+      { "path": "package.json", "type": "code", "label": "evidence" },
+      { "path": "packages/shared/prisma/schema.prisma", "type": "code", "label": "evidence" },
+      { "path": "apps/api/src/routes/submissions.ts", "type": "code", "label": "evidence" },
+      { "path": "apps/api/src/routes/officials.ts", "type": "code", "label": "evidence" },
+      { "path": "apps/api/src/routes/payments.ts", "type": "code", "label": "evidence" },
+      { "path": "apps/api/src/lib/officials/cicero.ts", "type": "code", "label": "evidence" },
+      { "path": "apps/api/src/lib/officials/congress.ts", "type": "code", "label": "evidence" },
+      { "path": "apps/worker/src/agents/researcher.ts", "type": "code", "label": "evidence" },
+      { "path": "apps/worker/src/agents/delivery.ts", "type": "code", "label": "evidence" },
+      { "path": "registry dispatch", "type": "registry-note", "label": "evidence" }
+    ],
+    "methods": [
+      "Read existing planning and master-plan files.",
+      "Inspected representative web, API, worker, Prisma, payment, officials, delivery, and test files.",
+      "Cited repo and registry files as evidence.",
+      "Tagged external market claims and future outcomes as assumptions because network research was unavailable."
+    ]
+  },
+  "thesisCurrent": {
+    "asOf": "2026-06-19 [evidence: worker dispatch current_date]",
+    "label": "watchlist personal/research asset",
+    "summary": "CivicState has a code-real civic-letter workflow, but no validated paid demand, coverage, or deliverability proof.",
+    "operatorConstraint": "Registry says personal/research asset and asks operator to confirm whether it should pitch as a business [evidence: registry dispatch]."
+  },
+  "customerDefinition": {
+    "primary": "Individual U.S. resident with a specific civic concern, desired outcome, and ZIP code [evidence: .planning/PROJECT.md; apps/api/src/routes/submissions.ts].",
+    "excluded": "Legal advice, claim filing, business advocacy, lobbying-firm work, harassment, threats, and automated follow-up campaigns [evidence: MASTER_PLAN.md; .planning/PROJECT.md]."
+  },
+  "marketSizing": {
+    "approach": "Bottom-up validation model; no top-down TAM claimed [assumption: workspace-only mode prevents current external market research].",
+    "betaProof": "$1,500 from 100 paid submissions at $15 AOV [assumption: beta sample and tier mix; evidence: apps/api/src/routes/payments.ts].",
+    "narrowConsumerCase": "$450,000 annual revenue from 25 metros x 1,000 paid submissions x $18 AOV [assumption: metro playbook; evidence: MASTER_PLAN.md for $18 month-12 ARPP].",
+    "largerOption": "$4,000,000 annual revenue from 100 metros x 2,000 paid submissions x $20 AOV [assumption: national metro expansion; evidence: MASTER_PLAN.md for $20 month-24 ARPP]."
+  },
+  "revenueModel": {
+    "type": "one-time Stripe Checkout transactions [evidence: apps/api/src/routes/payments.ts]",
+    "pricing": [
+      "$5 single official [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three officials [evidence: apps/api/src/routes/payments.ts]",
+      "$25 all matched officials [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "marginFloor": "40% planned net margin floor [evidence: .planning/PROJECT.md; MASTER_PLAN.md]",
+    "codeGap": "Checkout route uses fixed tiers and does not calculate live fee-inclusive margin [evidence: apps/api/src/routes/payments.ts]."
+  },
+  "financialFigures": [
+    "$5 single tier [evidence: apps/api/src/routes/payments.ts]",
+    "$15 three-pack tier [evidence: apps/api/src/routes/payments.ts]",
+    "$25 full-spread tier [evidence: apps/api/src/routes/payments.ts]",
+    "$1.20 Amplify total COGS [evidence: MASTER_PLAN.md]",
+    "$13.80 Amplify gross margin [evidence: MASTER_PLAN.md]",
+    "$200/month fixed costs [evidence: MASTER_PLAN.md]",
+    "$340/month break-even MRR [evidence: MASTER_PLAN.md; .planning/GENESIS.md]",
+    "$1,500 Mercury reserve [evidence: .planning/PROJECT.md; MASTER_PLAN.md]",
+    "$24,000 month-24 revenue scenario [evidence: MASTER_PLAN.md]"
+  ],
+  "percentFigures": [
+    "3% preview-to-paid conversion gate [evidence: .planning/PROJECT.md]",
+    "85% government inbox placement gate [evidence: .planning/PROJECT.md]",
+    "95% federal/state coverage gate [evidence: .planning/PROJECT.md]",
+    "60% local coverage gate [evidence: .planning/PROJECT.md]",
+    "0.5% chargeback ceiling [evidence: .planning/PROJECT.md]",
+    "40% planned net margin floor [evidence: .planning/PROJECT.md]",
+    "92% Amplify gross margin model [evidence: MASTER_PLAN.md]"
+  ],
+  "competition": [
+    "Resistbot [evidence: .planning/PROJECT.md; MASTER_PLAN.md]",
+    "Change.org [evidence: MASTER_PLAN.md]",
+    "Quorum [evidence: .planning/PROJECT.md]",
+    "VoterVoice [evidence: .planning/PROJECT.md]",
+    "LegalZoom or attorneys [evidence: MASTER_PLAN.md]",
+    "Manual official email/contact forms [assumption: common free substitute]"
+  ],
+  "goToMarket": {
+    "initialMotion": "One-metro operator-recruited beta before SEO [assumption: sequencing derived from BUSINESS.md].",
+    "channels": [
+      "Operator network and local civic communities [assumption: beta acquisition path]",
+      "Issue-specific local pages after paid delivery proof [evidence: .planning/GENESIS.md]",
+      "No paid acquisition before conversion and deliverability are measured [evidence: .planning/GENESIS.md]"
+    ],
+    "metrics": [
+      "preview-to-paid conversion",
+      "official coverage",
+      "delivery acceptance",
+      "bounce rate",
+      "response rate",
+      "support load",
+      "campaign COGS",
+      "review queue age"
+    ]
+  },
+  "risksAntiPlan": [
+    "Users may not pay because manual official email is free [assumption: free substitute].",
+    "Local official lookup is a stub that returns an empty array [evidence: apps/api/src/lib/officials/cicero.ts].",
+    "Congress.gov path sets official email to empty, weakening the delivery promise [evidence: apps/api/src/lib/officials/congress.ts].",
+    "Government deliverability may fail despite Postmark and DNS controls [assumption: external inbox risk; evidence: .planning/PROJECT.md].",
+    "AI citation errors or weak source coverage can undermine the core trust claim [assumption: AI risk; evidence: apps/worker/src/agents/researcher.ts].",
+    "Registry identity mismatch can make external pitch confusing [evidence: registry dispatch; package.json]."
+  ],
+  "assumptionLedger": [
+    {
+      "assumption": "Users will pay $5 to $25 for civic-letter delivery [assumption: unvalidated demand].",
+      "basis": "Implemented tiers and project thesis [evidence: apps/api/src/routes/payments.ts; .planning/PROJECT.md].",
+      "test": "First 100 paid submissions [assumption: beta sample]."
+    },
+    {
+      "assumption": "Fixed pricing preserves margins [assumption: actual COGS not measured].",
+      "basis": "Master plan unit economics [evidence: MASTER_PLAN.md].",
+      "test": "Campaign-level treasury reconciliation."
+    },
+    {
+      "assumption": "Official coverage can meet 95% federal/state and 60% local targets [assumption: API coverage unproven].",
+      "basis": "Planning gates [evidence: .planning/PROJECT.md].",
+      "test": "ZIP-code coverage audit."
+    },
+    {
+      "assumption": "One operator can clear exceptions within 24 hours [assumption: workload unproven].",
+      "basis": "Operational plan [evidence: .planning/PROJECT.md].",
+      "test": "Flagged queue age dashboard."
+    }
+  ],
+  "risks": {
+    "holes": [
+      "No validated paid conversion [evidence: .planning/PROJECT.md].",
+      "No production deliverability proof [evidence: .planning/PROJECT.md].",
+      "No legal/compliance counsel memo found [assumption: workspace audit].",
+      "Official data coverage is incomplete [evidence: apps/api/src/lib/officials/cicero.ts; apps/api/src/lib/officials/congress.ts]."
+    ],
+    "mitigations": [
+      "Closed beta with conversion and delivery gates.",
+      "Provider spike for local officials.",
+      "Campaign-level cost and margin telemetry.",
+      "Operator/counsel review before public scale.",
+      "Human review of flagged and all-citation-failed submissions."
+    ],
+    "residualRisks": [
+      "Users may prefer free substitutes.",
+      "Officials may opt out or treat AI-aided letters as spam.",
+      "Compliance costs may exceed the thin consumer price point.",
+      "Market may be too small without organization/API wedge."
+    ]
+  },
+  "freshness": {
+    "reviewedOn": "2026-06-19 [evidence: worker dispatch current_date]",
+    "staleSignals": [
+      ".planning/existing-state.md says zero app code exists, but apps and packages now contain implementation [evidence: .planning/existing-state.md; package.json].",
+      ".planning/ROADMAP.md marks all phases complete while .planning/STATE.md says Phase 1 is current [evidence: .planning/ROADMAP.md; .planning/STATE.md].",
+      "MASTER_PLAN.md discusses dynamic pricing while implemented payments use fixed tiers [evidence: MASTER_PLAN.md; apps/api/src/routes/payments.ts]."
+    ],
+    "nextReviewDue": "2026-07-05 [assumption: after officials coverage spike]."
+  },
+  "docDates": {
+    "business": "2026-06-19 [evidence: BUSINESS.md]",
+    "roadmap": "2026-06-19 [evidence: ROADMAP.md]",
+    "decisions": "2026-06-19 [evidence: DECISIONS.md]",
+    "masterPlan": "2026-03-01 [assumption: MASTER_PLAN.md month-level date normalized to first day of month]",
+    "planningProject": "2026-04-25 [evidence: .planning/PROJECT.md]"
+  },
+  "docStructure": {
+    "businessHeadings": [
+      "Snapshot Thesis",
+      "Evidence Base and Honesty Labels",
+      "Customer Definition",
+      "Product Reality",
+      "Market Sizing",
+      "Revenue Model and Pricing",
+      "Financial Model",
+      "Go To Market",
+      "Competition",
+      "Risks and Anti-Plan",
+      "Assumption Ledger",
+      "Milestones and Gates",
+      "Surprise Spikes",
+      "Recommendation"
+    ],
+    "roadmapHasNowNext": true,
+    "decisionsEntryAppended": true
+  },
+  "roadmapBuildableShape": {
+    "path": "ROADMAP.md",
+    "checkboxCount": "8 [evidence: ROADMAP.md]",
+    "singleWorkerSized": true,
+    "traceableToBusinessHeadings": true
+  },
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "operatorQuestions": [
+    "Should the registry present this as CivicState, brooks-history, or another name?",
+    "Should this remain a personal/research asset or be pitched as a business?",
+    "Who signs off on legal/compliance posture before public launch?"
+  ],
+  "documents": {
+    "business": "BUSINESS.md",
+    "roadmap": "ROADMAP.md",
+    "decisions": "DECISIONS.md",
+    "gate": "gate.json"
+  }
+}
