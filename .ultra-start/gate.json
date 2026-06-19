@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "wrk.dog/soul-gate/v1",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "productName": "CivicState"
+  },
+  "status": "proposed",
+  "snapshot": "CivicState is a paid civic-letter pipeline; evidence supports a prototype, not an investible business yet.",
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-business-plan"
+  },
+  "soulPaths": {
+    "business": "BUSINESS.md",
+    "roadmap": "ROADMAP.md",
+    "decisions": "DECISIONS.md"
+  },
+  "updatedAt": "2026-06-19 [assumption: session date]",
+  "adoptionMechanism": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12 [evidence: worker brief gate contract]; see the PR's POM record",
+  "authority": {
+    "claimed": "none",
+    "reason": "Status is proposed; only operator merge upgrades authority."
+  },
+  "methodsUsed": [
+    "Workspace-only review; no network research.",
+    "Read root and planning docs: MASTER_PLAN.md, .planning/PROJECT.md, .planning/GENESIS.md, .planning/REQUIREMENTS.md, .planning/ROADMAP.md, .planning/STATE.md, .planning/existing-state.md.",
+    "Read enough code to distinguish implemented surfaces from aspirational plan: package.json, API routes, worker agents, Prisma schema, frontend page, and tests.",
+    "Tagged external market, competitor, conversion, and financial claims as assumptions when not directly evidenced by repo files."
+  ],
+  "evidence": [
+    {
+      "source": "MASTER_PLAN.md",
+      "supports": "Product architecture, pricing, infrastructure, competition framing, deferred scope."
+    },
+    {
+      "source": ".planning/PROJECT.md",
+      "supports": "Core value, requirements, constraints, validation thresholds, and existing decisions."
+    },
+    {
+      "source": ".planning/GENESIS.md",
+      "supports": "Target user, value chain, distribution hypothesis, moat hypothesis, and scope exclusions."
+    },
+    {
+      "source": "packages/shared/prisma/schema.prisma",
+      "supports": "Implemented data model."
+    },
+    {
+      "source": "apps/api/src/routes",
+      "supports": "Submission, official lookup, payment, webhook, admin, campaign, and compliance API surfaces."
+    },
+    {
+      "source": "apps/worker/src",
+      "supports": "Classifier/researcher/drafter/delivery/treasury/reconciliation worker architecture."
+    },
+    {
+      "source": "registry dispatch in worker brief",
+      "supports": "Watchlist sensitivity, personal/research-asset concern, and brooks-history project identity."
+    }
+  ],
+  "thesis": {
+    "current": "CivicState sells a low-friction civic-letter workflow: researched citations, official targeting, payment, and email delivery for individual constituents.",
+    "evidenceLabel": "[evidence: MASTER_PLAN.md; apps/api/src/routes/payments.ts; apps/worker/src/agents/delivery.ts]",
+    "confidence": "low-to-medium [assumption: product is implemented in part, but no production demand evidence was found]"
+  },
+  "customerDefinition": {
+    "primary": "Individual US resident with a specific civic concern who wants help researching, drafting, routing, and sending a constituent communication.",
+    "evidenceLabel": "[evidence: .planning/GENESIS.md; .planning/PROJECT.md]",
+    "notCustomers": [
+      "Law firms",
+      "Enterprise advocacy teams at launch",
+      "Users seeking legal filings or legal advice"
+    ]
+  },
+  "revenueModel": {
+    "launch": "Transactional packages at $5, $15, and $25 [evidence: apps/api/src/routes/payments.ts].",
+    "marginConstraint": "40% net margin floor [evidence: .planning/PROJECT.md].",
+    "future": "Priority review and organizational API access remain deferred [evidence: MASTER_PLAN.md; .planning/REQUIREMENTS.md]."
+  },
+  "financialModel": {
+    "type": "validation model, not forecast",
+    "reconciliation": "50 x $5 + 30 x $15 + 20 x $25 = $1,200 monthly revenue in the 100-submission validation case [assumption: illustrative model].",
+    "baseHosting": "$96 per month backend droplet [evidence: MASTER_PLAN.md].",
+    "reserveControls": "$1,500 reserve, $2,000 warning, $500 emergency, $0.10 discrepancy flag, 150% overage pause [evidence: .planning/PROJECT.md; .planning/REQUIREMENTS.md]."
+  },
+  "marketSizing": {
+    "method": "Bottom-up validation only: paid submissions, completion, delivery success, official response, and operator review load.",
+    "tamStatus": "withheld",
+    "reason": "No external market research or production usage data available in workspace-only mode."
+  },
+  "competition": [
+    "Resistbot [assumption: characterization from repo planning, not current external research]",
+    "Change.org [assumption: characterization from repo planning, not current external research]",
+    "LegalZoom [assumption: characterization from repo planning, not current external research]",
+    "VoterVoice and Quorum [assumption: adjacent enterprise advocacy tools named by repo context, not current external research]",
+    "Manual constituent outreach [assumption: customer workflow alternative]"
+  ],
+  "goToMarket": {
+    "firstMotion": "Manual beta in a narrow geography or issue segment.",
+    "secondMotion": "Opt-in public campaign SEO only after privacy, moderation, and deliverability are proven.",
+    "evidenceLabel": "[evidence: .planning/GENESIS.md; MASTER_PLAN.md]"
+  },
+  "holesAndMitigations": [
+    {
+      "hole": "No proof users will pay $5-$25 [evidence: apps/api/src/routes/payments.ts; assumption: willingness-to-pay unvalidated].",
+      "mitigation": "Run manual beta and require Stripe test/live checkout before delivery.",
+      "residualRisk": "High; usefulness may not become paid demand."
+    },
+    {
+      "hole": "Government inbox deliverability unproven.",
+      "mitigation": "Warm domain, track per-domain bounce and spam complaint rates, pause risky domains.",
+      "residualRisk": "High; official inboxes may reject platform-generated advocacy."
+    },
+    {
+      "hole": "Official lookup coverage may fail locally.",
+      "mitigation": "Log coverage by ZIP/source and choose provider after spike.",
+      "residualRisk": "Medium; local coverage can destroy perceived value."
+    },
+    {
+      "hole": "Legal-adjacent moderation may overwhelm a low-ticket workflow.",
+      "mitigation": "Keep narrow launch scope and measure flag/reject/edit queue depth.",
+      "residualRisk": "High; human review can erase margin."
+    },
+    {
+      "hole": "Project identity conflict: brooks-history dispatch vs CivicState repo evidence.",
+      "mitigation": "Operator must confirm whether this is a business pitch or research asset.",
+      "residualRisk": "High; wrong framing can mislead wrk.vc dossier readers."
+    }
+  ],
+  "freshness": {
+    "workspaceAsOf": "2026-06-19 [assumption: session date]",
+    "latestRepoPlanningDate": "2026-04-25 [evidence: .planning/PROJECT.md]",
+    "staleAreas": [
+      ".planning/existing-state.md says no application code exists, but code now exists.",
+      ".planning/STATE.md and .planning/ROADMAP.md conflict on phase completion.",
+      "External market and competitor facts are unverified because this run is workspace-only."
+    ]
+  },
+  "scrutinyGapsAddressed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "operatorQuestions": [
+    "Should brooks-history be renamed/reframed as CivicState in the registry?",
+    "Is the operator intentionally pitching this as a company, or preserving it as a personal/research asset?",
+    "What geography and issue category should the first manual beta validate?"
+  ],
+  "nextReviewGate": "Operator review after first paid end-to-end delivery [assumption: appropriate adoption gate]."
+}
