@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "wrk.thesis-review.v1",
+  "one_liner": "CivicState is a civic-letter prototype, not an investible business until paid demand and inbox trust are proven.",
+  "projectId": "brooks-history",
+  "repoReality": "CivicState",
+  "status": "needs-revision",
+  "documentDate": "2026-06-19",
+  "thesis": "CivicState can become a narrowly useful civic-action utility if it proves that residents pay for researched, citation-backed letters and officials receive them reliably.",
+  "currentEvidence": [
+    "Repo contains a Next.js submission wizard [evidence: apps/web/app/submit/page.tsx].",
+    "Repo contains Express API routes for submissions, officials, payments, webhooks, campaigns, admin, and compliance [evidence: apps/api/src/index.ts].",
+    "Repo contains BullMQ workers for classifier, researcher, drafter, delivery, treasury, and reconciliation [evidence: apps/worker/src/index.ts].",
+    "Registry dispatch marks this as watchlist and not near-term investible."
+  ],
+  "killCriteria": [
+    "Paid beta conversion materially misses 3% target [evidence: .planning/PROJECT.md].",
+    "Inbox placement materially misses 85% target [evidence: .planning/PROJECT.md].",
+    "Local coverage materially misses 60% target [evidence: .planning/PROJECT.md].",
+    "Operator confirms this repo is not the intended brooks-history project."
+  ],
+  "operatorQuestions": [
+    "Is brooks-history actually supposed to be CivicState?",
+    "Should this be pitched as a business or retained as a personal/research asset?",
+    "Who owns legal/compliance review before public official delivery?"
+  ],
+  "sources": [
+    "BUSINESS.md",
+    "ROADMAP.md",
+    ".planning/PROJECT.md",
+    ".planning/GENESIS.md",
+    "MASTER_PLAN.md",
+    "apps/api/src/index.ts",
+    "apps/worker/src/index.ts"
+  ]
+}

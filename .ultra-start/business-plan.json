@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "one_liner": "CivicState turns civic concerns into cited official letters, but demand and deliverability remain unproven.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history",
+    "repoReality": "CivicState civic-letter platform"
+  },
+  "status": "needs-revision",
+  "directive": "Use BUSINESS.md as the seed plan; operator merge and POM soul-review are required before authority upgrades.",
+  "authority": {
+    "state": "draft/operator-gated",
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12 [evidence: brief]; see the PR's POM record"
+  },
+  "research": {
+    "mode": "workspace-only/no-network",
+    "sources": [
+      ".planning/PROJECT.md",
+      ".planning/GENESIS.md",
+      ".planning/ROADMAP.md",
+      ".planning/STATE.md",
+      ".planning/REQUIREMENTS.md",
+      "MASTER_PLAN.md",
+      "packages/shared/prisma/schema.prisma",
+      "apps/api/src/index.ts",
+      "apps/api/src/routes/payments.ts",
+      "apps/api/src/routes/webhooks.ts",
+      "apps/api/src/routes/admin.ts",
+      "apps/worker/src/index.ts",
+      "apps/worker/src/agents/researcher.ts",
+      "apps/worker/src/agents/delivery.ts",
+      "apps/web/app/submit/page.tsx",
+      "registry dispatch notes supplied by runner"
+    ],
+    "methods": [
+      "Repo evidence review",
+      "Implementation-vs-plan comparison",
+      "Assumption-labeled market and financial modeling",
+      "Anti-plan risk review"
+    ]
+  },
+  "planningMethod": "Bottom-up validation plan: paid campaigns x blended order value, with all external market claims marked as assumptions.",
+  "customer": {
+    "definition": "US residents with concrete civic concerns who want help researching, drafting, routing, and delivering constituent letters.",
+    "primaryICP": "Mobile-first individual residents with local, state, or federal civic issues.",
+    "deferredSegments": [
+      "HOAs",
+      "Nonprofits",
+      "Civic organizations",
+      "API consumers"
+    ],
+    "evidence": [
+      ".planning/PROJECT.md",
+      ".planning/GENESIS.md"
+    ]
+  },
+  "market": {
+    "tam": "$225,000,000 [assumption: 15,000,000 civically active digital users x $15 blended order value]",
+    "sam": "$45,000,000 [assumption: 20% of TAM reachable under email-only, US-only constraints]",
+    "som": "$900,000 [assumption: 2% of SAM captured over modeled horizon]",
+    "method": "Bottom-up paid-campaign model, not top-down civic-tech spend.",
+    "freshness": "As of 2026-06-19 [evidence: runner current_date]; external market data not fetched."
+  },
+  "businessModel": {
+    "revenueStreams": [
+      "$5 single-official package [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three-official package [evidence: apps/api/src/routes/payments.ts]",
+      "$25 all-official package [evidence: apps/api/src/routes/payments.ts]",
+      "Future higher-touch review [assumption: deferred revenue stream]",
+      "Future organization/API access [assumption: deferred revenue stream]"
+    ],
+    "unitEconomics": {
+      "marginFloor": "40% [evidence: .planning/REQUIREMENTS.md]",
+      "aiCostPlaceholder": "$0.20 per submission [evidence: .planning/PROJECT.md]",
+      "chargebackTarget": "<0.5% [evidence: .planning/PROJECT.md]"
+    }
+  },
+  "financialModel": {
+    "revenueAssumptions": [
+      "Blended AOV is $15 [assumption: tier mix around middle package].",
+      "Paid campaigns reach 300 by 2026-12-31 [assumption: beta trajectory].",
+      "Paid campaigns reach 12,000 in the final modeled period [assumption: GTM success]."
+    ],
+    "costAssumptions": [
+      "Direct AI and delivery cost is $0.80 per campaign [assumption: buffer above repo placeholder].",
+      "DigitalOcean base cost is $96 per month [evidence: .planning/PROJECT.md].",
+      "Operator/compliance support reaches $72,000 in the final modeled period [assumption: staffing need]."
+    ],
+    "sensitivityTests": [
+      "AOV at $10 reduces final-period revenue to $120,000 [assumption: 12,000 campaigns x $10].",
+      "Only 250 paid campaigns per month reduces annual revenue to $45,000 [assumption: 3,000 campaigns x $15].",
+      "Direct cost at $2.50 per campaign raises final-period direct cost to $30,000 [assumption: 12,000 campaigns x $2.50]."
+    ],
+    "reconciliation": "Revenue lines reconcile as paid campaigns multiplied by $15 blended AOV in BUSINESS.md."
+  },
+  "alternatives": [
+    "Manual official lookup and letter writing",
+    "Resistbot",
+    "Change.org",
+    "Quorum",
+    "VoterVoice",
+    "LegalZoom"
+  ],
+  "antiPlan": {
+    "holes": [
+      "Users may not pay for letters even if they like the concept.",
+      "Government inboxes may classify AI-assisted mail as spam.",
+      "Citation and jurisdiction coverage may fail for local issues.",
+      "The product may create legal, defamation, harassment, or lobbying-adjacent risk.",
+      "Registry identity mismatch may mean this repo is not the intended project."
+    ],
+    "mitigations": [
+      "Paid beta before scale.",
+      "Domain warming, bounce thresholds, and complaint suppression.",
+      "Citation verification and all-fail human review.",
+      "Admin review queue and audit logs.",
+      "Operator ruling before investment posture changes."
+    ],
+    "residualRisks": [
+      "No production demand evidence yet.",
+      "No verified public official deliverability evidence yet.",
+      "No legal review included in this workspace-only upgrade."
+    ]
+  },
+  "strategy": {
+    "posture": "Watchlist; validate before investible BOS posture.",
+    "platformPosture": "WrkPlug client assumption, not signed; current repo has bespoke auth, billing, queue, database, and delivery rails.",
+    "priority": "Validation over additional feature buildout."
+  },
+  "goToMarket": {
+    "firstChannels": [
+      "Direct beta users from local civic groups [assumption]",
+      "Neighborhood associations and HOA contacts [assumption]",
+      "Issue communities and civic newsletters [assumption]",
+      "Organic search once public campaign pages exist [evidence: .planning/GENESIS.md; implementation not fully verified]"
+    ],
+    "firstHundredCustomers": "Recruit manually and log paid/non-paid reasons before paid acquisition.",
+    "gates": [
+      "3% paid conversion [evidence: .planning/PROJECT.md]",
+      "85% inbox placement [evidence: .planning/PROJECT.md]",
+      "95% federal/state coverage [evidence: .planning/PROJECT.md]",
+      "60% local coverage [evidence: .planning/PROJECT.md]"
+    ]
+  },
+  "operatorWorkflow": {
+    "routine": "Exception-based review of flagged submissions, deliverability failures, treasury discrepancies, and official opt-outs.",
+    "constraints": [
+      "No 24/7 staffing [evidence: .planning/PROJECT.md]",
+      "Flagged queue escalation above 10 items or oldest item over 24 hours [evidence: .planning/REQUIREMENTS.md]",
+      "Manual approval/reject/edit flow exists in admin routes [evidence: apps/api/src/routes/admin.ts]"
+    ]
+  },
+  "constraints": [
+    "Not legal advice [evidence: MASTER_PLAN.md]",
+    "Email-only launch [evidence: .planning/PROJECT.md]",
+    "CAN-SPAM compliance [evidence: .planning/REQUIREMENTS.md]",
+    "AI disclosure [evidence: apps/worker/src/agents/drafter.ts]",
+    "CCPA/GDPR deletion workflow [evidence: apps/api/src/routes/compliance.ts]",
+    "Operator must resolve brooks-history vs CivicState mismatch [evidence: dispatch and repo files]"
+  ],
+  "metrics": [
+    "Paid conversion rate",
+    "Paid campaigns per month",
+    "Inbox placement rate",
+    "Bounce rate by official email domain",
+    "Spam complaint rate",
+    "Citation verification pass rate",
+    "Official coverage by ZIP sample",
+    "Flagged queue age"
+  ],
+  "aiWorkGovernance": {
+    "rules": [
+      "Researcher may only cite provided search results [evidence: apps/worker/src/agents/researcher.ts].",
+      "Unverified citations are stripped [evidence: apps/worker/src/agents/researcher.ts].",
+      "All-fail citation jobs are flagged for human review [evidence: apps/worker/src/agents/researcher.ts].",
+      "Letters include AI disclosure and not-legal-advice disclaimer [evidence: apps/worker/src/agents/drafter.ts]."
+    ]
+  },
+  "unknowns": [
+    "Whether this repo should be registry project brooks-history.",
+    "Whether the operator wants this to pitch as a business.",
+    "Actual willingness to pay.",
+    "Actual government inbox placement.",
+    "Actual official contact coverage.",
+    "Actual legal/compliance review outcome."
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Users will pay for constituent-letter delivery.",
+      "basis": "Repo pricing and product thesis.",
+      "evidenceOrAssumption": "Assumption supported by repo intent.",
+      "test": "Paid beta against 3% conversion target."
+    },
+    {
+      "claim": "Email-only delivery is enough for launch.",
+      "basis": "Existing product scope.",
+      "evidenceOrAssumption": "Evidence in .planning/PROJECT.md plus deliverability assumption.",
+      "test": "Measure 85% inbox placement."
+    },
+    {
+      "claim": "SOM is $900,000.",
+      "basis": "2% of assumption-led SAM.",
+      "evidenceOrAssumption": "Assumption.",
+      "test": "Track monthly paid campaigns and acquisition source."
+    },
+    {
+      "claim": "Data moat can compound.",
+      "basis": "Officials directory, citation library, and bounce history.",
+      "evidenceOrAssumption": "Evidence of model plus assumption of defensibility.",
+      "test": "Track reuse of verified contacts and citations."
+    },
+    {
+      "claim": "One operator can handle early risk.",
+      "basis": "Exception-based workflow.",
+      "evidenceOrAssumption": "Assumption with admin route evidence.",
+      "test": "Measure flagged queue age and volume."
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-19",
+      "change": "Created EIR soul upgrade gate artifact from workspace-only evidence.",
+      "author": "wrk.dog fleet worker"
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "reason": "Operator merge required; market and deliverability validation incomplete.",
+    "roadmapPath": "ROADMAP.md"
+  },
+  "next": [
+    "Resolve registry identity mismatch.",
+    "Run paid beta validation.",
+    "Measure official coverage and deliverability.",
+    "Update assumption ledger with observed data."
+  ]
+}
