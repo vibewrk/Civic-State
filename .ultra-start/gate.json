@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "wrk.soul-gate.v1",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "seedPath": "BUSINESS.md"
+  },
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "business-plan"
+  },
+  "status": "draft",
+  "dossierSnapshot": "CivicState is built but unvalidated; watchlist until demand and deliverability clear.",
+  "thesisCurrent": "Watchlist, not near-term investible BOS. Repo evidence supports a civic-letter product skeleton; market demand and operations remain assumptions.",
+  "adoption": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+  "adoptionNote": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+  "sourcesAndMethods": [
+    {
+      "source": "MASTER_PLAN.md",
+      "method": "Read product, pricing, unit-economics, SEO, and risk narrative as repo evidence; treated projections as assumptions."
+    },
+    {
+      "source": ".planning/PROJECT.md",
+      "method": "Used existing product definition, validation gates, constraints, and registry-like context."
+    },
+    {
+      "source": ".planning/REQUIREMENTS.md",
+      "method": "Compared planned and checked requirements to identify unproven launch gates."
+    },
+    {
+      "source": "apps/ and packages/",
+      "method": "Inspected API, worker, web, and Prisma code to distinguish built functionality from aspiration."
+    },
+    {
+      "source": "dispatch registry notes",
+      "method": "Applied watchlist and personal/research-asset sensitivity as a hard framing constraint."
+    }
+  ],
+  "evidenceSources": [
+    "BUSINESS.md",
+    "ROADMAP.md",
+    "DECISIONS.md",
+    "MASTER_PLAN.md",
+    ".planning/PROJECT.md",
+    ".planning/REQUIREMENTS.md",
+    ".planning/existing-state.md",
+    "apps/api/src/routes/submissions.ts",
+    "apps/api/src/routes/payments.ts",
+    "apps/worker/src/agents/researcher.ts",
+    "apps/worker/src/agents/drafter.ts",
+    "packages/shared/prisma/schema.prisma"
+  ],
+  "honestyLabels": {
+    "evidence": "Directly supported by repo or dispatch file path.",
+    "assumption": "Market, legal, operating, or financial claim not externally verified in workspace-only mode."
+  },
+  "freshness": {
+    "asOf": "2026-06-19 [evidence: worker current_date]",
+    "staleSource": ".planning/existing-state.md says zero app code, but apps/ and packages/shared now contain implementation [evidence: repo inspection].",
+    "externalResearch": "None; network disabled by dispatch. External market and competitor claims remain assumptions."
+  },
+  "customerDefinition": {
+    "primary": "U.S. residents seeking specific government action through researched constituent letters [evidence: .planning/PROJECT.md].",
+    "excluded": "Legal advice, claim filing, lobbying firm services, harassment, bulk spam, and social-network coalition features [evidence: MASTER_PLAN.md].",
+    "unvalidated": "Willingness to pay $5 to $25 remains unproven [evidence: apps/api/src/routes/payments.ts; assumption: no paid data found]."
+  },
+  "revenueModel": {
+    "type": "One-time transactional letter packages [evidence: MASTER_PLAN.md].",
+    "tiers": [
+      "$5 single official [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three officials [evidence: apps/api/src/routes/payments.ts]",
+      "$25 full spread [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "marginTarget": "40% net margin floor [evidence: .planning/PROJECT.md and MASTER_PLAN.md]",
+    "actualRevenue": "$0 found in repo evidence [evidence: .planning/existing-state.md]"
+  },
+  "financialFigures": [
+    "$5 tier [evidence: apps/api/src/routes/payments.ts]",
+    "$15 tier [evidence: apps/api/src/routes/payments.ts]",
+    "$25 tier [evidence: apps/api/src/routes/payments.ts]",
+    "$750 monthly low case [assumption: 50 x $15 from MASTER_PLAN.md scenario]",
+    "$1,920 monthly early SEO case [assumption: 120 x $16 from MASTER_PLAN.md scenario]",
+    "$7,200 monthly traction case [assumption: 400 x $18 from MASTER_PLAN.md scenario]",
+    "$24,000 monthly authority case [assumption: 1,200 x $20 from MASTER_PLAN.md scenario]",
+    "$96/mo backend hosting [assumption: .planning/PROJECT.md plan, not invoice]",
+    "$1,500 Mercury reserve [assumption: .planning/PROJECT.md plan, not bank evidence]",
+    "$340/mo break-even [assumption: MASTER_PLAN.md model]"
+  ],
+  "percentFigures": [
+    "40% net margin floor [evidence: .planning/PROJECT.md and MASTER_PLAN.md]",
+    "92% modeled gross margin [assumption: MASTER_PLAN.md model]",
+    "3% paid conversion gate [assumption: .planning/PROJECT.md target]",
+    "85% inbox placement gate [assumption: .planning/PROJECT.md target]",
+    "95% federal/state coverage gate [assumption: .planning/PROJECT.md target]",
+    "60% local coverage gate [assumption: .planning/PROJECT.md target]"
+  ],
+  "marketSizing": {
+    "method": "Bottoms-up only: annual qualified visits x paid conversion x average order value.",
+    "validationWedge": "20,000 visits x 1.5% x $15 = $4,500 annual revenue [assumption: validation target, not market evidence].",
+    "baseNiche": "100,000 visits x 3% x $16 = $48,000 annual revenue [assumption: operator target and .planning validation gate].",
+    "upsideNiche": "500,000 visits x 5% x $18 = $450,000 annual revenue [assumption: unvalidated long-tail SEO upside].",
+    "notTAM": "No top-down TAM claim made; external research unavailable."
+  },
+  "competition": [
+    "Resistbot [evidence: MASTER_PLAN.md; assumption: current feature set not verified]",
+    "Change.org [evidence: MASTER_PLAN.md; assumption: current feature set not verified]",
+    "LegalZoom [evidence: MASTER_PLAN.md; assumption: current feature set not verified]",
+    "Quorum and VoterVoice [evidence: .planning/PROJECT.md; assumption: current pricing/features not verified]",
+    "Manual $0 constituent email [assumption: common substitute]"
+  ],
+  "goToMarket": {
+    "primary": "Validation-first beta in a narrow geography or issue category [assumption: recommended path].",
+    "organic": "Opt-in public campaign pages and reference content [evidence: MASTER_PLAN.md].",
+    "gates": [
+      "Preview-to-payment conversion near 3% [assumption: .planning/PROJECT.md target]",
+      ".gov inbox placement near 85% [assumption: .planning/PROJECT.md target]",
+      "Official coverage near 95% federal/state and 60% local [assumption: .planning/PROJECT.md target]"
+    ]
+  },
+  "risksAntiPlan": {
+    "risks": [
+      "Demand may not exist at $5 to $25 [evidence: code pricing; assumption: no paid evidence].",
+      "AI-assisted letters may be treated as civic spam by officials [assumption: operating risk].",
+      "Legal/compliance posture is not externally reviewed [evidence: app terms/privacy exist; assumption: no legal opinion found].",
+      "Official-contact data may be stale or incomplete [evidence: .planning/REQUIREMENTS.md].",
+      "Deliverability can fail even if the product works [evidence: .planning/PROJECT.md]."
+    ],
+    "antiPlan": "Do not raise venture capital, hire a team, launch broad political-content surfaces, or build coalition/API features until demand, deliverability, compliance, and operator workload are validated."
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "Users pay for convenience and confidence.",
+      "basis": "$5 to $25 tiers exist in code [evidence: apps/api/src/routes/payments.ts].",
+      "test": "Beta preview-to-payment funnel.",
+      "rule": "Continue only if conversion approaches 3% [assumption: .planning/PROJECT.md target]."
+    },
+    {
+      "assumption": "Government email delivery is viable.",
+      "basis": "Postmark delivery path exists [evidence: apps/worker/src/agents/delivery.ts].",
+      "test": "Seeded domain and inbox-placement tests.",
+      "rule": "Pause scale if placement is below 85% [assumption: .planning/PROJECT.md target]."
+    },
+    {
+      "assumption": "Official lookup is good enough.",
+      "basis": "Lookup code and requirements exist [evidence: apps/api/src/lib/officials/lookup.ts].",
+      "test": "ZIP sample coverage audit.",
+      "rule": "Do not promise full-spread delivery below 95% federal/state or 60% local coverage [assumption: .planning/PROJECT.md target]."
+    }
+  ],
+  "holesMitigationsResidualRisks": [
+    {
+      "hole": "No paid customer evidence.",
+      "mitigation": "Run a manually reviewed beta with funnel instrumentation.",
+      "residualRisk": "Users may prefer manual $0 outreach or free alternatives."
+    },
+    {
+      "hole": "No deliverability evidence.",
+      "mitigation": "Measure Postmark/domain placement before real paid sends.",
+      "residualRisk": "Officials may suppress or ignore AI-assisted messages."
+    },
+    {
+      "hole": "No external legal review.",
+      "mitigation": "Operator/legal review of terms, privacy, CAN-SPAM, AI disclosure, opt-out, and moderation.",
+      "residualRisk": "Regulatory or platform-policy interpretation may still shift."
+    },
+    {
+      "hole": "Project naming mismatch.",
+      "mitigation": "Operator decides whether brooks-history is an alias or should be renamed to CivicState.",
+      "residualRisk": "Data-room confusion if unresolved."
+    }
+  ],
+  "roadmapAlignment": {
+    "path": "ROADMAP.md",
+    "shape": "Buildable validation roadmap with checkbox items mapped to BUSINESS.md headings.",
+    "next": "Operator ruling, beta cohort, funnel instrumentation, market evidence, substitute testing, deliverability gate, compliance review, official-data audit."
+  },
+  "operatorSensitivity": {
+    "registry": "Watchlist; personal/research asset; operator must confirm whether it should pitch as a business [evidence: dispatch registry notes].",
+    "constraint": "Do not claim investible authority; status remains draft."
+  },
+  "docStructure": {
+    "businessFile": "BUSINESS.md created",
+    "roadmapFile": "ROADMAP.md created",
+    "decisionsFile": "DECISIONS.md created",
+    "gateJson": ".ultra-start/gate.json created",
+    "docDates": "Includes 2026-06-19, 2026-04-25, 2026-04-10, and 2026-06-12 references with labels."
+  },
+  "gateChecks": {
+    "business-file": "fixed",
+    "roadmap-file": "fixed",
+    "decisions-file": "fixed",
+    "gate-json": "fixed",
+    "thesis-current": "fixed",
+    "financial-figures": "fixed",
+    "percent-figures": "fixed",
+    "market-sizing": "fixed",
+    "customer-definition": "fixed",
+    "revenue-model": "fixed",
+    "competition": "fixed",
+    "risks-antiplan": "fixed",
+    "assumption-ledger": "fixed",
+    "go-to-market": "fixed",
+    "honesty-labels": "fixed",
+    "doc-dates": "fixed",
+    "doc-structure": "fixed",
+    "evidence-sources": "fixed",
+    "freshness-stale": "fixed",
+    "roadmap-buildable-shape": "fixed"
+  },
+  "authority": {
+    "state": "draft",
+    "why": "Only operator merge upgrades authority; this worker cannot claim adopted status."
+  },
+  "createdAt": "2026-06-19 [evidence: worker current_date]",
+  "updatedAt": "2026-06-19 [evidence: worker current_date]"
+}
