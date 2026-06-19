@@ -1,0 +1,197 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "projectId": "brooks-history",
+  "projectName": "CivicState",
+  "status": "draft_pending_operator_merge",
+  "authority": "proposed",
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-business-plan-2026-06-19"
+  },
+  "shortThesis": "AI civic-letter workflow exists in code; investibility waits on paid conversion and delivery proof.",
+  "thesisCurrent": {
+    "asOf": "2026-06-19 [evidence: worker dispatch current-date context]",
+    "label": "watchlist personal/research asset",
+    "summary": "CivicState can be evaluated as a narrow paid civic correspondence workflow, but it is not yet a venture-ready business.",
+    "honesty": "Repo evidence supports implementation breadth; market and operating proof remain assumptions."
+  },
+  "adoption": {
+    "status": "not_adopted",
+    "note": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record"
+  },
+  "methods": [
+    "Read repo planning files: .planning/PROJECT.md, .planning/REQUIREMENTS.md, .planning/ROADMAP.md, .planning/existing-state.md.",
+    "Read product spec: MASTER_PLAN.md.",
+    "Inspected implementation surfaces under apps/web, apps/api, apps/worker, and packages/shared.",
+    "Used workspace-only evidence; no network research."
+  ],
+  "evidenceSources": [
+    { "path": "MASTER_PLAN.md", "type": "repo-plan", "label": "evidence" },
+    { "path": ".planning/PROJECT.md", "type": "repo-plan", "label": "evidence" },
+    { "path": ".planning/REQUIREMENTS.md", "type": "repo-plan", "label": "evidence" },
+    { "path": "apps/api/src/routes/payments.ts", "type": "code", "label": "evidence" },
+    { "path": "packages/shared/prisma/schema.prisma", "type": "code", "label": "evidence" },
+    { "path": "apps/api/src/lib/officials/cicero.ts", "type": "code", "label": "evidence" },
+    { "path": "worker dispatch registry notes", "type": "registry-note", "label": "evidence" }
+  ],
+  "freshness": {
+    "reviewedOn": "2026-06-19 [evidence: worker dispatch current-date context]",
+    "staleSignals": [
+      ".planning/existing-state.md says zero application code exists, but current repo has app code [evidence: repo file scan].",
+      ".planning/ROADMAP.md marks all phases complete while .planning/REQUIREMENTS.md still marks many requirements pending [evidence: .planning files].",
+      "MASTER_PLAN.md says Next.js 14 in one summary while repo/package planning says Next.js 15 [evidence: MASTER_PLAN.md; .planning/PROJECT.md]."
+    ],
+    "nextReviewDue": "2026-07-03 [assumption: two-week operator review cadence]"
+  },
+  "customerDefinition": {
+    "primary": "U.S. resident with a specific civic concern who wants researched, cited letters to officials [evidence: .planning/PROJECT.md].",
+    "excluded": "Legal claimants, lobbying firms, nonprofits/API buyers, and automated follow-up campaign users are out of v1 [evidence: .planning/REQUIREMENTS.md]."
+  },
+  "marketSizing": {
+    "approach": "Bottom-up validation model; no top-down TAM claimed.",
+    "validationCohort": "100 paid submissions [assumption: controlled beta target].",
+    "cohortRevenue": "$1,500 gross revenue at $15 AOV [assumption: 100 x $15; AOV from MASTER_PLAN.md].",
+    "month24Scenario": "$24,000 monthly revenue from 1,200 submissions at $20 AOV [evidence: MASTER_PLAN.md].",
+    "tamClaim": "Not claimed [assumption: workspace-only mode prevents external market sizing]."
+  },
+  "revenueModel": {
+    "type": "transactional one-time checkout",
+    "tiers": [
+      "$5 for 1 official [evidence: apps/api/src/routes/payments.ts]",
+      "$15 for 3 officials [evidence: apps/api/src/routes/payments.ts]",
+      "$25 for all matched officials [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "marginFloor": "40% planned net margin floor [evidence: .planning/PROJECT.md; MASTER_PLAN.md]",
+    "breakEven": "$340/mo and about 25 Amplify submissions per month [evidence: MASTER_PLAN.md]"
+  },
+  "financialFigures": [
+    "$5 single tier [evidence: apps/api/src/routes/payments.ts]",
+    "$15 three-pack tier [evidence: apps/api/src/routes/payments.ts]",
+    "$25 full-spread tier [evidence: apps/api/src/routes/payments.ts]",
+    "$200/mo planned fixed costs [evidence: MASTER_PLAN.md]",
+    "$340/mo modeled break-even [evidence: MASTER_PLAN.md]",
+    "$24,000 month-24 revenue scenario [evidence: MASTER_PLAN.md]"
+  ],
+  "percentFigures": [
+    "40% margin floor [evidence: .planning/PROJECT.md]",
+    "92% direct gross margin model [evidence: MASTER_PLAN.md]",
+    "85% inbox-placement validation gate [evidence: .planning/PROJECT.md]",
+    "3% preview-to-payment validation gate [evidence: .planning/PROJECT.md]",
+    "0.5% chargeback target [evidence: .planning/PROJECT.md]"
+  ],
+  "competition": [
+    "Resistbot [evidence: MASTER_PLAN.md; assumption: current claims not externally verified]",
+    "Change.org [evidence: MASTER_PLAN.md; assumption: current claims not externally verified]",
+    "LegalZoom [evidence: MASTER_PLAN.md; assumption: current claims not externally verified]",
+    "Manual official contact forms/email [assumption: common free substitute]",
+    "Quorum and VoterVoice [evidence: .planning/PROJECT.md; assumption: current pricing/features not externally verified]"
+  ],
+  "risksAntiPlan": [
+    "Consumer willingness to pay may be too low versus free email/contact forms.",
+    "Official email coverage is incomplete: Congress.gov implementation leaves email blank and local lookup is stubbed [evidence: code].",
+    ".gov deliverability may fail the paid-delivery promise.",
+    "Legal/compliance review is not evidenced; product touches sensitive political and legal-adjacent speech.",
+    "Roadmap and state docs conflict, so operator should distrust completion checkboxes until staging verification."
+  ],
+  "assumptionLedger": [
+    {
+      "assumption": "Users will pay $5-$25 for cited civic letters [assumption: unvalidated willingness to pay].",
+      "test": "Measure 3% preview-to-payment conversion [evidence: .planning/PROJECT.md].",
+      "owner": "operator"
+    },
+    {
+      "assumption": "Official targeting can cover enough federal/state/local recipients [assumption: API coverage unproven].",
+      "test": "Sample 50 ZIP codes [assumption: early coverage test].",
+      "owner": "operator"
+    },
+    {
+      "assumption": "Delivery works for government inboxes [assumption: deliverability unproven].",
+      "test": "Measure 85% inbox placement [evidence: .planning/PROJECT.md].",
+      "owner": "operator"
+    }
+  ],
+  "goToMarket": {
+    "motion": "operator-led beta before SEO",
+    "firstCohort": "25-50 known early users [assumption: controlled beta size]",
+    "channels": [
+      "housing/environment/public-safety issue cohorts [evidence: apps/worker/src/lib/legal/state-cache.ts]",
+      "operator network outreach [assumption: no paid acquisition evidence]",
+      "SEO only after delivery proof [evidence: MASTER_PLAN.md]"
+    ]
+  },
+  "risks": {
+    "holes": [
+      "No real conversion data.",
+      "No production deliverability proof.",
+      "No legal review memo."
+    ],
+    "mitigations": [
+      "Controlled beta with explicit conversion gate.",
+      "Seeded deliverability tests before open launch.",
+      "Operator/counsel review of terms, disclosures, opt-out, and letter framing."
+    ],
+    "residualRisks": [
+      "Civic/political content may trigger provider risk review.",
+      "Official contact data may decay faster than cache refresh.",
+      "AI citation pipeline may still miss nuanced legal context."
+    ]
+  },
+  "docDates": {
+    "business": "2026-06-19 [evidence: BUSINESS.md]",
+    "roadmap": "2026-06-19 [evidence: ROADMAP.md]",
+    "decisions": "2026-06-19 [evidence: DECISIONS.md]"
+  },
+  "docStructure": {
+    "businessHeadings": [
+      "Snapshot Thesis",
+      "Evidence Base and Honesty Labels",
+      "Customer Definition",
+      "Product Reality",
+      "Market Sizing",
+      "Revenue Model and Pricing",
+      "Financial Model",
+      "Go To Market",
+      "Competition",
+      "Risks and Anti-Plan",
+      "Assumption Ledger",
+      "Milestones and Gates",
+      "Surprise Spikes",
+      "Recommendation"
+    ],
+    "roadmapHasBuildableShape": true,
+    "decisionsEntryAppended": true
+  },
+  "roadmapBuildableShape": {
+    "path": "ROADMAP.md",
+    "checkboxCount": "8 [evidence: ROADMAP.md]",
+    "singleWorkerSized": true,
+    "traceableToBusinessHeadings": true
+  },
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "operatorQuestions": [
+    "Should registry continue presenting this as a personal/research asset or allow a business pitch?",
+    "Should public identity be brooks-history or CivicState?",
+    "Who reviews legal/compliance posture before public launch?"
+  ]
+}
