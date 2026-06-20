@@ -1,0 +1,12 @@
+{
+  "currentThesis": "CivicState will be worth building only if ordinary U.S. residents will pay for a citation-backed, jurisdiction-aware civic letter workflow that converts a specific complaint into verified official outreach faster than they can research, draft, and route it themselves.",
+  "identityConstraints": [
+    "CivicState will not provide legal advice or legal filings.",
+    "CivicState will not become a petitions, crowdfunding, or social-network product before the paid letter workflow is proven.",
+    "CivicState will not claim production-grade deliverability, official coverage, or legal safety without operator-reviewed evidence.",
+    "CivicState will not build an independent long-term auth, billing, or identity chassis if WrkPlug becomes the portfolio standard."
+  ],
+  "reviewedAt": "2026-06-20",
+  "reviewedBy": "wrk.dog EIR",
+  "verdict": "refreshed"
+}
