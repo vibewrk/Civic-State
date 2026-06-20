@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "$schema": "schemas/business-plan-gate.v1.schema.json",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history",
+    "productName": "CivicState"
+  },
+  "status": "draft",
+  "directive": "Use BUSINESS.md as the current EIR soul draft, but do not present this as operator-approved or investible until validation gates clear.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12 [evidence: dispatch gate instruction]; see the PR's POM record",
+  "snapshot": "CivicState is a buildable civic-letter product, but remains watchlist until paid demand and delivery prove out.",
+  "one_liner": "CivicState is buildable, but remains watchlist until paid demand and delivery prove out.",
+  "research": {
+    "mode": "workspace-only",
+    "sources": [
+      "BUSINESS.md [evidence]",
+      "ROADMAP.md [evidence]",
+      "DECISIONS.md [evidence]",
+      "MASTER_PLAN.md [evidence]",
+      ".planning/PROJECT.md [evidence]",
+      ".planning/GENESIS.md [evidence]",
+      ".planning/REQUIREMENTS.md [evidence]",
+      ".planning/ROADMAP.md [evidence]",
+      ".planning/existing-state.md [evidence]",
+      "apps/api/src/routes/payments.ts [evidence]",
+      "apps/api/src/routes/submissions.ts [evidence]",
+      "apps/worker/src/agents/researcher.ts [evidence]",
+      "packages/shared/prisma/schema.prisma [evidence]",
+      "registry note from dispatch [evidence]"
+    ],
+    "methods": [
+      "Read existing planning and product specification files.",
+      "Inspected code paths for product reality versus roadmap claims.",
+      "Labeled all external market and financial claims as assumptions because network access was unavailable."
+    ]
+  },
+  "planningMethod": "Bottom-up EIR diligence: preserve true repo signal, separate evidence from assumptions, reconcile financial model from pricing tiers, and turn roadmap into validation work.",
+  "customer": {
+    "definition": "US resident with a specific civic frustration who wants help researching, drafting, routing, and sending constituent communications [evidence: .planning/PROJECT.md]",
+    "validationStatus": "Unvalidated; no workspace evidence of paying users, live traffic, revenue, or official response data [evidence: .planning/existing-state.md and absence of production metrics]",
+    "firstCohort": "100 paid submissions [assumption: minimum directional validation cohort]"
+  },
+  "market": {
+    "method": "Bottom-up issue-event model because no external market research was available.",
+    "candidateIssueEvents": "10,000,000 per year [assumption: offline EIR placeholder]",
+    "payReadyPenetration": "2% [assumption: conservative penetration placeholder]",
+    "payReadyJobs": "200,000 per year [assumption: 10,000,000 x 2%]",
+    "blendedPrice": "$13 [assumption: mix of $5, $15, and $25 repo tiers]",
+    "sam": "$2,600,000 annually [assumption: 200,000 x $13]",
+    "nearTermSom": "$156,000 annually [assumption: 12,000 paid jobs x $13]"
+  },
+  "businessModel": {
+    "streams": [
+      "$5 single official letter package [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three-official package [evidence: apps/api/src/routes/payments.ts]",
+      "$25 full-spread package [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "marginFloor": "40% net margin floor after fees [evidence: .planning/PROJECT.md and MASTER_PLAN.md]",
+    "baseBlendedPrice": "$13 [assumption: pricing mix]",
+    "baseVariableCost": "$0.90 per paid submission [assumption: no vendor invoices in workspace]",
+    "launchConstraint": "Paid acquisition should remain deferred until conversion is proven [assumption: low-ticket economics]"
+  },
+  "financialModel": {
+    "horizon": "2026-07-01 through 2029-06-30 [assumption: EIR planning horizon]",
+    "revenueAssumptions": [
+      "Year ending 2027-06-30: 1,200 paid submissions x $13 = $15,600 [assumption]",
+      "Year ending 2028-06-30: 6,000 paid submissions x $13 = $78,000 [assumption]",
+      "Year ending 2029-06-30: 18,000 paid submissions x $13 = $234,000 [assumption]"
+    ],
+    "costAssumptions": [
+      "$0.90 variable cost per paid submission [assumption]",
+      "$5,400 first-year fixed cash cost [assumption]",
+      "$24,000 first-year operator labor allocation [assumption]"
+    ],
+    "sensitivityTests": [
+      "50% lower first-year volume creates $7,800 revenue [assumption]",
+      "$9 blended price creates $162,000 third-year revenue [assumption]",
+      "$3 variable cost creates $54,000 third-year variable cost [assumption]"
+    ],
+    "reconciliation": "Each revenue line is paid submissions multiplied by blended price; each variable-cost line is paid submissions multiplied by $0.90 [assumption]."
+  },
+  "competition": {
+    "alternatives": [
+      "Resistbot [assumption: category reference]",
+      "Change.org [assumption: category reference]",
+      "Quorum [assumption: category reference]",
+      "VoterVoice [assumption: category reference]",
+      "LegalZoom [assumption: category reference]",
+      "Manual email or phone calls [assumption: substitute workflow]"
+    ],
+    "positioning": "Research-backed, cited, paid, tracked constituent letters for individuals rather than petitions, enterprise advocacy software, or legal advice."
+  },
+  "alternatives": [
+    "Manual direct outreach by citizens [assumption: substitute workflow]",
+    "Existing civic messaging or petition platforms [assumption: category substitute]",
+    "Legal document services for users who misclassify the job as legal help [assumption: adjacent substitute]"
+  ],
+  "antiPlan": {
+    "holes": [
+      "No paid demand evidence in the workspace [evidence: no production metrics file and .planning/existing-state.md]",
+      "Low blended price leaves little room for paid acquisition [assumption: $13 modeled price]",
+      "Official email deliverability may fail despite product quality [assumption: deliverability risk]",
+      "Legal-adjacent content may require more review than one operator can handle [assumption: operating risk]"
+    ],
+    "mitigations": [
+      "Run a concierge beta before scaling automation [assumption: validation method]",
+      "Keep paid acquisition deferred until conversion is proven [assumption: economic guardrail]",
+      "Use domain warming, bounce monitoring, and opt-out suppression [evidence: .planning/REQUIREMENTS.md]",
+      "Keep citation verification and human-review flags mandatory [evidence: apps/worker/src/agents/researcher.ts]"
+    ],
+    "residualRisks": [
+      "Users may value the result but not pay repeatedly [assumption]",
+      "Government servers may silently filter messages [assumption]",
+      "The project identity mismatch may make the dossier misleading [evidence: dispatch project id versus repo product files]"
+    ]
+  },
+  "strategy": {
+    "posture": "Watchlist research asset until validation proves a business case [evidence: registry note]",
+    "focus": "Validate payment conversion, delivery, citation quality, and operator workload before adding speculative features.",
+    "moat": "Potential official-directory, citation-library, and public-campaign archive assets; weak until real submission volume accumulates [evidence: .planning/GENESIS.md]"
+  },
+  "goToMarket": {
+    "firstWedge": "Concierge beta plus narrow issue pages [assumption: EIR GTM model]",
+    "targets": [
+      "20 completed campaigns by 2026-08-31 [assumption]",
+      "100 paid submissions by 2026-09-30 [assumption]",
+      "3% payment conversion gate [evidence: .planning/PROJECT.md]",
+      "85% delivery proxy gate [evidence: .planning/PROJECT.md]"
+    ],
+    "deferred": "Paid ads, organization/API sales, certified mail, fax, multilingual support, and coalition features stay deferred [evidence: MASTER_PLAN.md and .planning/REQUIREMENTS.md]"
+  },
+  "operatorWorkflow": {
+    "routine": "Monitor flagged submissions, delivery failures, treasury reconciliation, and official-directory maintenance [evidence: .planning/PROJECT.md and apps/api/src/routes/admin.ts]",
+    "manualLimit": "30 minutes per day target [evidence: .planning/PROJECT.md]",
+    "decisionNeeded": "Operator must decide whether brooks-history should pitch CivicState as a business [evidence: registry note]"
+  },
+  "constraints": [
+    "Workspace-only; no network research was used [evidence: dispatch instruction]",
+    "External market claims are assumptions [evidence: dispatch instruction]",
+    "Registry note says watchlist/personal-research, not near-term investible BOS [evidence: registry note]",
+    "Legal-adjacent product; do not invent legal conclusions [evidence: dispatch sensitivity instruction]",
+    "Current product uses app-specific auth, billing, and delivery rails [evidence: code inspection]"
+  ],
+  "metrics": [
+    "Paid submissions [assumption: primary business metric]",
+    "Payment conversion percentage [assumption: demand metric]",
+    "Delivery success or inbox-placement proxy [assumption: deliverability metric]",
+    "Citation verification failure rate [assumption: quality metric]",
+    "Manual review minutes per day [assumption: operator metric]",
+    "Refund and chargeback rate [assumption: trust metric]"
+  ],
+  "aiWorkGovernance": {
+    "citationPolicy": "Researcher may only cite supplied search results and strips unverified citations [evidence: apps/worker/src/agents/researcher.ts]",
+    "moderationPolicy": "Threats are blocked, defamation-risk content is flagged, and moderation is audit-logged [evidence: apps/api/src/routes/submissions.ts and .planning/REQUIREMENTS.md]",
+    "disclosurePolicy": "AI disclosure and not-legal-advice posture are required in planning [evidence: .planning/REQUIREMENTS.md]"
+  },
+  "unknowns": [
+    "Whether users will pay at the modeled prices [assumption]",
+    "Whether official lookup coverage is sufficient locally [assumption]",
+    "Whether deliverability clears the planned gate [assumption]",
+    "Whether legal review permits the launch posture [assumption]",
+    "Whether WrkPlug migration is desired [assumption]"
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Users will pay for researched civic letters.",
+      "basis": "Product thesis in planning files.",
+      "label": "[assumption: no paying-user evidence]",
+      "test": "100 paid submissions by 2026-09-30 [assumption]"
+    },
+    {
+      "claim": "The $13 blended price is viable [assumption: tier mix].",
+      "basis": "$5, $15, and $25 tiers in code [evidence: apps/api/src/routes/payments.ts].",
+      "label": "[assumption: tier mix; evidence for raw tiers]",
+      "test": "Actual tier mix after first 100 paid submissions [assumption]"
+    },
+    {
+      "claim": "Email-only launch is adequate.",
+      "basis": "Master plan defers physical mail and fax.",
+      "label": "[evidence: MASTER_PLAN.md]",
+      "test": "85% delivery proxy gate [evidence: .planning/PROJECT.md]"
+    },
+    {
+      "claim": "Organic/community acquisition can work.",
+      "basis": "Public campaign archive and narrow issue pages.",
+      "label": "[assumption: no search-console evidence]",
+      "test": "Tracked paid submissions from issue pages by 2026-09-30 [assumption]"
+    },
+    {
+      "claim": "One operator can manage exceptions.",
+      "basis": "Genesis and project constraints.",
+      "label": "[evidence: .planning/GENESIS.md; assumption until beta]",
+      "test": "Manual review under 30 minutes per day [evidence: .planning/PROJECT.md]"
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-20 [evidence: dispatch current_date]",
+      "change": "Created EIR soul upgrade and gate artifacts.",
+      "author": "wrk.dog fleet worker"
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "next": "Use ROADMAP.md Buildable Next Steps to create validation evidence before claiming approved-for-roadmap."
+  }
+}

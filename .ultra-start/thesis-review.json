@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "wrk.thesis-review.v1",
+  "projectId": "brooks-history",
+  "productName": "CivicState",
+  "status": "draft",
+  "asOf": "2026-06-20 [evidence: dispatch current_date]",
+  "one_liner": "Buildable civic-letter product; not investible until demand, delivery, and legal posture prove out.",
+  "currentThesis": "CivicState can become a small paid civic-letter service if users pay for researched constituent communications and official delivery works reliably [assumption: EIR synthesis].",
+  "verdict": "Watchlist. Treat as personal/research asset until operator confirms business posture and market validation clears [evidence: registry note].",
+  "evidence": [
+    "Registry note says watchlist and personal/research asset, not near-term investible BOS [evidence: dispatch]",
+    "Repo contains CivicState product implementation skeleton across apps/api, apps/web, apps/worker, and packages/shared [evidence: code inspection]",
+    "Pricing tiers are $5, $15, and $25 [evidence: apps/api/src/routes/payments.ts]",
+    "Validation gates include 3% conversion and 85% deliverability [evidence: .planning/PROJECT.md]"
+  ],
+  "assumptions": [
+    "10,000,000 annual civic issue-events is an offline placeholder [assumption: no network research]",
+    "2% pay-ready penetration is a conservative validation model [assumption: no market study]",
+    "$13 blended price is a tier-mix assumption [assumption: no transaction history]",
+    "$0.90 variable cost is a placeholder [assumption: no invoices in workspace]"
+  ],
+  "tests": [
+    "Operator identity decision by 2026-07-03 [assumption: governance checkpoint]",
+    "20 completed campaigns by 2026-08-31 [assumption: beta checkpoint]",
+    "100 paid submissions by 2026-09-30 [assumption: demand checkpoint]",
+    "3% payment conversion by 2026-09-30 [evidence: .planning/PROJECT.md gate]",
+    "85% delivery proxy by 2026-09-30 [evidence: .planning/PROJECT.md gate]"
+  ],
+  "operatorQuestions": [
+    "Should brooks-history present CivicState as a business, or remain a research asset?",
+    "Should auth, billing, and identity stay app-owned or move toward WrkPlug shared rails?",
+    "What legal review is required before sending constituent letters at production volume?"
+  ],
+  "linkedArtifacts": [
+    "BUSINESS.md",
+    "ROADMAP.md",
+    "DECISIONS.md",
+    ".ultra-start/business-plan.json"
+  ]
+}
