@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "wrk.eir.gate.v1",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "seed": "BUSINESS.md"
+  },
+  "oneLine": "CivicState has code, not proof; brooks-history identity mismatch blocks investibility.",
+  "status": "proposed",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+  "generatedAt": "2026-06-20T00:00:00-04:00 [evidence: dispatch current_date/timezone]",
+  "sourcesAndMethods": [
+    {
+      "source": "dispatch wrapper",
+      "method": "Used project id, registry sensitivity, scrutiny gaps, workspace-only constraints, and current date as evidence."
+    },
+    {
+      "source": "MASTER_PLAN.md",
+      "method": "Extracted CivicState thesis, pricing, financial assumptions, competition, compliance boundaries, and unit economics."
+    },
+    {
+      "source": ".planning/*.md",
+      "method": "Compared PROJECT, GENESIS, REQUIREMENTS, ROADMAP, STATE, and existing-state for current narrative and contradictions."
+    },
+    {
+      "source": "apps and packages source files",
+      "method": "Inspected Next.js page, Express routes, Prisma schema, and worker agents to distinguish implemented surfaces from aspiration."
+    }
+  ],
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "currentThesis": {
+    "summary": "CivicState may be a small paid constituent-letter workflow business if users pay and delivery works; the dispatch/repo identity mismatch prevents an investible claim today.",
+    "honestyLabel": "[evidence: BUSINESS.md; dispatch registry note]"
+  },
+  "businessModel": {
+    "customer": "US resident with a specific civic issue and low willingness to do official lookup, legal research, drafting, and delivery manually [evidence: .planning/GENESIS.md]",
+    "pricing": "$5 / $15 / $25 one-time packages [evidence: apps/api/src/routes/payments.ts]",
+    "revenueType": "transactional, not subscription [evidence: MASTER_PLAN.md]",
+    "grossMarginTarget": "85.1% to 92.0% contribution margin range in the upgraded model [assumption/evidence mixed: BUSINESS.md financial table]"
+  },
+  "financials": {
+    "fixedCostsMonthly": "$200/mo [evidence: MASTER_PLAN.md]",
+    "breakEven": "$340 MRR and about 25 Amplify submissions/month [evidence: MASTER_PLAN.md]",
+    "reserveRequirement": "$1,500 Mercury reserve [evidence: MASTER_PLAN.md]",
+    "knownWeakness": "Human review cost is not proven and could materially reduce contribution margin [assumption: BUSINESS.md]"
+  },
+  "marketSizing": {
+    "method": "bottom-up paid submissions times average revenue per submission",
+    "launchReachable": "400 submissions/month times $18 ARPS equals $7,200/month [assumption: MASTER_PLAN.md scenario, not external evidence]",
+    "nicheUpside": "1,200 submissions/month times $20 ARPS equals $24,000/month [assumption: MASTER_PLAN.md scenario, not external evidence]",
+    "vcScaleVerdict": "not venture-scale on workspace evidence alone"
+  },
+  "competition": [
+    "Resistbot [assumption: model knowledge; named in MASTER_PLAN.md]",
+    "Change.org [assumption: model knowledge; named in MASTER_PLAN.md]",
+    "LegalZoom [assumption: model knowledge; named in MASTER_PLAN.md]",
+    "Quorum / VoterVoice [assumption: model knowledge from .planning/PROJECT.md context]",
+    "manual resident outreach [evidence: .planning/GENESIS.md]"
+  ],
+  "risks": [
+    "Project identity mismatch: dispatch says brooks-history, repo says CivicState [evidence: dispatch; package.json].",
+    "Registry says personal/research asset and not near-term investible BOS [evidence: dispatch registry note].",
+    "No repo evidence of paying customers or live production revenue [evidence: .planning/existing-state.md].",
+    "Government email deliverability and official contact coverage are unvalidated [assumption: no live evidence in workspace].",
+    "Compliance route appears to reference fields absent from Prisma models [evidence: apps/api/src/routes/compliance.ts; packages/shared/prisma/schema.prisma]."
+  ],
+  "holesMitigationsResidualRisks": [
+    {
+      "hole": "Identity and registry mismatch",
+      "mitigation": "Require operator ruling before wrk.vc publication.",
+      "residualRisk": "The correct asset may not be CivicState."
+    },
+    {
+      "hole": "No market proof",
+      "mitigation": "Run paid beta with explicit conversion and refund tracking.",
+      "residualRisk": "Residents may not pay even if the workflow works."
+    },
+    {
+      "hole": "Delivery/compliance fragility",
+      "mitigation": "Smoke test Postmark, opt-out, suppression, and compliance routes before launch.",
+      "residualRisk": "Official complaints or spam filtering may make email-only delivery nonviable."
+    }
+  ],
+  "roadmap": {
+    "path": "ROADMAP.md",
+    "buildableShape": "8 unchecked single-worker items aligned to BUSINESS.md headings [evidence: ROADMAP.md]"
+  },
+  "decisions": {
+    "path": "DECISIONS.md",
+    "latestEntry": "2026-06-20 — EIR soul upgrade (wrk.dog)"
+  },
+  "freshness": {
+    "asOf": "2026-06-20 [evidence: dispatch current_date]",
+    "staleInputs": [
+      "MASTER_PLAN.md Version 2.1 from March 2026 [evidence: MASTER_PLAN.md]",
+      ".planning files dated 2026-04-25 [evidence: .planning/PROJECT.md; .planning/ROADMAP.md; .planning/STATE.md]"
+    ],
+    "networkResearch": "not used; workspace-only mode"
+  },
+  "operatorAdoption": {
+    "claim": "not adopted",
+    "reason": "Status remains proposed until operator merge upgrades authority."
+  }
+}
