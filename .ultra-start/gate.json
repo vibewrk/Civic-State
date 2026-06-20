@@ -1,0 +1,224 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "productNameInRepo": "CivicState",
+    "identityConcern": "Registry names brooks-history, while repo content describes CivicState."
+  },
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history"
+  },
+  "status": "proposed",
+  "authority": "watchlist",
+  "thesis": "CivicState could sell researched official letters, but only after paid beta and .gov delivery proof.",
+  "adoptionMechanism": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+  "adoptionMechanismEvidence": "[evidence: dispatch brief supplied the operator-ruling note]",
+  "evidenceBasis": {
+    "mode": "workspace_only_no_network",
+    "methods": [
+      "Read registry dispatch and scrutiny gaps supplied to worker.",
+      "Read MASTER_PLAN.md and .planning/*.md business/planning sources.",
+      "Inspected app, API, worker, shared schema, and tests for implemented surfaces.",
+      "Created assumption-led financial and market model because external research was unavailable."
+    ],
+    "sources": [
+      {
+        "path": "MASTER_PLAN.md",
+        "use": "Original CivicState product, architecture, pricing, and unit economics plan."
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "use": "Current product definition, market verdict, validation gates, constraints, and decisions."
+      },
+      {
+        "path": ".planning/REQUIREMENTS.md",
+        "use": "Feature requirement state and compliance/delivery gates."
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "use": "Existing four-phase roadmap and completed-phase claim."
+      },
+      {
+        "path": ".planning/STATE.md",
+        "use": "Conflicting phase state indicating only foundation completion."
+      },
+      {
+        "path": "apps/api/src/routes/payments.ts",
+        "use": "Implemented pricing tiers and Stripe Checkout workflow."
+      },
+      {
+        "path": "packages/shared/prisma/schema.prisma",
+        "use": "Implemented data model."
+      },
+      {
+        "path": "tests/payment.test.ts",
+        "use": "Pricing and margin assertions."
+      },
+      {
+        "path": "dispatch registry notes",
+        "use": "Watchlist status, personal/research sensitivity, and thin-soul warning."
+      }
+    ]
+  },
+  "asOf": "2026-06-20 [evidence: runtime dispatch]",
+  "freshness": {
+    "currentThrough": "2026-06-20 [evidence: runtime dispatch]",
+    "staleSources": [
+      ".planning/existing-state.md says zero application code, but apps/ and packages/ now exist.",
+      ".planning/ROADMAP.md says all phases complete, while .planning/STATE.md says only foundation is complete."
+    ],
+    "refreshRequiredBefore": "Any investment, fundraising, public dossier, or operator adoption decision."
+  },
+  "documents": {
+    "business": "BUSINESS.md",
+    "roadmap": "ROADMAP.md",
+    "decisions": "DECISIONS.md",
+    "gate": ".ultra-start/gate.json"
+  },
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "customerDefinition": {
+    "primaryCustomer": "Individual United States residents with concrete civic issues.",
+    "nonCustomers": [
+      "Government officials",
+      "Law firms",
+      "Lobbying firms",
+      "Enterprise advocacy teams",
+      "Nonprofits as launch buyers"
+    ],
+    "honesty": "[evidence: .planning/PROJECT.md; MASTER_PLAN.md]"
+  },
+  "revenueModel": {
+    "type": "transactional one-time letter packages",
+    "implementedPricing": [
+      "$5.00 single official [evidence: apps/api/src/routes/payments.ts]",
+      "$15.00 three officials [evidence: apps/api/src/routes/payments.ts]",
+      "$25.00 all matched officials [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "deferredRevenue": [
+      "Subscriptions [evidence: MASTER_PLAN.md]",
+      "Organization API [evidence: .planning/PROJECT.md]",
+      "Certified mail [evidence: MASTER_PLAN.md]",
+      "Crowdfunding adjacency [evidence: MASTER_PLAN.md]"
+    ]
+  },
+  "marketSizing": {
+    "method": "bottom_up_assumption_led",
+    "validationMarket": "500 qualified visitors x 3% paid conversion x $15.00 AOV = $225.00 monthly revenue [assumption: beta traffic model; conversion gate from .planning/PROJECT.md; price from code]",
+    "nearTermOperatingMarket": "10 metros x 2,000 qualified visitors x 3% paid conversion x $16.00 AOV = $9,600.00 monthly revenue [assumption: expansion model; AOV from MASTER_PLAN.md]",
+    "tamConclusion": "Not VC-scale until distribution and higher-value segments are proven [assumption: diligence judgment]."
+  },
+  "financialModel": {
+    "modeledFirstYearRevenue": "$42,360.00 [assumption: BUSINESS.md financial table]",
+    "modeledFirstYearOperatingContribution": "$34,876.80 [assumption: BUSINESS.md financial table]",
+    "fixedCost": "$200.00 per month [evidence: MASTER_PLAN.md]",
+    "variableCogs": "8% of revenue [evidence: MASTER_PLAN.md]",
+    "stripeFees": "4% of revenue [evidence: MASTER_PLAN.md]",
+    "marginFloor": "40% net margin floor [evidence: MASTER_PLAN.md; .planning/PROJECT.md]"
+  },
+  "competition": [
+    "Resistbot [assumption: category competitor; not externally verified in workspace]",
+    "Change.org [assumption: category competitor; not externally verified in workspace]",
+    "Quorum [assumption: enterprise advocacy competitor; not externally verified in workspace]",
+    "VoterVoice [assumption: enterprise advocacy competitor; not externally verified in workspace]",
+    "LegalZoom [assumption: adjacent document trust competitor; not externally verified in workspace]"
+  ],
+  "goToMarket": {
+    "initialMotion": "Constrained metro beta before broad SEO claims.",
+    "distributionHypothesis": "Opt-in public campaign pages and civic reference content can compound through SEO [evidence: .planning/GENESIS.md] [assumption: unproven traffic channel].",
+    "doNotUseYet": [
+      "Paid ads",
+      "Partnership-led organization sales",
+      "Subscriptions",
+      "Coalition/community mechanics"
+    ]
+  },
+  "risksAntiPlan": {
+    "holes": [
+      "Project identity may be wrong: brooks-history registry versus CivicState repo.",
+      "No production traction, revenue, or deployment metrics were found.",
+      "Government inbox deliverability may fail even if drafting works.",
+      "Official data coverage, especially local coverage, may be insufficient.",
+      "Legal-adjacent content may create manual review burden and liability risk."
+    ],
+    "mitigations": [
+      "Require operator ruling before public business pitch.",
+      "Run paid beta with measured Stripe, Postmark, and official lookup outputs.",
+      "Keep legal advice, filings, lobbying, subscriptions, and public social features out of launch.",
+      "Instrument moderation queue depth and operator time.",
+      "Refresh stale planning files after validation."
+    ],
+    "residualRisks": [
+      "Low-dollar transactional model may stay owner-operated rather than venture-scale.",
+      "SEO may take too long or fail to acquire qualified intent.",
+      "Compliance, chargebacks, or official opt-outs could make delivery economics worse than modeled."
+    ]
+  },
+  "assumptionLedger": [
+    {
+      "claim": "Residents will pay $5.00-$25.00 for civic letters [assumption: demand unvalidated; prices evidenced in code].",
+      "label": "[assumption: demand unvalidated; prices evidenced in code]",
+      "validation": "Measure paid beta conversion and refunds."
+    },
+    {
+      "claim": "3% paid conversion is achievable [assumption: validation gate from .planning/PROJECT.md, not actual metric].",
+      "label": "[assumption: validation gate from .planning/PROJECT.md, not actual metric]",
+      "validation": "Instrument visitor-to-paid funnel."
+    },
+    {
+      "claim": "85% government inbox placement is achievable [assumption: validation gate from .planning/PROJECT.md, not actual metric].",
+      "label": "[assumption: validation gate from .planning/PROJECT.md, not actual metric]",
+      "validation": "Run deliverability tests and Postmark event tracking."
+    },
+    {
+      "claim": "95% federal/state and 60% local official coverage is achievable [assumption: validation gate from .planning/PROJECT.md, not actual metric].",
+      "label": "[assumption: validation gate from .planning/PROJECT.md, not actual metric]",
+      "validation": "Evaluate official data providers against real ZIP samples."
+    }
+  ],
+  "honestyLabels": {
+    "required": true,
+    "policy": "Every quantitative business claim in the upgraded soul is labeled [evidence] or [assumption: basis]."
+  },
+  "roadmapBuildableShape": {
+    "path": "ROADMAP.md",
+    "checklistItems": "Seven checkbox items, each scoped to one worker-sized validation or reconciliation task [evidence: ROADMAP.md]."
+  },
+  "operatorRulingsNeeded": [
+    "Confirm whether brooks-history is intended to be CivicState.",
+    "Confirm whether this should pitch as a business or remain personal/research.",
+    "Confirm production deployment and metric sources, if any exist outside this workspace."
+  ],
+  "decision": {
+    "recommendation": "watchlist_continue_validation",
+    "doNotClaim": [
+      "adopted",
+      "investible",
+      "production traction",
+      "VC-scale TAM"
+    ],
+    "nextGate": "Operator identity ruling plus paid beta evidence."
+  }
+}
