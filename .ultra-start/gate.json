@@ -1,0 +1,222 @@
+{
+  "schemaVersion": "wrk-soul-gate-v1",
+  "project": {
+    "id": "brooks-history",
+    "repository": "RPLogic-Inc/brookss-history",
+    "seed": {
+      "path": "BUSINESS.md",
+      "id": "civicstate-business-plan"
+    }
+  },
+  "summary": "CivicState is a built-but-unvalidated paid civic-letter workflow; continue only through measured beta.",
+  "status": "provisional",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+  "authorityEvidence": "[evidence: dispatch gate contract]",
+  "createdAt": "2026-06-20",
+  "updatedAt": "2026-06-20",
+  "reviewDate": "2026-06-20",
+  "workerEnvelopeDate": "2026-06-19",
+  "dateEvidence": {
+    "createdAt": "[evidence: assistant runtime]",
+    "updatedAt": "[evidence: assistant runtime]",
+    "reviewDate": "[evidence: assistant runtime]",
+    "workerEnvelopeDate": "[evidence: dispatch context]",
+    "operatorRulingDate": "[evidence: dispatch gate contract]"
+  },
+  "honestyLabels": {
+    "evidence": "A claim traceable to repo, dispatch, registry, or inspected code files.",
+    "assumption": "A claim modeled from repo context or general reasoning without external research in workspace-only mode."
+  },
+  "thesis": {
+    "current": "CivicState may become a transactional civic-advocacy product if the paid letter loop validates, but it is not yet investible.",
+    "label": "[evidence: BUSINESS.md; registry note in dispatch]",
+    "operatorSensitivity": "Registry notes call this a personal/research asset and ask whether it should pitch as a business."
+  },
+  "methods": [
+    {
+      "name": "Repo document review",
+      "sources": [
+        "MASTER_PLAN.md",
+        ".planning/PROJECT.md",
+        ".planning/REQUIREMENTS.md",
+        ".planning/GENESIS.md",
+        ".planning/STATE.md",
+        ".planning/ROADMAP.md"
+      ]
+    },
+    {
+      "name": "Code reality check",
+      "sources": [
+        "apps/web/app/submit/page.tsx",
+        "apps/api/src/routes/submissions.ts",
+        "apps/api/src/routes/payments.ts",
+        "apps/api/src/routes/officials.ts",
+        "apps/api/src/routes/webhooks.ts",
+        "apps/worker/src/agents/researcher.ts",
+        "apps/worker/src/agents/delivery.ts",
+        "packages/shared/prisma/schema.prisma"
+      ]
+    },
+    {
+      "name": "Workspace-only modeling",
+      "sources": [
+        "No network research used; external market claims are marked as assumptions."
+      ]
+    }
+  ],
+  "scrutinyGapsFixed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "customerDefinition": {
+    "primary": "US resident with a specific civic issue who needs official lookup, citation-backed drafting, and delivery help.",
+    "excluded": [
+      "Legal claimants seeking filings or demand letters",
+      "Commercial lobbying users",
+      "Harassment, defamation, or bulk-send campaigns"
+    ],
+    "label": "[evidence: BUSINESS.md; MASTER_PLAN.md]"
+  },
+  "businessModel": {
+    "type": "Transactional paid letter packages",
+    "pricing": [
+      {
+        "tier": "single",
+        "price": "$5",
+        "label": "[evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "tier": "three_pack",
+        "price": "$15",
+        "label": "[evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "tier": "full_spread",
+        "price": "$25",
+        "label": "[evidence: apps/api/src/routes/payments.ts]"
+      }
+    ],
+    "deferred": [
+      "Organization API",
+      "Certified mail",
+      "Fax",
+      "Public campaign SEO",
+      "Dynamic pricing"
+    ]
+  },
+  "marketSizing": {
+    "method": "Bottom-up funnel model because workspace-only mode prevents fresh external market research.",
+    "validationWedge": {
+      "visitsPerMonth": "1,000 [assumption: small pilot]",
+      "paidConversion": "3% [assumption: planning target]",
+      "arpu": "$15 [assumption: implemented tier blend]",
+      "annualRevenue": "$5,400 [assumption: BUSINESS.md model]"
+    },
+    "ventureThreshold": {
+      "annualRevenueGoal": "$10,000,000 [assumption: stress-test threshold]",
+      "ordersRequired": "666,667/year [assumption: annualRevenueGoal / $15 ARPU]"
+    }
+  },
+  "financialModel": {
+    "arpu": "$15 [assumption: implemented tier blend]",
+    "variableCostPerOrder": "$1.64 [assumption: modeled fees plus AI/email/lookup]",
+    "contributionPerOrder": "$13.36 [assumption: $15 - $1.64]",
+    "baselineFixedCost": "$96/month [evidence: MASTER_PLAN.md]",
+    "fullerInfraCost": "$183/month [assumption: $96 + $50 + $25 + $12 from MASTER_PLAN.md]",
+    "breakEvenBaseline": "8 orders/month [assumption: $96 / $13.36 rounded up]"
+  },
+  "competition": [
+    {
+      "name": "Resistbot",
+      "position": "Low-friction constituent messaging",
+      "label": "[assumption: characterization from prior plan; no network research]"
+    },
+    {
+      "name": "Change.org",
+      "position": "Petition hosting and signature aggregation",
+      "label": "[assumption: characterization from prior plan; no network research]"
+    },
+    {
+      "name": "Quorum",
+      "position": "Organization-facing advocacy software",
+      "label": "[assumption: category from planning docs; no network research]"
+    },
+    {
+      "name": "VoterVoice",
+      "position": "Organization-facing advocacy software",
+      "label": "[assumption: category from planning docs; no network research]"
+    },
+    {
+      "name": "Manual outreach",
+      "position": "Free direct email or phone call to officials",
+      "label": "[evidence: MASTER_PLAN.md]"
+    }
+  ],
+  "risks": {
+    "holes": [
+      {
+        "hole": "No evidence of real paid conversion.",
+        "mitigation": "Run beta funnel and record preview, pay-click, paid, delivered, bounced, and reply events.",
+        "residualRisk": "Civic frustration may not convert into low-ticket purchases."
+      },
+      {
+        "hole": "No evidence of government-domain deliverability.",
+        "mitigation": "Seed delivery tests, monitor bounce/spam, and pause domains above threshold.",
+        "residualRisk": "Official inboxes may block or ignore AI-assisted letters."
+      },
+      {
+        "hole": "Local official coverage unresolved.",
+        "mitigation": "Run provider evaluation and compare ZIP results against manual lookup.",
+        "residualRisk": "Poor local coverage weakens the core promise."
+      },
+      {
+        "hole": "Legal/compliance posture unvalidated.",
+        "mitigation": "Get qualified review of disclaimers, AI disclosure, CAN-SPAM, lobbying boundary, and moderation rules.",
+        "residualRisk": "Compliance overhead may exceed transaction economics."
+      }
+    ],
+    "antiPlan": "Do not expand into community, SEO archive, API, fax, certified mail, or autonomous follow-up until a paid email-only campaign validates end-to-end."
+  },
+  "assumptionLedger": [
+    "Users will pay $5-$25 for constituent letters [evidence: implemented tiers; demand unvalidated].",
+    "Preview-to-pay conversion can reach 3% [assumption: planning target].",
+    "Government-domain deliverability can reach 85% [assumption: planning target].",
+    "Local official coverage can reach 60% [assumption: planning target].",
+    "One operator can keep review under 30 minutes/day [evidence: planning constraint; unvalidated]."
+  ],
+  "roadmap": {
+    "path": "ROADMAP.md",
+    "nextBuildSliceCount": "7 checkbox items [evidence: ROADMAP.md]",
+    "shape": "Single-worker-sized validation tasks mapped to BUSINESS.md headings."
+  },
+  "adoption": {
+    "status": "provisional",
+    "requires": "Operator merge and later market evidence before investible status."
+  },
+  "freshness": {
+    "stalePlanResolved": "Older March and April planning artifacts are preserved but superseded by BUSINESS.md on 2026-06-20 [evidence: assistant runtime].",
+    "conflicts": [
+      ".planning/ROADMAP.md marks all phases complete on 2026-04-25 [evidence: .planning/ROADMAP.md].",
+      ".planning/STATE.md says only Foundation is complete.",
+      "Dispatch repo identity says brooks-history while repo evidence says CivicState."
+    ]
+  }
+}
