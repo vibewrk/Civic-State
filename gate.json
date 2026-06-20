@@ -1,0 +1,269 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "status": "draft",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "name": "CivicState",
+    "seed": {
+      "path": "BUSINESS.md",
+      "id": "BUSINESS.md"
+    }
+  },
+  "elevatorPitch": "CivicState drafts and delivers citation-backed civic letters, but remains watchlist until demand is proven.",
+  "authority": {
+    "level": "draft",
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record",
+    "operatorMergeRequired": true
+  },
+  "dates": {
+    "preparedOn": "2026-06-20",
+    "evidenceBaseline": "2026-04-25",
+    "termsPrivacyDateObserved": "2026-04-25"
+  },
+  "registryContext": {
+    "classification": "watchlist",
+    "sensitivity": "personal/research asset; not near-term investible BOS unless operator confirms business pitch",
+    "thinSoulBytes": "3168b"
+  },
+  "sourcesAndMethods": [
+    {
+      "source": "MASTER_PLAN.md",
+      "method": "read for product architecture, pricing, infrastructure costs, competition, and financial assumptions",
+      "label": "evidence"
+    },
+    {
+      "source": ".planning/PROJECT.md",
+      "method": "read for business profile, constraints, validation gaps, customer definition, and assumptions",
+      "label": "evidence"
+    },
+    {
+      "source": ".planning/ROADMAP.md",
+      "method": "read for inherited roadmap narrative and completion claims",
+      "label": "evidence"
+    },
+    {
+      "source": ".planning/REQUIREMENTS.md",
+      "method": "read for requirement status, compliance, delivery, financial controls, and deferred scope",
+      "label": "evidence"
+    },
+    {
+      "source": "packages/shared/prisma/schema.prisma",
+      "method": "read for implemented data model reality",
+      "label": "evidence"
+    },
+    {
+      "source": "apps/api and apps/worker selected files",
+      "method": "read for submissions, payments, officials, moderation, state machine, and researcher implementation",
+      "label": "evidence"
+    },
+    {
+      "source": "workspace-only runner",
+      "method": "no external market research; all external market claims marked as assumptions",
+      "label": "constraint"
+    }
+  ],
+  "thesis": {
+    "current": "Built-but-unvalidated civic correspondence product; watchlist research asset until paid demand and deliverability are proven.",
+    "investibility": "not_near_term_investible",
+    "whyNow": "[assumption: consumer demand for AI-assisted civic workflows is unvalidated in this workspace]",
+    "proofRequired": [
+      "paid conversion from preview to checkout",
+      "official email delivery outcomes",
+      "citation quality and review workload",
+      "operator confirmation that this should pitch as a business"
+    ]
+  },
+  "customerDefinition": {
+    "primary": "US residents with specific civic issues who want researched, well-routed correspondence without doing manual legal and official-contact research.",
+    "nonCustomers": [
+      "people seeking legal advice",
+      "people filing claims or regulatory submissions",
+      "enterprise advocacy buyers at launch",
+      "emergency or crisis users"
+    ],
+    "honestyLabel": "[evidence: .planning/GENESIS.md and .planning/PROJECT.md; demand remains assumption]"
+  },
+  "marketSizing": {
+    "method": "bottom-up validation ladder, not TAM",
+    "scenarios": [
+      {
+        "name": "operator proof",
+        "paidOrdersPerMonth": "25 [assumption: minimum validation target]",
+        "averageOrder": "$13.50 [assumption: weighted midpoint of repo-coded tiers]",
+        "monthlyRevenue": "$337.50 [assumption: 25 x $13.50]",
+        "annualRevenue": "$4,050 [assumption: $337.50 x 12]"
+      },
+      {
+        "name": "watchlist traction",
+        "paidOrdersPerMonth": "400 [assumption: .planning/existing-state.md scale estimate]",
+        "averageOrder": "$13.50 [assumption: tier mix]",
+        "monthlyRevenue": "$5,400 [assumption: 400 x $13.50]",
+        "annualRevenue": "$64,800 [assumption: $5,400 x 12]"
+      },
+      {
+        "name": "venture-shaped seed signal",
+        "paidOrdersPerMonth": "5,000 [assumption: repo scaling threshold]",
+        "averageOrder": "$13.50 [assumption: tier mix]",
+        "monthlyRevenue": "$67,500 [assumption: 5,000 x $13.50]",
+        "annualRevenue": "$810,000 [assumption: $67,500 x 12]"
+      }
+    ]
+  },
+  "revenueModel": {
+    "type": "transactional",
+    "implementedTiers": [
+      "$5 single official [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three officials [evidence: apps/api/src/routes/payments.ts]",
+      "$25 all matched officials [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "marginPolicy": "40% net margin floor [evidence: .planning/PROJECT.md]",
+    "futureStreams": [
+      "higher-touch review [evidence: MASTER_PLAN.md]",
+      "API access for organizations [evidence: MASTER_PLAN.md]"
+    ]
+  },
+  "financials": {
+    "figures": [
+      "$96/month backend droplet [evidence: MASTER_PLAN.md]",
+      "$50/month managed PostgreSQL upgrade [evidence: MASTER_PLAN.md]",
+      "$25/month Spaces add-on [evidence: MASTER_PLAN.md]",
+      "$12/month load balancer add-on [evidence: MASTER_PLAN.md]",
+      "$1,500 Mercury reserve target [evidence: .planning/PROJECT.md]",
+      "$2,000 Mercury warning alert [evidence: .planning/REQUIREMENTS.md]",
+      "$500 Mercury emergency alert [evidence: .planning/REQUIREMENTS.md]",
+      "$0.10 reconciliation discrepancy threshold [evidence: .planning/REQUIREMENTS.md]"
+    ],
+    "reconciliation": "BUSINESS.md financial table reconciles revenue as paid orders x average order and gross profit as revenue - variable cost.",
+    "unvalidated": "support, refunds, chargebacks, counsel, paid official data, and deliverability remediation are not measured."
+  },
+  "competition": [
+    {
+      "name": "Resistbot",
+      "evidence": "MASTER_PLAN.md",
+      "risk": "[assumption: may be simpler, cheaper, and more trusted]"
+    },
+    {
+      "name": "Change.org",
+      "evidence": "MASTER_PLAN.md",
+      "risk": "[assumption: petition behavior may satisfy users without payment]"
+    },
+    {
+      "name": "LegalZoom",
+      "evidence": "MASTER_PLAN.md",
+      "risk": "[assumption: legal-adjacent confusion may hurt trust]"
+    },
+    {
+      "name": "Quorum",
+      "evidence": ".planning/PROJECT.md",
+      "risk": "[assumption: enterprise incumbents could add consumer funnels]"
+    },
+    {
+      "name": "VoterVoice",
+      "evidence": ".planning/PROJECT.md",
+      "risk": "[assumption: civic organizations may prefer established vendors]"
+    }
+  ],
+  "goToMarket": {
+    "primary": "closed beta and direct operator recruiting before SEO scale",
+    "repoHypothesis": "SEO from opt-in public campaign pages [evidence: .planning/GENESIS.md]",
+    "validationMetrics": [
+      "paid orders",
+      "preview-to-payment conversion",
+      "refund rate",
+      "support minutes",
+      "delivery status",
+      "citation failures"
+    ]
+  },
+  "risksAntiPlan": {
+    "skepticalView": "This may be a low-price feature rather than a company: users may not pay, officials may ignore or filter AI-assisted letters, and human review may erase margin.",
+    "holes": [
+      {
+        "hole": "Willingness to pay is unvalidated.",
+        "mitigation": "closed beta with paid checkout before public launch",
+        "residualRisk": "users may prefer free templates or direct AI chat"
+      },
+      {
+        "hole": "Government email deliverability is unproven.",
+        "mitigation": "SPF/DKIM/DMARC, Postmark webhooks, bounce suppression, and domain warming",
+        "residualRisk": "official inboxes may still filter or ignore messages"
+      },
+      {
+        "hole": "Legal-adjacent content may create liability and review load.",
+        "mitigation": "not-legal-advice language, AI disclosure, citation verification, and human review queue",
+        "residualRisk": "operator time may make low-price tiers uneconomic"
+      },
+      {
+        "hole": "Official data coverage may be incomplete or stale.",
+        "mitigation": "hybrid lookup and cache with opt-out and bounce flags",
+        "residualRisk": "paid local data may be required before revenue supports it"
+      }
+    ]
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "users will pay for civic correspondence help",
+      "basis": "repo thesis",
+      "test": "closed beta paid orders",
+      "killThreshold": "fewer than 25 paid orders after targeted outreach"
+    },
+    {
+      "assumption": "average order can hold near $13.50",
+      "basis": "midpoint of implemented tiers",
+      "test": "Stripe order mix",
+      "killThreshold": "average order below $8"
+    },
+    {
+      "assumption": "variable cost stays under $0.75 per job",
+      "basis": ".planning/GENESIS.md token-cost range",
+      "test": "token and ledger logs",
+      "killThreshold": "cost above $2 per job"
+    },
+    {
+      "assumption": "SEO can acquire users",
+      "basis": ".planning/GENESIS.md distribution hypothesis",
+      "test": "indexed pages and organic conversions",
+      "killThreshold": "no meaningful organic conversions after publication"
+    }
+  ],
+  "roadmap": {
+    "path": "ROADMAP.md",
+    "buildableShape": "Mission Critical Next Builds contains single-worker checkbox items mapped to BUSINESS.md headings.",
+    "nextBuilds": [
+      "production readiness audit",
+      "closed-beta intake cohort",
+      "checkout-to-ledger proof",
+      "cost and margin instrumentation",
+      "safe public-page policy",
+      "deliverability test harness",
+      "validation dashboard"
+    ]
+  },
+  "honestyLabels": {
+    "required": true,
+    "rule": "Every quantitative claim in BUSINESS.md is labeled [evidence] or [assumption: basis]. External market claims are assumptions."
+  },
+  "freshness": {
+    "state": "stale_external_market_context",
+    "reason": "workspace-only runner; no network market research",
+    "needsRefreshBeforePitch": [
+      "competitor positioning",
+      "AI transparency law status",
+      "vendor pricing",
+      "official data providers",
+      "civic engagement market size",
+      "deliverability benchmarks"
+    ]
+  },
+  "surpriseSpikes": [
+    "Old .planning/existing-state.md says zero application code, but current repo contains substantial application code.",
+    "Old .planning/ROADMAP.md marks all phases complete while .planning/REQUIREMENTS.md keeps many requirements unchecked.",
+    "Terms language and planning language differ on CAN-SPAM treatment for official letters; operator counsel should resolve."
+  ],
+  "adoptionNotes": [
+    "Status remains draft until operator merge.",
+    "Do not claim adopted.",
+    "Registry should keep watchlist classification unless operator confirms business intent."
+  ]
+}
