@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "ultra-start.thesis-review.v1",
+  "one_liner": "CivicState is a useful paid civic-letter workflow, but not investible until demand and deliverability prove out.",
+  "status": "needs-revision",
+  "asOf": "2026-06-20 [evidence: dispatch current_date]",
+  "thesisCurrent": true,
+  "honestyLabels": "All quantitative market, GTM, valuation, and volume claims are tagged as evidence or assumption in BUSINESS.md and .ultra-start/business-plan.json.",
+  "review": {
+    "strengths": [
+      "Clear transactional pricing at $5, $15, and $25 [evidence: apps/api/src/routes/payments.ts]",
+      "Concrete product scaffold across web, API, worker, and Prisma schema [evidence: apps/web/app/submit/page.tsx; apps/api/src/index.ts; apps/worker/src/index.ts; packages/shared/prisma/schema.prisma]",
+      "Explicit validation gates for 3% conversion, 85% inbox placement, and official coverage [evidence: .planning/PROJECT.md]"
+    ],
+    "weaknesses": [
+      "Registry marks the asset Watchlist and personal/research, not near-term investible [evidence: wrk.dog dispatch registry note, 2026-06-20]",
+      "Project identity conflicts with dispatch naming [evidence: dispatch; package.json]",
+      "Market size and GTM are unvalidated assumptions because this worker had no network access"
+    ],
+    "requiredNextProof": [
+      "Operator ruling on brooks-history versus CivicState by 2026-07-15 [assumption: schedule]",
+      "Paid beta showing at least 3% conversion [evidence: .planning/PROJECT.md]",
+      ".gov deliverability test showing at least 85% inbox placement [evidence: .planning/PROJECT.md]",
+      "Chargeback rate below 0.5% [evidence: MASTER_PLAN.md section 12.10]"
+    ]
+  },
+  "decision": "Keep Watchlist until operator and market validation; do not pitch as a near-term investible BOS yet."
+}

@@ -1,0 +1,197 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "elevatorPitch": "CivicState sells verified constituent-letter campaigns, but remains Watchlist until paid demand proves real.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-business-plan-2026-06-20"
+  },
+  "status": "needs-revision",
+  "directive": "Use BUSINESS.md as the current soul, but keep authority draft until operator merge and validation gates resolve.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record",
+  "research": {
+    "mode": "workspace-only",
+    "sources": [
+      "MASTER_PLAN.md [evidence]",
+      ".planning/PROJECT.md [evidence]",
+      ".planning/REQUIREMENTS.md [evidence]",
+      ".planning/ROADMAP.md [evidence]",
+      ".planning/existing-state.md [evidence, stale in part]",
+      "package.json and apps/packages source files [evidence]",
+      "wrk.dog dispatch registry note [evidence]"
+    ],
+    "methods": [
+      "Read existing planning narrative and source entrypoints",
+      "Separated implemented repo facts from roadmap assertions",
+      "Tagged all external market, valuation, volume, conversion, and GTM claims as assumptions because no network access was available"
+    ],
+    "asOf": "2026-06-20 [evidence: dispatch current_date]"
+  },
+  "planningMethod": "Bottom-up validation plan: paid campaigns x ARPA for revenue, documented cost percentages for unit economics, and explicit pass/fail gates for conversion, deliverability, official coverage, chargebacks, and operator workload.",
+  "customer": {
+    "primary": "High-intent US residents with a concrete civic concern, ZIP-based jurisdiction need, and willingness to pay $5-$25 [evidence: .planning/PROJECT.md; apps/api/src/routes/payments.ts]",
+    "segments": [
+      "Local enforcement/service complainants [assumption: ICP segment]",
+      "State/federal policy constituents [assumption: ICP segment]",
+      "Time-constrained residents who prefer paid workflow over manual research [assumption: ICP segment]"
+    ],
+    "constraints": [
+      "Political opinion and letter content are sensitive user data [evidence: .planning/PROJECT.md Constraints]",
+      "Not legal advice and user-as-author posture required [evidence: .planning/REQUIREMENTS.md LGAL]"
+    ]
+  },
+  "market": {
+    "tam": "$360,000/year [assumption: 50,000 landing opportunities x 20 qualified visits/year x 4% checkout-start x 50% checkout-completion x $18 ARPA]",
+    "sam": "$86,400/year [evidence: 400 submissions/month x 12 months x $18 ARPA from MASTER_PLAN.md section 19.2]",
+    "som": "$30,600 in Year 1 [assumption: 1,800 campaigns x $17 ARPA]",
+    "verdict": "Likely micro-SaaS or portfolio cash-flow asset unless distribution materially outperforms assumptions [assumption: EIR interpretation]"
+  },
+  "businessModel": {
+    "streams": [
+      "$5 single-official package [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three-official package [evidence: apps/api/src/routes/payments.ts]",
+      "$25 full-spread package [evidence: apps/api/src/routes/payments.ts]",
+      "$1,200/year future organization API [assumption: deferred pricing placeholder]"
+    ],
+    "marginFloor": "40% net margin after Stripe fees [evidence: MASTER_PLAN.md section 2.3]",
+    "reserve": "$1,500 pre-funded Mercury reserve before accepting payment [evidence: MASTER_PLAN.md section 12.10]"
+  },
+  "financialModel": {
+    "summary": "Year 1 revenue $30,600 [assumption], Year 2 revenue $288,000 [assumption], Year 3 revenue $792,000 [assumption], each reconciled as paid campaigns x ARPA.",
+    "revenueAssumptions": [
+      "Year 1: 1,800 paid campaigns x $17 ARPA = $30,600 [assumption]",
+      "Year 2: 14,400 paid campaigns x $20 ARPA = $288,000 [assumption]",
+      "Year 3: 36,000 paid campaigns x $22 ARPA = $792,000 [assumption]"
+    ],
+    "costAssumptions": [
+      "Stripe fees at 4% of revenue [evidence: MASTER_PLAN.md section 19.3]",
+      "Token/email variable COGS at 8% of revenue [evidence: MASTER_PLAN.md section 19.3]",
+      "Fixed infrastructure starts near $200/month [evidence: MASTER_PLAN.md section 19.3]"
+    ],
+    "sensitivityTests": [
+      "Conversion falls to 1% [assumption]: Year 1 revenue falls to about $10,200 [assumption]",
+      "Variable COGS doubles to 16% [assumption]: Year 2 operating profit falls by about $23,040 [assumption]",
+      ".gov inbox placement below 85% [evidence: .planning/PROJECT.md]: delivery promise fails"
+    ]
+  },
+  "alternatives": [
+    "Manual search and direct email [assumption: substitute behavior]",
+    "Generic AI chat plus copied official email [assumption: substitute behavior]",
+    "Resistbot [assumption: named competitor not externally verified in this worker]",
+    "Change.org [assumption: named competitor not externally verified in this worker]",
+    "Quorum and VoterVoice [assumption: named incumbents not externally verified in this worker]"
+  ],
+  "antiPlan": {
+    "holes": [
+      {
+        "hole": "Users may not pay for a low-frequency civic task.",
+        "mitigation": "Run paid beta before broad SEO.",
+        "residualRisk": "Praise without checkout conversion keeps the asset non-investible."
+      },
+      {
+        "hole": "Government deliverability may fail.",
+        "mitigation": "SPF/DKIM/DMARC, domain warming, and bounce monitoring [evidence: scripts/setup-dns.md; MASTER_PLAN.md section 13].",
+        "residualRisk": "Automated civic email can still be filtered or ignored."
+      },
+      {
+        "hole": "Legal/compliance risk may overwhelm the thin-margin workflow.",
+        "mitigation": "Not-legal-advice language, user-as-author posture, AI disclosure, moderation, and audit logs [evidence: .planning/REQUIREMENTS.md].",
+        "residualRisk": "One bad letter or complaint can damage trust."
+      },
+      {
+        "hole": "Project identity conflict weakens dossier trust.",
+        "mitigation": "Operator ruling on brooks-history versus CivicState by 2026-07-15 [assumption: schedule].",
+        "residualRisk": "Public pitch is incoherent until resolved."
+      }
+    ]
+  },
+  "strategy": "Validate a narrow paid constituent-letter loop before expanding to SEO, public campaign pages, organization APIs, certified mail, coalition mechanics, or multilingual support.",
+  "goToMarket": {
+    "first100": "Manual beta and issue-community recruitment for first 100 paid campaigns [assumption: validation-first GTM]",
+    "channels": [
+      "Founder/operator network [assumption]",
+      "Issue-specific communities [assumption]",
+      "Opt-in SEO pages after successful sends [evidence: MASTER_PLAN.md sections 9 and 18]"
+    ],
+    "gates": [
+      "3% preview-to-paid conversion [evidence: .planning/PROJECT.md]",
+      "85% .gov inbox placement [evidence: .planning/PROJECT.md]",
+      "Chargeback rate below 0.5% [evidence: MASTER_PLAN.md section 12.10]"
+    ]
+  },
+  "operatorWorkflow": "One operator reviews flagged submissions, delivery failures, refunds, official-data exceptions, and treasury discrepancies; routine workload must be measured before business promotion [assumption: operator capacity not validated].",
+  "constraints": [
+    "Workspace-only research; no external claims treated as evidence",
+    "Registry Watchlist and personal/research asset note [evidence: wrk.dog dispatch registry note, 2026-06-20]",
+    "Sensitive civic/political data posture [evidence: .planning/PROJECT.md Constraints]",
+    "No legal advice or regulatory filing positioning [evidence: MASTER_PLAN.md Executive Summary]"
+  ],
+  "metrics": [
+    "Preview-to-paid conversion percentage",
+    ".gov inbox placement percentage",
+    "Official data coverage percentage",
+    "Refund and chargeback percentage",
+    "Operator minutes per campaign",
+    "Gross margin percentage",
+    "Revenue per paid campaign"
+  ],
+  "aiWorkGovernance": {
+    "position": "AI drafts and researches, but citations must be verified and risky content must be moderated before delivery [evidence: .planning/REQUIREMENTS.md SUBM/MODR/LETR].",
+    "disclosures": "AI disclosure and not-legal-advice language required [evidence: .planning/REQUIREMENTS.md LETR/LGAL].",
+    "humanEscalation": "Threats block; defamation/unverifiable claims go to human review [evidence: .planning/REQUIREMENTS.md MODR]."
+  },
+  "unknowns": [
+    "Whether brooks-history is intended to be CivicState [evidence: dispatch; package.json]",
+    "Whether real users pay at the documented tiers [assumption: unvalidated]",
+    "Whether local official coverage reaches 60% [evidence: .planning/PROJECT.md validation gate]",
+    "Whether shared WrkPlug rails will replace direct Clerk/Stripe posture [assumption: WrkPlug Phase 0 not yet signed]",
+    "Whether SEO can create enough qualified demand [assumption: no keyword data available]"
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Narrow TAM is $360,000/year.",
+      "basis": "Bottom-up SEO funnel.",
+      "evidenceOrAssumption": "[assumption: no external market data in workspace]",
+      "test": "Keyword and landing-page cohort research."
+    },
+    {
+      "claim": "Year 1 revenue can reach $30,600.",
+      "basis": "1,800 campaigns x $17.",
+      "evidenceOrAssumption": "[assumption: ramp model]",
+      "test": "Monthly revenue dashboard."
+    },
+    {
+      "claim": "3% paid conversion is a meaningful beta gate.",
+      "basis": "Existing project validation gate.",
+      "evidenceOrAssumption": "[evidence: .planning/PROJECT.md]",
+      "test": "Preview-to-paid conversion."
+    },
+    {
+      "claim": "85% .gov inbox placement is minimum viable.",
+      "basis": "Existing project validation gate.",
+      "evidenceOrAssumption": "[evidence: .planning/PROJECT.md]",
+      "test": "Seeded deliverability test."
+    },
+    {
+      "claim": "Gross margin can stay near 92% on core packages.",
+      "basis": "Master plan unit economics.",
+      "evidenceOrAssumption": "[evidence: MASTER_PLAN.md section 19.1]",
+      "test": "Production ledger reconciliation."
+    },
+    {
+      "claim": "WrkPlug shared rails can reduce cost or CAC by 20%.",
+      "basis": "Portfolio-platform hypothesis.",
+      "evidenceOrAssumption": "[assumption: WrkPlug Phase 0 not yet signed]",
+      "test": "Compare direct-stack and shared-rails launch costs."
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-20 [evidence: dispatch current_date]",
+      "change": "Created VC-grade soul, gate artifact, thesis review, roadmap, and decisions entry from workspace evidence."
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "next": "approved-for-roadmap only after operator identity ruling and beta validation gates are instrumented"
+  }
+}

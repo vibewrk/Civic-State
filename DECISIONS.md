@@ -1,0 +1,9 @@
+# Decisions
+
+## 2026-06-20 - EIR soul upgrade (wrk.dog)
+
+Changed: created root BUSINESS.md, ROADMAP.md, DECISIONS.md, .ultra-start/business-plan.json, and .ultra-start/thesis-review.json to answer the wrk.dog Inspector gaps for business-file, roadmap-file, decisions-file, gate-json, thesis-current, financial-figures, percent-figures, market-sizing, customer-definition, revenue-model, competition, risks-antiplan, assumption-ledger, go-to-market, honesty-labels, doc-dates, doc-structure, evidence-sources, freshness-stale, and roadmap-buildable-shape [evidence: wrk.dog dispatch, 2026-06-20].
+
+What changed: the soul now treats CivicState as a Watchlist civic workflow asset, not a near-term investible BOS, until operator identity, paid conversion, .gov deliverability, official-data coverage, chargebacks, and operator workload are validated [evidence: wrk.dog registry note in dispatch, 2026-06-20; .planning/PROJECT.md validation gates]. It preserves the existing $5, $15, and $25 transactional model [evidence: apps/api/src/routes/payments.ts] and the 40% net margin floor [evidence: MASTER_PLAN.md section 2.3], but marks market size, revenue scale, valuation, and GTM as assumptions.
+
+What remains assumption and needs operator/market validation: whether brooks-history and CivicState are the same asset [evidence: dispatch; package.json], whether users will pay at least 3% preview-to-paid conversion [evidence: .planning/PROJECT.md], whether government inbox placement can reach at least 85% [evidence: .planning/PROJECT.md], whether local official coverage can reach 60% [evidence: .planning/PROJECT.md], whether Year 1 revenue can reach $30,600 [assumption: BUSINESS.md ramp model], and whether this should be pitched as a business rather than kept as a personal/research asset [evidence: wrk.dog registry note in dispatch, 2026-06-20].
