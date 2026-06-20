@@ -1,0 +1,11 @@
+# Decisions
+
+## 2026-06-20 - EIR soul upgrade (wrk.dog)
+
+What changed: added a VC-grade root `BUSINESS.md`, a root `ROADMAP.md`, and a root `gate.json` so the repo has a current data-room soul rather than relying only on `.planning` artifacts. The new business plan preserves the CivicState thesis, pricing, architecture, compliance limits, and validation gates from `MASTER_PLAN.md`, `.planning/PROJECT.md`, `.planning/GENESIS.md`, and `.planning/REQUIREMENTS.md` [evidence: repo planning files].
+
+Scrutiny gaps addressed: business-file, roadmap-file, decisions-file, gate-json, thesis-current, financial-figures, percent-figures, market-sizing, customer-definition, revenue-model, competition, risks-antiplan, assumption-ledger, go-to-market, honesty-labels, doc-dates, doc-structure, evidence-sources, freshness-stale, and roadmap-buildable-shape [evidence: wrk.dog dispatch brief].
+
+What remains assumption and needs operator/market validation: willingness to pay at $5 to $25 [evidence: `.planning/PROJECT.md`; assumption: unvalidated WTP], 3% preview-to-paid conversion [evidence: `.planning/PROJECT.md`; assumption: target threshold], 85% deliverability to official domains [evidence: `.planning/PROJECT.md`; assumption: target threshold], 95% federal/state and 60% local official coverage [evidence: `.planning/PROJECT.md`; assumption: target threshold], one-operator workload under 30 minutes per day [evidence: `.planning/PROJECT.md`; assumption: target threshold], and all external market sizing figures in `BUSINESS.md` [assumption: workspace-only model, no network research].
+
+Surprise spikes recorded: `.planning/existing-state.md` is stale because it says zero app code exists, while the current repo has Next.js, Express, BullMQ worker, Prisma, and shared TypeScript packages [evidence: `.planning/existing-state.md`, `apps/*`, `packages/shared/*`]. `.planning/ROADMAP.md` marks all four phases complete on 2026-04-25 [evidence: `.planning/ROADMAP.md`], but `.planning/REQUIREMENTS.md` still shows many launch requirements unchecked [evidence: `.planning/REQUIREMENTS.md`]. The $15 package is described as a three-pack in `.planning/PROJECT.md` but modeled as five drafts in `MASTER_PLAN.md` [evidence: `.planning/PROJECT.md`, `MASTER_PLAN.md`].

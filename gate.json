@@ -1,0 +1,319 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "projectId": "brooks-history",
+  "repo": "RPLogic-Inc/brookss-history",
+  "summaryLine": "CivicState is a paid civic-letter workflow, promising but still validation-gated.",
+  "status": "draft",
+  "seedSource": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-business-plan"
+  },
+  "authority": {
+    "current": "draft",
+    "adoptionNote": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record"
+  },
+  "review": {
+    "reviewedAt": "2026-06-20",
+    "reviewerRole": "EIR",
+    "workspaceOnly": true,
+    "networkResearch": false
+  },
+  "sourcesAndMethods": [
+    {
+      "source": "MASTER_PLAN.md",
+      "method": "Used as the primary existing product, architecture, pricing, and unit-economics blueprint."
+    },
+    {
+      "source": ".planning/PROJECT.md",
+      "method": "Used for current product description, constraints, validation gates, and known blockers."
+    },
+    {
+      "source": ".planning/GENESIS.md",
+      "method": "Used for target user, value chain, distribution hypothesis, moat hypothesis, and assumptions."
+    },
+    {
+      "source": ".planning/REQUIREMENTS.md",
+      "method": "Used for requirement status, compliance constraints, moderation, delivery, treasury, and official lookup scope."
+    },
+    {
+      "source": "apps/* and packages/shared/*",
+      "method": "Read current application structure to distinguish implemented repo reality from stale planning claims."
+    }
+  ],
+  "thesisCurrent": {
+    "statement": "CivicState is best framed as a paid civic correspondence workflow with citation discipline, official routing, payment, delivery, and tracking.",
+    "honestyLabel": "[assumption: repo plan plus EIR synthesis; market demand not validated]",
+    "notReadyBecause": [
+      "No verified revenue or user traction was found in workspace evidence.",
+      "Official coverage, deliverability, citation quality, and moderation workload remain unvalidated.",
+      "Registry note flags the project as a personal/research asset, not near-term investible unless the operator chooses otherwise."
+    ]
+  },
+  "customerDefinition": {
+    "primaryCustomer": "U.S. resident with a specific civic issue who wants help identifying officials, researching applicable law, drafting a professional letter, and sending it.",
+    "nonCustomers": [
+      "Legal claimants needing representation or filings",
+      "Bulk lobbying campaigns",
+      "Business entities",
+      "Harassment, threat, defamation, or private-individual targeting cases"
+    ],
+    "honestyLabel": "[assumption: target from existing soul; not market-validated]"
+  },
+  "marketSizing": {
+    "method": "Bottom-up assumption model because network research was unavailable.",
+    "tamProxy": {
+      "transactionsPerYear": 5000000,
+      "annualRevenueUsd": 75000000,
+      "basis": "250,000,000 adults x 20% annual civic issue incidence x 10% paid-assistance willingness x $15 average transaction",
+      "honestyLabel": "[assumption: population, incidence, and conversion are unverified placeholders]"
+    },
+    "samProxy": {
+      "transactionsPerYear": 90000,
+      "annualRevenueUsd": 1350000,
+      "basis": "10 launch wedges x 2,000,000 residents x 15% issue incidence x 3% paid conversion x $15",
+      "honestyLabel": "[assumption: launch wedge model]"
+    },
+    "somTarget": {
+      "monthlyTransactions": 1200,
+      "monthlyRevenueUsd": 24000,
+      "annualizedRevenueUsd": 288000,
+      "basis": "Month 24 scenario in MASTER_PLAN.md annualized at $20 average transaction",
+      "honestyLabel": "[evidence: MASTER_PLAN.md for month 24 run-rate; assumption: annualization]"
+    }
+  },
+  "revenueModel": {
+    "launch": [
+      {
+        "name": "Single",
+        "priceUsd": 5,
+        "basis": "[evidence: .planning/PROJECT.md]"
+      },
+      {
+        "name": "Three-pack",
+        "priceUsd": 15,
+        "basis": "[evidence: .planning/PROJECT.md]"
+      },
+      {
+        "name": "Full-spread",
+        "priceUsd": 25,
+        "basis": "[evidence: .planning/PROJECT.md]"
+      }
+    ],
+    "deferred": [
+      "Priority complex review",
+      "Organization/API access"
+    ],
+    "knownConflict": "$15 package is described as three officials in .planning/PROJECT.md but five drafts in MASTER_PLAN.md unit economics."
+  },
+  "financialModel": {
+    "unitEconomics": [
+      {
+        "package": "Amplify example",
+        "revenueUsd": 15,
+        "costsUsd": 1.2,
+        "grossProfitUsd": 13.8,
+        "grossMarginPct": 92,
+        "basis": "[evidence: MASTER_PLAN.md]"
+      },
+      {
+        "package": "Complex example",
+        "revenueUsd": 25,
+        "costsUsd": 1.94,
+        "grossProfitUsd": 23.06,
+        "grossMarginPct": 92,
+        "basis": "[evidence: MASTER_PLAN.md]"
+      }
+    ],
+    "scenarios": [
+      {
+        "month": 3,
+        "submissions": 50,
+        "averageRevenueUsd": 15,
+        "monthlyRevenueUsd": 750,
+        "basis": "[evidence: MASTER_PLAN.md]"
+      },
+      {
+        "month": 6,
+        "submissions": 120,
+        "averageRevenueUsd": 16,
+        "monthlyRevenueUsd": 1920,
+        "basis": "[evidence: MASTER_PLAN.md]"
+      },
+      {
+        "month": 12,
+        "submissions": 400,
+        "averageRevenueUsd": 18,
+        "monthlyRevenueUsd": 7200,
+        "basis": "[evidence: MASTER_PLAN.md]"
+      },
+      {
+        "month": 24,
+        "submissions": 1200,
+        "averageRevenueUsd": 20,
+        "monthlyRevenueUsd": 24000,
+        "basis": "[evidence: MASTER_PLAN.md]"
+      }
+    ],
+    "breakEven": {
+      "monthlyFixedCostsUsd": 200,
+      "breakEvenMrrUsd": 340,
+      "amplifySubmissionsPerMonth": 25,
+      "basis": "[evidence: MASTER_PLAN.md]"
+    }
+  },
+  "competition": [
+    {
+      "name": "Resistbot",
+      "type": "civic letter substitute",
+      "basis": "[evidence: MASTER_PLAN.md; assumption: live positioning unverified]"
+    },
+    {
+      "name": "Change.org",
+      "type": "petition hosting substitute",
+      "basis": "[evidence: MASTER_PLAN.md; assumption: live positioning unverified]"
+    },
+    {
+      "name": "LegalZoom",
+      "type": "document drafting substitute",
+      "basis": "[evidence: MASTER_PLAN.md; assumption: live positioning unverified]"
+    },
+    {
+      "name": "Quorum / VoterVoice",
+      "type": "organization advocacy platforms",
+      "basis": "[evidence: .planning/PROJECT.md; assumption: live positioning unverified]"
+    }
+  ],
+  "risksAntiPlan": {
+    "holes": [
+      "May be a feature, not a venture-scale company.",
+      "Users may not convert at a paid checkout.",
+      "Official inboxes may reject or ignore AI-assisted correspondence.",
+      "Citation failures could be existential for trust and liability posture.",
+      "Human review volume may overwhelm the economics.",
+      "SEO acquisition may not materialize."
+    ],
+    "mitigations": [
+      "Run a single-wedge beta before broad launch.",
+      "Instrument preview-to-paid conversion.",
+      "Measure official coverage and deliverability before scaling.",
+      "Require citation verification and human review for failures.",
+      "Track flagged queue minutes per day.",
+      "Treat public pages as optional and compliance-reviewed."
+    ],
+    "residualRisks": [
+      "Market willingness to pay remains unknown.",
+      "Legal and reputation risk cannot be eliminated through automation alone.",
+      "Incumbents or general AI tools could copy the workflow."
+    ]
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "Users will pay $5 to $25 for civic letter assistance.",
+      "validation": "Measure beta preview-to-paid conversion."
+    },
+    {
+      "assumption": "Citation verification can prevent false legal references.",
+      "validation": "Track citation pass rate and human-review fallback rate."
+    },
+    {
+      "assumption": "Official lookup providers can cover the first wedge.",
+      "validation": "Run ZIP sample coverage report."
+    },
+    {
+      "assumption": "Email delivery to officials will be reliable enough.",
+      "validation": "Measure bounce, spam complaint, and accepted delivery rates by domain."
+    },
+    {
+      "assumption": "One operator can manage exception volume.",
+      "validation": "Track daily queue depth and minutes per flagged submission."
+    }
+  ],
+  "goToMarket": {
+    "wedge": "Single metro or state wedge selected for official coverage and operator familiarity.",
+    "channels": [
+      "Operator-led beta",
+      "Opt-in public campaign pages after compliance review",
+      "SEO only after the paid workflow works"
+    ],
+    "validationTargets": {
+      "paidConversionPct": 3,
+      "deliverySuccessPct": 85,
+      "federalStateCoveragePct": 95,
+      "localCoveragePct": 60,
+      "operatorMinutesPerDay": 30
+    }
+  },
+  "honestyLabels": {
+    "rule": "Every quantitative claim in BUSINESS.md is tagged [evidence: ...] or [assumption: ...].",
+    "externalClaims": "No external claim was treated as sourced because this worker ran workspace-only with no network research."
+  },
+  "freshness": {
+    "asOf": "2026-06-20",
+    "staleDocs": [
+      {
+        "path": ".planning/existing-state.md",
+        "issue": "Says zero application code exists, but app packages now exist."
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "issue": "Marks all four phases complete, while requirements remain unchecked."
+      }
+    ],
+    "docDates": [
+      {
+        "path": "MASTER_PLAN.md",
+        "date": "March 2026"
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "date": "2026-04-25"
+      },
+      {
+        "path": ".planning/REQUIREMENTS.md",
+        "date": "2026-04-25"
+      },
+      {
+        "path": "BUSINESS.md",
+        "date": "2026-06-20"
+      }
+    ]
+  },
+  "roadmapBuildableShape": {
+    "path": "ROADMAP.md",
+    "nextStepsCount": 8,
+    "properties": [
+      "checkbox items",
+      "single-worker-sized",
+      "non-speculative",
+      "mapped to BUSINESS.md headings"
+    ]
+  },
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "residualGaps": [
+    "No network research was available.",
+    "No production analytics, revenue, payment, or deliverability evidence was found.",
+    "Operator must decide whether this remains a research asset or becomes a business pitch."
+  ],
+  "operatorRulingNeeded": true
+}
