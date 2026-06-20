@@ -1,0 +1,292 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "evidencedAssetName": "CivicState",
+    "seed": {
+      "path": "BUSINESS.md",
+      "id": "business-soul"
+    }
+  },
+  "status": "proposed",
+  "thesisSnapshot": "CivicState is not investible until identity, demand, delivery, and legal-adjacent risks are validated.",
+  "authority": {
+    "state": "proposed",
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+    "note": "Only the operator merge upgrades authority; this artifact does not claim approval."
+  },
+  "registryContext": {
+    "watchlist": true,
+    "sensitivity": "personal/research asset; not near-term investible BOS unless operator confirms business intent",
+    "source": "dispatch registry notes"
+  },
+  "diligence": {
+    "mode": "workspace-only; no network",
+    "methods": [
+      "Read planning docs and current source files",
+      "Compared registry identity with repository product identity",
+      "Tagged repo facts as evidence and external/market claims as assumptions",
+      "Created bottom-up market and financial model from repo pricing and assumptions"
+    ],
+    "sources": [
+      {
+        "path": "package.json",
+        "use": "Product identity and scripts"
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "use": "Product definition, constraints, validation gates, pricing, risks"
+      },
+      {
+        "path": ".planning/GENESIS.md",
+        "use": "Demand, distribution, moat, break-even hypotheses"
+      },
+      {
+        "path": ".planning/REQUIREMENTS.md",
+        "use": "Requirement status"
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "use": "Existing phase narrative"
+      },
+      {
+        "path": ".planning/STATE.md",
+        "use": "Conflicting current-state signal"
+      },
+      {
+        "path": ".planning/existing-state.md",
+        "use": "Current revenue, traffic, and old code-state audit"
+      },
+      {
+        "path": "apps/api/src/routes/payments.ts",
+        "use": "Hardcoded payment tiers"
+      },
+      {
+        "path": "apps/worker/src/agents/researcher.ts",
+        "use": "Citation verification workflow"
+      },
+      {
+        "path": "apps/worker/src/agents/delivery.ts",
+        "use": "Postmark delivery and bounce controls"
+      },
+      {
+        "path": "packages/shared/prisma/schema.prisma",
+        "use": "Data model"
+      }
+    ]
+  },
+  "documents": {
+    "business": "BUSINESS.md",
+    "roadmap": "ROADMAP.md",
+    "decisions": "DECISIONS.md"
+  },
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "thesis": {
+    "current": "Conditional civic workflow thesis; build evidence exists, customer evidence does not.",
+    "investibility": "watchlist",
+    "blockers": [
+      "Project identity mismatch between brooks-history and CivicState",
+      "No paid usage evidence",
+      "No external market validation",
+      "Deliverability and legal-adjacent risk unproven"
+    ]
+  },
+  "customerDefinition": {
+    "primary": "US resident with a concrete civic issue who wants researched, properly routed constituent communications",
+    "buyer": "same as user at launch",
+    "notCustomersAtLaunch": [
+      "Government officials",
+      "HOAs",
+      "Nonprofits",
+      "Enterprise advocacy teams"
+    ],
+    "honesty": "[assumption: repository target user, not externally validated]"
+  },
+  "revenueModel": {
+    "type": "transactional letter packages",
+    "tiers": [
+      {
+        "name": "single",
+        "price": "$5",
+        "honesty": "[evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "name": "three_pack",
+        "price": "$15",
+        "honesty": "[evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "name": "full_spread",
+        "price": "$25",
+        "honesty": "[evidence: apps/api/src/routes/payments.ts]"
+      }
+    ],
+    "marginFloor": {
+      "value": "40%",
+      "honesty": "[evidence: .planning/PROJECT.md]",
+      "implementationGap": "Payment route hardcodes tiers and does not enforce margin before checkout."
+    }
+  },
+  "marketSizing": {
+    "mode": "bottom-up because no network research was available",
+    "validationWedge": {
+      "paidSubmissionsPerMonth": "25",
+      "mrr": "$340",
+      "honesty": "[evidence: .planning/GENESIS.md]"
+    },
+    "launchCase": {
+      "paidSubmissionsPerMonth": "400",
+      "aov": "$13",
+      "monthlyRevenue": "$5,200",
+      "honesty": "[assumption: 400 from repo planned scale times blended AOV]"
+    },
+    "capacityCase": {
+      "paidSubmissionsPerMonth": "5,000",
+      "monthlyRevenue": "$65,000",
+      "honesty": "[assumption: repo capacity reference times blended AOV]"
+    },
+    "ventureHurdle": {
+      "arr": "$10,000,000",
+      "paidSubmissionsPerMonth": "about 64,103",
+      "honesty": "[assumption: generic VC-scale hurdle and arithmetic]"
+    }
+  },
+  "financials": {
+    "launchCaseMonthly": {
+      "paidSubmissions": "400 [evidence: .planning/existing-state.md planned scale]",
+      "blendedAov": "$13.00 [assumption: tier mix]",
+      "revenue": "$5,200 [assumption: 400 times $13.00]",
+      "variableCostPerSubmission": "$1.10 [assumption: placeholder]",
+      "variableCost": "$440 [assumption: 400 times $1.10]",
+      "contributionProfit": "$4,760 [assumption: revenue minus variable cost]",
+      "contributionMargin": "91.5% [assumption: contribution profit divided by revenue]"
+    },
+    "fixedCosts": [
+      "$96 per month backend droplet [evidence: .planning/PROJECT.md]",
+      "$50 per month possible managed PostgreSQL [evidence: MASTER_PLAN.md]",
+      "$25 per month possible object storage [evidence: MASTER_PLAN.md]"
+    ],
+    "reconciliation": "Revenue equals paid submissions times blended AOV in the launch case."
+  },
+  "competition": {
+    "named": [
+      "Resistbot",
+      "Change.org",
+      "LegalZoom",
+      "Quorum",
+      "VoterVoice"
+    ],
+    "honesty": "[assumption: names and positioning from internal docs, not independent research]",
+    "positioning": "CivicState claims individual transactional pricing plus citation-backed research and official targeting."
+  },
+  "goToMarket": {
+    "primary": "Organic search from opt-in public campaign pages",
+    "secondary": "Social sharing from public campaign pages",
+    "excludedAtLaunch": [
+      "Paid ads",
+      "App stores",
+      "Partnerships",
+      "Subscriptions"
+    ],
+    "validationGates": [
+      "3% paid conversion [evidence: .planning/PROJECT.md]",
+      "85% inbox placement [evidence: .planning/PROJECT.md]",
+      "95% federal/state official coverage [evidence: .planning/PROJECT.md]",
+      "60% local official coverage [evidence: .planning/PROJECT.md]"
+    ]
+  },
+  "risks": {
+    "holes": [
+      "Identity mismatch between registry and repo",
+      "No production revenue or users",
+      "No independent market evidence",
+      "Deliverability to government domains unproven",
+      "Legal-adjacent moderation and compliance burden"
+    ],
+    "mitigations": [
+      "Operator identity ruling before external pitch",
+      "Paid validation gate before growth spend",
+      "Postmark deliverability tests and domain bounce pauses",
+      "Mandatory citation verification and human review for failed citations",
+      "Non-legal-advice positioning and moderation audit logs"
+    ],
+    "residualRisks": [
+      "Users may not pay for civic outreach",
+      "Automated letters may be filtered or ignored",
+      "Compliance review may make the product too labor-heavy",
+      "Competitors or advocacy organizations may offer simpler free alternatives"
+    ],
+    "antiPlan": "Do not pitch as venture-ready until identity, paid demand, deliverability, and compliance operations are validated."
+  },
+  "assumptionLedger": [
+    {
+      "claim": "Residents will pay $5 to $25 for civic letter help.",
+      "label": "[assumption: repo thesis and hardcoded prices]",
+      "validation": "Paid checkout conversion"
+    },
+    {
+      "claim": "A $13 blended AOV is realistic.",
+      "label": "[assumption: simple tier mix]",
+      "validation": "Actual tier distribution"
+    },
+    {
+      "claim": "Variable cost can stay near $1.10 per submission.",
+      "label": "[assumption: placeholder model/email/payment cost]",
+      "validation": "Vendor bills and token logs"
+    },
+    {
+      "claim": "Organic search can acquire enough users.",
+      "label": "[assumption: repository SEO hypothesis]",
+      "validation": "Search impressions, clicks, and paid conversion"
+    }
+  ],
+  "freshness": {
+    "asOf": "2026-06-20 [evidence: dispatch current_date]",
+    "planningDates": [
+      "2026-04-25 [evidence: .planning/PROJECT.md]",
+      "2026-04-25 [evidence: .planning/REQUIREMENTS.md]",
+      "2026-04-10 [evidence: .planning/INTAKE-BRIEF.md]"
+    ],
+    "staleness": "Planning evidence is stale relative to current dispatch date."
+  },
+  "surpriseSpikes": [
+    "Registry says brooks-history while repo content says CivicState.",
+    ".planning/existing-state.md says no app code exists, but apps and packages are present.",
+    ".planning/ROADMAP.md says all phases complete while .planning/STATE.md says Phase 1 complete.",
+    "Registry note says personal/research asset, not near-term investible BOS."
+  ],
+  "roadmapBuildableShape": {
+    "path": "ROADMAP.md",
+    "checklistItems": 7,
+    "traceability": "Each item overlaps a BUSINESS.md heading."
+  },
+  "operatorValidationNeeded": [
+    "Confirm asset identity and business intent",
+    "Run paid conversion validation",
+    "Run deliverability validation",
+    "Audit local official coverage",
+    "Confirm legal/compliance operating model"
+  ]
+}
