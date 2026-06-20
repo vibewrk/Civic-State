@@ -1,0 +1,305 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "status": "proposed",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "observedProductName": "CivicState",
+    "seed": {
+      "path": "BUSINESS.md",
+      "id": "CivicState EIR Business Plan"
+    }
+  },
+  "pitchSummary": "CivicState sells citation-backed constituent letters, but remains watchlist until demand and safety validate.",
+  "authority": {
+    "state": "proposed",
+    "note": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record"
+  },
+  "createdAt": "2026-06-20",
+  "updatedAt": "2026-06-20",
+  "sourcesAndMethods": {
+    "mode": "workspace-only, no network",
+    "methods": [
+      "Read available root docs and planning artifacts.",
+      "Inspected package metadata, Prisma schema, API routes, worker agents, and compliance/payment/delivery code.",
+      "Tagged repo facts as evidence and external market statements as assumptions."
+    ],
+    "sources": [
+      {
+        "path": "CLAUDE.md",
+        "type": "repo-doc",
+        "label": "evidence"
+      },
+      {
+        "path": "MASTER_PLAN.md",
+        "type": "repo-doc",
+        "label": "evidence"
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "type": "planning-doc",
+        "label": "evidence"
+      },
+      {
+        "path": ".planning/REQUIREMENTS.md",
+        "type": "planning-doc",
+        "label": "evidence"
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "type": "planning-doc",
+        "label": "evidence"
+      },
+      {
+        "path": ".planning/STATE.md",
+        "type": "planning-doc",
+        "label": "evidence"
+      },
+      {
+        "path": "package.json",
+        "type": "repo-metadata",
+        "label": "evidence"
+      },
+      {
+        "path": "packages/shared/prisma/schema.prisma",
+        "type": "schema",
+        "label": "evidence"
+      },
+      {
+        "path": "apps/api/src/routes/submissions.ts",
+        "type": "implementation",
+        "label": "evidence"
+      },
+      {
+        "path": "apps/api/src/routes/payments.ts",
+        "type": "implementation",
+        "label": "evidence"
+      },
+      {
+        "path": "apps/api/src/routes/webhooks.ts",
+        "type": "implementation",
+        "label": "evidence"
+      },
+      {
+        "path": "apps/api/src/routes/compliance.ts",
+        "type": "implementation",
+        "label": "evidence"
+      },
+      {
+        "path": "apps/worker/src/agents/researcher.ts",
+        "type": "implementation",
+        "label": "evidence"
+      },
+      {
+        "path": "apps/worker/src/agents/drafter.ts",
+        "type": "implementation",
+        "label": "evidence"
+      },
+      {
+        "path": "apps/worker/src/agents/delivery.ts",
+        "type": "implementation",
+        "label": "evidence"
+      }
+    ]
+  },
+  "thesis": {
+    "current": "CivicState is a narrow transactional civic correspondence tool: research, draft, charge, deliver, and track constituent letters.",
+    "investability": "watchlist",
+    "reason": "Repo has product implementation, but no workspace evidence of paid demand, production deliverability, official coverage, or legal/compliance clearance."
+  },
+  "registryContext": {
+    "sensitivity": "Watchlist; personal/research asset; not near-term investible unless operator confirms business intent.",
+    "identityMismatch": "Dispatch says brooks-history / RPLogic-Inc/brookss-history; repo content says CivicState."
+  },
+  "customer": {
+    "primary": "Individual US residents with a specific civic concern and need for professional official correspondence. [assumption: inferred from repo docs]",
+    "excluded": [
+      "Legal claimants or people seeking legal advice. [evidence: MASTER_PLAN.md]",
+      "Businesses seeking lobbying or government affairs services. [evidence: .planning/PROJECT.md]",
+      "Organizations needing enterprise advocacy tooling. [assumption: not in launch scope]"
+    ]
+  },
+  "product": {
+    "realToday": [
+      "Submission API with moderation and queueing. [evidence: apps/api/src/routes/submissions.ts]",
+      "Official lookup orchestrator. [evidence: apps/api/src/lib/officials/lookup.ts]",
+      "AI researcher and drafter agents with citation constraints. [evidence: apps/worker/src/agents/researcher.ts; apps/worker/src/agents/drafter.ts]",
+      "Stripe Checkout pricing tiers. [evidence: apps/api/src/routes/payments.ts]",
+      "Postmark delivery and webhooks. [evidence: apps/worker/src/agents/delivery.ts; apps/api/src/routes/webhooks.ts]",
+      "Dashboard, admin, and compliance surfaces. [evidence: apps/web and apps/api route files]"
+    ],
+    "notYetProven": [
+      "Production conversion. [assumption: no revenue evidence found]",
+      "Production deliverability. [assumption: no Postmark metrics found]",
+      "Legal/compliance sufficiency. [assumption: no legal review evidence found]"
+    ]
+  },
+  "marketSizing": {
+    "method": "Bottom-up launchable beachhead, not TAM.",
+    "model": [
+      "51 state/DC units. [assumption: US geography heuristic]",
+      "10 issue clusters per unit per year. [assumption: operator planning heuristic]",
+      "20 trigger events per cluster per year. [assumption: civic event heuristic]",
+      "20 paid campaigns per trigger event. [assumption: small adoption hypothesis]",
+      "$15 blended campaign price. [assumption: midpoint of repo pricing tiers]",
+      "$3,060,000 annual launchable revenue. [assumption: 51 x 10 x 20 x 20 x $15]"
+    ],
+    "caution": "This is a validation hypothesis, not evidence of market demand."
+  },
+  "revenueModel": {
+    "type": "transactional",
+    "tiers": [
+      {
+        "name": "single",
+        "price": "$5 [evidence: apps/api/src/routes/payments.ts]",
+        "officialCount": "1 [evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "name": "three_pack",
+        "price": "$15 [evidence: apps/api/src/routes/payments.ts]",
+        "officialCount": "3 [evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "name": "full_spread",
+        "price": "$25 [evidence: apps/api/src/routes/payments.ts]",
+        "officialCount": "all matched officials [evidence: apps/api/src/routes/payments.ts]"
+      }
+    ]
+  },
+  "financials": {
+    "unitEconomics": [
+      {
+        "tier": "single",
+        "revenue": "$5.00 [evidence: apps/api/src/routes/payments.ts]",
+        "paymentFee": "$0.45 [evidence: .planning/phases/03-payment-delivery/03-01-PLAN.md]",
+        "aiDeliveryCost": "$0.20 [evidence: .planning/phases/03-payment-delivery/03-01-PLAN.md]",
+        "contribution": "$4.35 [assumption: arithmetic from repo planning figures]",
+        "margin": "87.0% [assumption: arithmetic from repo planning figures]"
+      },
+      {
+        "tier": "three_pack",
+        "revenue": "$15.00 [evidence: apps/api/src/routes/payments.ts]",
+        "paymentFee": "$0.74 [evidence: .planning/phases/03-payment-delivery/03-01-PLAN.md]",
+        "aiDeliveryCost": "$0.40 [evidence: .planning/phases/03-payment-delivery/03-01-PLAN.md]",
+        "contribution": "$13.86 [assumption: arithmetic from repo planning figures]",
+        "margin": "92.4% [assumption: arithmetic from repo planning figures]"
+      },
+      {
+        "tier": "full_spread",
+        "revenue": "$25.00 [evidence: apps/api/src/routes/payments.ts]",
+        "paymentFee": "$1.03 [evidence: .planning/phases/03-payment-delivery/03-01-PLAN.md]",
+        "aiDeliveryCost": "$0.60 [evidence: .planning/phases/03-payment-delivery/03-01-PLAN.md]",
+        "contribution": "$23.37 [assumption: arithmetic from repo planning figures]",
+        "margin": "93.5% [assumption: arithmetic from repo planning figures]"
+      }
+    ],
+    "missing": [
+      "Legal review cost. [assumption: absent from repo]",
+      "Insurance cost. [assumption: absent from repo]",
+      "Support cost. [assumption: absent from repo]",
+      "Data-provider cost beyond planning notes. [assumption: absent from repo]",
+      "Refunds and chargebacks. [assumption: absent from repo]"
+    ]
+  },
+  "competition": [
+    "Resistbot [assumption: model knowledge, not workspace evidence]",
+    "Change.org [assumption: model knowledge, not workspace evidence]",
+    "Quorum/FiscalNote-style enterprise advocacy tools [assumption: model knowledge, not workspace evidence]",
+    "VoterVoice/Phone2Action-style grassroots advocacy tools [assumption: model knowledge, not workspace evidence]",
+    "Manual email and phone calls [evidence: substitute implied by repo value proposition]",
+    "Lawyers and legal document services [evidence: repo explicitly excludes legal advice]"
+  ],
+  "goToMarket": {
+    "firstMotion": "Manual beta plus issue-specific landing/workflow pages. [assumption: EIR strategy]",
+    "metrics": [
+      "25 recruited beta users. [assumption: manual validation target]",
+      "10 real paid beta campaigns. [assumption: minimum willingness-to-pay signal]",
+      "Preview-to-payment conversion. [assumption: key funnel metric]",
+      "Delivery, bounce, spam complaint, refund, and support rates. [assumption: key risk metrics]"
+    ]
+  },
+  "risksAntiPlan": {
+    "killCase": [
+      "This may be a personal/research asset, not a company. [evidence: registry note]",
+      "Repo/project identity mismatch undermines data-room credibility. [evidence: worker dispatch; package.json]",
+      "Official deliverability may fail. [assumption: product mechanics]",
+      "Legal/compliance exposure may exceed the value of low-priced campaigns. [assumption: risk analysis]",
+      "Willingness to pay may be too low for a repeatable business. [assumption: no traction evidence]",
+      "Compliance implementation has apparent schema mismatches. [evidence: apps/api/src/routes/compliance.ts; packages/shared/prisma/schema.prisma]"
+    ],
+    "doNotDo": [
+      "Do not pitch as VC-ready before paid conversion and deliverability evidence.",
+      "Do not add automated follow-up letters before legal/compliance review.",
+      "Do not add organizational APIs before consumer workflow validation.",
+      "Do not represent citation-backed letters as legal advice."
+    ]
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "Users will pay $5-$25 for one civic letter campaign.",
+      "basis": "Repo pricing exists; no traction evidence.",
+      "validation": "Run beta checkout and record conversion/refunds."
+    },
+    {
+      "assumption": "A $15 blended price is realistic.",
+      "basis": "Midpoint of repo tiers.",
+      "validation": "Track tier mix across first 100 paid campaigns. [assumption: validation sample target]"
+    },
+    {
+      "assumption": "Official email delivery can work at acceptable rates.",
+      "basis": "Delivery architecture exists; production data absent.",
+      "validation": "Postmark warm-up and delivery metrics."
+    },
+    {
+      "assumption": "Official lookup coverage is sufficient after provider selection.",
+      "basis": "Lookup architecture exists; coverage data absent.",
+      "validation": "ZIP coverage audit."
+    },
+    {
+      "assumption": "Compliance defects are fixable without changing the product promise.",
+      "basis": "Detected route/schema mismatch.",
+      "validation": "Fix and pass compliance tests."
+    }
+  ],
+  "diligence": {
+    "holes": [
+      "No customer interviews or revenue data.",
+      "No production deliverability metrics.",
+      "No legal review memo.",
+      "No official coverage audit.",
+      "No operator ruling on business intent."
+    ],
+    "mitigations": [
+      "Keep status proposed/watchlist.",
+      "Run paid beta before feature expansion.",
+      "Fix compliance route/schema mismatch.",
+      "Instrument payment, delivery, bounce, spam complaint, and refund metrics.",
+      "Record operator decision in DECISIONS.md."
+    ],
+    "residualRisks": [
+      "Low willingness-to-pay may persist after beta.",
+      "Government recipients may block, ignore, or complain about automated letters.",
+      "Legal/compliance obligations may make the low-price model unattractive."
+    ]
+  },
+  "freshness": {
+    "reviewedAsOf": "2026-06-20 [evidence: worker dispatch date]",
+    "planningDocsLastUpdated": "2026-04-25 [evidence: .planning/PROJECT.md; .planning/STATE.md]",
+    "adoptionReferenceDate": "2026-06-12 [evidence: worker brief]"
+  },
+  "roadmap": {
+    "path": "ROADMAP.md",
+    "next": [
+      "Resolve identity mismatch.",
+      "Fix compliance export/schema mismatch.",
+      "Run official coverage audit.",
+      "Run deliverability warm-up.",
+      "Run paid beta.",
+      "Update gate after evidence exists."
+    ]
+  },
+  "decision": {
+    "recommendation": "watchlist",
+    "rationale": "Promising implementation, but currently a proposed research/business plan with unresolved identity, demand, compliance, and deliverability risks."
+  }
+}
