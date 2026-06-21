@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "wrk.soul-gate.v1",
+  "status": "pending",
+  "project": {
+    "id": "brooks-history",
+    "repository": "RPLogic-Inc/brookss-history",
+    "seed": {
+      "path": "BUSINESS.md",
+      "id": "civicstate-business-plan"
+    }
+  },
+  "executiveSnapshot": "Watchlist civic letter automation asset; product exists, but demand and deliverability are unproven.",
+  "summary": "CivicState converts civic issues into researched, cited letters to officials. Repo evidence supports product work, not investibility.",
+  "adoptionMechanism": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record",
+  "authority": "pending",
+  "sourcesAndMethods": [
+    "Workspace-only review; no network research used.",
+    "Read .planning/PROJECT.md, .planning/GENESIS.md, .planning/ROADMAP.md, .planning/REQUIREMENTS.md, .planning/existing-state.md, MASTER_PLAN.md.",
+    "Inspected implementation evidence in apps/api/src, apps/web/app, apps/web/components, apps/worker/src, and packages/shared/prisma/schema.prisma.",
+    "Tagged repo-backed claims as [evidence] and external market/legal/customer claims as [assumption: basis]."
+  ],
+  "thesisCurrent": "Credible product thesis for done-for-you civic letters; not yet a credible venture thesis without live demand, deliverability, and legal validation.",
+  "businessFile": "BUSINESS.md",
+  "roadmapFile": "ROADMAP.md",
+  "decisionsFile": "DECISIONS.md",
+  "customerDefinition": {
+    "primary": "US resident with a specific civic issue who would contact government if research, drafting, routing, and delivery were handled [evidence: .planning/GENESIS.md].",
+    "excluded": "Legal filings, regulatory claims, lobbying firms, law firms, PACs, and enterprise advocacy teams [evidence: MASTER_PLAN.md; .planning/REQUIREMENTS.md]."
+  },
+  "revenueModel": {
+    "active": "One-time Stripe checkout for letter delivery packages [evidence: apps/api/src/routes/payments.ts].",
+    "tiers": [
+      "$5 single official [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three officials [evidence: apps/api/src/routes/payments.ts]",
+      "$25 all matched officials [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "guardrails": [
+      "40% net margin floor [evidence: .planning/PROJECT.md]",
+      "$1,500 reserve [evidence: .planning/PROJECT.md]",
+      "150% job overage pause [evidence: .planning/REQUIREMENTS.md]"
+    ]
+  },
+  "financialFigures": [
+    "$5 package price [evidence: apps/api/src/routes/payments.ts]",
+    "$15 package price [evidence: apps/api/src/routes/payments.ts]",
+    "$25 package price [evidence: apps/api/src/routes/payments.ts]",
+    "$96/month planned droplet [evidence: MASTER_PLAN.md]",
+    "$1,500 reserve [evidence: .planning/PROJECT.md]",
+    "$6,000 monthly revenue at 400 submissions x $15 AOV [assumption: model in BUSINESS.md]"
+  ],
+  "percentFigures": [
+    "40% net margin floor [evidence: .planning/PROJECT.md]",
+    "88-92% planned letter-package gross margin [evidence: MASTER_PLAN.md]",
+    "3% willingness-to-pay validation gate [evidence: .planning/PROJECT.md]",
+    "85% inbox placement validation gate [evidence: .planning/PROJECT.md]",
+    "60% local coverage gate [evidence: .planning/PROJECT.md]"
+  ],
+  "marketSizing": {
+    "method": "Bottoms-up paid submissions x average order value because no network research was available.",
+    "baseCase": "400 monthly paid submissions x $15 AOV = $6,000 monthly revenue [assumption: BUSINESS.md model].",
+    "investibilityTest": "5,000 monthly paid submissions x $15 AOV = $75,000 monthly revenue [assumption: BUSINESS.md model; volume band from MASTER_PLAN.md]."
+  },
+  "competition": [
+    "Resistbot [evidence: MASTER_PLAN.md]",
+    "Change.org [evidence: MASTER_PLAN.md]",
+    "LegalZoom [evidence: MASTER_PLAN.md]",
+    "Quorum and VoterVoice [assumption: enterprise civic advocacy competitors need external validation]",
+    "Generic AI chat plus manual email [assumption: obvious substitute workflow]",
+    "Manual constituent outreach [evidence: MASTER_PLAN.md]"
+  ],
+  "goToMarket": "SEO-first hypothesis from public campaign pages, validated through narrow pilots before paid acquisition [evidence: .planning/GENESIS.md; assumption: channel performance unknown].",
+  "risksAntiPlan": {
+    "killCase": "Low ticket size, trust-sensitive workflow, hard government deliverability, and no live demand evidence make this non-investible until validation gates clear.",
+    "holes": [
+      {
+        "hole": "No production demand evidence.",
+        "mitigation": "Run small operator-reviewed pilots and measure preview-to-payment conversion.",
+        "residualRisk": "Users may expect civic action tools to be free."
+      },
+      {
+        "hole": "Government deliverability is unproven.",
+        "mitigation": "Warm domain, test inbox placement, track bounces and complaints.",
+        "residualRisk": "Agency domains may still filter repetitive AI-generated mail."
+      },
+      {
+        "hole": "Legal/compliance posture is not externally reviewed.",
+        "mitigation": "Require counsel/operator review before public launch.",
+        "residualRisk": "Defamation, harassment, privacy, lobbying, AI disclosure, or CAN-SPAM issues may remain."
+      },
+      {
+        "hole": "Frontend/backend checkout tier mismatch.",
+        "mitigation": "Align tier keys and run sandbox payment flow.",
+        "residualRisk": "Payment conversion data is invalid until checkout works."
+      }
+    ]
+  },
+  "assumptionLedger": [
+    "Residents will pay for civic letter delivery [assumption: must validate with live conversion].",
+    "SEO can acquire qualified traffic [assumption: must validate with search data].",
+    "Official email delivery works reliably [assumption: must validate with inbox/bounce tests].",
+    "AI citations can be verified enough for production [assumption: must validate failure rate].",
+    "One operator can handle launch exceptions [evidence: .planning/GENESIS.md; assumption: queue volume unknown]."
+  ],
+  "honestyLabels": {
+    "evidence": "Repository or runtime-dispatch source.",
+    "assumption": "External market, customer, legal, vendor, or operational claim not verified in workspace-only mode."
+  },
+  "docDates": {
+    "currentReview": "2026-06-21 [evidence: worker runtime context]",
+    "sourcePlan": "2026-04-25 [evidence: .planning/PROJECT.md]",
+    "intakeBrief": "2026-04-10 [evidence: .planning/INTAKE-BRIEF.md]"
+  },
+  "evidenceSources": [
+    "MASTER_PLAN.md",
+    ".planning/PROJECT.md",
+    ".planning/GENESIS.md",
+    ".planning/ROADMAP.md",
+    ".planning/REQUIREMENTS.md",
+    ".planning/existing-state.md",
+    "apps/api/src/index.ts",
+    "apps/web/app/page.tsx",
+    "apps/web/components/wizard/letter-preview.tsx",
+    "packages/shared/prisma/schema.prisma"
+  ],
+  "freshness": {
+    "mode": "workspace-only",
+    "staleRisk": "High for external market, legal, vendor pricing, official API coverage, and deliverability claims.",
+    "freshnessStale": true
+  },
+  "surpriseSpikes": [
+    "Existing-state says zero application code exists, but repo now has API, web, worker, and Prisma implementation evidence.",
+    "Planning roadmap marks all phases complete while requirements still list core pending work.",
+    "Frontend pricing tier keys do not match backend payment tier keys.",
+    "Registry note frames this as personal/research and not near-term investible unless operator confirms business intent."
+  ],
+  "roadmapBuildableShape": {
+    "nowNextLater": true,
+    "singleWorkerItems": 8,
+    "traceability": "Each Now / Next / Later item maps to a BUSINESS.md heading."
+  },
+  "scrutinyGapsFixed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "operatorValidationNeeded": [
+    "Confirm whether project should pitch as a business or remain personal/research.",
+    "Validate willingness to pay.",
+    "Validate deliverability.",
+    "Validate official data coverage.",
+    "Validate legal/compliance posture."
+  ]
+}
