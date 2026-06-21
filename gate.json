@@ -1,0 +1,333 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "status": "proposed",
+  "authority": "operator_merge_required",
+  "soulSnapshot": "CivicState is validation-ready civic-tech, but identity, demand, legal, and deliverability risks block investibility.",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "observedProductName": "CivicState",
+    "seed": {
+      "path": "BUSINESS.md",
+      "id": "civicstate-eir-soul-2026-06-21"
+    }
+  },
+  "adoption": {
+    "mechanism": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record",
+    "currentAuthority": "proposed only; operator merge required for adopted status"
+  },
+  "registryContext": {
+    "watchlist": true,
+    "note": "personal/research asset, not near-term investible BOS; operator must confirm whether it should pitch as a business",
+    "evidence": "wrk.dog dispatch"
+  },
+  "sourcesAndMethods": {
+    "sources": [
+      {
+        "path": "BUSINESS.md",
+        "method": "created root business soul from repository evidence"
+      },
+      {
+        "path": "ROADMAP.md",
+        "method": "created aligned, buildable roadmap from current repo and planning files"
+      },
+      {
+        "path": "DECISIONS.md",
+        "method": "created decisions log entry for EIR soul upgrade"
+      },
+      {
+        "path": "MASTER_PLAN.md",
+        "method": "used as prior product and architecture blueprint"
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "method": "used for core value, constraints, pricing, validation gates, and risks"
+      },
+      {
+        "path": ".planning/GENESIS.md",
+        "method": "used for customer, distribution, moat, and assumptions"
+      },
+      {
+        "path": ".planning/REQUIREMENTS.md",
+        "method": "used for launch scope and incomplete requirements"
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "method": "used as prior roadmap while noting completion conflicts"
+      },
+      {
+        "path": ".planning/existing-state.md",
+        "method": "used as stale evidence and contradiction source"
+      },
+      {
+        "path": "package.json",
+        "method": "confirmed product identity and monorepo scripts"
+      },
+      {
+        "path": "packages/shared/prisma/schema.prisma",
+        "method": "confirmed implemented data model"
+      },
+      {
+        "path": "apps/api/src/index.ts",
+        "method": "confirmed implemented API route surface"
+      },
+      {
+        "path": "apps/api/src/routes/submissions.ts",
+        "method": "confirmed intake, moderation, audit, and queue behavior"
+      },
+      {
+        "path": "apps/worker/src/engine/state-machine.ts",
+        "method": "confirmed implemented workflow state machine"
+      }
+    ],
+    "networkResearch": false,
+    "workspaceOnly": true,
+    "externalClaimsPolicy": "All external market claims are tagged as assumptions in BUSINESS.md."
+  },
+  "documentDates": {
+    "asOf": "2026-06-21",
+    "priorPlanningDate": "2026-04-25",
+    "operatorRulingDate": "2026-06-12"
+  },
+  "thesis": {
+    "current": "CivicState may be a paid civic action utility if it proves that individuals will pay for researched, cited official letters.",
+    "status": "conditional",
+    "investorReadiness": "not near-term investible",
+    "whyNow": "The repo has enough product scaffolding to validate the workflow, but not enough market evidence to pitch.",
+    "primaryBlockers": [
+      "Registry identifies brooks-history while repository implements CivicState.",
+      "Demand and paid conversion are unvalidated.",
+      "Government email deliverability is unproven.",
+      "Legal/citation risk remains material."
+    ]
+  },
+  "customerDefinition": {
+    "primaryCustomer": "US resident with a specific civic issue, ZIP code, desired outcome, and willingness to pay for research, drafting, routing, and delivery.",
+    "nonCustomers": [
+      "Users seeking legal advice or filings",
+      "Users targeting private individuals",
+      "Business advocacy without separate policy review",
+      "Harassment, threats, or defamation-risk submissions"
+    ]
+  },
+  "revenueModel": {
+    "pricing": [
+      {
+        "tier": "single_official",
+        "priceUsd": 5,
+        "honesty": "evidence: .planning/PROJECT.md; .planning/REQUIREMENTS.md"
+      },
+      {
+        "tier": "three_officials",
+        "priceUsd": 15,
+        "honesty": "evidence: .planning/PROJECT.md; .planning/REQUIREMENTS.md"
+      },
+      {
+        "tier": "full_spread",
+        "priceUsd": 25,
+        "honesty": "evidence: .planning/PROJECT.md; .planning/REQUIREMENTS.md"
+      }
+    ],
+    "blendedAovUsd": {
+      "value": 13,
+      "honesty": "assumption: 40% / 40% / 20% launch package mix"
+    },
+    "modeledVariableCostUsd": {
+      "value": 0.9,
+      "honesty": "assumption: offline model using repo AI-cost evidence plus card/email assumptions"
+    },
+    "modeledContributionMarginPct": {
+      "value": 93.1,
+      "honesty": "assumption: calculated from $12.10 contribution on $13.00 AOV"
+    }
+  },
+  "financialModel": {
+    "monthlyScenarios": [
+      {
+        "name": "beta",
+        "paidSubmissions": 100,
+        "grossRevenueUsd": 1300,
+        "variableCostUsd": 90,
+        "contributionUsd": 1210,
+        "fixedBurnUsd": 132.5,
+        "operatingResultUsd": 1077.5,
+        "honesty": "assumption except fixedBurnUsd, which is evidence: .planning/PROJECT.md"
+      },
+      {
+        "name": "base",
+        "paidSubmissions": 400,
+        "grossRevenueUsd": 5200,
+        "variableCostUsd": 360,
+        "contributionUsd": 4840,
+        "fixedBurnUsd": 132.5,
+        "operatingResultUsd": 4707.5,
+        "honesty": "assumption except fixedBurnUsd, which is evidence: .planning/PROJECT.md"
+      },
+      {
+        "name": "upside",
+        "paidSubmissions": 1000,
+        "grossRevenueUsd": 13000,
+        "variableCostUsd": 900,
+        "contributionUsd": 12100,
+        "fixedBurnUsd": 132.5,
+        "operatingResultUsd": 11967.5,
+        "honesty": "assumption except fixedBurnUsd, which is evidence: .planning/PROJECT.md"
+      }
+    ],
+    "reconciles": true
+  },
+  "marketSizing": {
+    "method": "bottom-up validation ladder due workspace-only mode",
+    "tam": "unknown; external population and market data unavailable",
+    "sam": "unknown until customer discovery and external research are allowed",
+    "nearTermSom": [
+      {
+        "paidSubmissionsPerMonth": 100,
+        "grossRevenueUsdPerMonth": 1300,
+        "honesty": "assumption: beta validation volume"
+      },
+      {
+        "paidSubmissionsPerMonth": 400,
+        "grossRevenueUsdPerMonth": 5200,
+        "honesty": "assumption: first-year directional target"
+      },
+      {
+        "paidSubmissionsPerMonth": 1000,
+        "grossRevenueUsdPerMonth": 13000,
+        "honesty": "assumption: SEO/social flywheel works"
+      }
+    ]
+  },
+  "competition": [
+    {
+      "name": "Resistbot",
+      "position": "closest civic letter alternative",
+      "honesty": "evidence: MASTER_PLAN.md; .planning/PROJECT.md; external positioning not verified"
+    },
+    {
+      "name": "Change.org",
+      "position": "petition and public momentum alternative",
+      "honesty": "evidence: MASTER_PLAN.md; external positioning not verified"
+    },
+    {
+      "name": "LegalZoom",
+      "position": "document preparation alternative, not civic-specific in the repo thesis",
+      "honesty": "evidence: MASTER_PLAN.md; external positioning not verified"
+    },
+    {
+      "name": "Quorum",
+      "position": "enterprise advocacy platform",
+      "honesty": "evidence: .planning/PROJECT.md; external positioning not verified"
+    },
+    {
+      "name": "VoterVoice",
+      "position": "enterprise advocacy platform",
+      "honesty": "evidence: .planning/PROJECT.md; external positioning not verified"
+    }
+  ],
+  "goToMarket": {
+    "primary": "closed beta before broad SEO",
+    "repoHypothesis": "organic search through opt-in public campaign pages",
+    "secondary": "social sharing from public campaign pages",
+    "excludedAtLaunch": [
+      "paid ads",
+      "app stores",
+      "partnership-led distribution"
+    ]
+  },
+  "riskRegister": {
+    "holes": [
+      {
+        "hole": "Project identity mismatch between registry and repo",
+        "mitigation": "Operator confirms whether this repo should remain attached to brooks-history before publication",
+        "residualRisk": "External dossier may pitch the wrong asset"
+      },
+      {
+        "hole": "Demand and willingness to pay unvalidated",
+        "mitigation": "Run closed beta measuring preview-to-paid conversion",
+        "residualRisk": "Users may prefer free/manual outreach"
+      },
+      {
+        "hole": "Government inbox deliverability unproven",
+        "mitigation": "Domain warming, Postmark monitoring, bounce suppression, and small send limits",
+        "residualRisk": "Officials may block or ignore automated-origin letters"
+      },
+      {
+        "hole": "AI citations and legal-adjacent drafting risk",
+        "mitigation": "Programmatic citation verification plus human review for edge cases",
+        "residualRisk": "Incorrect or harmful letters could still ship"
+      },
+      {
+        "hole": "Stale planning files conflict with current repo state",
+        "mitigation": "Root roadmap and business soul now identify stale sources explicitly",
+        "residualRisk": "Future agents may still follow obsolete .planning evidence"
+      }
+    ],
+    "antiPlan": "Do not pitch as venture-investible until identity, conversion, deliverability, official coverage, and legal/citation gates pass."
+  },
+  "assumptions": [
+    "Users will pay $5-$25 for civic letter workflow.",
+    "A $13 blended AOV can be achieved.",
+    "A $0.90 variable cost model is directionally plausible.",
+    "SEO can acquire demand after opt-in public pages exist.",
+    "One operator can manage launch exceptions."
+  ],
+  "validationGates": [
+    {
+      "name": "paidConversion",
+      "threshold": ">=3%",
+      "honesty": "evidence: .planning/PROJECT.md"
+    },
+    {
+      "name": "governmentInboxPlacement",
+      "threshold": ">=85%",
+      "honesty": "evidence: .planning/PROJECT.md"
+    },
+    {
+      "name": "officialCoverage",
+      "threshold": ">=95% federal/state and >=60% local",
+      "honesty": "evidence: .planning/PROJECT.md"
+    }
+  ],
+  "roadmap": {
+    "path": "ROADMAP.md",
+    "buildableShape": true,
+    "nextSliceCount": 7
+  },
+  "decisions": {
+    "path": "DECISIONS.md",
+    "entry": "2026-06-21 - EIR soul upgrade (wrk.dog)"
+  },
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "freshness": {
+    "freshAsOf": "2026-06-21",
+    "staleSourcesFlagged": [
+      ".planning/existing-state.md"
+    ],
+    "contradictions": [
+      ".planning/existing-state.md says zero application code exists, but current repo contains app code and tests.",
+      ".planning/ROADMAP.md says all phases complete, but .planning/REQUIREMENTS.md lists many pending launch items."
+    ]
+  }
+}
