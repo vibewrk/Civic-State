@@ -1,0 +1,273 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "project": {
+    "id": "brooks-history",
+    "repository": "RPLogic-Inc/brookss-history",
+    "seed": {
+      "path": "BUSINESS.md",
+      "type": "existing-project-soul"
+    }
+  },
+  "status": "proposed",
+  "summary": "CivicState is MVP-code-real but remains watchlist until paid demand, coverage, delivery, and compliance prove out.",
+  "adoption": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+  "adoptionEvidence": "[evidence: dispatch brief]",
+  "thesisCurrent": {
+    "label": "watchlist EIR validation candidate",
+    "asOf": "2026-06-21",
+    "honesty": "[evidence: dispatch current_date and registry note]",
+    "text": "CivicState has a real civic-action workflow in the repo, but it is not near-term investible until the operator confirms business intent and market validation clears."
+  },
+  "authority": {
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+    "operatorMergeRequired": true,
+    "doNotClaim": "adopted"
+  },
+  "methods": {
+    "workspaceOnly": true,
+    "networkResearch": false,
+    "sourcesUsed": [
+      "dispatch registry note and current_date",
+      ".planning/PROJECT.md",
+      ".planning/GENESIS.md",
+      ".planning/REQUIREMENTS.md",
+      ".planning/ROADMAP.md",
+      "MASTER_PLAN.md",
+      "package.json",
+      "apps/api/src/routes/submissions.ts",
+      "apps/api/src/routes/officials.ts",
+      "apps/api/src/routes/payments.ts",
+      "apps/api/src/routes/webhooks.ts",
+      "apps/api/src/lib/officials/cicero.ts",
+      "apps/worker/src/agents/researcher.ts",
+      "apps/worker/src/agents/delivery.ts",
+      "apps/worker/src/lib/treasury.ts",
+      "packages/shared/prisma/schema.prisma"
+    ],
+    "sourcePolicy": "Repo and registry files are evidence; all external market claims are assumptions because network research was unavailable."
+  },
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "productReality": {
+    "real": [
+      "Monorepo with web, API, worker, and shared packages [evidence: package.json and source tree]",
+      "Submission, moderation, official lookup, payment, webhook, dashboard, admin, delivery, treasury, and Prisma schema surfaces [evidence: apps and packages/shared/prisma/schema.prisma]",
+      "Hardcoded Stripe tiers of $5.00, $15.00, and $25.00 [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "notYetProven": [
+      "Paid customer demand [assumption: no revenue/customer data in workspace]",
+      "Local official coverage [evidence: Cicero stub returns empty array]",
+      "Production deliverability and response rates [assumption: no production delivery metrics in workspace]",
+      "Legal/compliance sufficiency [assumption: requires professional/operator review]"
+    ]
+  },
+  "customerDefinition": {
+    "primary": "U.S. residents with a specific civic issue who will pay a one-time fee for researched, routed, citation-backed letters [evidence: .planning/GENESIS.md; assumption: willingness to pay unvalidated]",
+    "nonCustomers": [
+      "Legal-advice seekers [evidence: terms page]",
+      "Bulk advocacy organizations at launch [evidence: .planning/PROJECT.md]",
+      "Government officials as buyers [assumption: officials are recipients, not paying customers]"
+    ]
+  },
+  "marketSizing": {
+    "type": "bottom-up wedge model",
+    "workspaceOnlyCaveat": "No external market data was available; figures are assumptions.",
+    "models": [
+      {
+        "name": "validation wedge",
+        "annualVisitors": "10000 [assumption: narrow SEO pilot]",
+        "conversion": "3% [assumption: existing planning target]",
+        "averageOrder": "$15.00 [evidence: pricing tier]",
+        "annualRevenue": "$4500 [assumption: arithmetic]"
+      },
+      {
+        "name": "early repeatable niche",
+        "annualVisitors": "100000 [assumption: broader long-tail wedge]",
+        "conversion": "3% [assumption]",
+        "averageOrder": "$15.00 [evidence]",
+        "annualRevenue": "$45000 [assumption: arithmetic]"
+      },
+      {
+        "name": "scaled consumer civic workflow",
+        "annualVisitors": "1000000 [assumption: national long-tail ceiling]",
+        "conversion": "2% [assumption]",
+        "averageOrder": "$15.00 [evidence]",
+        "annualRevenue": "$300000 [assumption: arithmetic]"
+      }
+    ]
+  },
+  "revenueModel": {
+    "launch": "One-time paid letter packages",
+    "pricing": [
+      {
+        "tier": "single",
+        "price": "$5.00 [evidence: apps/api/src/routes/payments.ts]",
+        "officials": "1 [evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "tier": "three_pack",
+        "price": "$15.00 [evidence: apps/api/src/routes/payments.ts]",
+        "officials": "3 [evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "tier": "full_spread",
+        "price": "$25.00 [evidence: apps/api/src/routes/payments.ts]",
+        "officials": "all matched [evidence: apps/api/src/routes/payments.ts]"
+      }
+    ],
+    "future": [
+      "Priority review [assumption: not implemented as SKU]",
+      "Organization/API plans [assumption: deferred in planning docs]",
+      "Certified mail/fax add-ons [assumption: deferred]"
+    ]
+  },
+  "financialModel": {
+    "currency": "USD",
+    "scenarios": [
+      {
+        "name": "conservative",
+        "ordersPerMonth": "25 [assumption]",
+        "averageOrder": "$15.00 [evidence]",
+        "grossRevenue": "$375 [assumption: arithmetic]",
+        "variableCost": "$15 [assumption: 25 x $0.60]",
+        "grossProfit": "$360 [assumption: arithmetic]",
+        "grossMargin": "96% [assumption: arithmetic]",
+        "fixedCost": "$150 [assumption]",
+        "contributionAfterFixed": "$210 [assumption: arithmetic]"
+      },
+      {
+        "name": "base",
+        "ordersPerMonth": "100 [assumption]",
+        "averageOrder": "$15.00 [evidence]",
+        "grossRevenue": "$1500 [assumption: arithmetic]",
+        "variableCost": "$60 [assumption: 100 x $0.60]",
+        "grossProfit": "$1440 [assumption: arithmetic]",
+        "grossMargin": "96% [assumption: arithmetic]",
+        "fixedCost": "$250 [assumption]",
+        "contributionAfterFixed": "$1190 [assumption: arithmetic]"
+      },
+      {
+        "name": "aggressive",
+        "ordersPerMonth": "500 [assumption]",
+        "averageOrder": "$15.00 [evidence]",
+        "grossRevenue": "$7500 [assumption: arithmetic]",
+        "variableCost": "$300 [assumption: 500 x $0.60]",
+        "grossProfit": "$7200 [assumption: arithmetic]",
+        "grossMargin": "96% [assumption: arithmetic]",
+        "fixedCost": "$500 [assumption]",
+        "contributionAfterFixed": "$6700 [assumption: arithmetic]"
+      }
+    ],
+    "reconciliation": "orders x average order equals gross revenue; gross revenue minus variable costs equals gross profit; gross profit minus fixed cost equals contribution"
+  },
+  "competition": [
+    {
+      "name": "Resistbot",
+      "position": "Closest constituent messaging analogue [evidence: .planning/PROJECT.md; assumption: current product not externally verified]"
+    },
+    {
+      "name": "Change.org",
+      "position": "Petition-hosting analogue [evidence: MASTER_PLAN.md; assumption: current product not externally verified]"
+    },
+    {
+      "name": "Quorum/VoterVoice-style enterprise tools",
+      "position": "Organization-oriented advocacy software [evidence: .planning/PROJECT.md; assumption: current pricing/features not externally verified]"
+    },
+    {
+      "name": "Manual outreach",
+      "position": "Free but effort-heavy substitute [assumption: behavioral competitor]"
+    },
+    {
+      "name": "Generic AI writing tools",
+      "position": "Drafting substitutes without owned routing/payment/delivery workflow [assumption: product comparison]"
+    }
+  ],
+  "risksAntiPlan": {
+    "holes": [
+      "Demand may be fake despite civic frustration [assumption: no paid demand evidence]",
+      "Officials may ignore or suppress AI-assisted emails [assumption: no response-rate evidence]",
+      "Local official coverage is incomplete [evidence: Cicero stub]",
+      "Legal/compliance burden may exceed one-operator capacity [assumption: requires professional review]"
+    ],
+    "mitigations": [
+      "Run closed beta before public launch [assumption: validation method]",
+      "Gate public launch on delivery/bounce/spam metrics [evidence: delivery tracking exists]",
+      "Resolve local official provider before broad GTM [evidence: current stub]",
+      "Require legal/compliance review before public campaign SEO [assumption: risk-control method]"
+    ],
+    "residualRisks": [
+      "Low repeat frequency may cap LTV [assumption]",
+      "Competitors can copy workflow before data moat compounds [assumption]",
+      "Payment processors or email providers may classify civic content as elevated risk [assumption]",
+      "Citation errors or user allegations could create reputational/legal exposure [assumption]"
+    ]
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "Users will pay for a constituent letter workflow",
+      "basis": ".planning/GENESIS.md hypothesis and pricing implementation",
+      "test": "Measure preview-to-payment conversion in beta"
+    },
+    {
+      "assumption": "Email-first delivery is enough",
+      "basis": "Delivery code and planning docs",
+      "test": "Track delivered, bounced, spam complaint, and reply metrics"
+    },
+    {
+      "assumption": "SEO can acquire qualified users cheaply",
+      "basis": "MASTER_PLAN.md strategy",
+      "test": "Publish compliant pages and measure qualified organic submit-starts"
+    }
+  ],
+  "goToMarket": {
+    "phase": "validation-first",
+    "steps": [
+      "Operator ruling on business posture",
+      "Closed beta in one constrained geography",
+      "Paid workflow tests across all pricing tiers",
+      "Local official coverage decision",
+      "Deliverability gate before public users",
+      "External research refresh when network is available"
+    ]
+  },
+  "roadmapBuildableShape": {
+    "path": "ROADMAP.md",
+    "checkboxCount": "8 [evidence: ROADMAP.md]",
+    "traceability": "Near-term roadmap item names overlap BUSINESS.md headings."
+  },
+  "freshness": {
+    "docDate": "2026-06-21 [evidence: dispatch current_date]",
+    "repoPlanningDates": [
+      "2026-04-25 [.planning/PROJECT.md]",
+      "2026-04-25 [.planning/GENESIS.md]",
+      "2026-04-25 [.planning/REQUIREMENTS.md]",
+      "2026-04-25 [.planning/ROADMAP.md]"
+    ],
+    "staleClaims": "All market, competitor, legal, AI-pricing, and deliverability claims require refresh with external sources before fundraising."
+  },
+  "operatorActionsRequired": [
+    "Confirm whether registry watchlist/research posture should become a business pitch.",
+    "Approve or revise the validation gates in ROADMAP.md.",
+    "Obtain external legal/compliance review before public launch."
+  ]
+}
