@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "wrk.soul-gate.v1",
+  "summary": "Buildable CivicState repo, but identity, demand, deliverability, and market proof remain unvalidated.",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "seed": {
+      "path": "BUSINESS.md",
+      "id": "CivicState Business Plan"
+    }
+  },
+  "status": "draft",
+  "authority": {
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+    "currentAuthority": "draft only; operator merge required",
+    "operatorRulingDate": "2026-06-12 [evidence: dispatch brief]"
+  },
+  "reviewedAt": "2026-06-21 [evidence: dispatch current_date]",
+  "reviewerRole": "Entrepreneur in Residence",
+  "workspaceMode": "workspace-only; no network research used",
+  "sourcesAndMethods": [
+    {
+      "source": "BUSINESS.md",
+      "method": "new VC-grade soul plan written from repo evidence and labeled assumptions"
+    },
+    {
+      "source": "ROADMAP.md",
+      "method": "new buildable validation roadmap aligned to business headings"
+    },
+    {
+      "source": "DECISIONS.md",
+      "method": "new dated decision entry recording scrutiny gaps and residual assumptions"
+    },
+    {
+      "source": ".planning/PROJECT.md",
+      "method": "read existing product thesis, constraints, and context"
+    },
+    {
+      "source": ".planning/ROADMAP.md",
+      "method": "read existing milestone narrative and phase claims"
+    },
+    {
+      "source": ".planning/REQUIREMENTS.md",
+      "method": "read requirement coverage and planned controls"
+    },
+    {
+      "source": "MASTER_PLAN.md",
+      "method": "read original product and architecture blueprint"
+    },
+    {
+      "source": "apps/api, apps/web, apps/worker, packages/shared/prisma",
+      "method": "sampled implementation files to separate real surface area from aspirational planning"
+    }
+  ],
+  "thesisCurrent": {
+    "label": "buildable product, unvalidated business",
+    "evidence": [
+      "Repo contains web, API, worker, Prisma, payment, moderation, and compliance implementation surfaces [evidence: apps/api/src/index.ts; apps/web/app/page.tsx; packages/shared/prisma/schema.prisma].",
+      "No live traffic, paid submissions, customer interviews, or official response metrics were found [evidence: .planning/existing-state.md; .planning/STATE.md].",
+      "Registry note says watchlist and personal/research asset sensitivity [evidence: dispatch registry notes]."
+    ]
+  },
+  "customerDefinition": {
+    "primary": "United States resident with a specific civic issue who wants researched, routed, citation-backed constituent communication [assumption: repo positioning, no customer data].",
+    "nonCustomersAtLaunch": [
+      "Government officials are recipients, not customers [assumption: product workflow].",
+      "Organizations are deferred until consumer workflow is validated [evidence: .planning/PROJECT.md]."
+    ]
+  },
+  "revenueModel": {
+    "type": "one-time transactional letter packages",
+    "implementedPricing": [
+      "$5 single official [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three officials [evidence: apps/api/src/routes/payments.ts]",
+      "$25 all matched officials [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "controls": [
+      "40% net margin floor [evidence: .planning/PROJECT.md]",
+      "10% per-domain bounce pause threshold [evidence: .planning/ROADMAP.md]",
+      "$0.10 reconciliation discrepancy threshold [evidence: .planning/REQUIREMENTS.md]"
+    ]
+  },
+  "marketSizing": {
+    "method": "bottom-up scenario envelope because network research was unavailable",
+    "scenarios": [
+      {
+        "name": "tiny beta",
+        "monthlySubmissions": "100 [assumption: operator-testable launch target]",
+        "asp": "$15 [evidence: apps/api/src/routes/payments.ts]",
+        "monthlyRevenue": "$1,500 [assumption: 100 x $15]",
+        "annualRunRate": "$18,000 [assumption: $1,500 x twelve months]"
+      },
+      {
+        "name": "niche utility",
+        "monthlySubmissions": "1,000 [assumption: local/SEO wedge target]",
+        "asp": "$15 [evidence: apps/api/src/routes/payments.ts]",
+        "monthlyRevenue": "$15,000 [assumption: 1,000 x $15]",
+        "annualRunRate": "$180,000 [assumption: $15,000 x twelve months]"
+      },
+      {
+        "name": "scaled consumer tool",
+        "monthlySubmissions": "10,000 [assumption: unvalidated]",
+        "asp": "$15 [evidence: apps/api/src/routes/payments.ts]",
+        "monthlyRevenue": "$150,000 [assumption: 10,000 x $15]",
+        "annualRunRate": "$1,800,000 [assumption: $150,000 x twelve months]"
+      }
+    ]
+  },
+  "competition": [
+    "Resistbot [assumption: named in repo planning, no network verification]",
+    "Change.org [assumption: named in MASTER_PLAN.md, no network verification]",
+    "LegalZoom [assumption: named in MASTER_PLAN.md, no network verification]",
+    "Quorum [assumption: named in .planning/PROJECT.md, no network verification]",
+    "VoterVoice [assumption: named in .planning/PROJECT.md, no network verification]",
+    "Manual outreach [assumption: inherent free substitute]"
+  ],
+  "goToMarket": {
+    "nearTerm": [
+      "Private beta with residents who already have specific civic issues [assumption: validation-first GTM].",
+      "No paid acquisition before conversion and deliverability evidence [assumption: low-price transactional economics].",
+      "Opt-in public campaign pages only after compliance review [evidence: MASTER_PLAN.md]."
+    ],
+    "validationGates": [
+      "3% payment conversion [assumption: prior planning target in .planning/PROJECT.md]",
+      "85% government-domain inbox placement [assumption: prior planning target in .planning/PROJECT.md]",
+      "95% federal/state coverage and 60% local coverage [assumption: prior planning target in .planning/PROJECT.md]"
+    ]
+  },
+  "riskRegister": [
+    {
+      "hole": "Project identity mismatch between brooks-history dispatch and CivicState repo.",
+      "mitigation": "Operator ruling before wrk.vc publication.",
+      "residualRisk": "Wrong asset may be promoted or evaluated."
+    },
+    {
+      "hole": "No paid demand evidence.",
+      "mitigation": "Private beta with real checkout before scaling.",
+      "residualRisk": "Users may choose free manual outreach."
+    },
+    {
+      "hole": "Government deliverability and official response unknown.",
+      "mitigation": "Postmark webhook monitoring, bounce pause, official opt-out enforcement.",
+      "residualRisk": "Delivered letters may still be ignored or filtered."
+    },
+    {
+      "hole": "Legal/political-speech sensitivity.",
+      "mitigation": "Moderation, audit logs, AI disclosure, not-legal-advice positioning.",
+      "residualRisk": "No legal opinion found in workspace."
+    }
+  ],
+  "assumptionLedger": [
+    "Users will pay at least $5 [evidence: apps/api/src/routes/payments.ts] for single-official delivery [assumption: unvalidated willingness to pay].",
+    "Average selling price can hold near $15 [evidence: apps/api/src/routes/payments.ts] [assumption: tier mix unknown].",
+    "SEO can acquire traffic at low CAC [assumption: no traffic data in workspace].",
+    "Verified citations increase trust [assumption: no conversion research in workspace].",
+    "Local official data can be sourced affordably [assumption: provider spike unresolved]."
+  ],
+  "surpriseSpikes": [
+    "Dispatch names brooks-history, while repo code and planning name CivicState [evidence: dispatch registry notes; package.json].",
+    ".planning/existing-state.md says zero app code, while current repo contains app code [evidence: .planning/existing-state.md; apps/api/src/index.ts].",
+    ".planning/STATE.md and .planning/ROADMAP.md disagree on phase completion [evidence: .planning/STATE.md; .planning/ROADMAP.md]."
+  ],
+  "freshness": {
+    "currentDate": "2026-06-21 [evidence: dispatch current_date]",
+    "staleDocs": [
+      ".planning/STATE.md last activity 2026-04-25 [evidence: .planning/STATE.md]",
+      ".planning/existing-state.md contradicts current repo implementation [evidence: .planning/existing-state.md]"
+    ],
+    "networkResearch": "not available; external claims labeled assumptions"
+  },
+  "roadmapBuildableShape": {
+    "path": "ROADMAP.md",
+    "nowItems": "single-worker-sized validation tasks aligned to BUSINESS.md headings"
+  },
+  "honestyLabels": {
+    "required": true,
+    "policy": "Every quantitative claim in BUSINESS.md is labeled [evidence] or [assumption]. External claims use assumptions in workspace-only mode."
+  },
+  "scrutinyGapsAddressed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "decisionLog": {
+    "path": "DECISIONS.md",
+    "entry": "2026-06-21 [evidence: dispatch current_date] - EIR soul upgrade (wrk.dog)"
+  },
+  "businessFile": "BUSINESS.md",
+  "roadmapFile": "ROADMAP.md",
+  "decisionsFile": "DECISIONS.md"
+}
