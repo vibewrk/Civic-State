@@ -1,0 +1,440 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "seed": "BUSINESS.md",
+    "observedProductName": "CivicState"
+  },
+  "snapshot": "CivicState is a candidate civic-letter business; paid demand and operator intent remain unproven.",
+  "status": "candidate",
+  "authorityAdoption": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record",
+  "sourcesAndMethods": {
+    "mode": "workspace-only",
+    "networkUsed": false,
+    "methods": [
+      "Read existing planning files and implementation files.",
+      "Compared roadmap, current-state, stale audit, package identity, source code, and tests.",
+      "Tagged repo-backed claims as evidence and external market claims as assumptions."
+    ],
+    "sources": [
+      {
+        "path": "package.json",
+        "use": "Product name, package description, workspace scripts"
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "use": "Original thesis, pricing, constraints, validation gates"
+      },
+      {
+        "path": ".planning/GENESIS.md",
+        "use": "Target user, distribution, assumptions, exclusions"
+      },
+      {
+        "path": ".planning/REQUIREMENTS.md",
+        "use": "Requirements, pricing, compliance, treasury, moderation"
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "use": "Original phase narrative and completion claims"
+      },
+      {
+        "path": ".planning/STATE.md",
+        "use": "Current phase and blocker notes"
+      },
+      {
+        "path": ".planning/existing-state.md",
+        "use": "Stale audit and original asset claims"
+      },
+      {
+        "path": "apps/api/src/index.ts",
+        "use": "API route surface and Bull Board mount"
+      },
+      {
+        "path": "apps/worker/src/index.ts",
+        "use": "Worker and agent registration"
+      },
+      {
+        "path": "packages/shared/prisma/schema.prisma",
+        "use": "Current data model"
+      },
+      {
+        "path": "tests/payment.test.ts",
+        "use": "Pricing tiers and unit-cost references"
+      },
+      {
+        "path": "tests/api-routes.test.ts",
+        "use": "Submission validation and moderation behavior"
+      },
+      {
+        "path": "tests/compliance.test.ts",
+        "use": "Compliance test coverage"
+      }
+    ]
+  },
+  "thesis": {
+    "current": "CivicState can become a paid civic advocacy workflow if residents pay for researched, routed, citation-backed constituent letters.",
+    "evidenceStatus": "Implementation evidence exists; customer demand evidence was not found.",
+    "operatorDecisionNeeded": "Confirm whether this watchlisted personal/research asset should pitch as a business."
+  },
+  "currentState": {
+    "real": [
+      "Next.js frontend surface exists.",
+      "Express API mounts submissions, officials, payments, campaigns, webhooks, admin, compliance, and queue monitoring.",
+      "Worker registers classifier, researcher, drafter, delivery, treasury, and reconciliation agents.",
+      "Prisma schema models core users, submissions, campaigns, letters, officials, payments, deliveries, jobs, ledger, audit, and agent logs.",
+      "Tests cover pricing, submission validation, moderation, payment concepts, compliance, delivery, treasury, and admin flows."
+    ],
+    "notYetEvidenced": [
+      "Paying customers",
+      "Live traffic",
+      "Production deployment",
+      "External market research",
+      "Official response rates",
+      "Government inbox placement",
+      "Customer willingness to pay"
+    ]
+  },
+  "financials": {
+    "currency": "USD",
+    "pricingEvidence": [
+      {
+        "tier": "single",
+        "price": 5.0,
+        "honesty": "evidence: tests/payment.test.ts"
+      },
+      {
+        "tier": "three_pack",
+        "price": 15.0,
+        "honesty": "evidence: tests/payment.test.ts"
+      },
+      {
+        "tier": "full_spread",
+        "price": 25.0,
+        "honesty": "evidence: tests/payment.test.ts"
+      }
+    ],
+    "unitModel": {
+      "blendedAov": {
+        "value": 13.5,
+        "honesty": "assumption: tier-mix formula"
+      },
+      "variablePlatformCost": {
+        "value": 0.37,
+        "honesty": "assumption: weighted formula using test cost references"
+      },
+      "processorReserve": {
+        "value": 0.69,
+        "honesty": "assumption: placeholder card-fee model"
+      },
+      "contribution": {
+        "value": 12.44,
+        "honesty": "assumption: blendedAov - variablePlatformCost - processorReserve"
+      },
+      "contributionMarginPct": {
+        "value": 92.1,
+        "honesty": "assumption: contribution / blendedAov"
+      }
+    },
+    "fixedCostBreakEven": {
+      "lowMonthlyFixedCost": {
+        "value": 196,
+        "honesty": "assumption: 96 evidence droplet plus 100 evidence local-provider low end"
+      },
+      "highMonthlyFixedCost": {
+        "value": 596,
+        "honesty": "assumption: 96 evidence droplet plus 500 evidence local-provider high end"
+      },
+      "lowBreakEvenJobsPerMonth": {
+        "value": 16,
+        "honesty": "assumption: formula rounded up"
+      },
+      "highBreakEvenJobsPerMonth": {
+        "value": 48,
+        "honesty": "assumption: formula rounded up"
+      }
+    }
+  },
+  "marketSizing": {
+    "method": "Bottom-up scenario model because external research was unavailable.",
+    "formula": "paid civic jobs per year x blended AOV = annual gross revenue",
+    "scenarios": [
+      {
+        "name": "validation_floor",
+        "paidJobsPerYear": 1200,
+        "grossRevenue": 16200,
+        "honesty": "assumption: first-city validation target"
+      },
+      {
+        "name": "operator_scale_base",
+        "paidJobsPerYear": 4800,
+        "grossRevenue": 64800,
+        "honesty": "mixed: jobs evidence from .planning/existing-state.md planned scale; revenue assumption formula"
+      },
+      {
+        "name": "venture_proxy_tam",
+        "paidJobsPerYear": 2000000,
+        "grossRevenue": 27000000,
+        "honesty": "assumption: placeholder pending external demand research"
+      }
+    ],
+    "caveat": "TAM is not validated and should not be used as fundraising evidence."
+  },
+  "customerDefinition": {
+    "primary": "United States resident with a concrete civic complaint or policy request who wants researched, routed, professional constituent communication.",
+    "buyer": "The resident, not the government official.",
+    "excluded": [
+      "Legal claimants",
+      "Businesses seeking advocacy services",
+      "Political campaigns",
+      "Mass-mail organizers",
+      "Users targeting private individuals",
+      "Users seeking legal advice or regulatory filings"
+    ]
+  },
+  "revenueModel": {
+    "current": "One-time transactional campaign packages.",
+    "deferred": [
+      "Subscriptions",
+      "API access",
+      "Certified mail",
+      "Fax delivery",
+      "Coalition features",
+      "Public campaign search",
+      "AI reply summarization"
+    ]
+  },
+  "competition": [
+    {
+      "name": "Resistbot",
+      "risk": "May own low-friction constituent messaging behavior.",
+      "honesty": "assumption: known civic-tech category"
+    },
+    {
+      "name": "Change.org",
+      "risk": "Has petition audience and sharing mechanics.",
+      "honesty": "assumption: known civic-tech category"
+    },
+    {
+      "name": "Quorum",
+      "risk": "Enterprise incumbent can copy organization-facing research and workflow features.",
+      "honesty": "assumption: known public-affairs category"
+    },
+    {
+      "name": "VoterVoice",
+      "risk": "Organization budgets may be more attractive than individual transactions.",
+      "honesty": "assumption: known advocacy-tech category"
+    },
+    {
+      "name": "LegalZoom",
+      "risk": "Users may confuse cited civic letters with legal help.",
+      "honesty": "assumption: known legal-tech category"
+    },
+    {
+      "name": "Direct official websites",
+      "risk": "Free manual substitute caps willingness to pay.",
+      "honesty": "assumption: obvious substitute"
+    }
+  ],
+  "risksAntiPlan": {
+    "antiPlan": "Do not pitch as VC-backable until paid demand, operator intent, legal-safety workflow, and deliverability are evidenced.",
+    "holesMitigationsResidualRisks": [
+      {
+        "hole": "No paid demand evidence.",
+        "mitigation": "Run paid beta and measure preview-to-payment conversion.",
+        "residualRisk": "Users may like the concept but still not pay."
+      },
+      {
+        "hole": "Government inbox deliverability unproven.",
+        "mitigation": "Warm domain, track bounces, pause risky domains, sample inbox placement.",
+        "residualRisk": "Officials may classify paid civic letters as spam or bulk advocacy."
+      },
+      {
+        "hole": "Legal-adjacent and defamatory submissions create safety risk.",
+        "mitigation": "Block threats, queue defamation-risk content, require manual review for edge cases.",
+        "residualRisk": "Moderation misses can create reputational or legal exposure."
+      },
+      {
+        "hole": "Citation accuracy unproven at production scale.",
+        "mitigation": "Verify citations programmatically and manually sample letters before delivery.",
+        "residualRisk": "Wrong citations damage trust and increase support load."
+      },
+      {
+        "hole": "Project identity mismatch.",
+        "mitigation": "Operator must resolve Brooks History versus CivicState positioning.",
+        "residualRisk": "Data room appears confused until naming is resolved."
+      }
+    ],
+    "killCriteria": [
+      {
+        "metric": "checkoutConversionPct",
+        "threshold": 3.0,
+        "direction": "below",
+        "honesty": "evidence: .planning/PROJECT.md"
+      },
+      {
+        "metric": "chargebackRatePct",
+        "threshold": 0.5,
+        "direction": "above",
+        "honesty": "evidence: .planning/PROJECT.md"
+      },
+      {
+        "metric": "governmentInboxPlacementPct",
+        "threshold": 85.0,
+        "direction": "below",
+        "honesty": "evidence: .planning/PROJECT.md"
+      },
+      {
+        "metric": "localOfficialCoveragePct",
+        "threshold": 60.0,
+        "direction": "below",
+        "honesty": "evidence: .planning/PROJECT.md"
+      }
+    ]
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "Residents will pay for convenience, research, and routing.",
+      "basis": "repo thesis, not customer evidence",
+      "test": "Paid beta with checkout events"
+    },
+    {
+      "assumption": "AOV can hold at 13.50.",
+      "basis": "tier-mix model",
+      "test": "Track actual tier mix"
+    },
+    {
+      "assumption": "SEO can acquire high-intent users.",
+      "basis": ".planning/GENESIS.md hypothesis",
+      "test": "Controlled public pages and search-impression tracking"
+    },
+    {
+      "assumption": "Citation verification can make AI research trustworthy.",
+      "basis": "requirements and code exist; production accuracy unproven",
+      "test": "Blind review of sampled letters"
+    },
+    {
+      "assumption": "One operator can run launch operations.",
+      "basis": ".planning/GENESIS.md",
+      "test": "Track queue depth, oldest flagged item, and support time"
+    }
+  ],
+  "goToMarket": {
+    "primaryHypothesis": "SEO-led acquisition around controlled civic issue pages.",
+    "secondary": "Direct paid beta from curated issue categories and local use cases.",
+    "constraints": [
+      "No paid acquisition until conversion is measured.",
+      "No open-ended public publishing until moderation and defamation policy are validated.",
+      "Manual review on outgoing letters during launch."
+    ]
+  },
+  "honestyLabels": {
+    "policy": "Every quantitative claim in BUSINESS.md is tagged as evidence or assumption.",
+    "externalMarketClaims": "All external market claims are assumptions because network research was unavailable.",
+    "factoryOutputNotEvidence": true
+  },
+  "docDates": {
+    "eirReviewDate": {
+      "date": "2026-06-21",
+      "honesty": "evidence: worker dispatch current_date"
+    },
+    "latestPlanningDateObserved": {
+      "date": "2026-04-25",
+      "honesty": "evidence: .planning/STATE.md and .planning/ROADMAP.md"
+    },
+    "intakeBriefDateObserved": {
+      "date": "2026-04-10",
+      "honesty": "evidence: .planning/INTAKE-BRIEF.md"
+    }
+  },
+  "docStructure": {
+    "businessFile": "BUSINESS.md",
+    "roadmapFile": "ROADMAP.md",
+    "decisionsFile": "DECISIONS.md",
+    "gateFile": ".ultra-start/gate.json",
+    "businessHeadingsCovered": [
+      "Executive Snapshot",
+      "Current Thesis",
+      "What Is Real Today",
+      "Customer Definition",
+      "Product and Workflow",
+      "Market Sizing Method",
+      "Revenue Model and Pricing",
+      "Financial Model",
+      "Go-To-Market",
+      "Competition",
+      "Risks and Anti-Plan",
+      "Assumption Ledger",
+      "Surprise Spikes",
+      "Evidence and Freshness",
+      "Decision Needed"
+    ]
+  },
+  "evidenceSources": [
+    "package.json",
+    ".planning/PROJECT.md",
+    ".planning/GENESIS.md",
+    ".planning/REQUIREMENTS.md",
+    ".planning/ROADMAP.md",
+    ".planning/STATE.md",
+    ".planning/existing-state.md",
+    "MASTER_PLAN.md",
+    "apps/api/src/index.ts",
+    "apps/worker/src/index.ts",
+    "packages/shared/prisma/schema.prisma",
+    "tests/payment.test.ts",
+    "tests/api-routes.test.ts",
+    "tests/compliance.test.ts"
+  ],
+  "freshnessStale": {
+    "latestRepoPlanningDate": "2026-04-25",
+    "reviewDate": "2026-06-21",
+    "staleSignals": [
+      ".planning/existing-state.md says zero application code exists, but app code now exists.",
+      ".planning/ROADMAP.md says all phases complete, but .planning/STATE.md and .planning/REQUIREMENTS.md disagree.",
+      "External market facts were not refreshed due to workspace-only mode."
+    ]
+  },
+  "roadmapBuildableShape": {
+    "file": "ROADMAP.md",
+    "nextStepCount": 8,
+    "properties": [
+      "single-worker-sized",
+      "non-speculative",
+      "traceable to BUSINESS.md headings",
+      "aligned to paid validation"
+    ]
+  },
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "surpriseSpikes": [
+    "Dispatch identity says Brooks History while code and planning identify CivicState.",
+    "Roadmap completion claims conflict with requirements and state files.",
+    "Existing-state audit is stale relative to current app code.",
+    "Registry watchlist posture conflicts with confident business language in older planning."
+  ],
+  "authority": {
+    "current": "candidate",
+    "upgradePath": "operator merge after POM soul-review"
+  }
+}
