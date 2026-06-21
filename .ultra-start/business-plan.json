@@ -1,0 +1,178 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "one_liner": "Watchlist civic-letter workflow: real scaffold, unproven paid demand and deliverability.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-business-plan",
+    "source": "Existing project soul created from repo evidence and dispatch registry context [evidence: BUSINESS.md; dispatch registry note]"
+  },
+  "status": "needs-revision",
+  "directive": "Use this as the current EIR soul, but do not upgrade authority until operator merge and validation evidence exist.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12 [evidence: dispatch contract text]; see the PR's POM record",
+  "research": {
+    "mode": "workspace-only/no-network",
+    "sources": [
+      "dispatch registry note [evidence]",
+      "MASTER_PLAN.md [evidence of prior plan]",
+      ".planning/PROJECT.md [evidence of planning context]",
+      ".planning/ROADMAP.md and .planning/STATE.md [evidence of status conflict]",
+      "apps/api, apps/web, apps/worker, packages/shared/prisma/schema.prisma [evidence of implementation]"
+    ],
+    "methods": [
+      "Compared registry sensitivity to product plan",
+      "Separated current code evidence from market assumptions",
+      "Built bottom-up market and financial model with every quantitative external claim tagged as assumption"
+    ]
+  },
+  "planningMethod": "EIR soul upgrade: preserve true repo content, expose contradictions, build validation-first roadmap.",
+  "customer": {
+    "definition": "US resident with a specific civic issue who wants researched official-targeted constituent letters [evidence: .planning/PROJECT.md]",
+    "primaryPain": "Does not know official jurisdiction, citations, or letter format [assumption: customer workflow hypothesis]",
+    "segments": [
+      "Individual residents [evidence: .planning/PROJECT.md]",
+      "Neighborhood organizers [assumption: adjacent early user]",
+      "Future civic organizations [assumption: deferred expansion]"
+    ]
+  },
+  "market": {
+    "tam": "$136,000,000 [assumption: 10,000,000 paid civic letter jobs x $13.60 average price]",
+    "sam": "$13,600,000 [assumption: 1,000,000 reachable English-language digital jobs x $13.60]",
+    "som": "$4,080 annualized launch SOM [assumption: 25 paid submissions/mo x $13.60 x 12]",
+    "method": "Bottom-up job volume x implemented package pricing; no network data used."
+  },
+  "businessModel": {
+    "pricing": "$5/$15/$25 one-time packages [evidence: apps/api/src/routes/payments.ts]",
+    "revenueStreams": [
+      "Transactional letter packages [evidence: apps/api/src/routes/payments.ts]",
+      "Organization API deferred [evidence: .planning/PROJECT.md]",
+      "Certified mail/fax deferred [evidence: .planning/PROJECT.md]"
+    ],
+    "unitEconomics": "Average price $13.60, variable cost $0.80, gross margin 94.1% [assumption: blended tier and cost model]"
+  },
+  "financialModel": {
+    "revenueAssumptions": [
+      "25 paid submissions/mo at launch validation [assumption: break-even proxy]",
+      "150 paid submissions/mo in base year ending 2027-12-31 [assumption: ramp model]",
+      "500 paid submissions/mo in upside year ending 2028-12-31 [assumption: SEO/referral model]"
+    ],
+    "costAssumptions": [
+      "$0.80 variable cost per paid submission [assumption: token/email/lookup placeholder]",
+      "$300/mo initial fixed operating cost [assumption: lean infrastructure/tooling]",
+      "$60,000/yr human review capacity in upside case [assumption: staffing model]"
+    ],
+    "sensitivityTests": [
+      "Average price $8.00 raises break-even to 42 submissions/mo [assumption: $300 / ($8.00 - $0.80)]",
+      "Variable cost $3.00 lowers gross margin to 77.9% [assumption: ($13.60 - $3.00) / $13.60]",
+      "Paid conversion 1.0% requires 2,500 qualified visitors/mo for 25 paid submissions/mo [assumption: funnel math]"
+    ]
+  },
+  "alternatives": [
+    "Manual email or phone call [assumption: customer substitute]",
+    "Resistbot, Change.org, Quorum/VoterVoice/FiscalNote, LegalZoom [assumption: named competitor set without network verification]"
+  ],
+  "antiPlan": {
+    "holes": [
+      "People may not pay for a workflow whose substitute is free [assumption: buyer risk]",
+      "Government inbox deliverability may fail [assumption: email risk]",
+      "Citation errors can create reputational or legal exposure [assumption: legal/compliance risk]",
+      "Local official coverage may be incomplete or expensive [assumption: data risk]",
+      "Registry may classify this as personal/research rather than business [evidence: dispatch registry note]"
+    ],
+    "mitigations": [
+      "Charge real $5/$15/$25 tiers in beta [evidence: apps/api/src/routes/payments.ts]",
+      "Use bounce threshold and suppression [evidence: apps/worker/src/agents/delivery.ts]",
+      "Strip or flag unverified citations [evidence: apps/worker/src/agents/researcher.ts]",
+      "Evaluate local providers before scale [evidence: .planning/PROJECT.md]",
+      "Keep status needs-revision until operator ruling [evidence: dispatch registry note]"
+    ],
+    "residualRisks": [
+      "High demand risk until paid conversion is measured",
+      "High deliverability risk until live .gov data exists",
+      "Medium legal/reputation risk until counsel reviews policies [assumption: counsel need]"
+    ]
+  },
+  "strategy": "Validate the narrow paid constituent-letter loop before expanding into SEO archive, organization API, certified mail, fax, or community features.",
+  "goToMarket": {
+    "first100": "20 beta prospects and 10 concierge submissions before self-serve launch [assumption: manual validation plan]",
+    "channels": [
+      "Local civic groups [assumption: channel hypothesis]",
+      "Neighborhood associations [assumption: channel hypothesis]",
+      "Issue-specific SEO after proof [assumption: .planning/GENESIS.md distribution hypothesis]"
+    ],
+    "primaryGate": "Paid conversion above 3.0% [assumption: prior planning threshold]"
+  },
+  "operatorWorkflow": "Founder/operator reviews flagged content, failed citations, deliverability exceptions, opt-outs, and refund requests; target under 30 minutes/day [assumption: lean operator design].",
+  "constraints": [
+    "Not legal advice, not claim filing, not lobbying firm [evidence: .planning/PROJECT.md]",
+    "Political/opinion data requires careful privacy handling [assumption: sensitive data judgment]",
+    "WrkPlug client posture is operator-gated [assumption: WrkPlug Phase 0 not yet signed]",
+    "Watchlist status until operator confirms business intent [evidence: dispatch registry note]"
+  ],
+  "metrics": [
+    "Paid conversion 3.0% [assumption: prior threshold]",
+    "Deliverability 85.0% [assumption: prior threshold]",
+    "Local official coverage 60.0% [assumption: prior threshold]",
+    "Per-domain bounce threshold 10.0% [evidence: apps/worker/src/agents/delivery.ts]",
+    "Break-even 24 submissions/mo [assumption: $300 / $12.80]"
+  ],
+  "aiWorkGovernance": {
+    "allowed": "Research, classification, drafting, delivery orchestration, treasury logging [evidence: apps/worker/src/agents]",
+    "controls": "Citation verification, moderation, audit logs, operator review, not-legal-advice boundary [evidence: apps/worker/src/agents/researcher.ts; apps/api/src/routes/submissions.ts; packages/shared/prisma/schema.prisma]",
+    "notAllowed": "Fabricated citations, legal advice, claim filing, harassment, unverified allegations [evidence: .planning/PROJECT.md]"
+  },
+  "unknowns": [
+    "Whether the operator wants this pitched as a business [evidence: dispatch registry note]",
+    "Actual paid conversion [assumption: no production metric]",
+    "Actual deliverability to government domains [assumption: no production metric]",
+    "Actual local official data coverage and cost [assumption: provider evaluation needed]",
+    "Whether WrkPlug replaces direct Clerk/Stripe integrations [assumption: operator-gated]"
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Average package price is $13.60",
+      "basis": "40% single, 40% three-pack, 20% full-spread [assumption]",
+      "evidenceOrAssumption": "assumption",
+      "test": "Compare first 50 paid checkouts [assumption: validation sample]"
+    },
+    {
+      "claim": "Variable cost is $0.80/submission",
+      "basis": "Token/email/lookup placeholder [assumption]",
+      "evidenceOrAssumption": "assumption",
+      "test": "Export token, Postmark, and data-provider costs after beta"
+    },
+    {
+      "claim": "Pricing tiers exist",
+      "basis": "Payment route constants [evidence: apps/api/src/routes/payments.ts]",
+      "evidenceOrAssumption": "evidence",
+      "test": "Run Stripe test checkout"
+    },
+    {
+      "claim": "Current implementation is broader than stale audit",
+      "basis": "Source tree and Prisma schema [evidence: apps/api; apps/web; apps/worker; packages/shared/prisma/schema.prisma]",
+      "evidenceOrAssumption": "evidence",
+      "test": "Route-by-route smoke test"
+    },
+    {
+      "claim": "Watchlist status is appropriate",
+      "basis": "Registry note says personal/research asset, not near-term investible BOS [evidence: dispatch registry note]",
+      "evidenceOrAssumption": "evidence",
+      "test": "Operator ruling after validation"
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-21 [evidence: worker environment current_date]",
+      "change": "Created EIR soul upgrade and gate artifact",
+      "author": "wrk.dog fleet worker"
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "reason": "Roadmap must validate paid demand and deliverability before scaling."
+  },
+  "next": [
+    "Smoke-test source reality against planning claims by 2026-07-15 [assumption: roadmap date]",
+    "Run paid beta readiness by 2026-08-15 [assumption: roadmap date]",
+    "Operator ruling by 2026-12-31 [assumption: roadmap date]"
+  ]
+}

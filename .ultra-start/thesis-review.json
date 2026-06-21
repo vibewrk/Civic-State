@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "wrk.thesis-review.v1",
+  "status": "needs-revision",
+  "project": "brooks-history / CivicState [evidence: dispatch project id and repo artifacts]",
+  "reviewedAt": "2026-06-21 [evidence: worker environment current_date]",
+  "one_liner": "Watchlist civic-letter workflow: real scaffold, unproven paid demand and deliverability.",
+  "currentThesis": "CivicState can become a small civic workflow business if people pay $5/$15/$25 for citation-checked constituent letters and government inbox delivery works [evidence: apps/api/src/routes/payments.ts; assumption: willingness-to-pay and deliverability unproven].",
+  "authority": "needs-revision until operator merge; do not claim approved authority.",
+  "evidence": [
+    "Dispatch registry note classifies project as watchlist and possibly personal/research [evidence: user dispatch]",
+    "Payment route implements $5/$15/$25 tiers [evidence: apps/api/src/routes/payments.ts]",
+    "Submission, worker, delivery, compliance, and Prisma surfaces exist [evidence: apps/api; apps/worker; packages/shared/prisma/schema.prisma]",
+    "Planning artifacts conflict on completion status [evidence: .planning/ROADMAP.md; .planning/STATE.md]"
+  ],
+  "criticalAssumptions": [
+    "Paid conversion reaches 3.0% [assumption: prior planning threshold]",
+    "Deliverability reaches 85.0% [assumption: prior planning threshold]",
+    "Local official coverage reaches 60.0% [assumption: prior planning threshold]",
+    "Average price is $13.60 [assumption: package mix model]",
+    "Variable cost is $0.80/submission [assumption: no live cost export]"
+  ],
+  "decision": "Keep as watchlist until beta evidence and operator business-intent ruling exist."
+}
