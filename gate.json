@@ -1,0 +1,334 @@
+{
+  "schemaVersion": "wrk-gate-v1",
+  "projectId": "brooks-history",
+  "status": "candidate",
+  "shortThesis": "CivicState is a validation-first paid civic letter workflow, not yet an investible pitch.",
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-eir-business-plan"
+  },
+  "adoptionRationale": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record",
+  "adoptionRationaleHonesty": "[evidence: dispatch brief]",
+  "summary": "Root soul upgraded from thin/missing files into a candidate business plan with explicit evidence, assumptions, financial model, anti-plan, roadmap, and decision log.",
+  "sourcesAndMethods": {
+    "mode": "workspace-only, no network",
+    "sourcesUsed": [
+      {
+        "path": "MASTER_PLAN.md",
+        "use": "business model, pricing philosophy, unit economics, reserve, roadmap intent"
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "use": "customer, validation gates, constraints, open decisions"
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "use": "phase narrative and completion claims"
+      },
+      {
+        "path": ".planning/GENESIS.md",
+        "use": "target user, distribution, moat, exclusions"
+      },
+      {
+        "path": "apps/api/src/routes/payments.ts",
+        "use": "implemented Stripe pricing tiers"
+      },
+      {
+        "path": "apps/api/src/routes/submissions.ts",
+        "use": "submission, moderation, audit, and queue behavior"
+      },
+      {
+        "path": "apps/worker/src/index.ts",
+        "use": "registered worker agents"
+      },
+      {
+        "path": "apps/worker/src/agents/delivery.ts",
+        "use": "Postmark delivery and bounce threshold"
+      },
+      {
+        "path": "packages/shared/prisma/schema.prisma",
+        "use": "implemented data model"
+      },
+      {
+        "path": "dispatch brief",
+        "use": "registry watchlist constraint, workspace-only rule, scrutiny gaps"
+      }
+    ],
+    "methods": [
+      "Read existing planning and implementation files.",
+      "Separated repository evidence from market assumptions.",
+      "Used bottom-up revenue scenarios from repo-authored plan instead of external TAM claims.",
+      "Created a buildable validation roadmap tied to BUSINESS.md headings."
+    ]
+  },
+  "thesisCurrent": {
+    "claim": "A narrow paid workflow may monetize civic letter research, drafting, targeting, and delivery.",
+    "honesty": "[evidence: MASTER_PLAN.md; assumption: willingness to pay is unproven]",
+    "status": "conditional"
+  },
+  "registryContext": {
+    "watchlist": true,
+    "note": "Personal/research asset, not near-term investible BOS unless operator confirms business intent.",
+    "honesty": "[evidence: dispatch brief]"
+  },
+  "customerDefinition": {
+    "primary": "U.S. resident with a concrete civic concern who wants government action but does not want to research law, officials, drafting, and delivery manually.",
+    "excluded": [
+      "Legal claimants",
+      "Users seeking legal advice",
+      "Threatening or defamation-risk submissions",
+      "Organization/bulk advocacy customers at launch"
+    ],
+    "honesty": "[evidence: .planning/GENESIS.md; MASTER_PLAN.md; assumption: segment demand unvalidated]"
+  },
+  "marketSizing": {
+    "method": "Bottom-up validation ladder, not external TAM.",
+    "stages": [
+      {
+        "name": "break-even wedge",
+        "build": "25 paid submissions x $15 average order value = $375 monthly revenue",
+        "honesty": "[evidence: MASTER_PLAN.md; assumption: AOV holds]"
+      },
+      {
+        "name": "month 3 scenario",
+        "build": "50 paid submissions x $15 average order value = $750 monthly revenue",
+        "honesty": "[evidence: MASTER_PLAN.md]"
+      },
+      {
+        "name": "month 6 scenario",
+        "build": "120 paid submissions x $16 average order value = $1,920 monthly revenue",
+        "honesty": "[evidence: MASTER_PLAN.md]"
+      },
+      {
+        "name": "month 12 scenario",
+        "build": "400 paid submissions x $18 average order value = $7,200 monthly revenue",
+        "honesty": "[evidence: MASTER_PLAN.md]"
+      },
+      {
+        "name": "month 24 scenario",
+        "build": "1,200 paid submissions x $20 average order value = $24,000 monthly revenue",
+        "honesty": "[evidence: MASTER_PLAN.md]"
+      }
+    ],
+    "residualGap": "External market data must be sourced when network access is available."
+  },
+  "revenueModel": {
+    "type": "transactional one-time paid letter packages",
+    "implementedPrices": [
+      {
+        "tier": "single",
+        "price": "$5",
+        "honesty": "[evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "tier": "three_pack",
+        "price": "$15",
+        "honesty": "[evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "tier": "full_spread",
+        "price": "$25",
+        "honesty": "[evidence: apps/api/src/routes/payments.ts]"
+      }
+    ],
+    "notActive": "Subscriptions removed from active plan.",
+    "honesty": "[evidence: MASTER_PLAN.md]"
+  },
+  "financialModel": {
+    "reserve": {
+      "value": "$1,500",
+      "honesty": "[evidence: MASTER_PLAN.md]"
+    },
+    "marginFloor": {
+      "value": "40%",
+      "honesty": "[evidence: MASTER_PLAN.md]"
+    },
+    "costAssumptions": [
+      {
+        "value": "8% variable COGS",
+        "honesty": "[evidence: MASTER_PLAN.md; assumption: modeled, not observed]"
+      },
+      {
+        "value": "4% Stripe fees",
+        "honesty": "[evidence: MASTER_PLAN.md; assumption: modeled, not observed]"
+      },
+      {
+        "value": "$200 monthly fixed costs",
+        "honesty": "[evidence: MASTER_PLAN.md; assumption: modeled, not observed]"
+      }
+    ],
+    "reconciliation": "Revenue table in BUSINESS.md uses submissions x AOV, then subtracts modeled COGS, fees, and fixed costs."
+  },
+  "competition": [
+    {
+      "name": "Resistbot",
+      "thesis": "Low-friction constituent messages; CivicState differentiates on researched citations.",
+      "honesty": "[evidence: MASTER_PLAN.md; assumption: differentiation matters]"
+    },
+    {
+      "name": "Change.org",
+      "thesis": "Petition hosting; CivicState differentiates on direct letter delivery.",
+      "honesty": "[evidence: MASTER_PLAN.md]"
+    },
+    {
+      "name": "LegalZoom",
+      "thesis": "Document preparation; CivicState stays civic-specific and non-legal-advice.",
+      "honesty": "[evidence: MASTER_PLAN.md; assumption: category comparison]"
+    },
+    {
+      "name": "Quorum",
+      "thesis": "Enterprise advocacy software; CivicState targets individuals.",
+      "honesty": "[evidence: .planning/PROJECT.md; assumption: category positioning]"
+    },
+    {
+      "name": "VoterVoice",
+      "thesis": "Organization-led advocacy; CivicState targets individual resident jobs.",
+      "honesty": "[evidence: .planning/PROJECT.md; assumption: category positioning]"
+    }
+  ],
+  "goToMarket": {
+    "primary": "SEO from opt-in public campaign pages.",
+    "secondary": "Operator-sourced private beta and social sharing after privacy review.",
+    "deferred": [
+      "Paid ads",
+      "Organization partnerships",
+      "Native mobile apps",
+      "API access"
+    ],
+    "honesty": "[evidence: .planning/GENESIS.md; assumption: SEO demand unproven]"
+  },
+  "risksAntiPlan": {
+    "killReasons": [
+      "Users may not pay despite liking the concept.",
+      "Government deliverability may fail and destroy the paid promise.",
+      "Legal-adjacent and defamation-risk submissions may overwhelm moderation.",
+      "The moat is weak until volume creates directory, citation, and SEO assets.",
+      "Registry says the asset may be personal/research rather than near-term investible."
+    ],
+    "honesty": "[evidence: .planning/PROJECT.md; .planning/GENESIS.md; dispatch brief; assumption: market risks unvalidated]"
+  },
+  "diligence": {
+    "holes": [
+      "No live revenue or traffic evidence in repo.",
+      "No external market sizing due workspace-only run.",
+      "Operator intent and project identity conflict unresolved.",
+      "No observed deliverability, conversion, or official response metrics."
+    ],
+    "mitigations": [
+      "Run beta cohort with paid checkout.",
+      "Instrument deliverability and bounce metrics by domain.",
+      "Source external market data in a network-enabled pass.",
+      "Get operator ruling on CivicState versus brooks-history identity."
+    ],
+    "residualRisks": [
+      "Willingness to pay remains the central unknown.",
+      "Compliance burden may exceed one-operator model.",
+      "SEO may not compound fast enough to support acquisition."
+    ]
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "Residents will pay $5 to $25 for a civic letter campaign.",
+      "test": "Measure beta preview-to-paid conversion.",
+      "honesty": "[assumption: repo thesis]"
+    },
+    {
+      "assumption": "Citation-backed drafting improves perceived value.",
+      "test": "A/B preview emphasis and conversion.",
+      "honesty": "[assumption: product positioning]"
+    },
+    {
+      "assumption": "Postmark plus domain controls can achieve government deliverability.",
+      "test": "Measure inbox placement, bounces, spam complaints, and replies.",
+      "honesty": "[assumption: operational plan]"
+    },
+    {
+      "assumption": "Fixed prices preserve the margin floor.",
+      "test": "Compare actual token, delivery, refund, and review costs per package.",
+      "honesty": "[assumption: current implementation]"
+    }
+  ],
+  "validationGates": [
+    {
+      "gate": "preview-to-paid conversion",
+      "target": "at least 3%",
+      "honesty": "[evidence: .planning/PROJECT.md]"
+    },
+    {
+      "gate": "government inbox placement",
+      "target": "at least 85%",
+      "honesty": "[evidence: .planning/PROJECT.md; assumption: measurable]"
+    },
+    {
+      "gate": "federal/state official coverage",
+      "target": "at least 95%",
+      "honesty": "[evidence: .planning/PROJECT.md]"
+    },
+    {
+      "gate": "local official coverage",
+      "target": "at least 60%",
+      "honesty": "[evidence: .planning/PROJECT.md]"
+    },
+    {
+      "gate": "domain bounce pause",
+      "target": "pause above 10%",
+      "honesty": "[evidence: apps/worker/src/agents/delivery.ts]"
+    }
+  ],
+  "roadmapBuildableShape": {
+    "path": "ROADMAP.md",
+    "items": "Seven single-worker checkbox items tied to BUSINESS.md headings.",
+    "honesty": "[evidence: ROADMAP.md]"
+  },
+  "decisionsEntry": {
+    "path": "DECISIONS.md",
+    "entryDate": "2026-06-20",
+    "honesty": "[evidence: DECISIONS.md]"
+  },
+  "honestyLabels": {
+    "rule": "Repo/dispatch-backed facts are evidence; external market claims are assumptions.",
+    "network": "No network research used.",
+    "honesty": "[evidence: dispatch brief]"
+  },
+  "docDates": {
+    "asOf": "2026-06-20",
+    "operatorRuling": "2026-06-12",
+    "legacyPlanningDate": "2026-04-25",
+    "masterPlanVersion": "March 2026",
+    "honesty": "[evidence: worker context; dispatch brief; .planning/ROADMAP.md; MASTER_PLAN.md]"
+  },
+  "freshness": {
+    "status": "stale planning corrected by current repo read",
+    "surpriseSpikes": [
+      "Dispatch project id differs from repo/product identity.",
+      "Existing-state audit says no app code existed, but current repo has app code.",
+      "Legacy roadmap says all phases complete while root soul files were absent."
+    ]
+  },
+  "scrutinyGapsFixed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "authority": {
+    "current": "candidate",
+    "upgradeRule": "Only operator merge upgrades authority; this file does not claim adopted status."
+  }
+}
