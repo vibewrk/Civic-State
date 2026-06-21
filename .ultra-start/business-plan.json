@@ -1,0 +1,203 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "tenSecondRead": "Watchlist CivicState asset: real code exists, but demand, delivery, coverage, and legal proof are missing.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history",
+    "basis": "Existing project seed references BUSINESS.md as the upgraded plan [evidence: dispatch brief]."
+  },
+  "status": "needs-revision",
+  "directive": "Treat as watchlist / personal-research asset until operator confirms this should pitch as a business [evidence: dispatch registry note].",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12 [evidence: brief]; see the PR's POM record",
+  "research": {
+    "mode": "workspace-only",
+    "sources": [
+      "dispatch registry note [evidence]",
+      "package.json [evidence]",
+      ".planning/PROJECT.md [evidence]",
+      ".planning/REQUIREMENTS.md [evidence]",
+      ".planning/ROADMAP.md [evidence]",
+      ".planning/STATE.md [evidence]",
+      ".planning/existing-state.md [evidence]",
+      "MASTER_PLAN.md [evidence]",
+      "apps/** [evidence]",
+      "packages/shared/prisma/schema.prisma [evidence]",
+      "tests/*.test.ts [evidence]"
+    ],
+    "methods": [
+      "Read existing planning and code surfaces.",
+      "Separated repo evidence from external market assumptions.",
+      "Built bottom-up market model from stated assumptions because network research was unavailable."
+    ]
+  },
+  "planningMethod": "EIR soul upgrade: preserve true repo content, label stale contradictions as surprise spikes, and gate roadmap work against falsifiable demand, deliverability, coverage, and compliance tests.",
+  "customer": {
+    "primary": "US resident with a specific civic issue who needs official routing, legal/citation framing, and letter delivery [evidence: .planning/PROJECT.md].",
+    "secondary": "Local organizers and future nonprofit/HOA buyers [assumption: expansion path; not validated].",
+    "unvalidatedNeeds": [
+      "Willingness to pay before delivery.",
+      "Trust in AI-assisted legal/civic citations.",
+      "Tolerance for manual review and safety constraints."
+    ]
+  },
+  "market": {
+    "method": "Bottom-up paid-campaign model, not broad civic-tech spend.",
+    "tam": "$7,800,000 annual proxy [assumption: 260,000,000 US adults x 10% civic issue incidence x 2% pay rate x $15 ARPU].",
+    "sam": "$1,500,000 annual proxy [assumption: 5,000,000 reachable residents x 2% pay rate x $15 ARPU].",
+    "som": "$150,000 in first 24 months [assumption: 10,000 paid campaigns x $15 ARPU].",
+    "freshness": "As of 2026-06-21 [evidence: runner context], no external market research was available."
+  },
+  "businessModel": {
+    "pricing": "$5, $15, and $25 tiers [evidence: tests/payment.test.ts].",
+    "revenueStreams": [
+      "Transactional paid letter packages [evidence: .planning/PROJECT.md].",
+      "Future organization/API access [evidence: .planning/PROJECT.md; assumption: not in launch scope]."
+    ],
+    "unitEconomics": "Repo tests imply 96.0% to 97.6% gross margin before fixed costs [evidence: arithmetic from tests/payment.test.ts]."
+  },
+  "financialModel": {
+    "modelType": "Three-year planning scenario [assumption: no revenue evidence].",
+    "revenueBuild": [
+      "Validation year: 600 campaigns x $15 ARPU = $9,000 [assumption: arithmetic from stated assumptions and repo pricing].",
+      "Early scale year: 3,000 campaigns x $15 ARPU = $45,000 [assumption: arithmetic from stated assumptions and repo pricing].",
+      "Expansion year: 10,000 campaigns x $15 ARPU = $150,000 [assumption: arithmetic from stated assumptions and repo pricing]."
+    ],
+    "revenueAssumptions": [
+      "Weighted ARPU is $15 [evidence: midpoint of tests/payment.test.ts tiers].",
+      "Paid conversion target is 3% [evidence: .planning/PROJECT.md].",
+      "Chargeback rate must stay below 0.5% [evidence: .planning/PROJECT.md]."
+    ],
+    "costAssumptions": [
+      "Loaded AI/delivery cost is $1 per campaign [assumption: conservative load above test variable costs].",
+      "Validation fixed platform/tools cost is $2,400 per year [assumption: lean production stack].",
+      "Validation operator/legal reserve is $3,000 per year [assumption: manual review and counsel budget]."
+    ],
+    "sensitivityTests": [
+      "If conversion is 0.5%, validation-year revenue falls to $2,250 [assumption: 150 campaigns x $15].",
+      "If deliverability tooling costs $500/month, validation fixed costs rise by $6,000 [assumption: provider-cost scenario].",
+      "If review takes 12 minutes per campaign, 600 campaigns require 120 operator hours [assumption: workload arithmetic]."
+    ]
+  },
+  "alternatives": [
+    "Manual outreach by email or phone [assumption: common substitute].",
+    "Resistbot [evidence: .planning/PROJECT.md].",
+    "Change.org [evidence: MASTER_PLAN.md].",
+    "Quorum and VoterVoice [evidence: .planning/PROJECT.md]."
+  ],
+  "antiPlan": {
+    "holes": [
+      "Paid demand may be too weak because free alternatives exist [assumption: behavior risk].",
+      "Official data may be stale or wrong, especially local contacts [evidence: .planning/STATE.md].",
+      "Government email deliverability may fail [evidence: .planning/PROJECT.md].",
+      "Legal/compliance posture touches sensitive political opinion and AI disclosure [evidence: .planning/REQUIREMENTS.md]."
+    ],
+    "mitigations": [
+      "Run paid concierge beta before scale.",
+      "Audit official lookup against manual research.",
+      "Run deliverability pilot before public sending.",
+      "Require counsel/operator review before launch claims."
+    ],
+    "residualRisks": [
+      "High demand risk until paid conversion is measured.",
+      "High local coverage risk until provider comparison is complete.",
+      "Medium/high compliance risk until counsel signs off."
+    ]
+  },
+  "strategy": "Validate a narrow individual-constituent paid-letter wedge before expanding into organizers, nonprofits, or API workflows.",
+  "goToMarket": {
+    "firstCustomers": "First 100 paying customers [assumption: validation target] from one issue category and one geography.",
+    "channels": [
+      "Issue-specific landing pages [assumption: low-cost test].",
+      "Concierge outreach to residents with known civic pain [assumption: manual validation].",
+      "Local organizer referrals after individual flow proves trust [assumption: expansion wedge]."
+    ],
+    "gates": [
+      "3% preview-to-pay conversion [evidence: .planning/PROJECT.md].",
+      "85% inbox placement [evidence: .planning/PROJECT.md].",
+      "95% federal/state and 60% local coverage [evidence: .planning/PROJECT.md]."
+    ]
+  },
+  "operatorWorkflow": "Solo-operator review of flagged submissions, official-data audits, treasury exceptions, and deliverability alerts; unsafe if review time exceeds 12 minutes per campaign [assumption: workload threshold].",
+  "constraints": [
+    "Registry watchlist / personal-research posture [evidence: dispatch registry note].",
+    "Workspace-only research; no external source verification [evidence: runner boundary].",
+    "Political-opinion and civic-advocacy sensitivity [evidence: product domain in .planning/PROJECT.md].",
+    "No legal/regulatory conclusions invented; counsel review remains required [assumption: diligence requirement]."
+  ],
+  "metrics": [
+    "Paid conversion percentage.",
+    "Inbox placement percentage.",
+    "Federal/state/local coverage percentage.",
+    "Operator review minutes per campaign.",
+    "Refund/chargeback percentage.",
+    "Complaint and bounce rates."
+  ],
+  "aiWorkGovernance": {
+    "requirements": [
+      "AI disclosure in letters [evidence: .planning/REQUIREMENTS.md].",
+      "Citation verification before delivery [evidence: tests/citation-verifier.test.ts].",
+      "Threat blocking and human review flags [evidence: tests/moderation.test.ts].",
+      "Audit logs and append-only ledger controls [evidence: packages/shared/prisma/schema.prisma]."
+    ],
+    "remainingUnknowns": [
+      "Production model behavior.",
+      "Citation freshness.",
+      "Human review burden."
+    ]
+  },
+  "unknowns": [
+    "Whether brooks-history and CivicState naming should be unified.",
+    "Whether the operator wants a business pitch or a personal research asset.",
+    "Whether production credentials and domains exist.",
+    "Whether real users pay.",
+    "Whether official data and deliverability meet thresholds."
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Users will pay for civic letters.",
+      "basis": "Existing $5/$15/$25 tiers [evidence: tests/payment.test.ts].",
+      "evidenceOrAssumption": "Pricing evidence exists; demand is assumption.",
+      "test": "Paid concierge beta."
+    },
+    {
+      "claim": "Weighted ARPU can be $15 [evidence: tests/payment.test.ts].",
+      "basis": "Midpoint of current tiers.",
+      "evidenceOrAssumption": "Evidence: tests/payment.test.ts.",
+      "test": "Track first 50 paid campaigns [assumption: validation sample]."
+    },
+    {
+      "claim": "Preview-to-pay can reach 3% [evidence: .planning/PROJECT.md].",
+      "basis": "Prior validation gate.",
+      "evidenceOrAssumption": "Evidence: .planning/PROJECT.md; no production proof.",
+      "test": "Landing flow analytics."
+    },
+    {
+      "claim": "Inbox placement can reach 85% [evidence: .planning/PROJECT.md].",
+      "basis": "Prior validation gate.",
+      "evidenceOrAssumption": "Evidence: .planning/PROJECT.md; no pilot proof.",
+      "test": "Deliverability pilot."
+    },
+    {
+      "claim": "Local official coverage can reach 60% [evidence: .planning/PROJECT.md].",
+      "basis": "Prior validation gate.",
+      "evidenceOrAssumption": "Evidence: .planning/PROJECT.md; no audit proof.",
+      "test": "ZIP-code audit and provider comparison."
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-21 [evidence: runner context]",
+      "change": "Created VC-grade EIR soul gate from workspace-only evidence.",
+      "source": "wrk.dog EIR dispatch"
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "reason": "Roadmap is buildable, but investibility requires operator ruling and market validation."
+  },
+  "next": [
+    "Resolve naming and operator posture by 2026-07-15 [assumption: proposed date].",
+    "Run customer interviews and paid concierge beta.",
+    "Complete official-data and deliverability audits."
+  ]
+}

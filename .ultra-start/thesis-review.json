@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "ultra-start.thesis-review.v1",
+  "project": "brooks-history",
+  "one_liner": "CivicState is a watchlist civic-letter asset with real code but unproven demand, delivery, coverage, and legal readiness.",
+  "status": "needs-revision",
+  "documentDate": "2026-06-21 [evidence: runner context]",
+  "evidence": [
+    "BUSINESS.md",
+    "ROADMAP.md",
+    "DECISIONS.md",
+    ".ultra-start/business-plan.json"
+  ],
+  "assumptionLed": [
+    "Paid conversion",
+    "Market size",
+    "Deliverability",
+    "Official data coverage",
+    "Operator intent to pitch as a business"
+  ]
+}
