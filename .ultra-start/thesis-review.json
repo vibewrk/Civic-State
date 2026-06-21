@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "ultra-start.thesis-review.v1",
+  "project": "brooks-history",
+  "interpretedAsset": "CivicState",
+  "status": "needs-revision",
+  "one_liner": "CivicState turns civic issues into cited official letters, but remains watchlist until paid validation.",
+  "asOf": "2026-06-21",
+  "thesis": "CivicState can become a transactional civic-letter product if users pay for verified research, official targeting, and delivery.",
+  "evidence": [
+    "MASTER_PLAN.md describes CivicState as the product.",
+    "package.json names the app civicstate.",
+    "apps/api and apps/worker implement the core scaffold.",
+    "tests cover payments, treasury, officials, delivery, moderation, compliance, and citations."
+  ],
+  "assumptions": [
+    "The dispatch project id mismatch is a registry/operator issue rather than a different product.",
+    "The operator wants this evaluated as a business despite watchlist status.",
+    "Paid conversion, deliverability, and official coverage can clear validation gates."
+  ],
+  "mustValidateBeforeApproval": [
+    "operator identity ruling",
+    "paid beta conversion",
+    "government-domain deliverability",
+    "official coverage provider economics",
+    "legal/compliance review"
+  ],
+  "decision": "Do not approve for roadmap authority yet; keep gate at needs-revision until operator merge and market validation."
+}

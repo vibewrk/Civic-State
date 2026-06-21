@@ -1,0 +1,255 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "one_liner": "CivicState turns civic issues into cited official letters, but remains watchlist until paid validation.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history-civicstate-soul-2026-06-21"
+  },
+  "status": "needs-revision",
+  "directive": "Upgrade the missing/thin soul into a VC-grade, honesty-labeled business plan while preserving repo truth and watchlist constraints.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+  "research": {
+    "mode": "workspace-only-no-network",
+    "sources": [
+      "dispatch registry note and scrutiny gaps",
+      "MASTER_PLAN.md",
+      ".planning/PROJECT.md",
+      ".planning/GENESIS.md",
+      ".planning/REQUIREMENTS.md",
+      ".planning/ROADMAP.md",
+      ".planning/STATE.md",
+      ".planning/existing-state.md",
+      "package.json",
+      "apps/api/src/index.ts",
+      "apps/api/src/routes/payments.ts",
+      "apps/worker/src/index.ts",
+      "apps/worker/src/agents/delivery.ts",
+      "packages/shared/prisma/schema.prisma",
+      "tests/payment.test.ts",
+      "tests/treasury.test.ts"
+    ],
+    "methods": [
+      "read existing planning artifacts",
+      "read representative source files",
+      "classified repo evidence versus assumptions",
+      "built bottom-up market and financial model without external claims"
+    ]
+  },
+  "planningMethod": "EIR diligence synthesis: repo evidence first, assumptions labeled, market model bottom-up, gate remains needs-revision pending operator adoption.",
+  "customer": {
+    "primary": "US residents with concrete civic issues who want official contact handled for them",
+    "segments": [
+      "local infrastructure and public-service issues",
+      "state policy or enforcement concerns",
+      "federal constituent communications"
+    ],
+    "evidence": [
+      ".planning/GENESIS.md",
+      ".planning/PROJECT.md",
+      "MASTER_PLAN.md"
+    ],
+    "unknowns": [
+      "willingness to pay",
+      "repeat usage",
+      "issue categories with lowest compliance risk"
+    ]
+  },
+  "market": {
+    "tam": "$15,000,000 [assumption: 1,000 markets x 1,000 paid jobs/year x $15 ARPC]",
+    "sam": "$30,000 [assumption: 100 SEO clusters x 1,000 visits/year x 2% conversion x $15 ARPC]",
+    "som": "$3,600 [assumption: 240 paid launch-year campaigns x $15 ARPC]",
+    "method": "bottom-up civic-letter job model; no external market claims were treated as evidence"
+  },
+  "businessModel": {
+    "pricing": [
+      "$5 single official [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three-pack [evidence: apps/api/src/routes/payments.ts]",
+      "$25 full-spread [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "revenueStreams": [
+      "transactional letter campaigns",
+      "priority human review [future assumption]",
+      "organization/API access [future assumption]"
+    ],
+    "unitEconomics": [
+      "single tier gross margin 96.0% before processing/labor [evidence: repo price and treasury test]",
+      "three-pack gross margin 97.3% before processing/labor [evidence: repo price and treasury test]",
+      "full-spread gross margin 97.6% before processing/labor [evidence: repo price and treasury test]"
+    ]
+  },
+  "financialModel": {
+    "baseCase": [
+      {
+        "year": "2026",
+        "paidCampaigns": "240 [assumption]",
+        "grossRevenue": "$3,600 [assumption]",
+        "costs": "$2,476 [assumption/evidence mixed]",
+        "netBeforeLabor": "$1,124 [assumption]"
+      },
+      {
+        "year": "2027",
+        "paidCampaigns": "2,400 [assumption]",
+        "grossRevenue": "$36,000 [assumption]",
+        "costs": "$13,240 [assumption/evidence mixed]",
+        "netBeforeLabor": "$22,760 [assumption]"
+      },
+      {
+        "year": "2028",
+        "paidCampaigns": "12,000 [assumption]",
+        "grossRevenue": "$180,000 [assumption]",
+        "costs": "$64,200 [assumption/evidence mixed]",
+        "netBeforeLabor": "$115,800 [assumption]"
+      }
+    ],
+    "revenueAssumptions": [
+      "$15 ARPC from current pricing mix [assumption]",
+      "3% preview-to-paid target [assumption based on planning gate]",
+      "0.5% or lower chargeback loss [assumption based on planning constraint]"
+    ],
+    "costAssumptions": [
+      "$0.60 full-spread variable job budget [evidence: tests/treasury.test.ts]",
+      "$96/month starting backend droplet [evidence: MASTER_PLAN.md]",
+      "$1,000 launch-year provider/tooling budget [assumption]"
+    ],
+    "sensitivityTests": [
+      "1% conversion lowers launch-year revenue from $3,600 to $1,200 [assumption]",
+      "$5 ARPC lowers 2027 revenue from $36,000 to $12,000 [assumption]",
+      "$500/month local-official data cost lowers 2027 net by $6,000 [assumption]"
+    ]
+  },
+  "alternatives": [
+    "Manual official contact and government web forms",
+    "Resistbot",
+    "Change.org",
+    "Quorum/VoterVoice",
+    "LegalZoom or attorney-assisted writing"
+  ],
+  "antiPlan": {
+    "summary": "This may be an overbuilt workflow for a task citizens can do for free; watchlist status is justified until paid usage and deliverability are proven.",
+    "holes": [
+      "willingness to pay is unproven",
+      "government deliverability may fail",
+      "official data coverage may be stale or expensive",
+      "legal-advice perception creates liability risk",
+      "repo identity conflicts with dispatch project id"
+    ],
+    "mitigations": [
+      "paid beta with payment before delivery",
+      "domain warming and per-domain bounce pause",
+      "provider coverage spike",
+      "mandatory disclaimers, citation verification, and human review",
+      "operator identity ruling before wrk.vc publication"
+    ],
+    "residualRisks": [
+      "users may not pay",
+      "officials may ignore AI-assisted letters",
+      "local provider economics may break the low-price model"
+    ]
+  },
+  "strategy": "Validate one narrow civic-letter wedge before adding community, subscriptions, API access, certified mail, or autonomous follow-up.",
+  "goToMarket": {
+    "first100": "20 beta recruits, 50 concierge campaigns, 30 opt-in public examples, then 100-preview paid beta [assumption]",
+    "channels": [
+      "manual beta",
+      "SEO from opt-in public campaign pages",
+      "social sharing",
+      "organization pilots after consumer proof"
+    ],
+    "gates": [
+      "3% paid conversion [assumption]",
+      "85% delivery success [assumption]",
+      "validated official coverage [assumption]"
+    ]
+  },
+  "operatorWorkflow": {
+    "daily": "review flagged submissions, monitor bounces, inspect treasury alerts, handle opt-outs",
+    "weekly": "review conversion, citation failures, provider coverage, support load",
+    "launchConstraint": "no live sends without human-reviewed compliance path [assumption]"
+  },
+  "constraints": [
+    "watchlist/personal-research registry note",
+    "workspace-only diligence; no external market research",
+    "legal/compliance sensitivity around civic letters and AI citations",
+    "Clerk/Stripe/Postmark implementation may conflict with future WrkPlug shared rails",
+    "no production data present"
+  ],
+  "metrics": [
+    "paid preview conversion",
+    "delivery success rate",
+    "bounce rate by government domain",
+    "official-response rate",
+    "citation verification failure rate",
+    "manual review minutes per campaign",
+    "gross margin after provider and payment costs"
+  ],
+  "aiWorkGovernance": {
+    "honestyLabels": "Every quantitative claim in BUSINESS.md is tagged as evidence or assumption.",
+    "citationPolicy": "Letters may cite only verified sources; unverified citations are stripped or flagged.",
+    "humanReview": "Threats, defamation risk, unverifiable claims, and all flagged items require operator review before sending.",
+    "disclosures": "AI disclosure and not-legal-advice disclaimer are required in letter content."
+  },
+  "unknowns": [
+    "whether public asset is CivicState or brooks-history",
+    "whether operator wants this pitched as a business",
+    "production provider costs",
+    "real conversion and CAC",
+    "government inbox placement",
+    "legal review outcome",
+    "WrkPlug adoption timeline"
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Users will pay $5-$25",
+      "basis": "repo pricing and product thesis",
+      "evidenceOrAssumption": "assumption",
+      "test": "100-preview paid beta"
+    },
+    {
+      "claim": "3% conversion is a meaningful gate",
+      "basis": "existing planning threshold",
+      "evidenceOrAssumption": "assumption",
+      "test": "preview-to-paid measurement"
+    },
+    {
+      "claim": "85% delivery success is required",
+      "basis": "existing planning threshold",
+      "evidenceOrAssumption": "assumption",
+      "test": "government-domain delivery monitoring"
+    },
+    {
+      "claim": "local official coverage is launch-critical",
+      "basis": "planning blocker",
+      "evidenceOrAssumption": "evidence plus assumption",
+      "test": "25-ZIP provider spike"
+    },
+    {
+      "claim": "moat appears only after volume",
+      "basis": "Genesis moat hypothesis",
+      "evidenceOrAssumption": "assumption",
+      "test": "reuse of official/citation data by campaign count"
+    },
+    {
+      "claim": "WrkPlug shared rails reduce duplicated costs",
+      "basis": "portfolio platform posture",
+      "evidenceOrAssumption": "assumption",
+      "test": "operator architecture ruling"
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-21",
+      "change": "EIR soul upgrade created root business plan, roadmap, decision log, and gate artifacts.",
+      "author": "wrk.dog fleet worker"
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "reason": "Operator must resolve identity/watchlist status and market must validate payment, deliverability, and official coverage."
+  },
+  "next": [
+    "operator identity ruling",
+    "official-provider coverage spike",
+    "staging end-to-end flow verification",
+    "paid beta cohort"
+  ]
+}
