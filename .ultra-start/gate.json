@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "projectId": "brooks-history",
+  "status": "draft",
+  "oneLine": "CivicState is a paid civic-letter workflow; investibility remains unvalidated.",
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-business-plan"
+  },
+  "authority": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12 [evidence: dispatch brief]; see the PR's POM record",
+  "createdAt": "2026-06-21 [evidence: dispatch current_date]",
+  "updatedAt": "2026-06-21 [evidence: dispatch current_date]",
+  "freshness": {
+    "asOf": "2026-06-21 [evidence: dispatch current_date]",
+    "staleAfter": "2026-09-21 [assumption: quarterly soul refresh cadence]",
+    "reason": "Planning docs contain contradictions and should be refreshed after validation or deployment evidence changes."
+  },
+  "sourcesAndMethods": [
+    "Read repo planning files: MASTER_PLAN.md, .planning/PROJECT.md, .planning/GENESIS.md, .planning/REQUIREMENTS.md, .planning/ROADMAP.md, .planning/existing-state.md [evidence: repo files].",
+    "Read implementation files under apps/api, apps/web, apps/worker, packages/shared/prisma, and tests [evidence: repo files].",
+    "No network research used; external market claims are marked as assumptions."
+  ],
+  "evidenceSources": [
+    "package.json [evidence: product identity and scripts]",
+    "MASTER_PLAN.md [evidence: original product/business plan]",
+    ".planning/PROJECT.md [evidence: core value, validation gates, constraints]",
+    ".planning/GENESIS.md [evidence: assumptions, value chain, exclusions]",
+    ".planning/REQUIREMENTS.md [evidence: requirement status]",
+    ".planning/ROADMAP.md [evidence: prior roadmap dates and phase claims]",
+    ".planning/existing-state.md [evidence: older audit and zero-revenue claim]",
+    "apps/api/src, apps/worker/src, apps/web/app, packages/shared/prisma/schema.prisma, tests/ [evidence: implemented surface]"
+  ],
+  "honestyLabels": {
+    "policy": "Every quantitative business claim in BUSINESS.md is tagged [evidence: ...] or [assumption: ...]. Repo/planning files are evidence only for what this repo asserts or implements; external market truth remains an assumption without network research.",
+    "externalClaims": "No external market source was consulted in workspace-only mode."
+  },
+  "currentThesis": "CivicState is conditionally interesting if residents pay $5-$25 for researched constituent letters and if official coverage, citation quality, and deliverability meet repo-defined gates [evidence: apps/api/src/routes/payments.ts; .planning/PROJECT.md]. It is not yet investible because production demand, revenue, deployment, and market validation are not evidenced [evidence: .planning/existing-state.md; dispatch].",
+  "customerDefinition": {
+    "primary": "US residents with specific civic concerns who need research, official routing, drafting, and delivery handled for them [evidence: .planning/GENESIS.md].",
+    "excluded": "Legal filings, regulatory submissions, subscriptions, organization APIs, community features, certified mail, fax, and multilingual expansion are deferred or excluded [evidence: .planning/REQUIREMENTS.md; .planning/GENESIS.md]."
+  },
+  "productTruth": {
+    "implemented": [
+      "Next.js app pages exist [evidence: apps/web/app].",
+      "Express API routes exist for submissions, officials, payments, campaigns, admin, compliance, webhooks, and health [evidence: apps/api/src/index.ts].",
+      "BullMQ worker agents exist for classifier, researcher, drafter, delivery, treasury, and reconciliation [evidence: apps/worker/src/index.ts].",
+      "Prisma schema includes users, submissions, campaigns, letters, officials, payments, deliveries, ledger entries, audit logs, agent action logs, and jobs [evidence: packages/shared/prisma/schema.prisma]."
+    ],
+    "notProven": [
+      "Live production deployment [evidence: .planning/existing-state.md].",
+      "Live revenue or users [evidence: .planning/existing-state.md].",
+      "Official data coverage at validation thresholds [evidence: .planning/PROJECT.md].",
+      "Government inbox placement at validation thresholds [evidence: .planning/PROJECT.md]."
+    ]
+  },
+  "financials": {
+    "pricing": "$5 single, $15 three-pack, $25 full-spread [evidence: apps/api/src/routes/payments.ts].",
+    "marginFloor": "40% net margin floor after fees [evidence: MASTER_PLAN.md; .planning/PROJECT.md].",
+    "plannedBurn": "$132.50/month max burn [evidence: .planning/PROJECT.md].",
+    "reserve": "$1,500 Mercury reserve with $2,000 warning and $500 emergency thresholds [evidence: .planning/PROJECT.md].",
+    "model": "Proof scenario: 25 paid submissions/month x $15 blended price = $375 revenue; $18.75 variable cost at $0.75/submission; $223.75 contribution after $132.50 burn [assumption: arithmetic from repo prices and validation ladder]."
+  },
+  "marketSizing": {
+    "method": "Bottom-up validation ladder, not top-down TAM, because workspace-only mode has no external sources.",
+    "operatorProof": "300 paid submissions/year and $4,500 annual revenue [assumption: 25/month x 12 x $15].",
+    "localWedge": "3,000 paid submissions/year and $45,000 annual revenue [assumption: 250/month x 12 x $15].",
+    "nicheNational": "30,000 paid submissions/year and $450,000 annual revenue [assumption: 2,500/month x 12 x $15]."
+  },
+  "revenueModel": "One-time paid letter packages at $5, $15, and $25; subscriptions removed from launch; organization/API revenue deferred [evidence: apps/api/src/routes/payments.ts; MASTER_PLAN.md; .planning/REQUIREMENTS.md].",
+  "competition": [
+    "Resistbot [evidence: MASTER_PLAN.md; .planning/PROJECT.md].",
+    "Change.org [evidence: MASTER_PLAN.md].",
+    "LegalZoom [evidence: MASTER_PLAN.md].",
+    "Quorum and VoterVoice [evidence: .planning/PROJECT.md; assumption: external pricing not verified].",
+    "Manual constituent outreach [evidence: MASTER_PLAN.md]."
+  ],
+  "goToMarket": {
+    "primary": "Organic search and opt-in public campaign pages are the planned flywheel [evidence: .planning/GENESIS.md; MASTER_PLAN.md].",
+    "constraint": "Publisher/public campaign pages are deferred from launch scope, so SEO should not be claimed as active [evidence: .planning/PROJECT.md].",
+    "next": "Validate one geography and issue category before scaling [assumption: risk-reduction method]."
+  },
+  "validationGates": {
+    "willingnessToPay": ">=3% conversion [evidence: .planning/PROJECT.md]",
+    "deliverability": ">=85% inbox placement on .gov domains [evidence: .planning/PROJECT.md]",
+    "coverage": ">=95% federal/state coverage and >=60% local coverage [evidence: .planning/PROJECT.md]",
+    "chargebacks": "<0.5% chargeback rate [evidence: .planning/PROJECT.md]"
+  },
+  "risksAntiPlan": {
+    "holes": [
+      {
+        "hole": "Willingness to pay is unproven.",
+        "mitigation": "Run checkout-enabled beta before acquisition spend.",
+        "residualRisk": "If conversion stays below 3%, the product may be a free utility or feature, not a company [evidence: .planning/PROJECT.md]."
+      },
+      {
+        "hole": "Government inbox deliverability can break the core promise.",
+        "mitigation": "Domain warming, SPF/DKIM/DMARC, Postmark monitoring, bounce-rate pause logic.",
+        "residualRisk": "If inbox placement remains below 85%, refunds and reputational damage can overwhelm the unit economics [evidence: .planning/PROJECT.md; apps/worker/src/agents/delivery.ts]."
+      },
+      {
+        "hole": "Legal-adjacent drafting and political content create abuse and liability risk.",
+        "mitigation": "Moderation, disclaimers, citation verification, human review for flags.",
+        "residualRisk": "Disclaimers may not prevent user confusion or harmful outputs [evidence: apps/api/src/lib/moderation.ts; apps/worker/src/lib/legal/citation-verifier.ts]."
+      },
+      {
+        "hole": "Repository identity mismatch damages data-room credibility.",
+        "mitigation": "Operator must resolve `brooks-history` versus CivicState naming before pitch.",
+        "residualRisk": "Investors may interpret mismatch as poor controls [evidence: dispatch; package.json]."
+      }
+    ],
+    "antiPlan": "Do not fund paid acquisition, API expansion, certified mail, public coalition features, or multi-state scaling until paid conversion, official coverage, citation quality, and deliverability are measured [assumption: risk-first operating plan]."
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "$15 blended price",
+      "basis": "Assumes 30% single, 40% three-pack, 30% full-spread using repo tiers [assumption: no live mix data].",
+      "validation": "Measure actual checkout tier mix."
+    },
+    {
+      "assumption": "$0.75 variable cost per submission",
+      "basis": "High end of repo token-cost range [evidence: .planning/GENESIS.md].",
+      "validation": "Track agent token usage, Postmark cost, retries, and support burden."
+    },
+    {
+      "assumption": "One operator can manage launch exceptions",
+      "basis": "Repo genesis assumption [evidence: .planning/GENESIS.md].",
+      "validation": "Track flagged queue depth and oldest item age."
+    }
+  ],
+  "roadmapBuildableShape": {
+    "path": "ROADMAP.md",
+    "nextWork": "Contains 7 single-worker checkbox items mapped back to BUSINESS.md headings [evidence: ROADMAP.md]."
+  },
+  "scrutinyGapsFixed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "registryConstraints": {
+    "watchlist": true,
+    "note": "Registry says personal/research asset, not near-term investible BOS unless operator confirms business pitch [evidence: dispatch]."
+  },
+  "surpriseSpikes": [
+    "Fleet project id says brooks-history, repo product says CivicState [evidence: dispatch; package.json].",
+    "Existing-state audit says zero app code, but app code exists [evidence: .planning/existing-state.md; apps/].",
+    "Roadmap marks phases complete while requirements remain pending [evidence: .planning/ROADMAP.md; .planning/REQUIREMENTS.md]."
+  ],
+  "adoptionStatus": "draft_pending_operator_merge",
+  "operatorValidationRequired": [
+    "Confirm whether this should pitch as a business or remain personal/research asset [evidence: dispatch].",
+    "Resolve project identity mismatch before publication [evidence: dispatch; package.json].",
+    "Validate market gates before investibility claims [evidence: .planning/PROJECT.md]."
+  ]
+}
