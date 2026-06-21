@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "wrk.soul-gate.v1",
+  "status": "pending",
+  "projectId": "brooks-history",
+  "projectName": "CivicState / brooks-history",
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "CivicState-root-business-plan"
+  },
+  "thesisCurrent": "CivicState is a validation-stage civic-letter asset, not yet investible without paid-demand proof.",
+  "adoptionMechanism": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+  "sourcesAndMethods": [
+    {
+      "source": "registry dispatch",
+      "method": "Used project id, repo name, soul paths, watchlist note, and scrutiny gaps as current registry context [evidence]."
+    },
+    {
+      "source": "BUSINESS.md",
+      "method": "Created root VC-grade plan as seed and canonical thesis [evidence]."
+    },
+    {
+      "source": ".planning/PROJECT.md",
+      "method": "Folded existing CivicState product statement, constraints, validation gates, decisions, and risks [evidence]."
+    },
+    {
+      "source": ".planning/GENESIS.md",
+      "method": "Folded original assumptions, target user, distribution hypothesis, and exclusions [evidence]."
+    },
+    {
+      "source": "MASTER_PLAN.md",
+      "method": "Used inherited pricing, revenue scenarios, risk language, and roadmap as assumptions where market evidence is absent."
+    },
+    {
+      "source": "apps and packages",
+      "method": "Read code structure, routes, Prisma schema, worker agents, and tests to separate implemented capability from aspiration [evidence]."
+    }
+  ],
+  "summary": "Root soul upgraded; CivicState is real in code, but demand, market, and delivery proof remain assumption-led.",
+  "authority": "pending",
+  "businessFile": "BUSINESS.md",
+  "roadmapFile": "ROADMAP.md",
+  "decisionsFile": "DECISIONS.md",
+  "registryContext": {
+    "project": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "note": "Watchlist; personal/research asset, not near-term investible BOS unless operator confirms it should pitch as a business."
+  },
+  "honestyLabels": {
+    "required": true,
+    "evidenceLabel": "[evidence: <repo path or registry dispatch>]",
+    "assumptionLabel": "[assumption: <basis>]",
+    "externalClaims": "All external market/legal/API/vendor/competitor claims are assumptions because this worker had no network access."
+  },
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "nativeConstitution": {
+    "existingGateFound": false,
+    "schemaPreserved": "No existing gate artifact was found, so created wrk soul-gate shape.",
+    "unknownKeysPreserved": "Not applicable."
+  },
+  "diligence": {
+    "holes": [
+      {
+        "hole": "No repo evidence of paying customers or Stripe revenue.",
+        "mitigation": "Run beta and record preview-to-payment, revenue, refunds, and chargebacks.",
+        "residualRisk": "Users may like previews but refuse to pay."
+      },
+      {
+        "hole": "No live proof of government inbox deliverability.",
+        "mitigation": "Run controlled official-domain deliverability tests before public launch.",
+        "residualRisk": "Official domains may filter or suppress CivicState mail."
+      },
+      {
+        "hole": "No independently sourced market sizing or legal/regulatory review in this workspace-only run.",
+        "mitigation": "Refresh external claims with sourced research and counsel/operator review.",
+        "residualRisk": "Market size, API availability, or compliance assumptions may be wrong."
+      },
+      {
+        "hole": "Registry project name and implemented product name conflict.",
+        "mitigation": "Operator must rule whether the asset is brooks-history, CivicState, or a renamed project.",
+        "residualRisk": "Dossier may confuse investors or operators if identity remains unresolved."
+      }
+    ]
+  },
+  "marketSizing": {
+    "method": "Bottom-up learning milestones only; no TAM claimed without network research.",
+    "validationScenario": "50 paid submissions per month x $15 average price = $750 monthly revenue [assumption: inherited MASTER_PLAN.md scenario].",
+    "baseScenario": "120 paid submissions per month x $16 average price = $1,920 monthly revenue [assumption: inherited MASTER_PLAN.md scenario].",
+    "stretchScenario": "400 paid submissions per month x $18 average price = $7,200 monthly revenue [assumption: inherited MASTER_PLAN.md scenario]."
+  },
+  "revenueModel": {
+    "type": "One-time transactional payment before delivery [evidence: apps/api/src/routes/payments.ts].",
+    "tiers": [
+      "$5 single official [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three officials [evidence: apps/api/src/routes/payments.ts]",
+      "$25 all matched officials [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "nonRevenue": "Subscriptions, organization API, paid ads, and partnerships remain deferred [evidence: .planning/GENESIS.md; MASTER_PLAN.md]."
+  },
+  "competition": [
+    "Resistbot [evidence: .planning/PROJECT.md]",
+    "Change.org [evidence: MASTER_PLAN.md]",
+    "Quorum [evidence: .planning/PROJECT.md]",
+    "VoterVoice [evidence: .planning/PROJECT.md]"
+  ],
+  "risks": [
+    "Weak willingness to pay after preview [assumption: unvalidated consumer demand].",
+    "Government email deliverability failure [assumption: inherited repo risk].",
+    "Fabricated or unverifiable citations [assumption: legal-adjacent AI risk, partially mitigated in apps/worker/src/agents/researcher.ts].",
+    "Official lookup gaps, especially local coverage [assumption: inherited validation concern].",
+    "Operator workload exceeds exception-based staffing model [assumption: no measured queue data]."
+  ],
+  "roadmapBuildableShape": {
+    "file": "ROADMAP.md",
+    "planningItems": "Seven checkbox items [evidence: ROADMAP.md], each single-worker-sized and traceable to BUSINESS.md headings."
+  },
+  "freshness": {
+    "asOf": "2026-06-21 [evidence: worker dispatch current date]",
+    "staleInputs": [
+      ".planning/PROJECT.md last updated 2026-04-25 [evidence: .planning/PROJECT.md]",
+      "MASTER_PLAN.md last updated March 2026 [evidence: MASTER_PLAN.md]"
+    ],
+    "networkResearch": "Unavailable; external claims remain assumptions."
+  },
+  "operatorRulingsNeeded": [
+    "Confirm whether this should pitch as a business or remain a personal/research asset.",
+    "Resolve brooks-history versus CivicState identity.",
+    "Approve beta validation thresholds before public launch.",
+    "Review legal-adjacent claims before investor or public distribution."
+  ],
+  "adoptionStatus": "pending operator merge",
+  "createdAt": "2026-06-21 [evidence: worker dispatch current date]",
+  "updatedAt": "2026-06-21 [evidence: worker dispatch current date]"
+}
