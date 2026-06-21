@@ -1,0 +1,210 @@
+{
+  "schemaVersion": "wrk-gate-v1",
+  "project": {
+    "id": "brooks-history",
+    "repository": "RPLogic-Inc/brookss-history",
+    "seed": {
+      "path": "BUSINESS.md",
+      "id": "civicstate-business-plan"
+    }
+  },
+  "status": "draft",
+  "shortThesis": "CivicState is a draft civic-letter workflow; prove paid demand and deliverability before pitching it.",
+  "authority": {
+    "state": "draft",
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+    "operatorAdopted": false
+  },
+  "createdAt": "2026-06-21",
+  "updatedAt": "2026-06-21",
+  "worker": "wrk.dog fleet worker",
+  "inputs": {
+    "business": "BUSINESS.md",
+    "roadmap": "ROADMAP.md",
+    "decisions": "DECISIONS.md",
+    "registryNotes": "Watchlist; personal/research asset; not near-term investible BOS unless operator confirms business pitch"
+  },
+  "methods": [
+    "Workspace-only file review; no network research used.",
+    "Compared planning documents against current application code.",
+    "Tagged external or market claims as assumptions and repo/code facts as evidence."
+  ],
+  "sources": [
+    {
+      "path": ".planning/PROJECT.md",
+      "use": "product definition, constraints, key decisions"
+    },
+    {
+      "path": ".planning/GENESIS.md",
+      "use": "original thesis, demand hypothesis, distribution hypothesis"
+    },
+    {
+      "path": ".planning/REQUIREMENTS.md",
+      "use": "scope, exclusions, compliance, traceability"
+    },
+    {
+      "path": ".planning/ROADMAP.md",
+      "use": "existing roadmap narrative"
+    },
+    {
+      "path": ".planning/STATE.md",
+      "use": "conflicting implementation status"
+    },
+    {
+      "path": "apps/api/src/index.ts",
+      "use": "API surface evidence"
+    },
+    {
+      "path": "apps/api/src/routes/payments.ts",
+      "use": "pricing and checkout implementation evidence"
+    },
+    {
+      "path": "apps/api/src/routes/submissions.ts",
+      "use": "submission and moderation implementation evidence"
+    },
+    {
+      "path": "apps/worker/src/index.ts",
+      "use": "worker agent registration evidence"
+    },
+    {
+      "path": "apps/worker/src/agents/researcher.ts",
+      "use": "citation search and verification evidence"
+    },
+    {
+      "path": "packages/shared/prisma/schema.prisma",
+      "use": "data model evidence"
+    }
+  ],
+  "thesis": {
+    "current": "A resident-facing civic workflow can convert concrete civic frustration into paid, researched, citation-backed constituent letters.",
+    "status": "conditional",
+    "honestyLabel": "[assumption: market demand unvalidated in workspace]"
+  },
+  "customer": {
+    "primary": "US resident with a concrete civic concern and low confidence in jurisdiction research, formal drafting, or official targeting.",
+    "excluded": [
+      "Legal claimants seeking filings or demand letters",
+      "Businesses or bulk advocacy operators",
+      "Users targeting private individuals"
+    ]
+  },
+  "revenueModel": {
+    "launch": "One-time letter packages",
+    "tiers": [
+      {
+        "id": "single",
+        "price": "$5.00 [evidence: apps/api/src/routes/payments.ts]",
+        "officialCount": "1 [evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "id": "three_pack",
+        "price": "$15.00 [evidence: apps/api/src/routes/payments.ts]",
+        "officialCount": "3 [evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "id": "full_spread",
+        "price": "$25.00 [evidence: apps/api/src/routes/payments.ts]",
+        "officialCount": "all matched officials [evidence: apps/api/src/routes/payments.ts]"
+      }
+    ],
+    "future": "Human review, delivery add-ons, and organization API remain deferred assumptions."
+  },
+  "financials": {
+    "baseCase": {
+      "paidSubmissionsPerMonth": "1,000 [assumption: scenario model]",
+      "averageOrderValue": "$13.50 [assumption: illustrative mix from repo prices]",
+      "monthlyRevenue": "$13,500 [assumption: 1,000 x $13.50]",
+      "grossMargin": "89.3% [assumption: model, unverified]"
+    },
+    "reconciles": true
+  },
+  "marketSizing": {
+    "method": "Bottoms-up scenario model because workspace-only mode prevents external market research.",
+    "beachhead": "$135,000 annual gross revenue [assumption: 10,000 annual packages x $13.50]",
+    "narrowServiceable": "$1,350,000 annual gross revenue [assumption: 100,000 annual packages x $13.50]",
+    "wideServiceable": "$13,500,000 annual gross revenue [assumption: 1,000,000 annual packages x $13.50]"
+  },
+  "competition": [
+    "Resistbot [assumption: general market knowledge, unverified workspace-only]",
+    "Change.org [assumption: general market knowledge, unverified workspace-only]",
+    "Quorum/FiscalNote/VoterVoice-style advocacy platforms [assumption: general market knowledge, unverified workspace-only]",
+    "Manual email plus free generative AI [assumption: behavioral substitute]"
+  ],
+  "validationGates": [
+    {
+      "gate": "Paid conversion",
+      "target": "3% preview-to-checkout [assumption: EIR threshold]",
+      "evidenceNeeded": "Stripe checkout export and funnel count"
+    },
+    {
+      "gate": "Deliverability",
+      "target": "85% delivered status on government domains [assumption: EIR threshold]",
+      "evidenceNeeded": "Postmark delivery/bounce export"
+    },
+    {
+      "gate": "Citation reliability",
+      "target": "95% verified-citation retention on seeded tests [assumption: EIR threshold]",
+      "evidenceNeeded": "Seeded issue test results and verifier logs"
+    }
+  ],
+  "gaps": {
+    "holes": [
+      "No workspace evidence of live paid customers.",
+      "No workspace evidence of production deliverability to government officials.",
+      "No workspace evidence that local-official provider coverage is sufficient.",
+      "Conflicting planning state between .planning/STATE.md and .planning/ROADMAP.md.",
+      "Registry warns the asset may be personal/research rather than near-term investible."
+    ],
+    "mitigations": [
+      "Run paid beta before public acquisition.",
+      "Test deliverability before sending real user mail.",
+      "Evaluate officials providers across representative ZIP codes.",
+      "Require operator ruling before changing draft authority."
+    ],
+    "residualRisks": [
+      "Low-ticket civic demand may not cover support burden.",
+      "AI-assisted official mail may be filtered or ignored.",
+      "Citation mistakes could create reputational or legal-adjacent exposure."
+    ]
+  },
+  "goToMarket": {
+    "phase": "validation",
+    "motion": "Manual beta recruitment, then SEO/public campaign pages only after paid delivery works.",
+    "paidAcquisition": "deferred"
+  },
+  "roadmap": {
+    "path": "ROADMAP.md",
+    "nowItems": 7,
+    "shape": "single-worker-sized validation tasks mapped to BUSINESS.md headings"
+  },
+  "scrutinyGapsFixed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "sensitivity": {
+    "watchlist": true,
+    "note": "Treat as personal/research asset until operator confirms business pitch."
+  },
+  "adoption": {
+    "claim": "not adopted",
+    "requiredForAdoption": "Operator merge after POM soul-review"
+  }
+}
