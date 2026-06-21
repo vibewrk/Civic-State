@@ -1,0 +1,12 @@
+{
+  "currentThesis": "If the operator confirms CivicState is the intended asset, Brooks History can become a paid civic-letter delivery venture; otherwise it remains a watchlist research asset.",
+  "identityConstraints": [
+    "Will not pitch as near-term investible until the operator resolves the Brooks History versus CivicState identity conflict.",
+    "Will not present external market claims as evidence during workspace-only research.",
+    "Will not act as a legal advice, legal demand, or regulatory filing service.",
+    "Will not build or preserve standalone auth, billing, or identity rails if WrkPlug becomes authoritative."
+  ],
+  "reviewedAt": "2026-06-21",
+  "reviewedBy": "wrk.dog EIR",
+  "verdict": "refreshed"
+}
