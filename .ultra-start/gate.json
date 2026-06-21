@@ -1,0 +1,272 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "summary": "Watchlist civic-letter tool; real code exists, investibility waits on paid demand and deliverability.",
+  "status": "draft",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "seed": {
+      "path": "BUSINESS.md",
+      "id": "civicstate-soul-upgrade-2026-06-21"
+    }
+  },
+  "authority": {
+    "level": "draft",
+    "note": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record"
+  },
+  "createdAt": "2026-06-21",
+  "updatedAt": "2026-06-21",
+  "adoptionMechanism": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record",
+  "sourcesAndMethods": {
+    "mode": "workspace-only; no network research",
+    "sources": [
+      {
+        "path": "BUSINESS.md",
+        "use": "Seed soul after upgrade"
+      },
+      {
+        "path": "MASTER_PLAN.md",
+        "use": "Existing product, architecture, pricing, treasury, risk, and financial assumptions"
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "use": "Core value, requirements, validation gates, pricing, constraints, and decisions"
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "use": "Prior phase roadmap and completion claims"
+      },
+      {
+        "path": ".planning/GENESIS.md",
+        "use": "Distribution, moat, target user, exclusions, and assumptions"
+      },
+      {
+        "path": ".planning/REQUIREMENTS.md",
+        "use": "Requirement scope and status"
+      },
+      {
+        "path": "packages/shared/prisma/schema.prisma",
+        "use": "Current data model evidence"
+      },
+      {
+        "path": "apps/web/app",
+        "use": "Current frontend surface evidence"
+      },
+      {
+        "path": "apps/api/src/routes",
+        "use": "Current backend route evidence"
+      },
+      {
+        "path": "apps/worker/src",
+        "use": "Current worker and agent evidence"
+      },
+      {
+        "path": "scripts/setup-dns.md",
+        "use": "DNS, Postmark, and domain warming operational evidence"
+      }
+    ],
+    "methods": [
+      "Read existing planning and master-plan files",
+      "Inspected current app, API, worker, and Prisma file tree",
+      "Preserved existing pricing, constraints, and roadmap narrative where supported by repo evidence",
+      "Tagged external or unverified market claims as assumptions because network access was not available",
+      "Called out contradictions between stale planning artifacts and current code"
+    ]
+  },
+  "businessThesis": {
+    "current": "CivicState is a watchlist civic-tech product that sells one-time researched, citation-backed constituent letters for $5, $15, and $25 [evidence: .planning/PROJECT.md; apps/web/app/page.tsx].",
+    "status": "not-near-term-investible",
+    "why": "The repo has real product implementation evidence, but no repo evidence of paid demand, live deliverability, attorney review, payment processor stability, or production conversion [evidence: repository file scan, 2026-06-21].",
+    "operatorConstraint": "Registry note says personal/research asset and asks operator to confirm whether it should pitch as a business [evidence: dispatch registry notes, 2026-06-21]."
+  },
+  "customerDefinition": {
+    "primaryCustomer": "Individual United States resident with a specific civic issue who wants help researching, drafting, routing, and delivering a constituent letter [evidence: .planning/PROJECT.md].",
+    "nonCustomers": [
+      "Businesses seeking advocacy in entity capacity [evidence: MASTER_PLAN.md]",
+      "Legal claimants or users seeking filings [evidence: MASTER_PLAN.md]",
+      "Bulk campaigners and harassment/defamation-risk users [evidence: MASTER_PLAN.md]"
+    ]
+  },
+  "marketSizing": {
+    "method": "Bottom-up validation scenario, not TAM",
+    "launchAudience": "10,000 high-intent annual civic-letter buyers [assumption: conservative validation scenario, not sourced market data]",
+    "firstYearPaidSubmissions": "1,000 [assumption: validation target, not historical performance]",
+    "averageOrderValue": "$15 [assumption: midpoint of $5, $15, and $25 repo tiers; evidence for tiers: .planning/PROJECT.md]",
+    "firstYearGrossRevenue": "$15,000 [assumption: 1,000 paid submissions multiplied by $15 AOV]",
+    "breakEven": "11 submissions per month [evidence: .planning/PROJECT.md]"
+  },
+  "revenueModel": {
+    "type": "One-time transactional letter packages",
+    "packages": [
+      {
+        "name": "single official",
+        "price": "$5 [evidence: .planning/PROJECT.md]"
+      },
+      {
+        "name": "three-pack",
+        "price": "$15 [evidence: .planning/PROJECT.md]"
+      },
+      {
+        "name": "full-spread",
+        "price": "$25 [evidence: .planning/PROJECT.md]"
+      }
+    ],
+    "costInputs": [
+      "$0.10 to $0.40 AI cost per submission [evidence: MASTER_PLAN.md]",
+      "about $96 per month backend droplet [evidence: MASTER_PLAN.md]",
+      "$50 per month Postmark card limit [evidence: MASTER_PLAN.md]",
+      "$1,500 startup reserve [evidence: MASTER_PLAN.md]",
+      "40% minimum net margin floor [evidence: MASTER_PLAN.md]"
+    ],
+    "reconciliation": "Revenue table in BUSINESS.md reconciles paid submissions multiplied by AOV to revenue and subtracts high-end AI cost plus fixed platform costs [assumption: simplified model excludes Stripe fees, labor, legal, refunds, tax, and acquisition]."
+  },
+  "competition": [
+    {
+      "name": "Resistbot",
+      "note": "Reference competitor named in existing plan; details require network verification [evidence: MASTER_PLAN.md; assumption: product specifics not verified in this run]"
+    },
+    {
+      "name": "Change.org",
+      "note": "Reference competitor named in existing plan; details require network verification [evidence: MASTER_PLAN.md; assumption: product specifics not verified in this run]"
+    },
+    {
+      "name": "LegalZoom",
+      "note": "Reference competitor named in existing plan; details require network verification [evidence: MASTER_PLAN.md; assumption: product specifics not verified in this run]"
+    },
+    {
+      "name": "Quorum",
+      "note": "Reference competitor named in prior soul context; details require network verification [evidence: .planning/PROJECT.md; assumption: product specifics not verified in this run]"
+    },
+    {
+      "name": "VoterVoice",
+      "note": "Reference competitor named in prior soul context; details require network verification [evidence: .planning/PROJECT.md; assumption: product specifics not verified in this run]"
+    }
+  ],
+  "goToMarket": {
+    "primary": "Concierge beta before scale",
+    "motions": [
+      "Recruit at least 30 paid civic issue submitters [assumption: early validation sample].",
+      "Validate at least 85% inbox placement on government domains [evidence: .planning/PROJECT.md].",
+      "Publish only opt-in, privacy-safe campaign pages and track 90-day search impressions [assumption: SEO validation window; evidence for SEO strategy: .planning/GENESIS.md].",
+      "Keep paid acquisition, partnerships, subscriptions, API access, certified mail, fax, and community features deferred [evidence: .planning/GENESIS.md; MASTER_PLAN.md]."
+    ]
+  },
+  "risksAntiPlan": {
+    "antiPlan": "The project may be useful but not venture-worthy: users may not pay for something they can do by email, officials may ignore or suppress AI-written letters, legal review may constrain the citation-backed promise, payment processors may flag civic content, and SEO may not compound from sparse opt-in local pages [assumption: skeptic case based on repo risks and product model].",
+    "holes": [
+      {
+        "hole": "No paid demand evidence",
+        "mitigation": "Run concierge beta with paid submissions and refund tracking",
+        "residualRisk": "Users may prefer free templates or direct email"
+      },
+      {
+        "hole": "No live deliverability evidence",
+        "mitigation": "Use SPF/DKIM/DMARC, Postmark warming, bounce monitoring, and inbox tests [evidence: scripts/setup-dns.md]",
+        "residualRisk": "Government domains may still filter or complain"
+      },
+      {
+        "hole": "No attorney review evidence",
+        "mitigation": "Review terms, AI disclosure, CAN-SPAM posture, citation language, and moderation policy",
+        "residualRisk": "The product promise may need to be narrowed"
+      },
+      {
+        "hole": "Planning freshness conflict",
+        "mitigation": "Root soul now flags stale planning contradictions",
+        "residualRisk": "Data room remains confusing until planning artifacts are reconciled"
+      }
+    ]
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "Citizens will pay $5 to $25 for researched civic letters [evidence for price tiers: .planning/PROJECT.md]",
+      "validation": "Paid beta conversion, refunds, objections",
+      "status": "unvalidated"
+    },
+    {
+      "assumption": "Email-first delivery is sufficient [evidence for email-first scope: .planning/GENESIS.md]",
+      "validation": "Inbox placement, bounce, complaint, response tracking",
+      "status": "unvalidated"
+    },
+    {
+      "assumption": "AI citations can be verified safely at production quality [evidence for verifier: apps/worker/src/lib/legal/citation-verifier.ts]",
+      "validation": "Manual audit of generated letters before launch",
+      "status": "unvalidated"
+    },
+    {
+      "assumption": "SEO can acquire users without paid ads [evidence for SEO strategy: .planning/GENESIS.md]",
+      "validation": "90-day search impressions and conversion",
+      "status": "unvalidated"
+    },
+    {
+      "assumption": "One operator can manage exceptions [evidence for lean operator target: .planning/PROJECT.md]",
+      "validation": "Minutes per flagged submission and queue-age tracking",
+      "status": "unvalidated"
+    }
+  ],
+  "validationGates": [
+    {
+      "gate": "Willingness to pay",
+      "threshold": "at least 30 paid submissions [assumption: early validation sample]",
+      "status": "open"
+    },
+    {
+      "gate": "Deliverability",
+      "threshold": "at least 85% government-domain inbox placement [evidence: .planning/PROJECT.md]",
+      "status": "open"
+    },
+    {
+      "gate": "Chargebacks",
+      "threshold": "below 0.5% [evidence: MASTER_PLAN.md]",
+      "status": "open"
+    },
+    {
+      "gate": "Operator load",
+      "threshold": "below 30 minutes per day routine operations [evidence: .planning/PROJECT.md]",
+      "status": "open"
+    }
+  ],
+  "roadmap": {
+    "path": "ROADMAP.md",
+    "shape": "Now/Next/Later validation roadmap with single-worker-sized checkbox items",
+    "buildability": "Feature expansion is deferred until business validation gates close"
+  },
+  "honestyLabels": {
+    "rule": "Every quantitative claim in the upgraded soul is tagged as evidence or assumption.",
+    "network": "No external market claims were verified; external claims are assumptions due to workspace-only mode."
+  },
+  "freshness": {
+    "asOf": "2026-06-21 [evidence: worker dispatch current_date]",
+    "staleSources": [
+      "MASTER_PLAN.md says March 2026 [evidence: MASTER_PLAN.md]",
+      ".planning/PROJECT.md says last updated 2026-04-25 [evidence: .planning/PROJECT.md]",
+      ".planning/existing-state.md contradicts current code presence [evidence: .planning/existing-state.md; apps; packages/shared]"
+    ]
+  },
+  "scrutinyGapsAddressed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "remainingWork": [
+    "Operator must decide whether this remains personal/research or becomes a business pitch [evidence: dispatch registry notes, 2026-06-21].",
+    "External market and competitor claims need source-backed verification when network research is allowed.",
+    "Production metrics need to replace scenario assumptions."
+  ]
+}
