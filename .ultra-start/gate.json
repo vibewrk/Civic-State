@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "status": "proposed",
+  "project": {
+    "id": "brooks-history",
+    "repository": "RPLogic-Inc/brookss-history",
+    "repoLocalProduct": "CivicState",
+    "seed": "BUSINESS.md"
+  },
+  "snapshot": "Watchlist CivicState: paid civic-letter tool with code, no market proof, operator ruling needed.",
+  "thesis": "CivicState may be a small paid constituent-communications utility if users pay for researched, routed, citation-backed letters, but it is not yet an investible business-of-scale.",
+  "authority": {
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+    "currentStatus": "proposed",
+    "operatorRulingRequired": true
+  },
+  "authoritativeSource": {
+    "path": "BUSINESS.md",
+    "id": "business-plan"
+  },
+  "sourcesAndMethods": [
+    {
+      "source": ".planning/PROJECT.md",
+      "method": "Extracted product definition, pricing, validation gates, constraints, market verdict, and sensitivity notes."
+    },
+    {
+      "source": ".planning/REQUIREMENTS.md",
+      "method": "Mapped launch requirements, completed/pending evidence, out-of-scope items, and compliance constraints."
+    },
+    {
+      "source": ".planning/ROADMAP.md",
+      "method": "Preserved original phased narrative while correcting completion interpretation."
+    },
+    {
+      "source": ".planning/existing-state.md",
+      "method": "Used zero-traffic and zero-revenue claims, planned scale table, and detected contradictions with current code."
+    },
+    {
+      "source": "MASTER_PLAN.md",
+      "method": "Preserved historical product architecture, business model, and deferred feature choices."
+    },
+    {
+      "source": "apps/** and packages/**",
+      "method": "Sampled API, worker, payment, frontend, and Prisma implementation to separate real code from aspiration."
+    },
+    {
+      "source": "wrk.dog dispatch registry note",
+      "method": "Applied watchlist/personal-research constraint and operator-confirmation sensitivity."
+    }
+  ],
+  "honesty": {
+    "workspaceOnly": true,
+    "externalMarketClaims": "All external market claims are assumptions because network research was unavailable.",
+    "quantitativeClaims": "BUSINESS.md tags quantitative claims with [evidence] or [assumption].",
+    "factoryOutputIsEvidence": false
+  },
+  "businessFile": "BUSINESS.md",
+  "roadmapFile": "ROADMAP.md",
+  "decisionsFile": "DECISIONS.md",
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "decision": {
+    "recommendation": "Keep on watchlist until paid conversion, deliverability, and official coverage clear validation gates.",
+    "confidence": "medium",
+    "reason": "Repo contains meaningful CivicState implementation evidence, but registry and repo-local evidence show no market proof."
+  },
+  "validationGates": {
+    "paidConversion": {
+      "target": ">=3%",
+      "source": ".planning/PROJECT.md",
+      "status": "unvalidated"
+    },
+    "govInboxPlacement": {
+      "target": ">=85%",
+      "source": ".planning/PROJECT.md",
+      "status": "unvalidated"
+    },
+    "officialCoverage": {
+      "target": ">=95% federal/state and >=60% local",
+      "source": ".planning/PROJECT.md",
+      "status": "unvalidated"
+    }
+  },
+  "holes": [
+    {
+      "hole": "No market proof: repo audit says $0 revenue and 0 traffic.",
+      "mitigation": "Run narrow beta and instrument preview-to-checkout conversion.",
+      "residualRisk": "Users may prefer free manual outreach."
+    },
+    {
+      "hole": "Government email deliverability may fail.",
+      "mitigation": "Complete domain warming and seed-list inbox tests before real sends.",
+      "residualRisk": "Government spam filters can still suppress compliant mail."
+    },
+    {
+      "hole": "Local official data provider unresolved.",
+      "mitigation": "Run Cicero/BallotReady or replacement provider spike.",
+      "residualRisk": "Coverage/cost may break the low-price model."
+    },
+    {
+      "hole": "Legal/compliance boundary is sensitive.",
+      "mitigation": "Keep legal filings, demand notices, and unsupported factual allegations out of scope.",
+      "residualRisk": "Users may submit risky claims that require human moderation."
+    }
+  ],
+  "sensitivityFlags": [
+    "political opinion data",
+    "legal-advice boundary",
+    "government-official contact/deliverability",
+    "watchlist personal/research asset"
+  ],
+  "freshness": {
+    "asOf": "2026-06-22",
+    "repoPlanningLastUpdated": "2026-04-25",
+    "masterPlanVersionDate": "March 2026",
+    "networkResearch": "not available"
+  },
+  "surpriseSpikes": [
+    "Dispatch says brooks-history; repo-local evidence says CivicState.",
+    ".planning/existing-state.md says zero app code, but apps/ and packages/ contain implementation.",
+    ".planning/ROADMAP.md marks all phases complete, while .planning/REQUIREMENTS.md still has pending requirements.",
+    "MASTER_PLAN.md discusses dynamic pricing, but current payment route uses hardcoded tiers."
+  ],
+  "competitionNamed": [
+    "Resistbot",
+    "Change.org",
+    "LegalZoom",
+    "Quorum",
+    "VoterVoice",
+    "manual direct outreach"
+  ],
+  "revenueModel": {
+    "launch": "transactional paid letter packages",
+    "tiers": [
+      "$5 single official",
+      "$15 three officials",
+      "$25 all matched officials"
+    ],
+    "baseAovAssumption": "$14.50"
+  },
+  "marketSizing": {
+    "method": "bottom-up from repo capacity/pricing and explicit assumptions",
+    "baseCase": "$69,600 annual gross revenue at 4,800 campaigns/year and $14.50 AOV",
+    "capacityCase": "$870,000 annual gross revenue at 5,000 submissions/month and $14.50 AOV"
+  },
+  "roadmapShape": {
+    "buildable": true,
+    "items": 7,
+    "traceability": "Roadmap checkbox labels overlap BUSINESS.md headings."
+  },
+  "operatorAsk": "Confirm whether this repo should pitch CivicState as a business or remain a personal/research asset."
+}
