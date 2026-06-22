@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "ultra-start.thesis-review.v1",
+  "status": "draft",
+  "projectId": "brooks-history",
+  "one_liner": "CivicState civic-letter app is real in code, but business identity and demand are unvalidated.",
+  "thesis": "If individual residents pay 5 to 25 USD for citation-backed official letters and delivery clears the stated gates, CivicState can become a transactional civic workflow business; otherwise it remains a research asset.",
+  "honesty": {
+    "workspaceOnly": true,
+    "externalClaimsAreAssumptions": true,
+    "factoryOutputIsNotEvidence": true
+  },
+  "quantitativeClaims": [
+    {
+      "claim": "5 to 25 USD package range",
+      "label": "evidence",
+      "basis": "apps/api/src/routes/payments.ts"
+    },
+    {
+      "claim": "2026-06-22 creation date",
+      "label": "evidence",
+      "basis": "dispatch current_date"
+    }
+  ],
+  "evidence": [
+    "BUSINESS.md",
+    "ROADMAP.md",
+    "DECISIONS.md",
+    ".planning/PROJECT.md",
+    ".planning/GENESIS.md",
+    ".planning/REQUIREMENTS.md",
+    "packages/shared/prisma/schema.prisma",
+    "apps/api/src/routes/payments.ts",
+    "apps/api/src/routes/webhooks.ts",
+    "apps/worker/src/lib/treasury.ts"
+  ],
+  "review": {
+    "decision": "needs-revision",
+    "strengths": [
+      "Substantial implemented app surface exists.",
+      "Pricing and treasury estimates are code-evidenced.",
+      "Risk controls are represented in code and planning."
+    ],
+    "concerns": [
+      "Dispatch identity is Brooks History while repo evidence is CivicState.",
+      "Registry says personal/research and not near-term investible BOS.",
+      "Demand, deliverability, coverage, and legal review remain unvalidated."
+    ],
+    "operatorQuestions": [
+      "Should this repo pitch CivicState or Brooks History?",
+      "Should wrk.vc show this as a business or research asset?",
+      "Should direct Clerk/Stripe rails be kept or migrated to WrkPlug?"
+    ]
+  },
+  "createdAt": "2026-06-22"
+}

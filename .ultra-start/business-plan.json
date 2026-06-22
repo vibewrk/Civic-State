@@ -1,0 +1,316 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history-eir-soul-upgrade-2026-06-22"
+  },
+  "status": "draft",
+  "directive": "POM soul-review + wrk.dog merge constitute adoption -- operator ruling 2026-06-12; see the PR's POM record",
+  "authority": {
+    "state": "draft",
+    "reason": "Only operator merge upgrades authority; this worker cannot claim approved status."
+  },
+  "dossierSnapshot": "Draft CivicState civic-letter business in Brooks History repo; identity and demand still unvalidated.",
+  "research": {
+    "mode": "workspace-only",
+    "sources": [
+      "dispatch registry note",
+      "BUSINESS.md",
+      "ROADMAP.md",
+      "DECISIONS.md",
+      ".planning/PROJECT.md",
+      ".planning/GENESIS.md",
+      ".planning/REQUIREMENTS.md",
+      ".planning/ROADMAP.md",
+      ".planning/existing-state.md",
+      "MASTER_PLAN.md",
+      "package.json",
+      "packages/shared/prisma/schema.prisma",
+      "apps/api/src/routes/payments.ts",
+      "apps/api/src/routes/submissions.ts",
+      "apps/api/src/routes/webhooks.ts",
+      "apps/api/src/lib/officials/lookup.ts",
+      "apps/api/src/lib/officials/cicero.ts",
+      "apps/worker/src/agents/researcher.ts",
+      "apps/worker/src/lib/treasury.ts"
+    ],
+    "methods": [
+      "Compared dispatch identity with repo product evidence.",
+      "Separated implemented code from planning assumptions.",
+      "Built financial model from code-evidenced pricing and cost estimates.",
+      "Marked all external market and demand claims as assumptions because network was unavailable."
+    ]
+  },
+  "planningMethod": "Bottom-up EIR plan anchored to repo evidence, with explicit assumption labels for market, demand, and valuation claims.",
+  "customer": {
+    "definition": "United States resident with one civic concern, one ZIP code, and willingness to pay 5 to 25 USD for researched official letters.",
+    "evidence": [
+      ".planning/PROJECT.md",
+      ".planning/GENESIS.md",
+      "apps/api/src/routes/payments.ts",
+      "packages/shared/prisma/schema.prisma"
+    ],
+    "validationNeeded": [
+      "Preview-to-payment conversion",
+      "Issue category fit",
+      "User trust in AI-assisted legal-adjacent drafting"
+    ]
+  },
+  "market": {
+    "tam": {
+      "valueUsd": 150000000,
+      "label": "assumption",
+      "basis": "10,000,000 assumed annual paid civic-contact jobs times 15 USD average package; no network research available."
+    },
+    "sam": {
+      "valueUsd": 15000000,
+      "label": "assumption",
+      "basis": "1,000,000 assumed reachable web/card-paying jobs times 15 USD average package."
+    },
+    "som": {
+      "valueUsd": 72000,
+      "label": "assumption",
+      "basis": "4,800 planned annual campaigns from repo planning times 15 USD average package."
+    },
+    "freshness": "2026-06-22 workspace-only; external market data stale/unknown."
+  },
+  "businessModel": {
+    "revenueStreams": [
+      "One-time individual packages: 5 USD, 15 USD, 25 USD.",
+      "Future organization/API revenue explicitly deferred."
+    ],
+    "pricingEvidence": "apps/api/src/routes/payments.ts",
+    "unitEconomics": {
+      "jobCostEstimatesCents": {
+        "single": 20,
+        "three_pack": 40,
+        "full_spread": 60
+      },
+      "evidence": "apps/worker/src/lib/treasury.ts",
+      "marginGate": "40 percent net margin floor in planning docs; not validated in production."
+    }
+  },
+  "financialModel": {
+    "averagePackageUsd": 15,
+    "averagePackageEvidence": "apps/api/src/routes/payments.ts",
+    "directCostPerJobUsd": 0.6,
+    "directCostEvidence": "apps/worker/src/lib/treasury.ts",
+    "fixedPlatformBurnAnnualUsd": 1590,
+    "fixedPlatformBurnEvidence": ".planning/PROJECT.md",
+    "rows": [
+      {
+        "period": "Year A",
+        "paidJobs": 600,
+        "revenueUsd": 9000,
+        "directCogsUsd": 360,
+        "fixedPlatformBurnUsd": 1590,
+        "contributionBeforeLaborUsd": 7050
+      },
+      {
+        "period": "Year B",
+        "paidJobs": 2400,
+        "revenueUsd": 36000,
+        "directCogsUsd": 1440,
+        "fixedPlatformBurnUsd": 1590,
+        "contributionBeforeLaborUsd": 32970
+      },
+      {
+        "period": "Year C",
+        "paidJobs": 4800,
+        "revenueUsd": 72000,
+        "directCogsUsd": 2880,
+        "fixedPlatformBurnUsd": 1590,
+        "contributionBeforeLaborUsd": 67530
+      }
+    ],
+    "revenueAssumptions": [
+      "15 USD average package from code-evidenced tiers.",
+      "600 paid jobs in Year A as beta launch assumption.",
+      "2400 paid jobs in Year B as repeatability assumption.",
+      "4800 paid jobs in Year C from repo planned scale translated into revenue."
+    ],
+    "costAssumptions": [
+      "0.60 USD direct cost per job proxy from full-spread treasury estimate.",
+      "132.50 USD monthly platform burn from planning docs.",
+      "Operator labor excluded because registry flags this as personal/research, not near-term investible BOS."
+    ],
+    "sensitivityTests": [
+      "If conversion is 1 percent instead of 3 percent, keep as research asset.",
+      "If deliverability is below 85 percent, pause paid delivery.",
+      "If direct job cost rises to 2 USD, 15 USD package still has gross spread before fixed costs and payment fees."
+    ]
+  },
+  "quantitativeClaims": [
+    {
+      "claim": "5 USD, 15 USD, and 25 USD package prices",
+      "label": "evidence",
+      "basis": "apps/api/src/routes/payments.ts"
+    },
+    {
+      "claim": "20, 40, and 60 cent job cost estimates",
+      "label": "evidence",
+      "basis": "apps/worker/src/lib/treasury.ts"
+    },
+    {
+      "claim": "150,000,000 USD TAM, 15,000,000 USD SAM, 72,000 USD SOM",
+      "label": "assumption",
+      "basis": "Workspace-only bottom-up envelope; no network research available."
+    },
+    {
+      "claim": "600, 2,400, and 4,800 paid jobs in the financial model",
+      "label": "mixed",
+      "basis": "600 and 2,400 are EIR assumptions; 4,800 is translated from .planning/existing-state.md planned scale."
+    },
+    {
+      "claim": "3 percent conversion, 85 percent deliverability, 95 percent federal/state coverage, 60 percent local coverage, and 0.5 percent chargeback gates",
+      "label": "evidence",
+      "basis": ".planning/PROJECT.md"
+    },
+    {
+      "claim": "2026-06-22 creation date",
+      "label": "evidence",
+      "basis": "dispatch current_date"
+    }
+  ],
+  "alternatives": [
+    "Manual email or web forms.",
+    "Resistbot.",
+    "Enterprise advocacy platforms such as Quorum and VoterVoice.",
+    "Generic AI drafting tools."
+  ],
+  "antiPlan": {
+    "holes": [
+      "Identity mismatch: dispatch says Brooks History while repo evidence says CivicState.",
+      "Demand unproven: no live revenue or customer conversion evidence found.",
+      "Deliverability unproven: government inbox placement is a stated gate, not a measured result.",
+      "Compliance risk: legal-adjacent drafting needs counsel review before broad launch.",
+      "Local official coverage: Cicero integration is a stub."
+    ],
+    "mitigations": [
+      "Operator identity ruling before wrk.vc promotion.",
+      "Paid beta with conversion tracking.",
+      "Deliverability test before broad sending.",
+      "Citation verification, moderation, disclosure, and legal review.",
+      "Limit launch to jurisdictions with reliable coverage."
+    ],
+    "residualRisks": [
+      "Operator may decide this remains a personal/research asset.",
+      "Users may not pay even at 5 USD.",
+      "Officials may ignore, block, or complain about messages.",
+      "Shared WrkPlug posture may require rework from current Clerk/Stripe rails."
+    ]
+  },
+  "strategy": {
+    "posture": "Draft/watchlist until identity and validation gates clear.",
+    "platformPosture": "Target WrkPlug client posture is an assumption; current repo directly implements Clerk and Stripe."
+  },
+  "goToMarket": {
+    "firstCustomers": "First 100 submission attempts through operator-led outreach to narrow civic issue communities.",
+    "channels": [
+      "Local civic groups",
+      "Neighborhood issue forums",
+      "Tenant or public-works issue communities",
+      "Founder demos"
+    ],
+    "deferred": [
+      "Enterprise API",
+      "Subscriptions",
+      "Paid acquisition",
+      "Public campaign SEO flywheel until paid workflow validates"
+    ]
+  },
+  "operatorWorkflow": {
+    "routine": "Review flagged submissions, monitor bounces, watch treasury reconciliation, and collect conversion/drop-off reasons.",
+    "constraints": [
+      "No 24/7 staffing.",
+      "Human review for flagged legal-adjacent or defamation-risk content.",
+      "Operator validation required before business pitch."
+    ]
+  },
+  "constraints": [
+    "Workspace-only run; no external research.",
+    "Registry marks asset as watchlist and personal/research.",
+    "Political/civic content sensitivity.",
+    "Not legal advice.",
+    "Official opt-out and deliverability constraints.",
+    "WrkPlug platform posture not signed."
+  ],
+  "metrics": {
+    "conversionGatePct": 3,
+    "deliverabilityGatePct": 85,
+    "federalStateCoverageGatePct": 95,
+    "localCoverageGatePct": 60,
+    "chargebackCeilingPct": 0.5,
+    "source": ".planning/PROJECT.md"
+  },
+  "aiWorkGovernance": {
+    "required": [
+      "AI disclosure in letters.",
+      "Citation verification before delivery.",
+      "Moderation for threats and defamation-risk content.",
+      "Audit logs with HMAC checksums."
+    ],
+    "evidence": [
+      "apps/worker/src/agents/researcher.ts",
+      "apps/api/src/lib/moderation.ts",
+      "packages/shared/prisma/schema.prisma"
+    ]
+  },
+  "unknowns": [
+    "Is Brooks History the intended product identity?",
+    "Should CivicState be pitched as a business despite registry note?",
+    "Will users pay at target conversion?",
+    "Will government-email deliverability clear the gate?",
+    "Which local officials provider works?",
+    "Should current direct auth/billing rails migrate to WrkPlug?"
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Users will pay 5 to 25 USD.",
+      "basis": "Existing code pricing.",
+      "label": "evidence plus market assumption",
+      "test": "Paid beta checkout completion."
+    },
+    {
+      "claim": "TAM is 150,000,000 USD.",
+      "basis": "Unsourced bottom-up envelope.",
+      "label": "assumption",
+      "test": "Replace with sourced market work."
+    },
+    {
+      "claim": "SEO can acquire users.",
+      "basis": "Genesis distribution hypothesis.",
+      "label": "evidence as plan, assumption as outcome",
+      "test": "Publish opt-in pages and monitor impressions."
+    },
+    {
+      "claim": "One operator can run launch.",
+      "basis": "Genesis assumption.",
+      "label": "assumption",
+      "test": "Measure queue depth and review time."
+    },
+    {
+      "claim": "WrkPlug lowers duplicated platform cost.",
+      "basis": "Portfolio platform strategy.",
+      "label": "assumption",
+      "test": "Operator/platform decision."
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-22",
+      "change": "Created EIR soul upgrade from workspace evidence.",
+      "author": "wrk.dog fleet worker"
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "reason": "Roadmap can proceed only after identity, market, and validation gates are operator-reviewed."
+  },
+  "next": [
+    "Operator identity ruling.",
+    "Paid beta funnel setup.",
+    "Deliverability and coverage tests.",
+    "WrkPlug posture decision."
+  ]
+}
