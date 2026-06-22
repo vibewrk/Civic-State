@@ -1,0 +1,361 @@
+{
+  "schemaVersion": "wrk.soul-gate.v1",
+  "summaryForVc": "CivicState is code-real but not investible until identity, demand, and delivery validate.",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "evidencedAssetName": "CivicState",
+    "seed": {
+      "path": "BUSINESS.md",
+      "id": "civicstate-business-plan"
+    }
+  },
+  "status": "draft",
+  "authority": {
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+    "currentAuthority": "draft only; operator merge required",
+    "operatorRulingDate": "2026-06-12 [evidence: dispatch brief]"
+  },
+  "reviewedAt": "2026-06-22 [evidence: dispatch current_date]",
+  "reviewerRole": "Entrepreneur in Residence",
+  "workspaceMode": "workspace-only; no network research used",
+  "sourcesAndMethods": [
+    {
+      "source": "BUSINESS.md",
+      "method": "Created VC-grade business plan from workspace evidence and labeled assumptions."
+    },
+    {
+      "source": "ROADMAP.md",
+      "method": "Created buildable validation roadmap aligned to BUSINESS.md headings."
+    },
+    {
+      "source": "DECISIONS.md",
+      "method": "Created dated decision entry covering scrutiny gaps and residual assumptions."
+    },
+    {
+      "source": ".planning/PROJECT.md",
+      "method": "Read existing product thesis, pricing, constraints, validation gates, and risks."
+    },
+    {
+      "source": ".planning/GENESIS.md",
+      "method": "Read target user, distribution, moat, break-even, and exclusions."
+    },
+    {
+      "source": ".planning/ROADMAP.md",
+      "method": "Read existing phase narrative and completion claims."
+    },
+    {
+      "source": ".planning/STATE.md",
+      "method": "Read stale current-state signal."
+    },
+    {
+      "source": ".planning/existing-state.md",
+      "method": "Read prior audit for revenue, traffic, and old code-state baseline."
+    },
+    {
+      "source": "apps/api/src/routes/payments.ts",
+      "method": "Verified implemented fixed pricing tiers."
+    },
+    {
+      "source": "apps/api/src/lib/moderation.ts",
+      "method": "Verified content moderation posture."
+    },
+    {
+      "source": "apps/worker/src/agents/researcher.ts",
+      "method": "Verified citation-bound research and verification workflow."
+    },
+    {
+      "source": "apps/worker/src/agents/delivery.ts",
+      "method": "Verified Postmark delivery and bounce controls."
+    },
+    {
+      "source": "packages/shared/prisma/schema.prisma",
+      "method": "Verified implemented data model."
+    },
+    {
+      "source": "dispatch brief",
+      "method": "Applied registry watchlist constraint, workspace-only rule, and scrutiny gaps."
+    }
+  ],
+  "thesisCurrent": {
+    "label": "buildable civic workflow, unvalidated business",
+    "claim": "CivicState can become a paid civic letter workflow if users pay USD 5 to USD 25 [evidence: apps/api/src/routes/payments.ts] and delivery acceptance reaches 85 percent [evidence: .planning/PROJECT.md].",
+    "honesty": "[evidence: apps/api/src/routes/payments.ts; .planning/PROJECT.md; assumption: willingness to pay unvalidated]",
+    "status": "conditional"
+  },
+  "registryContext": {
+    "watchlist": true,
+    "note": "Personal/research asset, not near-term investible BOS unless operator confirms business intent.",
+    "honesty": "[evidence: dispatch registry notes]"
+  },
+  "customerDefinition": {
+    "primary": "United States resident with a concrete civic issue who wants researched, properly routed constituent communications.",
+    "buyer": "Same as user at launch.",
+    "nonCustomersAtLaunch": [
+      "Government officials",
+      "HOAs",
+      "Nonprofits",
+      "Enterprise advocacy teams",
+      "Legal claimants",
+      "Threatening or defamation-risk users"
+    ],
+    "honesty": "[evidence: .planning/PROJECT.md; MASTER_PLAN.md; assumption: segment demand unvalidated]"
+  },
+  "revenueModel": {
+    "type": "one-time transactional letter packages",
+    "tiers": [
+      {
+        "name": "single",
+        "price": "USD 5 [evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "name": "three_pack",
+        "price": "USD 15 [evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "name": "full_spread",
+        "price": "USD 25 [evidence: apps/api/src/routes/payments.ts]"
+      }
+    ],
+    "marginFloor": "40 percent [evidence: .planning/PROJECT.md]",
+    "implementationGap": "Payment route hardcodes tiers and does not dynamically enforce margin before checkout."
+  },
+  "marketSizing": {
+    "method": "Bottom-up scenario ladder because no network research was available.",
+    "scenarios": [
+      {
+        "name": "break-even wedge",
+        "paidSubmissionsPerMonth": "25 [evidence: .planning/GENESIS.md]",
+        "aov": "USD 15 [assumption: tier mix]",
+        "annualRunRate": "USD 4,500 [assumption: 25 x USD 15 x 12]"
+      },
+      {
+        "name": "tiny beta",
+        "paidSubmissionsPerMonth": "100 [assumption: operator-testable beta volume]",
+        "aov": "USD 15 [assumption: tier mix]",
+        "annualRunRate": "USD 18,000 [assumption: 100 x USD 15 x 12]"
+      },
+      {
+        "name": "niche utility",
+        "paidSubmissionsPerMonth": "1,000 [assumption: local SEO and repeat metro wedge]",
+        "aov": "USD 16 [assumption: modest mix shift]",
+        "annualRunRate": "USD 192,000 [assumption: 1,000 x USD 16 x 12]"
+      },
+      {
+        "name": "scaled consumer tool",
+        "paidSubmissionsPerMonth": "10,000 [assumption: unvalidated multi-metro consumer scale]",
+        "aov": "USD 18 [assumption: stronger package mix]",
+        "annualRunRate": "USD 2,160,000 [assumption: 10,000 x USD 18 x 12]"
+      }
+    ],
+    "residualGap": "External market data must be sourced in a network-enabled pass."
+  },
+  "financials": {
+    "model": "Revenue equals monthly paid submissions x average realized package price x 12 months [assumption: annual model form].",
+    "launchYear": {
+      "revenue": "USD 34,560 [assumption: 180 paid submissions/month x USD 16 x 12]",
+      "cogsAndStripe": "USD 4,147 [assumption: 12 percent x USD 34,560]",
+      "fixedPlatform": "USD 5,400 [assumption: USD 200/month platform plus USD 250/month data provider]",
+      "peopleReviewOps": "USD 20,000 [assumption: part-time operator/review budget]",
+      "ebitdaBeforeTax": "USD 5,013 [assumption: revenue minus listed costs]"
+    },
+    "scaleYear": {
+      "revenue": "USD 194,400 [assumption: 900 paid submissions/month x USD 18 x 12]",
+      "ebitdaBeforeTax": "USD 89,072 [assumption: revenue minus listed costs]"
+    },
+    "expansionYear": {
+      "revenue": "USD 600,000 [assumption: 2,500 paid submissions/month x USD 20 x 12]",
+      "ebitdaBeforeTax": "USD 312,000 [assumption: revenue minus listed costs]"
+    },
+    "sensitivityTests": [
+      "1 percent conversion instead of 3 percent reduces revenue by about 67 percent [assumption: arithmetic comparison].",
+      "25 percent COGS plus payment fees instead of 12 percent lowers launch-year EBITDA by USD 4,493 [assumption: 13 percent x USD 34,560].",
+      "USD 500/month local data provider instead of USD 250/month adds USD 3,000/year fixed cost [assumption: USD 250 x 12]."
+    ]
+  },
+  "competition": [
+    "Resistbot [assumption: named category, no network verification]",
+    "Change.org [assumption: named in MASTER_PLAN.md, no network verification]",
+    "Quorum [assumption: named in .planning/PROJECT.md, no network verification]",
+    "VoterVoice [assumption: named in .planning/PROJECT.md, no network verification]",
+    "Manual official contact [assumption: inherent free substitute]",
+    "LegalZoom / attorneys [assumption: category substitute, no network verification]"
+  ],
+  "goToMarket": {
+    "nearTerm": [
+      "Private beta in manually verified metros [assumption: operator-led launch plan].",
+      "First 100 prospective users from operator channels and local civic threads [assumption: channel hypothesis].",
+      "No paid acquisition before conversion and deliverability proof [evidence: .planning/GENESIS.md]."
+    ],
+    "validationGates": [
+      "3 percent payment conversion [evidence: .planning/PROJECT.md]",
+      "85 percent government-email delivery acceptance [evidence: .planning/PROJECT.md]",
+      "95 percent federal/state coverage and 60 percent local coverage [evidence: .planning/PROJECT.md]",
+      "below 0.5 percent chargeback rate [evidence: .planning/PROJECT.md]"
+    ]
+  },
+  "risksAntiPlan": {
+    "holes": [
+      "Users may not pay despite liking the concept.",
+      "Government deliverability may fail and invalidate the paid promise.",
+      "Citation errors may damage trust or create legal-adjacent exposure.",
+      "Moderation and abuse may overwhelm one operator.",
+      "Consumer-only market may be too small for a venture outcome.",
+      "Registry says this may be a personal/research asset rather than a near-term business."
+    ],
+    "mitigations": [
+      "Require paid beta conversion before SEO scaling.",
+      "Measure delivery acceptance and enforce bounce thresholds.",
+      "Keep citation verification mandatory and strip unverified citations.",
+      "Track review queue age and operator time.",
+      "Treat organization/API wedge as a separate validation gate.",
+      "Require operator ruling before wrk.vc promotion."
+    ],
+    "residualRisks": [
+      "Willingness to pay remains unknown until real checkout events.",
+      "Inbox placement is externally controlled.",
+      "Legal/political-speech sensitivity remains even with moderation.",
+      "The moat is weak until real delivery volume accumulates."
+    ]
+  },
+  "assumptionLedger": [
+    {
+      "claim": "Users will pay USD 5 to USD 25 for letter delivery [evidence: apps/api/src/routes/payments.ts; assumption: willingness to pay unvalidated].",
+      "basis": "Implemented price tiers.",
+      "honesty": "[evidence: apps/api/src/routes/payments.ts; assumption: willingness to pay unvalidated]",
+      "test": "Measure first 100 paid submissions [assumption: validation sample]."
+    },
+    {
+      "claim": "3 percent paid conversion is viable [evidence: .planning/PROJECT.md].",
+      "basis": "Prior project target.",
+      "honesty": "[evidence: .planning/PROJECT.md]",
+      "test": "Preview-to-paid funnel."
+    },
+    {
+      "claim": "85 percent delivery acceptance is required [evidence: .planning/PROJECT.md].",
+      "basis": "Prior project target.",
+      "honesty": "[evidence: .planning/PROJECT.md]",
+      "test": "Postmark and bounce dashboard."
+    },
+    {
+      "claim": "Break-even wedge is USD 4,500 annualized revenue [assumption: 25 paid submissions x USD 15 x 12 months].",
+      "basis": "Bottom-up arithmetic.",
+      "honesty": "[assumption: 25 paid submissions x USD 15 x 12 months]",
+      "test": "Beta revenue cohort."
+    },
+    {
+      "claim": "One operator can run launch exceptions.",
+      "basis": "Existing project constraint.",
+      "honesty": "[evidence: .planning/PROJECT.md]",
+      "test": "Review queue age and operator time."
+    },
+    {
+      "claim": "WrkPlug shared rails can lower infra and CAC.",
+      "basis": "Platform posture.",
+      "honesty": "[assumption: WrkPlug Phase 0 not yet signed]",
+      "test": "Operator adoption decision after POM review."
+    }
+  ],
+  "selfValuation": {
+    "score": "62 out of 100 [assumption: EIR judgment]",
+    "bear": "USD 250,000 to USD 500,000 [assumption: code and learning asset value]",
+    "base": "USD 1,000,000 to USD 2,000,000 [assumption: 3x to 6x annualized gross profit sanity check]",
+    "bull": "USD 3,000,000 to USD 5,000,000 [assumption: wrk.vc ceiling and expansion option value]"
+  },
+  "docDates": {
+    "businessPrepared": "2026-06-22 [evidence: dispatch current_date]",
+    "roadmapPrepared": "2026-06-22 [evidence: dispatch current_date]",
+    "decisionEntry": "2026-06-22 [evidence: dispatch current_date]",
+    "priorPlanning": "2026-04-25 [evidence: .planning/PROJECT.md; .planning/ROADMAP.md]",
+    "masterPlan": "2026-03-01 [assumption: March 2026 normalized]"
+  },
+  "docStructure": {
+    "businessHeadings": [
+      "Thesis",
+      "Problem & Customer",
+      "Market",
+      "Product & Moat",
+      "Platform Posture",
+      "Business Model",
+      "Competition",
+      "Go-To-Market",
+      "Financial Model",
+      "Risks & Anti-Plan",
+      "Assumption Ledger",
+      "Self-Valuation",
+      "Milestones",
+      "Surprise Spikes"
+    ],
+    "roadmapHasNowSection": true,
+    "decisionsHasDatedEntry": true
+  },
+  "evidenceSources": [
+    ".planning/PROJECT.md",
+    ".planning/GENESIS.md",
+    ".planning/ROADMAP.md",
+    ".planning/STATE.md",
+    ".planning/existing-state.md",
+    "MASTER_PLAN.md",
+    "package.json",
+    "apps/web/app/page.tsx",
+    "apps/api/src/index.ts",
+    "apps/api/src/routes/payments.ts",
+    "apps/api/src/routes/officials.ts",
+    "apps/api/src/lib/moderation.ts",
+    "apps/worker/src/index.ts",
+    "apps/worker/src/agents/researcher.ts",
+    "apps/worker/src/agents/delivery.ts",
+    "packages/shared/prisma/schema.prisma",
+    "dispatch brief"
+  ],
+  "freshness": {
+    "currentDate": "2026-06-22 [evidence: dispatch current_date]",
+    "staleDocs": [
+      ".planning/STATE.md still reports Phase 1 current state [evidence: .planning/STATE.md].",
+      ".planning/existing-state.md says zero app code while current repo contains app code [evidence: .planning/existing-state.md; apps/api/src/index.ts]."
+    ],
+    "networkResearch": "not available; external claims are tagged as assumptions"
+  },
+  "roadmapBuildableShape": {
+    "path": "ROADMAP.md",
+    "nowItems": "8 checkbox items, each single-worker-sized and aligned to BUSINESS.md headings [evidence: ROADMAP.md]"
+  },
+  "honestyLabels": {
+    "required": true,
+    "policy": "Every quantitative claim in BUSINESS.md is labeled [evidence] or [assumption]; external claims use assumptions in workspace-only mode."
+  },
+  "scrutinyGapsAddressed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "surpriseSpikes": [
+    "Dispatch names brooks-history, while repo code and planning name CivicState [evidence: dispatch brief; package.json].",
+    ".planning/ROADMAP.md and .planning/STATE.md disagree on phase completion [evidence: .planning/ROADMAP.md; .planning/STATE.md].",
+    ".planning/existing-state.md contradicts current source tree [evidence: .planning/existing-state.md; apps/api/src/index.ts].",
+    "Master plan references broader/dynamic concepts while payment implementation uses fixed tiers [evidence: MASTER_PLAN.md; apps/api/src/routes/payments.ts]."
+  ],
+  "documents": {
+    "business": "BUSINESS.md",
+    "roadmap": "ROADMAP.md",
+    "decisions": "DECISIONS.md",
+    "gate": ".ultra-start/gate.json"
+  }
+}
