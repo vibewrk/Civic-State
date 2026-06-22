@@ -1,0 +1,271 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "projectId": "brooks-history",
+  "status": "provisional",
+  "createdAt": "2026-06-22",
+  "updatedAt": "2026-06-22",
+  "thesisCurrent": "CivicState sells citation-backed civic letters; invest only after paid demand and delivery validation.",
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-business-plan-2026-06-22"
+  },
+  "authority": {
+    "status": "provisional",
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record"
+  },
+  "sourcesAndMethods": {
+    "sources": [
+      {
+        "path": "MASTER_PLAN.md",
+        "type": "repo evidence",
+        "usedFor": "product spec, infrastructure, business model, deferred scope"
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "type": "repo evidence",
+        "usedFor": "customer definition, constraints, validation gates, assumptions"
+      },
+      {
+        "path": ".planning/GENESIS.md",
+        "type": "repo evidence",
+        "usedFor": "value chain, distribution hypothesis, moat hypothesis"
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "type": "repo evidence",
+        "usedFor": "phase narrative and claimed completion status"
+      },
+      {
+        "path": ".planning/STATE.md",
+        "type": "repo evidence",
+        "usedFor": "conflicting current-state signal"
+      },
+      {
+        "path": "apps/api/src/routes/payments.ts",
+        "type": "repo evidence",
+        "usedFor": "pricing tiers and Stripe Checkout implementation"
+      },
+      {
+        "path": "packages/shared/prisma/schema.prisma",
+        "type": "repo evidence",
+        "usedFor": "implemented data model"
+      },
+      {
+        "path": "apps/worker/src/agents/researcher.ts",
+        "type": "repo evidence",
+        "usedFor": "research and citation verification behavior"
+      },
+      {
+        "path": "worker dispatch registry note",
+        "type": "registry evidence",
+        "usedFor": "watchlist and personal/research-asset sensitivity"
+      }
+    ],
+    "methods": [
+      "Workspace-only repository review; no network research performed.",
+      "Existing product narrative preserved and contradicted signals called out as Surprise Spikes.",
+      "Every external market or competitor claim treated as an assumption.",
+      "Financial model built bottom-up from implemented pricing tiers and stated/planned cost assumptions."
+    ]
+  },
+  "freshness": {
+    "asOf": "2026-06-22",
+    "repoEvidenceDates": [
+      "2026-04-25",
+      "2026-06-22"
+    ],
+    "stalenessRisk": "High: repo planning files conflict on whether Phase 1 only or all four phases are complete."
+  },
+  "evidenceQuality": {
+    "repoBacked": true,
+    "externalResearchAvailable": false,
+    "productionMetricsAvailable": false,
+    "limitations": [
+      "No production revenue, conversion, traffic, deliverability, or official response evidence found.",
+      "No external market research due workspace-only instruction.",
+      "Project identity mismatch between dispatch project id and repo product name."
+    ]
+  },
+  "customerDefinition": {
+    "primaryCustomer": "US residents with specific civic concerns who need help with official targeting, citations, drafting, and delivery.",
+    "payer": "Individual citizen in launch scope.",
+    "excludedCustomers": [
+      "Legal-advice seekers",
+      "Insurance or claim-filing users",
+      "Regulatory filing users",
+      "Medical or sensitive-content users outside civic correspondence"
+    ],
+    "honesty": "Repo-backed for target description; willingness to pay remains unvalidated."
+  },
+  "revenueModel": {
+    "type": "one-time transactional payment",
+    "implementedTiersUsd": [
+      5,
+      15,
+      25
+    ],
+    "illustrativeAovUsd": 16,
+    "illustrativeMonthlyOrders": 250,
+    "illustrativeMonthlyRevenueUsd": 4000,
+    "illustrativeGrossContributionUsd": 3621,
+    "illustrativeGrossContributionMarginPct": 90.5,
+    "honesty": "Tier prices are repo evidence; mix, costs, orders, and margin are assumptions."
+  },
+  "marketSizing": {
+    "method": "bottom-up validation model, not top-down TAM",
+    "launchThresholdOrdersPerMonth": 250,
+    "scaleThresholdOrdersPerMonth": 1000,
+    "trafficScenarioMonthlyVisitors": 25000,
+    "conversionScenarioPct": 3.0,
+    "scenarioRevenueUsdPerMonth": 12000,
+    "honesty": "All traffic, conversion, and volume values are assumptions because network and production data were unavailable."
+  },
+  "competition": [
+    {
+      "name": "Resistbot",
+      "claimStatus": "assumption",
+      "risk": "Free or low-friction constituent messaging may be good enough."
+    },
+    {
+      "name": "Change.org",
+      "claimStatus": "assumption",
+      "risk": "Petition/social distribution may feel more powerful than paid letters."
+    },
+    {
+      "name": "Quorum",
+      "claimStatus": "assumption",
+      "risk": "Enterprise civic advocacy tools own organization budgets."
+    },
+    {
+      "name": "VoterVoice",
+      "claimStatus": "assumption",
+      "risk": "Advocacy campaign platforms can activate constituents at scale."
+    },
+    {
+      "name": "LegalZoom",
+      "claimStatus": "assumption",
+      "risk": "Consumer document brands may be trusted more, despite CivicState avoiding legal advice."
+    },
+    {
+      "name": "Manual official email and free templates",
+      "claimStatus": "repo-inferred",
+      "risk": "Free alternatives compress willingness to pay."
+    }
+  ],
+  "risksAntiPlan": [
+    "Users may not pay for a civic communication task they can do manually for free.",
+    "A single fabricated or misleading citation can destroy trust.",
+    "Government inbox deliverability may fail before SEO or paid demand matters.",
+    "Human moderation and official-data cleanup may consume the apparent gross margin.",
+    "The registry warning may mean this should not be pitched as an investible business."
+  ],
+  "assumptionLedger": [
+    {
+      "assumption": "Users will pay 5 to 25 USD for letter delivery.",
+      "validation": "Run 25 paid concierge submissions."
+    },
+    {
+      "assumption": "Preview-to-payment conversion can reach 3.0 percent.",
+      "validation": "Track wizard starts, previews, and paid checkouts."
+    },
+    {
+      "assumption": "Official email bounce rate can stay below 10 percent.",
+      "validation": "Measure domain-level bounces and pause risky domains."
+    },
+    {
+      "assumption": "SEO pages can produce meaningful acquisition.",
+      "validation": "Publish only opt-in real campaign pages and measure impressions."
+    },
+    {
+      "assumption": "One operator can manage review within 24 hours.",
+      "validation": "Track flagged queue age and review minutes."
+    }
+  ],
+  "goToMarket": {
+    "primary": "SEO from opt-in public campaign pages after real paid submissions exist.",
+    "secondary": "Social sharing from campaign pages and official reply updates.",
+    "nearTermTests": [
+      "One paid end-to-end delivery by 2026-07-15.",
+      "25-submission concierge beta by 2026-08-15.",
+      "Measure conversion, bounce rate, official response rate, complaints, refunds, and review time."
+    ],
+    "honesty": "Channel claims are assumptions until analytics exist."
+  },
+  "roadmapBuildableShape": {
+    "path": "ROADMAP.md",
+    "items": [
+      "Snapshot Product Reality",
+      "Validate Customer Definition",
+      "Prove Revenue Model",
+      "Harden Evidence Sources",
+      "Test Go To Market",
+      "Measure Risks And Anti-Plan",
+      "Resolve Surprise Spikes"
+    ],
+    "singleWorkerSized": true
+  },
+  "honestyLabels": {
+    "required": true,
+    "businessMdCompliant": true,
+    "externalClaimsTaggedAsAssumptions": true,
+    "factoryOutputTreatedAsEvidence": false
+  },
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "holesMitigationsResidualRisks": [
+    {
+      "hole": "No paid demand evidence.",
+      "mitigation": "Run a 25-submission concierge beta.",
+      "residualRisk": "Even beta users may not represent scalable demand."
+    },
+    {
+      "hole": "No production deliverability evidence.",
+      "mitigation": "Warm domain, track bounces, pause domains above 10 percent bounce.",
+      "residualRisk": "Government servers may suppress messages despite technical compliance."
+    },
+    {
+      "hole": "Citation trust unproven in production.",
+      "mitigation": "Audit generated citations before live delivery.",
+      "residualRisk": "Edge cases may still pass verification but be contextually misleading."
+    },
+    {
+      "hole": "Project identity mismatch.",
+      "mitigation": "Operator confirms whether this is brooks-history or CivicState before public dossier.",
+      "residualRisk": "Public positioning may be wrong until naming is resolved."
+    }
+  ],
+  "sensitivityAndConstraints": [
+    "Registry watchlist: personal/research asset, not near-term investible without operator confirmation.",
+    "Political and civic issue text can be sensitive personal data.",
+    "Product must avoid legal advice, legal demands, filings, and medical/claim workflows.",
+    "Workspace-only review: no external source links or live market verification."
+  ],
+  "openQuestions": [
+    "Should this repository be pitched as CivicState, brooks-history, or a personal/research artifact?",
+    "Is there any existing production deployment, Stripe revenue, or email deliverability data outside the repo?",
+    "Who is the accountable operator for legal/compliance review and flagged submissions?"
+  ],
+  "operatorNeeded": true,
+  "nextReviewAt": "2026-08-15",
+  "decision": "Do not mark adopted or investible until operator merge and validation evidence exist."
+}
