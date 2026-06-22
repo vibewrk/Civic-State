@@ -1,0 +1,228 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "artifactType": "eir-soul-upgrade",
+  "status": "proposed",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "resolvedProductName": "CivicState",
+    "identityNote": "Dispatch says brooks-history; repo evidence describes CivicState [evidence: worker dispatch, .planning/PROJECT.md, package.json]."
+  },
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-business-plan"
+  },
+  "summary": "CivicState is a watchlist civic-letter workflow; build exists, market proof does not.",
+  "dossierSummary": "Watchlist: built civic-letter workflow, unproven demand, deliverability, local data, and operator intent.",
+  "authority": {
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption -- operator ruling 2026-06-12; see the PR's POM record [evidence: worker brief]",
+    "statusRationale": "Status remains proposed; only operator merge upgrades authority [evidence: worker brief]."
+  },
+  "documents": {
+    "business": "BUSINESS.md",
+    "roadmap": "ROADMAP.md",
+    "decisions": "DECISIONS.md"
+  },
+  "docDates": {
+    "reviewedAsOf": "2026-06-22 [evidence: worker dispatch current_date]",
+    "priorPlanningDate": "2026-04-25 [evidence: .planning/PROJECT.md and .planning/ROADMAP.md]",
+    "operatorRulingDate": "2026-06-12 [evidence: worker brief]"
+  },
+  "sources": [
+    {
+      "path": ".planning/PROJECT.md",
+      "method": "Read for product definition, active requirements, constraints, pricing, and validation gates."
+    },
+    {
+      "path": "MASTER_PLAN.md",
+      "method": "Read for business model, architecture, competition, financial assumptions, and deferred scope."
+    },
+    {
+      "path": ".planning/REQUIREMENTS.md",
+      "method": "Read for feature requirements, pricing tiers, margin floor, compliance, and out-of-scope items."
+    },
+    {
+      "path": ".planning/ROADMAP.md",
+      "method": "Read for phase narrative and completion claims."
+    },
+    {
+      "path": ".planning/STATE.md",
+      "method": "Read for current-state conflicts and known blockers."
+    },
+    {
+      "path": "apps/api/src/index.ts",
+      "method": "Inspected API route shape and operational surfaces."
+    },
+    {
+      "path": "apps/worker/src/index.ts",
+      "method": "Inspected OpenClaw worker registration and agents."
+    },
+    {
+      "path": "apps/web/app/page.tsx",
+      "method": "Inspected customer-facing product positioning."
+    },
+    {
+      "path": "packages/shared/prisma/schema.prisma",
+      "method": "Inspected data model, audit, ledger, and sensitive data fields."
+    }
+  ],
+  "methods": [
+    "Workspace-only review; no network research performed [evidence: worker brief].",
+    "Separated repo evidence from external market assumptions.",
+    "Preserved existing CivicState narrative and flagged contradictions as surprise spikes.",
+    "Built bottom-up financial scenarios rather than top-down TAM."
+  ],
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "thesisCurrent": {
+    "statement": "CivicState may be a useful paid constituent-letter workflow, but is not yet a VC-grade business without demand, delivery, and response proof [assumption: EIR judgment from workspace-only evidence].",
+    "investability": "Watchlist, not near-term investible [evidence: worker dispatch registry note]."
+  },
+  "customerDefinition": {
+    "primary": "Ordinary US residents with concrete civic issues who want researched letters sent to relevant officials [evidence: .planning/PROJECT.md].",
+    "excluded": "Legal filings, regulatory submissions, lobbying representation, and claim filing [evidence: MASTER_PLAN.md, .planning/REQUIREMENTS.md]."
+  },
+  "marketSizing": {
+    "method": "Bottom-up scenario envelope; no external TAM because workspace-only mode blocks research [evidence: worker brief].",
+    "scenarios": [
+      {
+        "name": "manual beta",
+        "volume": "100 paid campaigns/month [assumption: small founder-led test volume]",
+        "price": "$15 blended price [assumption: midpoint of repo tiers]",
+        "revenue": "$1,500/month and $18,000/year [assumption: 100 x $15, annualized]"
+      },
+      {
+        "name": "local niche",
+        "volume": "1,000 paid campaigns/month [assumption: one repeatable issue/geo wedge]",
+        "price": "$15 blended price [assumption: midpoint of repo tiers]",
+        "revenue": "$15,000/month and $180,000/year [assumption: 1,000 x $15, annualized]"
+      },
+      {
+        "name": "multi-state wedge",
+        "volume": "10,000 paid campaigns/month [assumption: strong organic loop and durable deliverability]",
+        "price": "$15 blended price [assumption: midpoint of repo tiers]",
+        "revenue": "$150,000/month and $1,800,000/year [assumption: 10,000 x $15, annualized]"
+      }
+    ]
+  },
+  "revenueModel": {
+    "active": "$5, $15, and $25 one-time letter packages [evidence: .planning/REQUIREMENTS.md].",
+    "marginFloor": "40% net margin floor [evidence: .planning/REQUIREMENTS.md].",
+    "deferred": "Priority complex review and organization API access remain future scope [evidence: MASTER_PLAN.md]."
+  },
+  "financials": {
+    "manualBetaReconciliation": [
+      "100 campaigns/month x $15 blended price = $1,500 monthly revenue [assumption: beta scenario math].",
+      "$2 variable cost/campaign x 100 campaigns = $200 monthly variable cost [assumption: EIR buffer].",
+      "$132.50 monthly fixed burn [evidence: .planning/PROJECT.md].",
+      "$1,167.50 contribution after variable and fixed cost [assumption: $1,500 - $200 - $132.50].",
+      "77.8% operating margin [assumption: $1,167.50 / $1,500]."
+    ],
+    "reserve": "$1,500 Mercury reserve planned [evidence: .planning/PROJECT.md]."
+  },
+  "competition": [
+    "Resistbot [evidence: .planning/PROJECT.md, MASTER_PLAN.md]",
+    "Change.org [evidence: MASTER_PLAN.md]",
+    "LegalZoom [evidence: MASTER_PLAN.md]",
+    "Quorum and VoterVoice [evidence: .planning/PROJECT.md]",
+    "Manual direct outreach [assumption: free substitute]"
+  ],
+  "goToMarket": {
+    "nearTerm": "Closed beta on one issue category and one geography before SEO or paid acquisition [assumption: validation-first GTM].",
+    "gates": [
+      "At least 3% preview-to-payment conversion [evidence: .planning/PROJECT.md].",
+      "At least 85% .gov inbox placement [evidence: .planning/PROJECT.md].",
+      "At least 95% federal/state and 60% local coverage [evidence: .planning/PROJECT.md]."
+    ]
+  },
+  "risksAntiPlan": {
+    "antiPlan": "Do not pitch as an AI lobbying network, legal engine, or scaled advocacy marketplace until demand and delivery data prove it [assumption: EIR anti-plan].",
+    "risks": [
+      "Users may not pay for civic expression [assumption: no paid conversion evidence found].",
+      "Government email filters may block or devalue AI-generated letters [assumption: deliverability not proven].",
+      "Local official data may remain incomplete [evidence: apps/api/src/lib/officials/cicero.ts].",
+      "Sensitive political/PII content creates trust and compliance risk [evidence: schema.prisma and privacy page]."
+    ]
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "$5 to $25 willingness to pay [evidence: repo pricing tiers].",
+      "validation": "Measure preview-to-payment conversion in closed beta.",
+      "status": "unvalidated [assumption: no Stripe metrics found]"
+    },
+    {
+      "assumption": "3% conversion threshold [evidence: .planning/PROJECT.md].",
+      "validation": "Track funnel from submit preview to Stripe checkout.",
+      "status": "unvalidated [assumption: no analytics found]"
+    },
+    {
+      "assumption": "85% government inbox placement [evidence: .planning/PROJECT.md].",
+      "validation": "Run Postmark seed and live-domain deliverability tests.",
+      "status": "unvalidated [assumption: no Postmark results found]"
+    },
+    {
+      "assumption": "60% local official coverage [evidence: .planning/PROJECT.md].",
+      "validation": "Complete Cicero versus BallotReady spike.",
+      "status": "open [evidence: Cicero stub]"
+    }
+  ],
+  "holes": [
+    {
+      "hole": "No production customer metrics found.",
+      "mitigation": "Closed beta instrumentation for conversion, repeat use, and support burden.",
+      "residualRisk": "Demand may remain too weak for a business."
+    },
+    {
+      "hole": "No live deliverability proof found.",
+      "mitigation": "SPF/DKIM/DMARC setup plus Postmark domain warming and seed tests.",
+      "residualRisk": "Government domains may still suppress messages."
+    },
+    {
+      "hole": "Local official provider unresolved.",
+      "mitigation": "Cicero versus BallotReady evaluation on representative ZIP codes.",
+      "residualRisk": "Local coverage may be too expensive or incomplete."
+    },
+    {
+      "hole": "Project identity mismatch between dispatch and repo.",
+      "mitigation": "Flagged as surprise spike in BUSINESS.md and gate artifact.",
+      "residualRisk": "Registry may point to the wrong asset."
+    }
+  ],
+  "roadmap": {
+    "path": "ROADMAP.md",
+    "buildableShape": "7 single-worker Now/Next items mapped to BUSINESS.md headings [evidence: ROADMAP.md]."
+  },
+  "freshness": {
+    "externalResearch": "Not performed [evidence: worker brief workspace-only instruction].",
+    "staleRisk": "Competitor, market, legal, and vendor claims require operator-approved research refresh."
+  },
+  "surpriseSpikes": [
+    "Dispatch project name conflicts with repo product identity [evidence: worker dispatch and repo docs].",
+    ".planning/existing-state.md says zero app code, but apps and packages now exist [evidence: .planning/existing-state.md, apps, packages].",
+    ".planning/ROADMAP.md says all phases complete while .planning/STATE.md says Phase 1 only [evidence: both files]."
+  ],
+  "decision": {
+    "path": "DECISIONS.md",
+    "entry": "2026-06-22 -- EIR soul upgrade (wrk.dog)"
+  }
+}
