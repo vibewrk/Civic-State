@@ -1,0 +1,225 @@
+{
+  "schemaVersion": "wrk.soul.gate/v1",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "observedProductName": "CivicState",
+    "seed": {
+      "path": "BUSINESS.md",
+      "id": "CivicState Business Plan"
+    }
+  },
+  "status": "draft",
+  "shortThesis": "Real civic-letter build, but demand and official coverage remain unproven.",
+  "thesisCurrent": {
+    "summary": "CivicState is a research-stage civic communication utility that turns resident issues into researched, citation-backed letters to officials.",
+    "authority": "draft",
+    "honestyLabel": "[evidence: BUSINESS.md; assumption-led demand]"
+  },
+  "adoption": {
+    "note": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12 [evidence: worker brief instruction]; see the PR's POM record",
+    "status": "pending_operator_merge"
+  },
+  "provenance": {
+    "mode": "workspace-only; no network",
+    "methods": [
+      "Read existing planning files and master plan",
+      "Inspected API, worker, frontend, and Prisma implementation files",
+      "Tagged repo-backed claims as evidence and external/market claims as assumptions"
+    ],
+    "sources": [
+      {
+        "path": "BUSINESS.md",
+        "role": "new seed plan"
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "role": "existing project context"
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "role": "existing roadmap narrative"
+      },
+      {
+        "path": ".planning/REQUIREMENTS.md",
+        "role": "requirements and thresholds"
+      },
+      {
+        "path": "MASTER_PLAN.md",
+        "role": "original business and architecture plan"
+      },
+      {
+        "path": "apps/api/src/routes/payments.ts",
+        "role": "pricing and checkout evidence"
+      },
+      {
+        "path": "apps/worker/src/agents/delivery.ts",
+        "role": "delivery and bounce-control evidence"
+      },
+      {
+        "path": "packages/shared/prisma/schema.prisma",
+        "role": "data model evidence"
+      }
+    ]
+  },
+  "docDates": {
+    "reviewedAsOf": "2026-06-22 [evidence: worker current-date context]",
+    "existingPlanningLastUpdated": "2026-04-25 [evidence: .planning/PROJECT.md]",
+    "operatorAdoptionRuling": "2026-06-12 [evidence: worker brief instruction]"
+  },
+  "customerDefinition": {
+    "primary": "United States residents with a specific civic concern who need research, routing, drafting, and delivery help.",
+    "excluded": [
+      "Legal advice seekers",
+      "Claim filers",
+      "Bulk harassment or defamation-risk users",
+      "Organization/API buyers before individual workflow validation"
+    ],
+    "label": "[evidence: .planning/PROJECT.md; MASTER_PLAN.md]"
+  },
+  "revenueModel": {
+    "type": "transactional one-time letter packages",
+    "prices": [
+      "$5 single official [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three officials [evidence: apps/api/src/routes/payments.ts]",
+      "$25 all matched officials [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "financialControls": [
+      "40% margin floor [evidence: .planning/PROJECT.md]",
+      "$1,500 reserve [evidence: .planning/PROJECT.md]",
+      "$2,000 warning and $500 emergency balance alerts [evidence: .planning/REQUIREMENTS.md]"
+    ]
+  },
+  "marketSizing": {
+    "method": "Bottom-up demand-unit ladder; no external TAM claimed.",
+    "scenarios": [
+      "100 paid submissions per month x $11.50 ASP = $1,150 monthly gross revenue [assumption: validation target and tier mix]",
+      "1,000 paid submissions per month x $11.50 ASP = $11,500 monthly gross revenue [assumption: initial serviceable scenario]",
+      "10,000 paid submissions per month x $11.50 ASP = $115,000 monthly gross revenue [assumption: venture-question threshold]"
+    ],
+    "quality": "assumption-led until paid usage and acquisition data exist"
+  },
+  "financialModel": {
+    "inputs": [
+      "100 paid submissions per month [assumption: validation target]",
+      "$11.50 average selling price [assumption: 50% single, 35% three-official, 15% full-spread mix]",
+      "$0.75 non-Stripe variable cost per job [assumption: placeholder without invoice data]",
+      "2.9% plus $0.30 payment processing [assumption: planning estimate, not live Stripe export]"
+    ],
+    "revenueBuild": "100 x $11.50 = $1,150 monthly gross revenue [assumption: arithmetic from modeled tier mix]",
+    "unitEconomics": {
+      "grossRevenue": "$1,150 per validation month [assumption]",
+      "variableCost": "$138.35 per validation month [assumption]",
+      "contribution": "$1,011.65 per validation month [assumption]",
+      "contributionMargin": "88.0% [assumption]"
+    }
+  },
+  "competition": [
+    {
+      "name": "Resistbot",
+      "claim": "Closest low-friction constituent message alternative [assumption: existing soul category claim, not web-verified]",
+      "civicStateWedge": "Research-backed citations and paid routing [evidence: .planning/PROJECT.md]"
+    },
+    {
+      "name": "Change.org",
+      "claim": "Petition-hosting alternative [assumption: existing soul category claim, not web-verified]",
+      "civicStateWedge": "Individual official letters rather than public petitions [evidence: MASTER_PLAN.md]"
+    },
+    {
+      "name": "Quorum / VoterVoice",
+      "claim": "Organization-grade advocacy platforms [assumption: existing soul category claim, not web-verified]",
+      "civicStateWedge": "Individual transactional workflow at $5-$25 [evidence: apps/api/src/routes/payments.ts]"
+    }
+  ],
+  "risksAntiplan": {
+    "holes": [
+      "No paid conversion evidence [evidence: .planning/PROJECT.md says validated none]",
+      "Local officials integration is a stub [evidence: apps/api/src/lib/officials/cicero.ts]",
+      "Federal officials may lack deliverable emails [evidence: apps/api/src/lib/officials/congress.ts]",
+      "Frontend and API pricing tier names mismatch [evidence: apps/web/components/wizard/letter-preview.tsx and apps/api/src/routes/payments.ts]"
+    ],
+    "mitigations": [
+      "Run concierge paid validation before fundraising [assumption: validation plan]",
+      "Evaluate one local officials provider and measure coverage by ZIP [assumption: validation plan]",
+      "Fix tier naming and verify checkout-webhook-delivery path [evidence: roadmap item in ROADMAP.md]"
+    ],
+    "residualRisks": [
+      "Government inbox placement may stay below 85% [assumption: threshold from .planning/PROJECT.md]",
+      "Users may not pay above 3% conversion [assumption: threshold from .planning/PROJECT.md]",
+      "Compliance review may require narrower scope than the current product promise [assumption: legal risk, not legal advice]"
+    ]
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "Individuals will pay for researched civic letters.",
+      "validation": "Track paid conversion during manual and self-serve tests.",
+      "killCriteria": "Qualified visitor payment conversion stays below 3% [assumption: threshold from .planning/PROJECT.md]"
+    },
+    {
+      "assumption": "Email-first delivery is sufficient.",
+      "validation": "Measure delivered, bounced, spam complaint, and reply events.",
+      "killCriteria": "Inbox placement remains below 85% [assumption: threshold from .planning/PROJECT.md]"
+    },
+    {
+      "assumption": "Official coverage is adequate.",
+      "validation": "Record federal, state, and local matches by ZIP.",
+      "killCriteria": "Local coverage remains below 60% after provider integration [assumption: threshold from .planning/PROJECT.md]"
+    }
+  ],
+  "goToMarket": {
+    "primary": "Operator-led validation followed by compliant opt-in SEO pages.",
+    "secondary": "Social sharing only after public campaign pages pass compliance review.",
+    "notYet": [
+      "Paid acquisition",
+      "Partnership sales",
+      "Subscriptions",
+      "Community features"
+    ],
+    "label": "[evidence: .planning/GENESIS.md and MASTER_PLAN.md; assumptions noted in BUSINESS.md]"
+  },
+  "roadmapBuildableShape": {
+    "path": "ROADMAP.md",
+    "items": "8 checkbox items, each single-worker-sized and traceable to BUSINESS.md headings [evidence: ROADMAP.md]"
+  },
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "honestyLabels": {
+    "evidence": "Repository, planning, implementation, or worker-brief evidence inspected locally.",
+    "assumption": "External market, legal, competitor, pricing-cost, or demand claim not verified in workspace-only mode."
+  },
+  "freshness": {
+    "status": "stale externally; current locally",
+    "networkResearch": "not available",
+    "externalClaims": "must be revalidated before investor use"
+  },
+  "surpriseSpikes": [
+    "Fleet project id differs from observed product name [evidence: worker brief versus package.json]",
+    "Registry says personal/research asset, not near-term investible BOS [evidence: worker brief]",
+    "Payment tier mismatch can block checkout [evidence: frontend and API files]",
+    "Local officials provider is not implemented [evidence: cicero.ts]"
+  ],
+  "authority": {
+    "current": "draft",
+    "upgradePath": "operator merge after POM soul-review"
+  }
+}
