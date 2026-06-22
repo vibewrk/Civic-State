@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "wrk.thesis-review.v1",
+  "project": "brooks-history",
+  "repo": "RPLogic-Inc/brookss-history",
+  "date": "2026-06-22 [evidence: wrk.dog dispatch]",
+  "status": "needs-revision",
+  "one_liner": "Built civic-letter product; not investible until operator validates demand, compliance, and delivery trust.",
+  "thesis": "CivicState can become a small paid constituent-letter business if users pay for verified, respectful, official-routed letters [assumption: no customer evidence].",
+  "currentEvidence": [
+    "Submission, moderation, queueing, payment, drafting, delivery, dashboard, and compliance code exists [evidence: repo inspection].",
+    "Pricing tiers are $5/$15/$25 [evidence: apps/api/src/routes/payments.ts].",
+    "Registry marks the asset watchlist/personal-research, not near-term investible [evidence: wrk.dog registry note]."
+  ],
+  "killCriteria": [
+    "No operator commitment by 2026-07-15 [assumption].",
+    "Fewer than 20 paid concierge campaigns by 2026-08-31 [assumption].",
+    "Spam complaints or legal-review risks exceed operator tolerance [assumption]."
+  ],
+  "promotionCriteria": [
+    "At least 50 paid campaigns by 2026-09-30 [assumption].",
+    "Refund rate below 5.0% by 2026-09-30 [assumption].",
+    "Spam complaint rate below 1.0% by 2026-09-30 [assumption].",
+    "Verified-citation coverage at least 80.0% by 2026-09-30 [assumption]."
+  ],
+  "decision": "Do not approve as a business yet; run validation or keep as research asset."
+}

@@ -1,0 +1,193 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "schema": "schemas/business-plan-gate.v1.schema.json",
+  "one_liner": "CivicState is a built civic-letter tool, but remains watchlist until paid demand and delivery trust are proven.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history-business-plan",
+    "basis": "Existing project referenced BUSINESS.md as the seed [evidence: wrk.dog dispatch]."
+  },
+  "status": "needs-revision",
+  "directive": "Treat as personal/research asset until operator confirms business validation budget [evidence: wrk.dog registry note].",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+  "research": {
+    "mode": "workspace-only; no network",
+    "sources": [
+      "wrk.dog dispatch and registry note [evidence]",
+      "MASTER_PLAN.md [evidence]",
+      ".planning/ROADMAP.md [evidence]",
+      "package.json [evidence]",
+      "packages/shared/prisma/schema.prisma [evidence]",
+      "apps/api/src/routes/submissions.ts [evidence]",
+      "apps/api/src/routes/payments.ts [evidence]",
+      "apps/worker/src/agents/researcher.ts [evidence]",
+      "apps/worker/src/agents/drafter.ts [evidence]",
+      "apps/worker/src/agents/delivery.ts [evidence]",
+      "tests/payment.test.ts [evidence]"
+    ],
+    "methods": [
+      "Repo-file inspection for implemented product surface [evidence]",
+      "Bottom-up market sizing using explicit assumptions because network research was unavailable [assumption: workspace-only constraint]",
+      "Financial reconciliation from campaign count x blended price [assumption]"
+    ]
+  },
+  "planningMethod": "EIR soul upgrade: preserve true repo content, separate evidence from assumptions, and convert build roadmap into validation roadmap.",
+  "customer": {
+    "definition": "Individual constituent with a civic issue, desired outcome, and ZIP code [evidence: apps/api/src/routes/submissions.ts].",
+    "notCustomers": [
+      "Law firms [assumption: legal-risk exclusion]",
+      "PACs/campaigns [assumption: compliance-risk exclusion]",
+      "Claim filing or legal-demand users [evidence: MASTER_PLAN.md]"
+    ],
+    "validationGap": "0 evidenced paying customers in workspace inspection [evidence]."
+  },
+  "market": {
+    "tam": "$13,000,000 annual revenue from 1,000,000 purchases/year x $13.00 [assumption: unvalidated bottom-up demand proxy]",
+    "sam": "$1,300,000 annual revenue from 100,000 purchases/year x $13.00 [assumption: reachable early audience proxy]",
+    "som": "$15,600 annual revenue from 1,200 purchases/year x $13.00 [assumption: owner-operated validation case]",
+    "method": "Bottom-up purchase volume x repo-derived price blend; no external market claims treated as evidence."
+  },
+  "businessModel": {
+    "streams": [
+      "$5.00 single-official package [evidence: apps/api/src/routes/payments.ts]",
+      "$15.00 three-official package [evidence: apps/api/src/routes/payments.ts]",
+      "$25.00 full-spread package [evidence: apps/api/src/routes/payments.ts]",
+      "$99/month organization/API starter concept [assumption: not active repo scope]"
+    ],
+    "marginFloor": "40.0% net margin floor in master plan [evidence: MASTER_PLAN.md]",
+    "unitEconomics": "Tests assert tier margins greater than 90.0% using $0.20/$0.40/$0.60 cost estimates [evidence: tests/payment.test.ts]."
+  },
+  "financialModel": {
+    "revenueAssumptions": [
+      "Blended price is $13.00 [assumption: midpoint blend of $5/$15/$25 tiers].",
+      "2027 base paid campaigns are 1,200/year [assumption: owner-operated SOM].",
+      "2027 base revenue is $15,600 from 1,200 x $13.00 [assumption: reconciled model]."
+    ],
+    "costAssumptions": [
+      "Variable AI/delivery cost is $0.60/campaign [assumption: conservative use of highest test estimate].",
+      "Payment processing is 3.0% of revenue [assumption: generic card heuristic, no contract verified].",
+      "Cloud/tools are $300/month in validation [assumption: owner-operated stack estimate]."
+    ],
+    "sensitivityTests": [
+      "Conversion at 1.0% likely fails without distribution [assumption].",
+      "Bounce/complaint rates above 10.0% pause domains [evidence: apps/worker/src/agents/delivery.ts].",
+      "Blended price at $7.00 reduces 2027 base revenue to $8,400 [assumption: 1,200 x $7.00]."
+    ]
+  },
+  "alternatives": [
+    "Manual official email [assumption: substitute behavior]",
+    "Resistbot [assumption: named competitor from model knowledge]",
+    "Change.org [assumption: named competitor from model knowledge]",
+    "LegalZoom/document tools [assumption: adjacent substitute from model knowledge]"
+  ],
+  "antiPlan": {
+    "holes": [
+      "No evidenced customer demand [evidence: workspace inspection].",
+      "Officials may classify automated letters as spam [assumption: delivery-channel risk].",
+      "Users may submit legal threats, harassment, or claim-like content [evidence: MASTER_PLAN.md and moderation code]."
+    ],
+    "mitigations": [
+      "Concierge pilot before scale [assumption].",
+      "Moderation and human review [evidence: apps/api/src/routes/submissions.ts].",
+      "Bounce and opt-out controls [evidence: apps/worker/src/agents/delivery.ts]."
+    ],
+    "residualRisks": [
+      "Legal/compliance clearance absent [evidence: workspace inspection].",
+      "CAC absent [evidence: workspace inspection].",
+      "Repeat use absent [evidence: workspace inspection]."
+    ]
+  },
+  "strategy": "Validate a narrow constituent-letter wedge before any broad civic platform claim.",
+  "goToMarket": {
+    "firstCustomers": "First 100 paying customers via concierge outreach, local civic newsletters, and low-risk municipal issue pages [assumption].",
+    "channels": [
+      "Neighborhood/civic newsletters [assumption]",
+      "Issue-specific SEO pages after compliance review [assumption]",
+      "Small nonprofit referral pilots [assumption]"
+    ],
+    "doNotScaleBefore": "20 paid concierge campaigns and operator legal/compliance review [assumption]."
+  },
+  "operatorWorkflow": {
+    "daily": "Review flagged submissions, failed deliveries, payment discrepancies, and official opt-outs [evidence: MASTER_PLAN.md].",
+    "weekly": "Review paid funnel, refund requests, complaint rates, and human-review time [assumption]."
+  },
+  "constraints": [
+    "Watchlist; personal/research asset until operator confirms business intent [evidence: wrk.dog registry note].",
+    "No legal advice, legal demands, claim filings, or harassment [evidence: MASTER_PLAN.md].",
+    "Workspace-only review; external market claims are assumptions [evidence: wrk.dog dispatch]."
+  ],
+  "metrics": [
+    "Paid campaigns per 100 submission starts [assumption: proposed metric].",
+    "Verified-citation coverage percentage [assumption: proposed metric based on researcher code].",
+    "Spam complaint percentage [assumption: proposed metric based on delivery risk].",
+    "Human-review minutes per campaign [assumption: proposed metric]."
+  ],
+  "aiWorkGovernance": {
+    "rules": [
+      "Researcher may only cite supplied sources [evidence: apps/worker/src/agents/researcher.ts].",
+      "Drafter may only use verified research and must include AI disclosure/disclaimer [evidence: apps/worker/src/agents/drafter.ts].",
+      "Agent actions are logged with token counts and HMAC checksums [evidence: packages/shared/prisma/schema.prisma]."
+    ]
+  },
+  "unknowns": [
+    "Actual willingness to pay [assumption].",
+    "Official acceptance/reply behavior [assumption].",
+    "Legal review outcome [assumption].",
+    "SEO acquisition cost [assumption].",
+    "WrkPlug adoption [assumption: WrkPlug Phase 0 not yet signed]."
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Consumers will pay for civic letters.",
+      "basis": "Product thesis.",
+      "evidenceOrAssumption": "[assumption: no revenue records in repo]",
+      "test": "Sell 20 paid concierge campaigns by 2026-08-31 [assumption]."
+    },
+    {
+      "claim": "$13.00 blended price is viable.",
+      "basis": "Repo tier midpoint.",
+      "evidenceOrAssumption": "[assumption: derived from repo pricing]",
+      "test": "Measure realized AOV after 100 paid orders [assumption]."
+    },
+    {
+      "claim": "Officials tolerate delivery.",
+      "basis": "Delivery controls exist.",
+      "evidenceOrAssumption": "[assumption: no production metrics]",
+      "test": "Track bounce and spam complaint rates for 100 sends [assumption]."
+    },
+    {
+      "claim": "Verified citations improve conversion.",
+      "basis": "Product differentiation.",
+      "evidenceOrAssumption": "[assumption: no A/B tests]",
+      "test": "Run preview conversion test [assumption]."
+    },
+    {
+      "claim": "WrkPlug reduces infra/CAC burden.",
+      "basis": "Portfolio posture.",
+      "evidenceOrAssumption": "[assumption: WrkPlug Phase 0 not yet signed]",
+      "test": "Operator platform decision before migration [assumption]."
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-22 [evidence: current dispatch date]",
+      "change": "Created VC-grade EIR soul and gate from workspace-only repo evidence.",
+      "author": "wrk.dog fleet worker"
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "reason": "Roadmap is build-complete but market-validation incomplete [evidence: .planning/ROADMAP.md; wrk.dog registry note].",
+    "requiredBeforePromotion": [
+      "Operator confirms business intent [assumption].",
+      "20 paid concierge campaigns [assumption].",
+      "Compliance/legal review [assumption]."
+    ]
+  },
+  "next": [
+    "Operator ruling by 2026-07-15 [assumption].",
+    "Concierge pilot by 2026-08-31 [assumption].",
+    "Validation scorecard by 2026-09-30 [assumption]."
+  ]
+}
+
