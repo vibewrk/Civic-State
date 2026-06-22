@@ -1,0 +1,245 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "one_liner": "CivicState is a paid civic-letter workflow, watchlisted until demand and delivery are proven.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-brooks-history-business-plan"
+  },
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "evidencedAssetName": "CivicState",
+    "identityStatus": "dispatch/repo mismatch",
+    "honesty": "[evidence: dispatch brief; package.json; .planning/PROJECT.md]"
+  },
+  "status": "needs-revision",
+  "directive": "Use BUSINESS.md as the provisional EIR soul; do not pitch as adopted or investible until operator merge and market validation.",
+  "authority": {
+    "state": "provisional",
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption \u2014 operator ruling 2026-06-12 [evidence: dispatch brief]; see the PR's POM record",
+    "doNotClaimApproved": true
+  },
+  "research": {
+    "mode": "workspace-only, no network",
+    "sources": [
+      { "path": "BUSINESS.md", "method": "new seed plan" },
+      { "path": "ROADMAP.md", "method": "buildable validation roadmap" },
+      { "path": "DECISIONS.md", "method": "decision record" },
+      { "path": "MASTER_PLAN.md", "method": "legacy product, pricing, financial, and roadmap claims" },
+      { "path": ".planning/PROJECT.md", "method": "customer, constraints, validation gates, registry-adjacent planning claims" },
+      { "path": ".planning/GENESIS.md", "method": "distribution, moat, target user, break-even hypothesis" },
+      { "path": ".planning/ROADMAP.md", "method": "existing phase narrative and completion claim" },
+      { "path": ".planning/STATE.md", "method": "conflicting current-state claim" },
+      { "path": ".planning/existing-state.md", "method": "old audit, zero revenue and zero traffic claims" },
+      { "path": "apps/api/src/routes/payments.ts", "method": "implemented pricing evidence" },
+      { "path": "apps/api/src/routes/submissions.ts", "method": "submission, moderation, audit, queue evidence" },
+      { "path": "apps/api/src/routes/officials.ts", "method": "official lookup evidence" },
+      { "path": "apps/api/src/routes/compliance.ts", "method": "privacy workflow and schema-risk evidence" },
+      { "path": "apps/worker/src/agents/researcher.ts", "method": "citation research and verification evidence" },
+      { "path": "apps/worker/src/agents/drafter.ts", "method": "letter drafting and disclosure evidence" },
+      { "path": "apps/worker/src/agents/delivery.ts", "method": "Postmark and bounce-control evidence" },
+      { "path": "packages/shared/prisma/schema.prisma", "method": "data model evidence" },
+      { "path": "tests/payment.test.ts", "method": "pricing and margin test evidence" },
+      { "path": "dispatch brief", "method": "registry, scrutiny gaps, workspace-only rule" }
+    ],
+    "honesty": "[evidence: files read in workspace]"
+  },
+  "planningMethod": "Preserve existing CivicState narrative, separate repo evidence from assumptions, use bottom-up validation math, and make contradictions explicit.",
+  "thesis": {
+    "current": "A transactional paid workflow may monetize civic research, citation-backed drafting, official targeting, and delivery for residents.",
+    "asOf": "2026-06-22 [evidence: dispatch current_date]",
+    "investibility": "watchlist, not near-term investible until operator confirms business intent and market proof exists",
+    "honesty": "[evidence: dispatch registry note; BUSINESS.md]"
+  },
+  "customer": {
+    "primary": "United States resident with a concrete civic concern and willingness to pay for researched, routed constituent communication.",
+    "excluded": [
+      "legal claimants",
+      "users seeking legal advice",
+      "government officials",
+      "enterprise advocacy teams",
+      "HOAs and nonprofits at launch",
+      "bulk organization buyers"
+    ],
+    "honesty": "[evidence: .planning/GENESIS.md; MASTER_PLAN.md; BUSINESS.md; assumption: demand unvalidated]"
+  },
+  "market": {
+    "method": "bottom-up validation ladder, not external TAM",
+    "scenarios": [
+      {
+        "name": "break-even wedge",
+        "build": "25 paid submissions/month x $15 AOV = $375 MRR",
+        "honesty": "[evidence: .planning/GENESIS.md; apps/api/src/routes/payments.ts; assumption: arithmetic]"
+      },
+      {
+        "name": "planning month twelve",
+        "build": "400 paid submissions/month x $18 AOV = $7,200 monthly revenue",
+        "honesty": "[evidence: MASTER_PLAN.md]"
+      },
+      {
+        "name": "capacity case",
+        "build": "5,000 paid submissions/month x $15 AOV = $75,000 monthly revenue",
+        "honesty": "[evidence: .planning/PROJECT.md; assumption: arithmetic]"
+      }
+    ],
+    "externalTamGap": "No external market sources were available in workspace-only mode."
+  },
+  "businessModel": {
+    "type": "transactional one-time checkout",
+    "tiers": [
+      { "name": "single", "price": "$5 [evidence: apps/api/src/routes/payments.ts]" },
+      { "name": "three_pack", "price": "$15 [evidence: apps/api/src/routes/payments.ts]" },
+      { "name": "full_spread", "price": "$25 [evidence: apps/api/src/routes/payments.ts]" }
+    ],
+    "marginFloor": "40% [evidence: MASTER_PLAN.md; .planning/PROJECT.md]",
+    "notActive": "subscriptions, organization API access, certified mail, coalition features"
+  },
+  "financialModel": {
+    "reconciliation": "Monthly revenue equals paid submissions multiplied by blended AOV; costs use repo-authored COGS, fees, and fixed-cost assumptions.",
+    "revenueAssumptions": [
+      "25 paid submissions/month can be reached in beta [evidence: .planning/GENESIS.md; assumption: not measured]",
+      "$15 to $18 blended AOV can hold [evidence: MASTER_PLAN.md; apps/api/src/routes/payments.ts; assumption: mix unmeasured]",
+      "400 paid submissions/month is an internal month-twelve scenario [evidence: MASTER_PLAN.md; assumption: not market validated]"
+    ],
+    "costAssumptions": [
+      "8% variable COGS [evidence: MASTER_PLAN.md]",
+      "4% Stripe fees [evidence: MASTER_PLAN.md]",
+      "$200/month fixed costs [evidence: MASTER_PLAN.md]",
+      "$96/month backend droplet [evidence: .planning/PROJECT.md]",
+      "$1,500 reserve [evidence: .planning/PROJECT.md]"
+    ],
+    "sensitivityTests": [
+      "10 paid submissions/month loses $68 before labor [assumption: BUSINESS.md table arithmetic]",
+      "25 paid submissions/month produces $130 before labor [assumption: BUSINESS.md table arithmetic]",
+      "Doubling variable COGS from 8% to 16% removes $576/month from the 400-submission case [assumption: BUSINESS.md arithmetic]"
+    ]
+  },
+  "alternatives": [
+    {
+      "name": "manual email workflow",
+      "position": "free substitute; CivicState must beat it on routing, citations, delivery, and tracking",
+      "honesty": "[assumption: category analysis]"
+    },
+    {
+      "name": "general AI drafting tools",
+      "position": "partial substitute; CivicState must add official targeting and verified delivery",
+      "honesty": "[assumption: category analysis]"
+    },
+    {
+      "name": "Resistbot",
+      "position": "low-friction constituent messaging; CivicState claims deeper research",
+      "honesty": "[evidence: .planning/PROJECT.md; assumption: differentiation unvalidated]"
+    },
+    {
+      "name": "Change.org",
+      "position": "petition hosting; CivicState claims direct official delivery",
+      "honesty": "[evidence: MASTER_PLAN.md; assumption: category comparison]"
+    }
+  ],
+  "antiPlan": {
+    "holes": [
+      "No live paid demand evidence.",
+      "No production government deliverability evidence.",
+      "No external TAM research.",
+      "No proof that one operator can manage legal-adjacent review.",
+      "Registry says personal/research asset, not near-term investible BOS."
+    ],
+    "mitigations": [
+      "Run private paid beta before SEO.",
+      "Measure conversion, inbox placement, coverage, chargebacks, citation verification, and review minutes.",
+      "Require operator ruling before wrk.vc investible positioning.",
+      "Perform network-enabled market research in a later pass."
+    ],
+    "residualRisks": [
+      "Users may not pay.",
+      "Officials may filter or ignore AI-assisted messages.",
+      "Compliance and moderation workload may erase margin.",
+      "General AI tools or incumbents may copy the workflow."
+    ]
+  },
+  "diligence": {
+    "holes": [
+      "No live paid demand evidence [evidence: .planning/existing-state.md].",
+      "No production government deliverability evidence [evidence: .planning/existing-state.md].",
+      "No external TAM research because the run was workspace-only [evidence: dispatch brief].",
+      "No proof that one operator can manage legal-adjacent review [assumption: workload unknown]."
+    ],
+    "mitigations": [
+      "Run private paid beta and measure conversion, refunds, chargebacks, and review minutes.",
+      "Run delivery tests and monitor inbox placement, bounces, spam complaints, and official replies.",
+      "Perform network-enabled market research before any investor-facing TAM claim.",
+      "Require operator ruling on business intent before wrk.vc pitch positioning."
+    ],
+    "residualRisks": [
+      "Users may not pay even if the workflow works.",
+      "Officials may filter AI-assisted communications.",
+      "Compliance and moderation load may exceed margin.",
+      "Registry watchlist may keep the asset out of near-term investible status."
+    ]
+  },
+  "strategy": "Validate the paid consumer workflow before building community, enterprise, or channel expansion.",
+  "goToMarket": {
+    "primary": "operator-sourced private paid beta",
+    "secondary": "opt-in SEO campaign pages after privacy and delivery proof",
+    "validationGates": [
+      "3% paid conversion [evidence: .planning/PROJECT.md]",
+      "85% inbox placement [evidence: .planning/PROJECT.md]",
+      "95% federal/state official coverage [evidence: .planning/PROJECT.md]",
+      "60% local official coverage [evidence: .planning/PROJECT.md]",
+      "chargebacks below 0.5% [evidence: .planning/PROJECT.md]"
+    ]
+  },
+  "operatorWorkflow": "Exception-based admin review of flagged submissions, treasury discrepancies, delivery failures, opt-outs, and compliance requests [evidence: apps/api/src/routes/admin.ts; apps/api/src/routes/compliance.ts].",
+  "constraints": [
+    "workspace-only, no network [evidence: dispatch brief]",
+    "watchlist and personal/research sensitivity [evidence: dispatch registry note]",
+    "not legal advice and no legal filings [evidence: MASTER_PLAN.md]",
+    "civic/political communications deliverability risk [evidence: .planning/PROJECT.md]",
+    "sensitive resident issue data [evidence: packages/shared/prisma/schema.prisma]"
+  ],
+  "metrics": [
+    "paid conversion >=3% [evidence: .planning/PROJECT.md]",
+    "government inbox placement >=85% [evidence: .planning/PROJECT.md]",
+    "federal/state coverage >=95% [evidence: .planning/PROJECT.md]",
+    "local coverage >=60% [evidence: .planning/PROJECT.md]",
+    "chargebacks <0.5% [evidence: .planning/PROJECT.md]",
+    "domain bounce pause above 10% [evidence: apps/worker/src/agents/delivery.ts]"
+  ],
+  "aiWorkGovernance": {
+    "rules": [
+      "AI disclosure in letters [evidence: apps/worker/src/agents/drafter.ts]",
+      "not legal advice disclaimer [evidence: apps/worker/src/agents/drafter.ts]",
+      "citation verification and stripping [evidence: apps/worker/src/lib/legal/citation-verifier.ts]",
+      "non-partisan moderation [evidence: apps/api/src/lib/moderation.ts]",
+      "human review for flagged content [evidence: apps/api/src/routes/admin.ts]"
+    ]
+  },
+  "unknowns": [
+    "operator intent for business pitch",
+    "actual willingness to pay",
+    "actual deliverability",
+    "actual official response rate",
+    "actual citation accuracy under production traffic",
+    "actual moderation workload",
+    "external market size"
+  ],
+  "assumptionLedger": [
+    { "claim": "Residents will pay $5 to $25.", "basis": "repo pricing tiers", "status": "assumption", "test": "paid beta conversion" },
+    { "claim": "SEO can lower CAC.", "basis": ".planning/GENESIS.md hypothesis", "status": "assumption", "test": "published page impressions" },
+    { "claim": "One operator can handle review.", "basis": "planning thesis", "status": "assumption", "test": "review minutes and queue depth" },
+    { "claim": "Citation-backed drafting is more valuable than generic AI.", "basis": "product positioning", "status": "assumption", "test": "A/B preview and conversion" },
+    { "claim": "Wrk shared rails improve cost and distribution.", "basis": "platform posture", "status": "assumption", "test": "operator platform decision and integration economics" }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-22 [evidence: dispatch current_date]",
+      "change": "EIR soul upgrade created root business plan, roadmap, decisions, and gate artifacts.",
+      "status": "needs-revision"
+    }
+  ],
+  "roadmapGate": {
+    "path": "ROADMAP.md",
+    "status": "aligned",
+    "next": "Operator ruling, product truth audit, paid beta, delivery gate, coverage gate."
+  }
+}

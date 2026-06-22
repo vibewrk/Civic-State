@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "ultra-start.business-plan.v2",
+  "projectId": "brooks-history",
+  "one_liner": "CivicState is a paid civic-letter workflow, watchlisted until demand and delivery are proven.",
+  "status": "needs-revision",
+  "reviewDate": "2026-06-22 [evidence: dispatch current_date]",
+  "thesis": {
+    "current": "Validation-first paid civic-letter workflow for residents, not yet an investible business.",
+    "honesty": "[evidence: BUSINESS.md; dispatch registry note]"
+  },
+  "gapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "criticalConcerns": [
+    "Project id says brooks-history but repo evidence says CivicState [evidence: dispatch brief; package.json].",
+    "Registry says personal/research asset and not near-term investible BOS without operator confirmation [evidence: dispatch registry note].",
+    "No live revenue, traffic, paid conversion, deliverability, or official response evidence was found [evidence: .planning/existing-state.md].",
+    "Planning docs disagree on completion state [evidence: .planning/ROADMAP.md; .planning/STATE.md]."
+  ],
+  "recommendation": "Keep as a validation project until operator ruling and paid beta evidence exist.",
+  "authority": {
+    "state": "provisional",
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption \u2014 operator ruling 2026-06-12 [evidence: dispatch brief]; see the PR's POM record"
+  }
+}
