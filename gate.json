@@ -1,0 +1,251 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "businessFile": "BUSINESS.md",
+    "roadmapFile": "ROADMAP.md",
+    "decisionsFile": "DECISIONS.md"
+  },
+  "status": "proposed",
+  "summaryTenSecond": "CivicState is built as a paid civic-letter tool, but still needs real demand and delivery validation.",
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-soul-upgrade-2026-06-21"
+  },
+  "createdAt": "2026-06-21",
+  "adoption": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+  "sourcesAndMethods": {
+    "mode": "workspace-only, no network",
+    "methods": [
+      "Read existing planning and master-plan files",
+      "Inspected package metadata, Prisma schema, app routes, and worker agents",
+      "Tagged repository-backed claims as evidence and external market claims as assumptions"
+    ],
+    "sources": [
+      {
+        "path": "MASTER_PLAN.md",
+        "use": "Existing product, architecture, revenue, risk, and financial assumptions"
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "use": "Core value, requirements, constraints, market verdict, and validation gates"
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "use": "Existing phase roadmap and completion claims"
+      },
+      {
+        "path": ".planning/REQUIREMENTS.md",
+        "use": "Requirement completion conflict and build reality"
+      },
+      {
+        "path": "packages/shared/prisma/schema.prisma",
+        "use": "Actual data model evidence"
+      },
+      {
+        "path": "dispatch registry notes",
+        "use": "Watchlist and personal/research sensitivity constraint"
+      }
+    ]
+  },
+  "thesis": {
+    "current": "CivicState can be a small profitable civic-tech wedge if users pay for researched, citation-backed constituent letters; it is not proven as venture-scale.",
+    "asOf": "2026-06-21",
+    "honesty": "Repository facts are evidence; market size, conversion, CAC, and demand are assumptions."
+  },
+  "customerDefinition": {
+    "primary": "US resident with a specific civic concern who wants government action but lacks time, legal context, official routing, or drafting skill.",
+    "excluded": [
+      "Law firms",
+      "Lobbying firms",
+      "Enterprise advocacy teams in launch scope",
+      "Users seeking legal filings, claims, or demand letters"
+    ]
+  },
+  "marketSizing": {
+    "method": "bottom-up validation sizing only",
+    "figures": [
+      {
+        "claim": "One metro at 250 paid orders/month x $15 AOV = $3,750/month gross",
+        "label": "assumption: bounded beta wedge"
+      },
+      {
+        "claim": "50 metros at same productivity = $187,500/month gross",
+        "label": "assumption: replication case, not evidence"
+      }
+    ],
+    "caution": "Do not pitch TAM as top-down VC scale until real traffic, conversion, repeat usage, and channel economics exist."
+  },
+  "revenueModel": {
+    "current": "One-time package revenue only",
+    "prices": [
+      {
+        "tier": "Starter",
+        "price": "$5",
+        "label": "evidence: MASTER_PLAN.md"
+      },
+      {
+        "tier": "Amplify",
+        "price": "$15",
+        "label": "evidence: MASTER_PLAN.md"
+      },
+      {
+        "tier": "Complex",
+        "price": "$25",
+        "label": "evidence: MASTER_PLAN.md"
+      }
+    ],
+    "deferred": [
+      "Subscriptions",
+      "Organizational API",
+      "Crowdfunding adjacency",
+      "Certified mail upsells"
+    ]
+  },
+  "financialModel": {
+    "unitEconomics": "Repo claims 88% to 92% gross margin and 40% net margin floor [evidence: MASTER_PLAN.md]; both require production validation.",
+    "reservePolicy": "Repo requires $1,500 Mercury reserve with $2,000 warning, $1,000 critical, and $500 emergency thresholds [evidence: MASTER_PLAN.md].",
+    "validationCase": "25 orders/month x $15 AOV = $375/month gross; assumed $45/month variable cost and $200/month fixed cost yields $130/month contribution [assumption: validation scenario math]."
+  },
+  "competition": [
+    {
+      "name": "Resistbot",
+      "position": "Closest constituent-message substitute; CivicState differentiates with citation-backed research and paid delivery workflow."
+    },
+    {
+      "name": "Change.org",
+      "position": "Competes for civic intent and public petition distribution; CivicState delivers individual letters."
+    },
+    {
+      "name": "Quorum/VoterVoice",
+      "position": "Compete for organization advocacy budgets, not launch consumer transactions."
+    },
+    {
+      "name": "Manual email and web forms",
+      "position": "Free incumbent substitute and strongest price-pressure risk."
+    }
+  ],
+  "risksAntiPlan": {
+    "killReasons": [
+      "Users may not pay for a task they can do manually for free.",
+      "Official data coverage and government inbox deliverability may be harder than AI drafting.",
+      "Citation-backed civic communication may create legal-adjacent review load that breaks the one-operator model."
+    ],
+    "antiPlan": "Do not raise, hire, launch nationally, add community, or sell API access before a bounded paid beta proves conversion, delivery, citation accuracy, refunds, and review load."
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "Users pay $5 to $25 for done-for-you civic letters [evidence: package tiers; assumption: willingness to pay].",
+      "validation": "Real Stripe payments before delivery"
+    },
+    {
+      "assumption": "SEO can acquire enough intent traffic at low CAC.",
+      "validation": "Search impressions, preview starts, and paid conversion by source"
+    },
+    {
+      "assumption": "Government email deliverability is acceptable.",
+      "validation": "Bounce, spam complaint, reply, and delivered-event tracking"
+    },
+    {
+      "assumption": "Citation verification prevents hallucinated legal references.",
+      "validation": "Manual audit sample and all-failed citation review rate"
+    },
+    {
+      "assumption": "One operator can manage legal-adjacent exceptions.",
+      "validation": "Flagged queue depth and oldest item age"
+    }
+  ],
+  "goToMarket": {
+    "motion": "One-metro beta, SEO-first, opt-in public campaign pages only after successful paid jobs.",
+    "notYet": [
+      "Paid ads",
+      "National launch",
+      "Enterprise sales",
+      "Community mechanics"
+    ]
+  },
+  "freshness": {
+    "assessment": "Stale-sensitive",
+    "repoDates": [
+      "MASTER_PLAN.md says March 2026 [evidence: MASTER_PLAN.md]",
+      ".planning docs center on 2026-04-25 [evidence: .planning docs]",
+      "upgrade date is 2026-06-21 [evidence: dispatch current_date]"
+    ],
+    "mustRefreshBeforeFundraising": [
+      "External API availability",
+      "Model pricing and names",
+      "Payment processor policy",
+      "AI transparency law",
+      "Deliverability benchmarks"
+    ]
+  },
+  "roadmapBuildableShape": [
+    "Reconcile roadmap status against actual tests and running services",
+    "Run one bounded metro beta with real payments",
+    "Verify end-to-end submission, preview, payment, delivery, and dashboard",
+    "Capture metrics needed to replace market assumptions",
+    "Confirm package economics with actual costs",
+    "Measure organic impressions from opted-in public pages",
+    "Stress-test citation, bounce, legal-adjacent, and review-backlog risks"
+  ],
+  "scrutinyGapsAddressed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "sensitivityConstraints": [
+    "Registry watchlist: personal/research asset, not near-term investible BOS unless operator confirms business intent.",
+    "Civic and political-expression data requires careful privacy and moderation handling.",
+    "Do not invent legal or regulatory conclusions; product remains constituent communication, not legal advice."
+  ],
+  "holesMitigationsResidualRisks": [
+    {
+      "hole": "No production traction evidence",
+      "mitigation": "Run bounded paid beta",
+      "residualRisk": "Users may not pay even if the product works"
+    },
+    {
+      "hole": "External API and legal claims not refreshed",
+      "mitigation": "Operator must verify vendor and regulatory facts before launch",
+      "residualRisk": "A core data dependency may be unavailable or more expensive"
+    },
+    {
+      "hole": "Deliverability unproven",
+      "mitigation": "Domain warming, seeded tests, bounce suppression, and manual contact QA",
+      "residualRisk": "Government inboxes may filter or ignore messages"
+    },
+    {
+      "hole": "Legal-adjacent content load unknown",
+      "mitigation": "Strict moderation, disclaimers, and human review",
+      "residualRisk": "Review queue may dominate operations"
+    }
+  ],
+  "operatorValidationNeeded": [
+    "Confirm whether this repo should be pitched as a business despite registry watchlist note",
+    "Confirm current deployed status and environment readiness",
+    "Refresh external vendor/API/legal facts with network research",
+    "Approve first beta geography and issue category"
+  ],
+  "authority": {
+    "current": "proposed",
+    "ratification": "operator merge only"
+  }
+}
