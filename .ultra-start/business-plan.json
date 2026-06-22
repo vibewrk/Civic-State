@@ -1,0 +1,335 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "one_liner": "Watchlist civic-letter utility until paid demand and official delivery are proven.",
+  "snapshot": "CivicState is a watchlist civic-letter utility until paid demand and official delivery are proven.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-business-plan-2026-06-22"
+  },
+  "status": "draft",
+  "directive": "Upgrade missing root soul into an honesty-labeled, operator-gated business plan for wrk.vc review.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+  "research": {
+    "mode": "workspace-only",
+    "sources": [
+      "dispatch registry notes supplied in runner prompt",
+      "MASTER_PLAN.md",
+      ".planning/PROJECT.md",
+      ".planning/ROADMAP.md",
+      "package.json",
+      "apps/api/src/routes/submissions.ts",
+      "apps/api/src/routes/payments.ts",
+      "apps/api/src/lib/moderation.ts",
+      "apps/api/src/lib/officials/lookup.ts",
+      "apps/api/src/lib/officials/congress.ts",
+      "apps/worker/src/agents/researcher.ts",
+      "apps/worker/src/agents/drafter.ts",
+      "apps/worker/src/agents/delivery.ts",
+      "packages/shared/prisma/schema.prisma",
+      "apps/web/app/page.tsx",
+      "apps/web/app/privacy/page.tsx",
+      "apps/web/app/terms/page.tsx"
+    ],
+    "methods": [
+      "compared prior planning docs against implementation files",
+      "classified repo-backed facts as evidence",
+      "tagged all external market, valuation, and customer-size claims as assumptions",
+      "preserved prior true content while surfacing contradictions in Surprise Spikes"
+    ],
+    "limitations": [
+      "no network access",
+      "no production analytics",
+      "no customer interviews",
+      "no live deliverability data",
+      "no legal opinion"
+    ]
+  },
+  "planningMethod": "Bottom-up assumption-led sizing plus validation gates from prior planning docs; no external claims promoted to evidence.",
+  "customer": {
+    "primary": "Individual U.S. resident with a civic issue, desired outcome, and ZIP code.",
+    "stakeholders": [
+      "paying citizen",
+      "lean platform operator",
+      "government official recipient",
+      "future organization/API consumer"
+    ],
+    "exclusions": [
+      "legal advice customers",
+      "claim filing customers",
+      "lobbying clients",
+      "launch-stage social network users"
+    ],
+    "evidence": [
+      "apps/api/src/routes/submissions.ts",
+      ".planning/PROJECT.md",
+      "apps/web/app/terms/page.tsx"
+    ]
+  },
+  "market": {
+    "tam": {
+      "value": 11610000,
+      "currency": "USD",
+      "basis": "258000000 adults x 10% civic-issue intent x 3% paid conversion x $15 AOV",
+      "honesty": "assumption: rounded demographic memory and repo price points; no live source"
+    },
+    "sam": {
+      "value": 2250000,
+      "currency": "USD",
+      "basis": "5000000 reachable users x 3% paid conversion x $15 AOV",
+      "honesty": "assumption: reachable audience estimate"
+    },
+    "som": {
+      "value": 15000,
+      "currency": "USD",
+      "basis": "1000 paid campaigns x $15 AOV",
+      "honesty": "assumption: first validation target"
+    },
+    "validationGates": [
+      {
+        "metric": "preview-to-paid conversion",
+        "target": "3%",
+        "honesty": "evidence: .planning/PROJECT.md gate"
+      },
+      {
+        "metric": "government inbox placement",
+        "target": "85%",
+        "honesty": "evidence: .planning/PROJECT.md gate"
+      },
+      {
+        "metric": "official coverage",
+        "target": "95% federal/state and 60% local",
+        "honesty": "evidence: .planning/PROJECT.md gate"
+      }
+    ]
+  },
+  "businessModel": {
+    "pricing": [
+      {
+        "tier": "single",
+        "price": 5,
+        "currency": "USD",
+        "evidence": "apps/api/src/routes/payments.ts"
+      },
+      {
+        "tier": "three_pack",
+        "price": 15,
+        "currency": "USD",
+        "evidence": "apps/api/src/routes/payments.ts"
+      },
+      {
+        "tier": "full_spread",
+        "price": 25,
+        "currency": "USD",
+        "evidence": "apps/api/src/routes/payments.ts"
+      }
+    ],
+    "revenueStreams": [
+      "one-time paid campaigns",
+      "future organization/API access only after individual loop validation"
+    ],
+    "unitEconomics": {
+      "targetContributionMargin": "40%",
+      "honesty": "evidence: MASTER_PLAN.md planning floor; not observed"
+    }
+  },
+  "financialModel": {
+    "revenueAssumptions": [
+      "3% preview-to-paid conversion from prior gate",
+      "$15 starting average order value from fixed tiers",
+      "refund/failed-delivery burden below 10% of paid orders"
+    ],
+    "costAssumptions": [
+      "$96/month starting droplet from master plan",
+      "$132.50/month planning max burn from project doc",
+      "20% variable cost until real LLM/email/manual-review costs are reconciled"
+    ],
+    "sensitivityTests": [
+      "1% conversion drops Year A revenue from $7500 to $2500",
+      "$5 AOV drops Year A revenue from $7500 to $2500",
+      "$3 manual review cost across 12000 campaigns adds $36000 variable cost"
+    ],
+    "table": [
+      {
+        "period": "Year A",
+        "paidCampaigns": 500,
+        "averageOrderValue": 15,
+        "revenue": 7500,
+        "variableCost": 1500,
+        "fixedCost": 1590,
+        "operatingResult": 4410,
+        "honesty": "assumption-led except fixed-cost basis from .planning/PROJECT.md"
+      },
+      {
+        "period": "Year B",
+        "paidCampaigns": 3000,
+        "averageOrderValue": 17,
+        "revenue": 51000,
+        "variableCost": 10200,
+        "fixedCost": 12000,
+        "operatingResult": 28800,
+        "honesty": "assumption"
+      },
+      {
+        "period": "Year C",
+        "paidCampaigns": 12000,
+        "averageOrderValue": 18,
+        "revenue": 216000,
+        "variableCost": 43200,
+        "fixedCost": 60000,
+        "operatingResult": 112800,
+        "honesty": "assumption"
+      }
+    ]
+  },
+  "competition": {
+    "alternatives": [
+      "Resistbot",
+      "Change.org",
+      "LegalZoom",
+      "Quorum/VoterVoice/FiscalNote-style enterprise advocacy suites",
+      "manual direct outreach"
+    ],
+    "positioning": "Paid individual utility with research, citation verification, routing, drafting, payment, and delivery in one workflow."
+  },
+  "antiPlan": {
+    "summary": "Do not invest until paid demand and delivery reliability are proven; a complete AI workflow is not market proof.",
+    "holes": [
+      {
+        "hole": "Federal officials may not accept email delivery because Congress.gov returns no emails.",
+        "mitigation": "Run official-routing spike and implement email/web-form fallback before paid launch.",
+        "residualRisk": "Office policies and contact methods remain outside product control."
+      },
+      {
+        "hole": "Low ticket size makes CAC dangerous.",
+        "mitigation": "Use organic/operator-led beta before paid acquisition.",
+        "residualRisk": "SEO or community channels may not convert."
+      },
+      {
+        "hole": "Legal, lobbying, harassment, and CAN-SPAM posture is unresolved.",
+        "mitigation": "Keep disclaimers, moderation, human review, and obtain operator/legal review.",
+        "residualRisk": "No legal opinion exists in repo."
+      },
+      {
+        "hole": "Registry says watchlist and personal/research asset.",
+        "mitigation": "Gate investment on validation milestones.",
+        "residualRisk": "The operator may decide it should not pitch as a business."
+      }
+    ]
+  },
+  "strategy": {
+    "currentPosture": "watchlist research asset",
+    "nearTermFocus": "validate paid demand, official routing, deliverability, unit economics, and compliance posture",
+    "platformPosture": "potential WrkPlug client; shared rails not assumed until signed"
+  },
+  "goToMarket": {
+    "first100Customers": "25 operator network, 25 local civic groups, 25 issue communities, 25 content/search experiments",
+    "channels": [
+      "operator-led beta",
+      "issue-specific SEO pages",
+      "local civic communities",
+      "direct outreach to early testers"
+    ],
+    "honesty": "assumption-led; no customer evidence in repo"
+  },
+  "operatorWorkflow": {
+    "dailyWork": [
+      "review flagged submissions",
+      "monitor delivery failures and bounce rates",
+      "reconcile payments and costs",
+      "maintain official directory quality"
+    ],
+    "evidence": [
+      "apps/api/src/lib/moderation.ts",
+      "apps/worker/src/agents/delivery.ts",
+      "packages/shared/prisma/schema.prisma"
+    ]
+  },
+  "constraints": [
+    "workspace-only research",
+    "registry watchlist status",
+    "not legal advice",
+    "not lobbying firm",
+    "official opt-out enforcement",
+    "AI disclosure",
+    "government email deliverability risk"
+  ],
+  "metrics": [
+    "preview-to-paid conversion",
+    "checkout completion",
+    "government inbox placement",
+    "official-routing coverage",
+    "refund rate",
+    "manual review minutes per campaign",
+    "gross margin",
+    "repeat usage"
+  ],
+  "aiWorkGovernance": {
+    "controls": [
+      "citation verification before drafting",
+      "LLM moderation plus keyword blocklist",
+      "human review for flagged submissions",
+      "AI disclosure in letters",
+      "audit logs and HMAC checksums"
+    ],
+    "evidence": [
+      "apps/worker/src/agents/researcher.ts",
+      "apps/api/src/lib/moderation.ts",
+      "apps/worker/src/agents/drafter.ts",
+      "packages/shared/prisma/schema.prisma"
+    ]
+  },
+  "unknowns": [
+    "real willingness to pay",
+    "real CAC",
+    "real deliverability",
+    "legal/compliance review",
+    "official web-form fallback feasibility",
+    "live LLM and email cost",
+    "operator appetite to pitch as a business"
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Users will pay $5-$25",
+      "basis": "implemented tiers",
+      "label": "evidence for pricing; assumption for demand",
+      "test": "paid beta"
+    },
+    {
+      "claim": "3% conversion is enough to continue",
+      "basis": "prior gate",
+      "label": "evidence: .planning/PROJECT.md",
+      "test": "instrument funnel"
+    },
+    {
+      "claim": "85% government inbox placement is attainable",
+      "basis": "prior gate",
+      "label": "evidence: .planning/PROJECT.md; outcome unproven",
+      "test": "monitored deliverability batch"
+    },
+    {
+      "claim": "TAM is $11.61M",
+      "basis": "bottom-up formula",
+      "label": "assumption",
+      "test": "replace with sourced demand data"
+    },
+    {
+      "claim": "WrkPlug rails lower cost and friction",
+      "basis": "portfolio platform theory",
+      "label": "assumption: WrkPlug Phase 0 not yet signed",
+      "test": "confirm signed rails and migration plan"
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-22",
+      "change": "Created root EIR soul upgrade from missing root artifacts and prior planning docs.",
+      "author": "wrk.dog fleet worker"
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "reason": "Prior roadmap is build-complete but market and delivery validation remain unproven.",
+    "next": "Use ROADMAP.md Next Work before operator merge can promote authority.",
+    "approvedForRoadmap": false
+  }
+}

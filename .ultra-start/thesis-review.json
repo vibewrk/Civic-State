@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "wrk.thesis-review.v1",
+  "one_liner": "Watchlist civic-letter utility until paid demand and official delivery are proven.",
+  "snapshot": "CivicState is a civic-letter utility with real build evidence but unproven market and delivery.",
+  "project": "brooks-history",
+  "repoObservedName": "civicstate",
+  "reviewDate": "2026-06-22",
+  "status": "draft",
+  "thesis": "CivicState can become a narrow paid utility for residents who want researched, citation-backed constituent letters if it proves willingness to pay and reliable official delivery.",
+  "verdict": "watchlist",
+  "reason": "Registry notes call it personal/research and not near-term investible; repo has product evidence but no customer, market, or live deliverability evidence.",
+  "evidence": [
+    "dispatch registry notes",
+    "BUSINESS.md",
+    "MASTER_PLAN.md",
+    ".planning/PROJECT.md",
+    ".planning/ROADMAP.md",
+    "apps/api/src/routes/payments.ts",
+    "apps/api/src/lib/officials/congress.ts",
+    "apps/worker/src/agents/delivery.ts"
+  ],
+  "requiredValidation": [
+    "3% preview-to-paid conversion",
+    "85% government inbox placement",
+    "official-routing coverage for no-email federal recipients",
+    "live unit economics reconciliation",
+    "operator/legal review"
+  ],
+  "honestyLabels": {
+    "repoBacked": "evidence",
+    "marketSizing": "assumption",
+    "valuation": "assumption",
+    "wrkPlugPosture": "assumption: WrkPlug Phase 0 not yet signed"
+  },
+  "nextDecision": "operator must decide whether this remains a personal/research asset or advances to paid beta"
+}
