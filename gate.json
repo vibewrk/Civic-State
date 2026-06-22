@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "snapshot": "Built civic-letter prototype; validate demand/deliverability before treating it as investible.",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "seed": {
+      "path": "BUSINESS.md",
+      "id": "civicstate-business-plan"
+    }
+  },
+  "status": "proposed",
+  "authority": "proposed only; operator merge upgrades authority",
+  "adoption": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12 [evidence: dispatch]; see the PR's POM record",
+  "createdAt": "2026-06-22 [evidence: worker environment current_date]",
+  "updatedAt": "2026-06-22 [evidence: worker environment current_date]",
+  "sources": [
+    {
+      "path": "MASTER_PLAN.md",
+      "usedFor": "Original product, architecture, pricing philosophy, competition, and revenue claims [evidence]"
+    },
+    {
+      "path": ".planning/PROJECT.md",
+      "usedFor": "Current value proposition, validation gaps, constraints, beta gates, and stakeholder definitions [evidence]"
+    },
+    {
+      "path": ".planning/GENESIS.md",
+      "usedFor": "Assumptions, value chain, distribution hypothesis, moat hypothesis, target user, and exclusions [evidence]"
+    },
+    {
+      "path": ".planning/REQUIREMENTS.md",
+      "usedFor": "Implemented/planned requirement inventory and compliance constraints [evidence]"
+    },
+    {
+      "path": ".planning/ROADMAP.md",
+      "usedFor": "Original four-phase roadmap and claimed completion [evidence]"
+    },
+    {
+      "path": "apps/ and packages/",
+      "usedFor": "Reality check of API, web, worker, payment, delivery, and data-model surfaces [evidence]"
+    }
+  ],
+  "methods": [
+    "Workspace-only document review; no network research [evidence: dispatch constraint]",
+    "Repo file-tree and source sampling for built-vs-aspirational separation [evidence]",
+    "Bottom-up market sizing using tagged assumptions because external research was unavailable [assumption: workspace-only constraint]",
+    "Financial reconciliation as submissions x average package price minus tagged variable and fixed costs [assumption: model method]"
+  ],
+  "businessFile": "BUSINESS.md",
+  "roadmapFile": "ROADMAP.md",
+  "decisionsFile": "DECISIONS.md",
+  "thesisCurrent": "Residents may pay $5/$15/$25 [evidence: apps/api/src/routes/payments.ts] for researched constituent letters, but demand and deliverability are unvalidated [evidence: .planning/PROJECT.md].",
+  "customerDefinition": "US resident with a specific civic issue, desired outcome, and need for official lookup, research, drafting, and delivery help [evidence: .planning/PROJECT.md].",
+  "revenueModel": {
+    "launch": "One-time packages at $5, $15, and $25 [evidence: apps/api/src/routes/payments.ts]",
+    "deferred": "Priority review and third-party API access are future/aspirational [evidence: MASTER_PLAN.md; .planning/PROJECT.md]",
+    "notActive": "Subscriptions removed from active plan [evidence: MASTER_PLAN.md changelog]"
+  },
+  "marketSizing": {
+    "method": "Bottom-up reachable-resident x conversion x average-price model",
+    "beachhead": "100,000 residents/year [assumption: placeholder] x 3% [evidence: .planning/PROJECT.md] x $15 [evidence: payment route] = $45,000/year [assumption: arithmetic]",
+    "baseExpansion": "1,000,000 residents/year [assumption: placeholder] x 5% [assumption: improvement] x $17.50 [assumption: mix shift] = $875,000/year [assumption: arithmetic]",
+    "stretch": "10,000,000 residents/year [assumption: placeholder] x 3% [evidence: beta gate] x $15 [evidence: payment route] = $4,500,000/year [assumption: arithmetic]"
+  },
+  "financials": {
+    "validationQuarter": "300 submissions [assumption: beta target placeholder] x $15 [evidence: payment route] = $4,500 revenue [assumption: arithmetic]; contribution before labor $3,820.50 [assumption: arithmetic]",
+    "baseYear": "2,400 submissions [assumption: 200/month x 12 months] x $15 [evidence: payment route] = $36,000 revenue [assumption: arithmetic]; contribution before labor $32,154 [assumption: arithmetic]",
+    "scaleYear": "12,000 submissions [assumption: 1,000/month x 12 months] x $15 [evidence: payment route] = $180,000 revenue [assumption: arithmetic]; contribution before labor $165,720 [assumption: arithmetic]"
+  },
+  "competition": [
+    "Resistbot [evidence: MASTER_PLAN.md; external current facts are assumption]",
+    "Change.org [evidence: MASTER_PLAN.md; external current facts are assumption]",
+    "LegalZoom [evidence: MASTER_PLAN.md; external current facts are assumption]",
+    "Quorum/VoterVoice [evidence: .planning/PROJECT.md; external current facts are assumption]",
+    "Manual constituent outreach [assumption: substitute behavior]"
+  ],
+  "risksAntiPlan": [
+    "No validated demand [evidence: .planning/PROJECT.md]",
+    "Government email deliverability may fail [evidence: .planning/PROJECT.md]",
+    "Local official lookup provider is unresolved [evidence: .planning/PROJECT.md]",
+    "Legal-adjacent claims require legal review [assumption: no legal memo in repo]",
+    "Current direct-to-consumer transactional model may not be venture-scale [assumption: financial model]"
+  ],
+  "assumptionLedger": [
+    "Residents will pay $5-$25 [evidence: pricing exists; assumption: willingness to pay]",
+    "AI citation verification can reach production quality [evidence: researcher code; assumption: real-world reliability]",
+    "Email-only delivery is enough [evidence: Genesis assumption; assumption: official response behavior]",
+    "One operator can handle exceptions [evidence: Genesis assumption; assumption: beta workload]",
+    "SEO campaign archive can compound acquisition [evidence: Genesis hypothesis; assumption: search performance]"
+  ],
+  "goToMarket": {
+    "primary": "SEO from opted-in public campaign pages [evidence: .planning/GENESIS.md]",
+    "beta": "Controlled operator-supervised beta before national launch [assumption: risk-control recommendation]",
+    "doNotDoYet": "Paid ads, app stores, partnerships, subscriptions, community, certified mail, and API consumers [evidence: .planning/GENESIS.md; .planning/PROJECT.md]"
+  },
+  "honestyLabels": {
+    "rule": "Every quantitative claim in the new soul is tagged [evidence] or [assumption].",
+    "externalClaims": "No live external claims were treated as evidence because network access was unavailable [evidence: dispatch]."
+  },
+  "freshness": {
+    "asOf": "2026-06-22 [evidence: worker environment current_date]",
+    "repoEvidenceDates": [
+      "MASTER_PLAN.md v2.1 March 2026 [evidence: file header]",
+      ".planning/PROJECT.md 2026-04-25 [evidence: file footer]",
+      ".planning/GENESIS.md 2026-04-25 [evidence: file footer]",
+      ".planning/REQUIREMENTS.md 2026-04-25 [evidence: file header]"
+    ],
+    "externalFreshness": "Stale/unknown; requires network refresh before investment use [assumption: workspace-only mode]"
+  },
+  "roadmapBuildableShape": {
+    "file": "ROADMAP.md",
+    "section": "Validation Backlog",
+    "items": "8 checkbox items [evidence: ROADMAP.md]",
+    "workerSizing": "Each item is narrow, non-speculative, and traces to a BUSINESS.md heading [evidence: ROADMAP.md]"
+  },
+  "holes": [
+    {
+      "hole": "No market/customer validation",
+      "mitigation": "Run controlled paid beta and measure >=3% conversion [evidence: .planning/PROJECT.md]",
+      "residualRisk": "Conversion may fail even with working product [assumption]"
+    },
+    {
+      "hole": "Government deliverability unknown",
+      "mitigation": "Run domain-level inbox, bounce, spam complaint, and suppression tests before open launch [evidence: delivery code and project beta gate]",
+      "residualRisk": "AI/platform-sent mail may be filtered by government domains [assumption]"
+    },
+    {
+      "hole": "Legal/compliance posture unreviewed",
+      "mitigation": "Operator obtains legal review before public launch and before publishing campaign pages [assumption: recommended control]",
+      "residualRisk": "Disclaimers may not fully control legal-advice or lobbying-adjacent risk [assumption]"
+    },
+    {
+      "hole": "Official data coverage unresolved",
+      "mitigation": "Evaluate congress.gov, OpenStates, Cicero/BallotReady coverage and cache confidence before charging users [evidence: .planning/PROJECT.md]",
+      "residualRisk": "Local coverage may remain too sparse for full-spread packages [assumption]"
+    }
+  ],
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "operatorConstraints": [
+    "Registry note: personal/research asset, not near-term investible BOS [evidence: dispatch]",
+    "Operator should confirm whether this should pitch as a business [evidence: dispatch]",
+    "No external market claims upgraded beyond assumption due workspace-only mode [evidence: dispatch]"
+  ]
+}
