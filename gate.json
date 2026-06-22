@@ -1,0 +1,178 @@
+{
+  "schemaVersion": "wrk.soul-gate.v1",
+  "projectId": "brooks-history",
+  "status": "proposed",
+  "snapshot": "CivicState is beta-validation ready, not investible, until demand and deliverability prove out.",
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-business-plan"
+  },
+  "authority": {
+    "level": "draft",
+    "adoptionNote": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record"
+  },
+  "generatedAt": "2026-06-22",
+  "freshness": {
+    "asOf": "2026-06-22",
+    "mode": "workspace-only",
+    "externalResearch": "not performed",
+    "externalClaimsPolicy": "All external market claims are tagged as assumptions in BUSINESS.md."
+  },
+  "sourcesAndMethods": [
+    {
+      "source": ".planning/PROJECT.md",
+      "method": "Read current product positioning, constraints, validation hurdles, pricing, and risks."
+    },
+    {
+      "source": ".planning/ROADMAP.md",
+      "method": "Read phase roadmap and completion narrative."
+    },
+    {
+      "source": "MASTER_PLAN.md",
+      "method": "Read preserved product concept, architecture, exclusions, and older assumptions."
+    },
+    {
+      "source": "packages/shared/prisma/schema.prisma",
+      "method": "Checked implemented data model for users, submissions, campaigns, letters, officials, payments, deliveries, ledger, audit, agent logs, and jobs."
+    },
+    {
+      "source": "apps/api/src/routes and apps/worker/src/agents",
+      "method": "Checked implemented routes and workers for submissions, officials, payments, webhooks, delivery, research, treasury, and admin."
+    },
+    {
+      "source": "dispatch registry note",
+      "method": "Applied watchlist/personal-research sensitivity and avoided claiming near-term investibility."
+    }
+  ],
+  "businessThesis": {
+    "current": "Validation-stage civic-tech product for paid, citation-backed constituent letters.",
+    "whyNow": "The repo now has enough MVP surface to test the riskiest commercial assumptions.",
+    "whyNotYet": "No production demand, revenue, deliverability, official coverage, or legal-review evidence exists in the workspace."
+  },
+  "customer": {
+    "primary": "US residents with a concrete civic issue who want a drafted, cited letter sent to officials.",
+    "excluded": "Legal filings, legal advice, lobbying-firm services, enterprise advocacy CRM, community social network, and generic political social media."
+  },
+  "revenueModel": {
+    "type": "one-time transaction",
+    "tiers": [
+      {
+        "id": "single",
+        "price": "$5 [evidence: apps/api/src/routes/payments.ts]",
+        "costEstimate": "$0.20 [evidence: apps/worker/src/lib/treasury.ts]"
+      },
+      {
+        "id": "three_pack",
+        "price": "$15 [evidence: apps/api/src/routes/payments.ts]",
+        "costEstimate": "$0.40 [evidence: apps/worker/src/lib/treasury.ts]"
+      },
+      {
+        "id": "full_spread",
+        "price": "$25 [evidence: apps/api/src/routes/payments.ts]",
+        "costEstimate": "$0.60 [evidence: apps/worker/src/lib/treasury.ts]"
+      }
+    ]
+  },
+  "evidenceSummary": {
+    "real": [
+      "Web/API/worker monorepo exists [evidence: apps, packages/shared].",
+      "Prisma schema exists [evidence: packages/shared/prisma/schema.prisma].",
+      "Payment, delivery, webhook, treasury, admin, and compliance surfaces exist [evidence: app routes and worker agents]."
+    ],
+    "notYetProven": [
+      "Revenue is $0 in available workspace evidence [assumption: no Stripe export or production ledger present].",
+      "Traffic is 0 in available workspace evidence [assumption: no analytics export present].",
+      "Conversion, deliverability, and official coverage are planning hurdles, not measured facts [evidence: .planning/PROJECT.md]."
+    ]
+  },
+  "marketSizing": {
+    "method": "Bottom-up validation wedge only.",
+    "betaCase": "$360/month from 5 communities x 200 visitors x 3% conversion x $12 blended price [assumption: BUSINESS.md model].",
+    "operatorScaleCase": "$120,000/year from 100 campaigns x 100 paid events x $12 blended price [assumption: BUSINESS.md model].",
+    "ventureScaleCandidate": "$12,000,000/year from 1,000,000 paid events x $12 blended price [assumption: BUSINESS.md model]."
+  },
+  "competition": [
+    "Resistbot [assumption: prior planning named substitute, external position not rechecked].",
+    "Quorum [assumption: category knowledge, no workspace source].",
+    "VoterVoice [assumption: category knowledge, no workspace source].",
+    "Capitol Canary or Phone2Action-style enterprise advocacy tools [assumption: category knowledge, no workspace source].",
+    "Manual email, official webforms, nonprofits, legal aid, and generic LLM drafting [assumption: substitute analysis]."
+  ],
+  "risksAntiplan": {
+    "holes": [
+      "No paid customer evidence.",
+      "No production deliverability evidence.",
+      "No independent legal/compliance review.",
+      "Local official lookup remains stub-dependent.",
+      "Frontend/API pricing tier mismatch may break non-single checkout."
+    ],
+    "mitigations": [
+      "Run constrained paid beta before any BOS pitch.",
+      "Instrument funnel and delivery events before traffic growth.",
+      "Run official-coverage sample and deliverability harness.",
+      "Fix pricing tier integration before beta.",
+      "Prepare legal/compliance review packet."
+    ],
+    "residualRisks": [
+      "Consumers may refuse to pay for civic communication.",
+      "Government domains may classify AI-assisted letters as spam.",
+      "Citation, legal, or lobbying trust issues may kill adoption.",
+      "Official data freshness may be too expensive to maintain."
+    ]
+  },
+  "validationGates": [
+    {
+      "gate": "previewToPaidConversion",
+      "target": ">=3% [evidence: .planning/PROJECT.md]",
+      "status": "unmeasured"
+    },
+    {
+      "gate": "governmentInboxPlacement",
+      "target": ">=85% [evidence: .planning/PROJECT.md]",
+      "status": "unmeasured"
+    },
+    {
+      "gate": "federalStateCoverage",
+      "target": ">=95% [evidence: .planning/PROJECT.md]",
+      "status": "unmeasured"
+    },
+    {
+      "gate": "localCoverage",
+      "target": ">=60% [evidence: .planning/PROJECT.md]",
+      "status": "unmeasured"
+    },
+    {
+      "gate": "chargebackRate",
+      "target": "<0.5% [evidence: .planning/PROJECT.md]",
+      "status": "unmeasured"
+    }
+  ],
+  "roadmapAlignment": {
+    "path": "ROADMAP.md",
+    "nextPhase": "Validation phase, not feature expansion.",
+    "buildableShape": "Seven single-worker tasks trace to BUSINESS.md headings."
+  },
+  "decisions": {
+    "path": "DECISIONS.md",
+    "entry": "2026-06-22 - EIR soul upgrade (wrk.dog)"
+  },
+  "sensitivityFlags": [
+    "Political/civic speech.",
+    "Potential legal-advice confusion.",
+    "AI disclosure and citation integrity.",
+    "Government-recipient deliverability and spam complaints.",
+    "Sensitive personal and political-opinion data."
+  ],
+  "surpriseSpikes": [
+    "Dispatch project is brooks-history but repo application is CivicState.",
+    ".planning/existing-state.md says no app source exists, but the current tree contains a built monorepo.",
+    "MASTER_PLAN.md still references Google Civic API while .planning/PROJECT.md says that endpoint is dead.",
+    "Frontend uses three/all tier keys while API expects three_pack/full_spread."
+  ],
+  "operatorRequiredBeforePitch": [
+    "Confirm project identity and whether this should pitch as a business.",
+    "Approve beta cohort and legal review plan.",
+    "Provide or validate production metrics, if any.",
+    "Rule on whether CivicState remains watchlist or moves toward investible BOS."
+  ]
+}
