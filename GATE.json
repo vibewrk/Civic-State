@@ -1,0 +1,204 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "observedProductName": "CivicState",
+    "identityStatus": "mismatched: dispatch names brooks-history; repo evidence names CivicState",
+    "honesty": "evidence: dispatch metadata and package.json"
+  },
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-brooks-history-business-plan",
+    "honesty": "evidence: newly created root soul file"
+  },
+  "status": "provisional",
+  "shortThesis": "CivicState may sell paid civic-letter completion, but it is watchlist until real demand and delivery work.",
+  "thesis": {
+    "summary": "A transactional workflow for United States residents who will pay for researched, citation-backed letters routed to the right officials.",
+    "currentAsOf": {
+      "value": "2026-06-22",
+      "honesty": "evidence: dispatch current_date"
+    },
+    "caveat": "Registry says personal/research asset; operator must confirm whether to pitch as a business.",
+    "honesty": "assumption: EIR synthesis from repo product and registry note"
+  },
+  "adoption": {
+    "status": "operator-merge-required",
+    "note": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record"
+  },
+  "methods": [
+    {
+      "method": "Workspace-only source review",
+      "sources": ["package.json", "apps/api/src/routes/payments.ts", "apps/api/src/routes/submissions.ts", "apps/api/src/routes/webhooks.ts", "apps/api/src/routes/compliance.ts", "packages/shared/prisma/schema.prisma", "tests/payment.test.ts", ".planning/PROJECT.md", ".planning/GENESIS.md", ".planning/ROADMAP.md", ".planning/existing-state.md"],
+      "honesty": "evidence: files read in workspace"
+    },
+    {
+      "method": "Bottom-up scenario modeling from repo pricing",
+      "honesty": "assumption: no external market research or production analytics available"
+    }
+  ],
+  "decision": {
+    "recommendation": "Continue as validation project, not investible business.",
+    "rationale": "The product surface is buildable, but there is no live demand, revenue, deliverability, citation-quality, or operator-workload evidence.",
+    "honesty": "assumption: EIR judgment based on workspace evidence"
+  },
+  "confidence": {
+    "score": {
+      "value": 0.52,
+      "honesty": "assumption: EIR judgment, not measured probability"
+    },
+    "why": "Implementation evidence is stronger than the old planning audit, but business evidence is absent."
+  },
+  "viability": {
+    "score": {
+      "value": 0.46,
+      "honesty": "assumption: EIR judgment, not a financial rating"
+    },
+    "technical": "Moderate: core app files exist, but compliance route/schema mismatch needs verification.",
+    "market": "Unproven: no production users or revenue evidenced.",
+    "operator": "Unclear: registry asks whether this should pitch as a business."
+  },
+  "customer": {
+    "definition": "United States resident with a specific civic issue, desired outcome, and willingness to pay for research, drafting, and delivery.",
+    "excluded": ["business lobbying buyers", "legal claimants", "regulated filings", "organization API consumers before validation"],
+    "honesty": "assumption: derived from repo submission flow and planning exclusions"
+  },
+  "marketSizing": {
+    "method": "bottom-up paid-submission scenarios",
+    "scenarios": [
+      {
+        "name": "beta proof",
+        "monthlyPaidSubmissions": { "value": 25, "honesty": "assumption: scenario" },
+        "blendedAsp": { "value": "$15", "honesty": "assumption: midpoint of repo pricing tiers" },
+        "monthlyRevenue": { "value": "$375", "honesty": "assumption: 25 x $15" }
+      },
+      {
+        "name": "small business",
+        "monthlyPaidSubmissions": { "value": 400, "honesty": "assumption: scenario" },
+        "blendedAsp": { "value": "$15", "honesty": "assumption: midpoint of repo pricing tiers" },
+        "monthlyRevenue": { "value": "$6,000", "honesty": "assumption: 400 x $15" }
+      },
+      {
+        "name": "national niche",
+        "monthlyPaidSubmissions": { "value": 10000, "honesty": "assumption: scenario" },
+        "blendedAsp": { "value": "$15", "honesty": "assumption: midpoint of repo pricing tiers" },
+        "annualRunRate": { "value": "$1,800,000", "honesty": "assumption: 10000 x $15 x 12 months" }
+      }
+    ],
+    "notTam": "These are diligence ladders, not evidence of addressable market demand."
+  },
+  "revenueModel": {
+    "type": "transactional one-time checkout",
+    "tiers": [
+      { "name": "single", "price": { "value": "$5", "honesty": "evidence: apps/api/src/routes/payments.ts" } },
+      { "name": "three_pack", "price": { "value": "$15", "honesty": "evidence: apps/api/src/routes/payments.ts" } },
+      { "name": "full_spread", "price": { "value": "$25", "honesty": "evidence: apps/api/src/routes/payments.ts" } }
+    ],
+    "marginTargets": [
+      { "value": "40% net margin floor", "honesty": "evidence: .planning/PROJECT.md" },
+      { "value": ">90% tier margin in tests", "honesty": "evidence: tests/payment.test.ts" }
+    ]
+  },
+  "financials": {
+    "currentRevenue": { "value": "$0", "honesty": "evidence: .planning/existing-state.md; no production revenue file found" },
+    "planningFigures": [
+      { "value": "$96 per month backend", "honesty": "evidence: .planning/PROJECT.md planning constraint" },
+      { "value": "$1,500 reserve", "honesty": "evidence: .planning/PROJECT.md planning constraint" },
+      { "value": "$2,000 warning balance", "honesty": "evidence: .planning/PROJECT.md planning constraint" },
+      { "value": "$500 emergency balance", "honesty": "evidence: .planning/PROJECT.md planning constraint" },
+      { "value": "$132.50 per month max burn", "honesty": "evidence: .planning/PROJECT.md planning claim" },
+      { "value": "$340 MRR break-even", "honesty": "evidence: .planning/GENESIS.md planning claim" }
+    ]
+  },
+  "competition": {
+    "named": [
+      { "name": "Resistbot", "basis": "consumer civic-contact substitute named by planning docs", "honesty": "evidence: .planning/PROJECT.md" },
+      { "name": "Quorum", "basis": "enterprise advocacy platform named by planning docs", "honesty": "evidence: .planning/PROJECT.md" },
+      { "name": "VoterVoice", "basis": "enterprise advocacy platform named by planning docs", "honesty": "evidence: .planning/PROJECT.md" },
+      { "name": "manual email workflow", "basis": "direct substitute", "honesty": "assumption: category analysis" },
+      { "name": "general AI drafting tools", "basis": "partial substitute", "honesty": "assumption: category analysis" }
+    ]
+  },
+  "risks": {
+    "holes": [
+      "No live demand or paid conversion evidence.",
+      "No live government deliverability or response evidence.",
+      "No production citation-accuracy measurement.",
+      "Compliance export route appears inconsistent with Prisma schema.",
+      "Registry says personal/research asset rather than near-term investible business."
+    ],
+    "mitigations": [
+      "Run paid concierge beta before adding features.",
+      "Instrument preview-to-checkout, delivery, bounce, reply, and citation-verification metrics.",
+      "Fix compliance export/schema mismatch before launch claims.",
+      "Require operator ruling on business intent before wrk.vc pitch language."
+    ],
+    "residualRisks": [
+      "Users may not pay even if workflow works.",
+      "Providers may restrict civic/political sending or payments.",
+      "Officials may ignore or filter AI-assisted messages.",
+      "Legal-adjacent content may require more human review than the model assumes."
+    ]
+  },
+  "assumptions": [
+    { "claim": "A blended $15 ASP is reachable.", "basis": "midpoint of repo tiers", "honesty": "assumption" },
+    { "claim": "Residents will pay for completed civic-letter workflow.", "basis": "product thesis", "honesty": "assumption" },
+    { "claim": "One operator can manage flagged content during beta.", "basis": "planning thesis", "honesty": "assumption" },
+    { "claim": "SEO can later compound from public campaign pages.", "basis": "planning hypothesis", "honesty": "assumption until pages and traffic exist" }
+  ],
+  "validationPlan": [
+    "Operator resolves identity and business-intent mismatch.",
+    "Run local end-to-end verification against current schema and routes.",
+    "Recruit paid beta users with active civic issues.",
+    "Measure checkout conversion, delivery success, bounce rate, citation verification, official replies, and operator review minutes.",
+    "Update BUSINESS.md with measured facts only after data exists."
+  ],
+  "kpis": [
+    { "name": "paid conversion", "target": { "value": ">=3%", "honesty": "evidence: .planning/PROJECT.md validation target" } },
+    { "name": "government inbox placement", "target": { "value": ">=85%", "honesty": "evidence: .planning/PROJECT.md validation target" } },
+    { "name": "federal/state official coverage", "target": { "value": ">=95%", "honesty": "evidence: .planning/PROJECT.md validation target" } },
+    { "name": "local official coverage", "target": { "value": ">=60%", "honesty": "evidence: .planning/PROJECT.md validation target" } },
+    { "name": "chargeback rate", "target": { "value": "<0.5%", "honesty": "evidence: .planning/PROJECT.md planning constraint" } },
+    { "name": "bounce pause threshold", "target": { "value": ">10%", "honesty": "evidence: .planning/ROADMAP.md success criterion" } }
+  ],
+  "roadmap": {
+    "path": "ROADMAP.md",
+    "nextCriticalPath": [
+      "Reconcile Current Thesis",
+      "Tighten Product Reality",
+      "Validate Customer Definition",
+      "Prove Revenue Model And Unit Economics",
+      "Verify Evidence Sources And Freshness",
+      "Harden Risks And Anti-Plan",
+      "Build Go To Market Evidence"
+    ],
+    "honesty": "evidence: ROADMAP.md"
+  },
+  "sensitivityFlags": [
+    { "flag": "personal/research asset", "honesty": "evidence: dispatch registry note" },
+    { "flag": "civic/political communications", "honesty": "evidence: repo product scope" },
+    { "flag": "sensitive resident issue data", "honesty": "evidence: Prisma schema and planning privacy constraints" },
+    { "flag": "legal-adjacent citation claims", "honesty": "evidence: repo product scope and citation verifier files" }
+  ],
+  "freshness": {
+    "soulUpgradeDate": { "value": "2026-06-22", "honesty": "evidence: dispatch current_date" },
+    "planningDocsDate": { "value": "2026-04-25", "honesty": "evidence: .planning/PROJECT.md and .planning/GENESIS.md" },
+    "staleNote": "Older planning audit says no app source existed; current repo contains app source.",
+    "honesty": "evidence: .planning/existing-state.md and current tree"
+  },
+  "sourceLinks": [
+    { "path": "BUSINESS.md", "role": "seed soul" },
+    { "path": "ROADMAP.md", "role": "buildable next path" },
+    { "path": "DECISIONS.md", "role": "decision log" },
+    { "path": "package.json", "role": "repo identity" },
+    { "path": "apps/api/src/routes/payments.ts", "role": "pricing evidence" },
+    { "path": "packages/shared/prisma/schema.prisma", "role": "data model evidence" },
+    { "path": ".planning/PROJECT.md", "role": "legacy planning and validation target evidence" }
+  ],
+  "authority": {
+    "current": "provisional",
+    "operatorMergeRequired": true,
+    "doNotClaimAdopted": true
+  }
+}
