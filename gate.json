@@ -1,0 +1,266 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "project": {
+    "id": "brooks-history",
+    "repo": "RPLogic-Inc/brookss-history",
+    "currentProductName": "CivicState",
+    "seed": {
+      "path": "BUSINESS.md",
+      "type": "business-plan"
+    }
+  },
+  "status": "provisional",
+  "dossierSnapshot": "CivicState has real app code but remains Watchlist until paid demand and deliverability are proven.",
+  "adoption": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record",
+  "asOf": "2026-06-22",
+  "lastUpdated": "2026-06-22",
+  "authority": {
+    "level": "provisional",
+    "reason": "Only operator merge upgrades authority; this worker cannot claim adopted status."
+  },
+  "sourcesAndMethods": {
+    "mode": "workspace-only, no network",
+    "sources": [
+      ".planning/PROJECT.md",
+      ".planning/GENESIS.md",
+      ".planning/REQUIREMENTS.md",
+      ".planning/ROADMAP.md",
+      ".planning/STATE.md",
+      ".planning/existing-state.md",
+      "MASTER_PLAN.md",
+      "package.json",
+      "apps/api/src/index.ts",
+      "apps/api/src/routes/submissions.ts",
+      "apps/worker/src/agents/researcher.ts",
+      "packages/shared/prisma/schema.prisma",
+      "tests/*.test.ts",
+      "worker dispatch registry note"
+    ],
+    "methods": [
+      "Read existing planning and implementation files.",
+      "Separated repo-supported evidence from unsupported external market assumptions.",
+      "Modeled financial scenarios from repo pricing tiers and stated cost assumptions.",
+      "Preserved contradictory source signals in Surprise Spikes rather than smoothing them."
+    ]
+  },
+  "honestyLabels": {
+    "required": true,
+    "evidenceDefinition": "A claim directly supported by repository, planning, code, tests, or dispatch text.",
+    "assumptionDefinition": "A claim inferred from model reasoning, external category knowledge, or arithmetic using repo inputs.",
+    "externalClaims": "All external market claims are marked as assumptions because network research was unavailable."
+  },
+  "thesis": {
+    "current": "CivicState can become a paid civic-action workflow if users pay for researched, citation-backed letters and officials reliably receive them.",
+    "status": "unvalidated",
+    "evidence": [
+      ".planning/PROJECT.md",
+      ".planning/GENESIS.md",
+      ".planning/REQUIREMENTS.md",
+      "apps/api/src",
+      "apps/worker/src"
+    ]
+  },
+  "productReality": {
+    "real": [
+      "Monorepo application structure exists.",
+      "Express API routes exist.",
+      "Next.js landing page exists.",
+      "Prisma schema covers users, submissions, campaigns, letters, officials, payments, deliveries, ledger, audit, agent logs, and jobs.",
+      "Worker agents for classifier, researcher, drafter, delivery, treasury, and reconciliation exist.",
+      "Tests exist for multiple product surfaces."
+    ],
+    "notProven": [
+      "Production traffic",
+      "Live revenue",
+      "Real official deliverability",
+      "Real customer conversion",
+      "Legal/compliance review",
+      "Operator intent to pitch as a business"
+    ]
+  },
+  "marketSizing": {
+    "method": "bottom-up scenario model from repo price tiers because no network research was available",
+    "beachhead": {
+      "paidSubmissionsPerMonth": 1000,
+      "blendedPriceUsd": 15,
+      "monthlyRevenueUsd": 15000,
+      "annualRevenueUsd": 180000,
+      "honesty": "assumption: arithmetic from repo tiers; demand not validated"
+    },
+    "singleDropletCeiling": {
+      "paidSubmissionsPerMonth": 5000,
+      "blendedPriceUsd": 15,
+      "monthlyRevenueUsd": 75000,
+      "annualRevenueUsd": 900000,
+      "honesty": "assumption: arithmetic from repo tiers; 5000/mo capacity referenced in MASTER_PLAN.md"
+    },
+    "tamProxy": {
+      "adultPopulationProxy": 100000000,
+      "annualPurchaseRate": "0.1%",
+      "packagePriceUsd": 15,
+      "annualRevenueUsd": 1500000,
+      "honesty": "assumption: external population/incidence proxy, not network-verified"
+    }
+  },
+  "revenueModel": {
+    "type": "transactional paid letter packages",
+    "priceTiersUsd": [5, 15, 25],
+    "marginFloorPercent": 40,
+    "variableCostRangeUsd": [0.35, 0.75],
+    "reserveUsd": 1500,
+    "warningBalanceUsd": 2000,
+    "emergencyBalanceUsd": 500,
+    "sources": [
+      ".planning/PROJECT.md",
+      ".planning/GENESIS.md",
+      ".planning/REQUIREMENTS.md"
+    ]
+  },
+  "customers": {
+    "primary": "United States resident with a concrete civic issue who wants help researching, drafting, and routing official communications.",
+    "future": "HOAs, nonprofits, and civic organizations after consumer validation.",
+    "excluded": "Legal-advice seekers, claim filers, regulatory submitters, harassment/threat actors, and bulk-abuse campaigns."
+  },
+  "competition": [
+    {
+      "name": "Resistbot",
+      "threat": "low-friction civic messaging",
+      "response": "differentiate on researched citations and delivery tracking",
+      "honesty": "assumption: category role not network-verified; name appears in repo planning"
+    },
+    {
+      "name": "Change.org",
+      "threat": "petition brand and distribution",
+      "response": "focus on direct official letters rather than petitions",
+      "honesty": "assumption: category role not network-verified; name appears in repo planning"
+    },
+    {
+      "name": "Quorum / VoterVoice",
+      "threat": "enterprise advocacy platforms",
+      "response": "avoid enterprise until consumer workflow is validated",
+      "honesty": "evidence: named in .planning/PROJECT.md"
+    },
+    {
+      "name": "LegalZoom",
+      "threat": "paid consumer document trust",
+      "response": "avoid legal advice and stay in constituent communication",
+      "honesty": "evidence: named in MASTER_PLAN.md"
+    },
+    {
+      "name": "Manual outreach",
+      "threat": "free and authentic",
+      "response": "win only where research and routing pain is high",
+      "honesty": "assumption: obvious substitute"
+    }
+  ],
+  "risksAntiplan": {
+    "skepticView": "Do not fund this as a venture-scale company until paid demand, official deliverability, and legal/compliance boundaries are proven.",
+    "killConditions": [
+      "Paid conversion below 3% by validation review.",
+      "Government inbox placement below 85%.",
+      "Local official coverage below 60%.",
+      "Chargeback rate above 0.5%.",
+      "Moderation queue routinely older than 24 hours.",
+      "Operator confirms this should remain a personal/research asset."
+    ],
+    "holesMitigationsResidualRisks": [
+      {
+        "hole": "No validated paid demand.",
+        "mitigation": "Run concierge beta with real payments.",
+        "residualRisk": "Users may like previews but refuse to pay."
+      },
+      {
+        "hole": "Government email deliverability may fail.",
+        "mitigation": "Warm domain, monitor bounces, track inbox placement, and pause risky domains.",
+        "residualRisk": "Officials may suppress generated mail regardless of technical setup."
+      },
+      {
+        "hole": "Official data coverage may be incomplete.",
+        "mitigation": "Measure federal, state, and local lookup success by ZIP and provider.",
+        "residualRisk": "Local data may require expensive or restricted providers."
+      },
+      {
+        "hole": "Legal and abuse boundaries are sensitive.",
+        "mitigation": "Human audit, legal review, moderation, opt-outs, disclaimers, and retention policies.",
+        "residualRisk": "One bad generated letter can create reputational or legal exposure."
+      }
+    ]
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "Users will pay $5-$25 for civic-letter packages.",
+      "basis": "Existing repo thesis and pricing.",
+      "validation": "Real-payment beta."
+    },
+    {
+      "assumption": "Email-only delivery is sufficient at launch.",
+      "basis": "Existing scope choice.",
+      "validation": "Delivery and reply metrics."
+    },
+    {
+      "assumption": "SEO can become a repeatable acquisition channel.",
+      "basis": "Existing Genesis GTM hypothesis.",
+      "validation": "Indexed public campaign pages and search traffic."
+    },
+    {
+      "assumption": "One operator can handle exceptions.",
+      "basis": "Existing operating constraint.",
+      "validation": "Queue age and support minutes per job."
+    }
+  ],
+  "goToMarket": {
+    "initial": "Concierge paid beta before SEO scale.",
+    "repoHypothesis": "Organic search from opt-in public campaign pages; social sharing secondary; no paid ads at launch.",
+    "nextEvidence": [
+      "Conversion funnel",
+      "Customer interviews",
+      "Paid beta results",
+      "Public page indexing data"
+    ]
+  },
+  "roadmap": {
+    "path": "ROADMAP.md",
+    "shape": "validation queue with 8 single-worker checkbox items",
+    "priority": "prove demand, delivery, coverage, citation quality, and legal/compliance readiness"
+  },
+  "decisions": {
+    "path": "DECISIONS.md",
+    "entryDate": "2026-06-22",
+    "entryTitle": "EIR soul upgrade (wrk.dog)"
+  },
+  "freshness": {
+    "docDatesPresent": true,
+    "staleSignals": [
+      ".planning/ROADMAP.md completion status conflicts with .planning/STATE.md and .planning/REQUIREMENTS.md",
+      ".planning/existing-state.md predates current application code"
+    ],
+    "reviewBy": "2026-09-30"
+  },
+  "scrutinyGapsAddressed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "operatorQuestions": [
+    "Should this asset pitch as a business or remain personal/research?",
+    "What production evidence exists outside the repo?",
+    "Who is accountable for legal/compliance review before real delivery?"
+  ]
+}
