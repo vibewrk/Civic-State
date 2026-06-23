@@ -1,0 +1,215 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "one_liner": "Watchlist civic-letter workflow; prove identity, demand, local coverage, and delivery before pitching.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "projectId": "brooks-history",
+    "repoObservedProduct": "CivicState [evidence: package.json; .planning/PROJECT.md]",
+    "createdAsOf": "2026-06-23 [evidence: dispatch current_date]"
+  },
+  "status": "needs-revision",
+  "directive": "Upgrade the project soul to VC-grade diligence while preserving workspace truth and marking all external claims as assumptions.",
+  "authority": {
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record",
+    "currentAuthority": "draft only; operator merge required [evidence: dispatch brief]",
+    "statusRationale": "Registry marks the asset watchlist/personal research and not near-term investible BOS [evidence: dispatch registry notes]."
+  },
+  "research": {
+    "mode": "workspace-only; no network",
+    "sources": [
+      "BUSINESS.md [evidence: generated root soul artifact]",
+      "ROADMAP.md [evidence: generated root soul artifact]",
+      "package.json [evidence: repo product name and scripts]",
+      ".planning/PROJECT.md [evidence: existing project context]",
+      ".planning/GENESIS.md [evidence: existing assumptions and distribution hypothesis]",
+      ".planning/ROADMAP.md [evidence: existing roadmap]",
+      ".planning/REQUIREMENTS.md [evidence: requirement status]",
+      ".planning/existing-state.md [evidence: stale-state contradiction]",
+      "MASTER_PLAN.md [evidence: planning economics and architecture]",
+      "apps/api/src/routes/payments.ts [evidence: implemented pricing]",
+      "apps/api/src/routes/webhooks.ts [evidence: payment-to-delivery flow]",
+      "apps/api/src/lib/officials/cicero.ts [evidence: local-official stub]",
+      "apps/worker/src/lib/legal/citation-verifier.ts [evidence: citation verification]",
+      "apps/worker/src/agents/delivery.ts [evidence: delivery controls]",
+      "tests/payment.test.ts [evidence: pricing tests]",
+      "tests/citation-verifier.test.ts [evidence: citation verifier tests]"
+    ],
+    "methods": [
+      "Read existing planning corpus and code paths.",
+      "Separated repo-observed implementation from planned or external market claims.",
+      "Built bottom-up sizing from current pricing tiers and campaign-count assumptions.",
+      "Tagged repo facts as evidence and external claims as assumptions."
+    ],
+    "freshness": "Reviewed on 2026-06-23 [evidence: dispatch current_date]; no external freshness check because network was unavailable."
+  },
+  "planningMethod": {
+    "marketSizing": "Bottom-up from campaign count x average price; no top-down market claim.",
+    "financialModel": "Revenue build reconciles campaigns/month x price x months to annual revenue.",
+    "riskReview": "Anti-plan written from a skeptical partner view: identity mismatch, tiny market, local data stub, compliance, deliverability, weak moat."
+  },
+  "customer": {
+    "primary": "US residents with specific civic concerns who want researched constituent letters [evidence: .planning/PROJECT.md].",
+    "excluded": "Legal advice, claim filing, regulatory filings, harassment, bulk spam, lobbying-firm workflows [evidence: .planning/PROJECT.md; MASTER_PLAN.md].",
+    "validationNeeded": "No workspace evidence of paid users or traffic as of 2026-06-23 [evidence: current repo state]."
+  },
+  "market": {
+    "som": "100 paid campaigns/month x $15 x 12 months = $18,000 annual [assumption: conservative beachhead using current midpoint price].",
+    "sam": "10,000 paid campaigns/year x $15 = $150,000 annual [assumption: SEO-reachable niche unvalidated].",
+    "tam": "100,000 paid campaigns/year x $15 = $1,500,000 annual [assumption: bounded research TAM, not total civic-tech spend].",
+    "keyGates": [
+      "3% preview-to-paid conversion [evidence: .planning/PROJECT.md]",
+      "85% government inbox placement [evidence: .planning/PROJECT.md]",
+      "95% federal/state coverage and 60% local coverage [evidence: .planning/PROJECT.md]"
+    ]
+  },
+  "businessModel": {
+    "pricing": [
+      "$5 single official [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three-pack [evidence: apps/api/src/routes/payments.ts]",
+      "$25 full spread [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "revenueStreams": [
+      "One-time consumer campaign payments [evidence: apps/api/src/routes/payments.ts]",
+      "Future organization API [evidence: .planning/PROJECT.md, deferred]",
+      "Future certified mail/fax add-ons [evidence: .planning/REQUIREMENTS.md, deferred]"
+    ],
+    "unitEconomics": "$1.20 COGS on a $15 package and 92% gross margin are planning estimates, not observed performance [evidence: MASTER_PLAN.md section 19.1]."
+  },
+  "financialModel": {
+    "revenueAssumptions": [
+      "Validation year: 50 campaigns/month x $15 x 12 months = $9,000 [assumption: beta revenue build].",
+      "Early SEO year: 150 campaigns/month x $16 x 12 months = $28,800 [assumption: unvalidated SEO lift].",
+      "Operating year: 400 campaigns/month x $18 x 12 months = $86,400 [assumption: modeled scale case]."
+    ],
+    "costAssumptions": [
+      "Variable cost plus processor fees modeled at 12% of revenue [assumption: combines MASTER_PLAN.md 8% variable COGS and 4% Stripe fee planning estimates].",
+      "Fixed platform cost starts at $200/month [evidence: MASTER_PLAN.md section 19.3].",
+      "Operator cost added at $30,000 in operating year [assumption: part-time review/support model]."
+    ],
+    "sensitivityTests": [
+      "If conversion is 1% instead of 3%, pause business pitch [assumption: demand downside].",
+      "If deliverability is below 85%, pause paid sending [evidence: .planning/PROJECT.md].",
+      "If local coverage remains 0 from the Cicero stub, constrain launch scope [evidence: apps/api/src/lib/officials/cicero.ts]."
+    ]
+  },
+  "alternatives": [
+    "Manual Google search plus email [evidence: .planning/GENESIS.md describes replaced steps].",
+    "Resistbot [assumption: model-memory competitor characterization, no network verification].",
+    "Quorum and VoterVoice [assumption: model-memory enterprise alternatives, no network verification].",
+    "Legal services for legal-adjacent needs [assumption: substitute category; no network verification]."
+  ],
+  "antiPlan": {
+    "holes": [
+      "Identity mismatch between dispatch project `brooks-history` and repo product CivicState [evidence: dispatch project id; package.json].",
+      "Local officials are not implemented; Cicero returns empty arrays without future integration [evidence: apps/api/src/lib/officials/cicero.ts].",
+      "No workspace proof of paid demand, live revenue, or production deliverability [evidence: current repo state].",
+      "Moat is volume-dependent and weak before meaningful campaigns [evidence: .planning/GENESIS.md]."
+    ],
+    "mitigations": [
+      "Get operator ruling before wrk.vc pitch.",
+      "Run controlled paid beta before SEO scale.",
+      "Replace or scope around local-official provider gap.",
+      "Keep all external market claims as assumptions until network research is allowed."
+    ],
+    "residualRisks": [
+      "Consumer willingness to pay may be too low.",
+      "Compliance or platform enforcement may interrupt payments or delivery.",
+      "Competitors or substitutes can copy the low-volume workflow."
+    ]
+  },
+  "strategy": {
+    "posture": "Watchlist research asset until validation gates clear [evidence: dispatch registry notes].",
+    "wedge": "One metro, narrow issue categories, manual cohort recruitment [assumption: launch containment].",
+    "moatPath": "Operational quality plus accumulated official/citation/response data after volume [evidence: .planning/GENESIS.md]."
+  },
+  "goToMarket": {
+    "firstCustomers": "First 25 paid campaigns from manual local recruitment [assumption: controlled beta].",
+    "firstScale": "First 100 campaigns from opt-in public pages and issue-specific content [assumption: SEO/social hypothesis from .planning/GENESIS.md].",
+    "channels": [
+      "Manual local outreach [assumption: no channel evidence]",
+      "Opt-in public campaign SEO [evidence: .planning/GENESIS.md]",
+      "Social sharing from campaign pages [evidence: .planning/GENESIS.md]"
+    ]
+  },
+  "operatorWorkflow": {
+    "routine": "Exception-based review of flagged submissions, delivery failures, bounced officials, and treasury alerts [evidence: .planning/PROJECT.md; apps/api/src/routes/admin.ts].",
+    "limits": "No around-the-clock staffing [evidence: .planning/PROJECT.md].",
+    "requiredRulings": [
+      "Confirm project identity.",
+      "Confirm whether to pitch as a business.",
+      "Confirm WrkPlug migration posture."
+    ]
+  },
+  "constraints": [
+    "Workspace-only research; no external verification [evidence: dispatch brief].",
+    "Registry watchlist/personal research sensitivity [evidence: dispatch registry notes].",
+    "No legal/regulatory conclusions invented [evidence: dispatch brief].",
+    "Current implementation uses Clerk and Stripe directly, creating WrkPlug posture conflict [evidence: apps/api/src/middleware/auth.ts; apps/api/src/routes/payments.ts]."
+  ],
+  "metrics": [
+    "Preview-to-paid conversion >= 3% [evidence: .planning/PROJECT.md].",
+    "Inbox placement >= 85% [evidence: .planning/PROJECT.md].",
+    "Federal/state coverage >= 95% and local coverage >= 60% [evidence: .planning/PROJECT.md].",
+    "Zero sent letters with fabricated citations [assumption: quality gate].",
+    "Spam complaint and opt-out events tracked per delivery [evidence: apps/api/src/routes/webhooks.ts; apps/worker/src/agents/delivery.ts]."
+  ],
+  "aiWorkGovernance": {
+    "rules": [
+      "AI disclosure in letters [evidence: .planning/REQUIREMENTS.md].",
+      "Citation verification before use [evidence: apps/worker/src/lib/legal/citation-verifier.ts].",
+      "Moderation blocks threats and flags risky claims [evidence: apps/api/src/lib/moderation.ts].",
+      "Agent actions and token usage logged [evidence: apps/worker/src/lib/logger.ts; .planning/REQUIREMENTS.md]."
+    ]
+  },
+  "unknowns": [
+    "Whether `brooks-history` is a registry error or intended wrapper for CivicState.",
+    "Whether users will pay after preview.",
+    "Whether local official data can be covered economically.",
+    "Whether government inbox delivery is reliable.",
+    "Whether WrkPlug shared rails must replace Clerk and Stripe."
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Beachhead reaches $18,000 annual revenue.",
+      "basis": "100 paid campaigns/month x $15 x 12 months.",
+      "classification": "assumption",
+      "test": "Run first metro paid beta."
+    },
+    {
+      "claim": "Unit economics are strong.",
+      "basis": "MASTER_PLAN.md planning estimate of $1.20 COGS and 92% gross margin.",
+      "classification": "repo-evidenced plan, not observed evidence",
+      "test": "Compare live ledger to model."
+    },
+    {
+      "claim": "Citation verification prevents fabricated citations.",
+      "basis": "Verifier code and tests.",
+      "classification": "evidence for implementation, assumption for production quality",
+      "test": "Manual audit beta letters."
+    },
+    {
+      "claim": "SEO can acquire users.",
+      "basis": ".planning/GENESIS.md distribution hypothesis.",
+      "classification": "assumption",
+      "test": "Measure impressions and paid conversion from opt-in pages."
+    },
+    {
+      "claim": "WrkPlug rails improve cost/moat.",
+      "basis": "dispatch-required platform posture.",
+      "classification": "assumption",
+      "test": "Operator platform decision and adapter estimate."
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-23 [evidence: dispatch current_date]",
+      "change": "Created VC-grade soul upgrade and gate artifact.",
+      "author": "wrk.dog EIR worker"
+    }
+  ],
+  "roadmapGate": {
+    "next": "needs-revision",
+    "approvedForRoadmap": false,
+    "reason": "Operator identity ruling and validation gates are still open."
+  }
+}
