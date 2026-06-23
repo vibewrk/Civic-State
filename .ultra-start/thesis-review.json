@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "ultra-start.business-plan.v2",
+  "one_liner": "CivicState has prototype depth but remains a research asset until paid conversion, coverage, and deliverability are proven.",
+  "project": "brooks-history",
+  "reviewedAt": "2026-06-23",
+  "reviewedAtLabel": "evidence: current worker date",
+  "status": "needs-revision",
+  "thesis": {
+    "current": "CivicState can become a lean transactional civic-tech product if it proves 3% preview-to-paid conversion [evidence: .planning/PROJECT.md], 85% .gov inbox placement [evidence: .planning/PROJECT.md], and 60% local-official coverage [evidence: .planning/PROJECT.md].",
+    "honestyLabel": "mixed: gates from repo evidence; market and conversion outcomes are assumptions"
+  },
+  "evidence": [
+    "BUSINESS.md",
+    "ROADMAP.md",
+    "DECISIONS.md",
+    ".planning/PROJECT.md",
+    ".planning/GENESIS.md",
+    "MASTER_PLAN.md",
+    "apps/",
+    "packages/shared/prisma/schema.prisma",
+    "tests/",
+    "dispatch registry note"
+  ],
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "openValidation": [
+    "willingness to pay",
+    "official inbox placement",
+    "local official coverage",
+    "operator moderation load",
+    "WrkPlug migration decision"
+  ],
+  "authority": "draft; operator merge required"
+}
