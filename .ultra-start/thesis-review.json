@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "wrk.thesis-review.v1",
+  "status": "needs-revision",
+  "one_liner": "Built CivicState civic-letter app; investibility waits on demand, delivery, citations, and operator ruling.",
+  "projectId": "brooks-history",
+  "currentAsOf": "2026-06-23 [evidence: runner current date]",
+  "thesis": "CivicState can monetize abandoned civic intent if residents pay $5-$25 for research, verified citations, drafting, routing, and delivery [assumption: demand unvalidated; pricing evidenced in apps/api/src/routes/payments.ts].",
+  "decision": "Do not mark roadmap-adopted; keep operator-gated until paid demand, deliverability, citation quality, and registry identity are validated.",
+  "evidence": [
+    "package.json names CivicState and describes civic advocacy [evidence].",
+    "apps/api/src/routes/payments.ts implements $5, $15, and $25 pricing [evidence].",
+    "apps/api/src/routes/submissions.ts implements moderation and queueing [evidence].",
+    "apps/worker/src/agents/researcher.ts implements citation-limited research and verification [evidence].",
+    "dispatch registry note says watchlist and personal/research asset unless operator confirms business framing [evidence]."
+  ],
+  "criticalGates": [
+    "Operator business ruling by 2026-06-30 [assumption: governance target].",
+    "At least 3% qualified preview-to-paid conversion [evidence: .planning/PROJECT.md].",
+    "At least 85% .gov inbox placement [evidence: .planning/PROJECT.md].",
+    "0 critical citation defects in reviewed beta letters [assumption: quality bar].",
+    "Chargebacks below 0.5% [evidence: .planning/PROJECT.md]."
+  ],
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "surpriseSpikes": [
+    "Dispatch says brooks-history, while code and planning say CivicState [evidence].",
+    ".planning/existing-state.md says zero application code, contradicted by current source tree [evidence].",
+    ".planning/ROADMAP.md and .planning/STATE.md disagree on phase progress [evidence]."
+  ]
+}

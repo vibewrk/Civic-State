@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "civicstate-brooks-history-business-plan"
+  },
+  "status": "needs-revision",
+  "directive": "Use BUSINESS.md as the draft EIR soul, but do not treat the project as roadmap-adopted until operator merge and validation gates clear.",
+  "one_liner": "Built CivicState civic-letter app; investibility waits on demand, delivery, citations, and operator ruling.",
+  "authority": {
+    "state": "operator-gated",
+    "adoption": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12 [evidence: dispatch instruction]; see the PR's POM record",
+    "operatorMergeRequired": true,
+    "notApprovedForRoadmap": true
+  },
+  "research": {
+    "mode": "workspace-only; no network",
+    "methods": [
+      "Read planning docs, package metadata, Prisma schema, API routes, worker agents, app page, and dispatch registry note.",
+      "Inspected existing gate paths before creating this native wrk business-plan gate.",
+      "Tagged external market and competitor claims as assumptions."
+    ],
+    "sources": [
+      "package.json [evidence]",
+      ".planning/PROJECT.md [evidence: stated plan]",
+      ".planning/GENESIS.md [evidence: stated plan]",
+      ".planning/ROADMAP.md [evidence: stated plan]",
+      ".planning/REQUIREMENTS.md [evidence: stated plan]",
+      ".planning/STATE.md [evidence: stale status]",
+      ".planning/existing-state.md [evidence: stale status]",
+      "packages/shared/prisma/schema.prisma [evidence]",
+      "apps/api/src/routes/submissions.ts [evidence]",
+      "apps/api/src/routes/payments.ts [evidence]",
+      "apps/worker/src/agents/researcher.ts [evidence]",
+      "apps/web/app/page.tsx [evidence]",
+      "dispatch registry note [evidence]"
+    ],
+    "limitations": [
+      "No production analytics, Stripe exports, Postmark deliverability reports, user interviews, or legal review artifacts were found.",
+      "Factory or prior AI planning output is repo evidence of intent/build history, not external market proof.",
+      "Competitor and market details require network refresh before investor-facing use."
+    ]
+  },
+  "planningMethod": {
+    "type": "bottom-up wedge plus validation gates",
+    "currentAsOf": "2026-06-23 [evidence: runner current date]",
+    "sourcePlanDate": "2026-04-25 [evidence: .planning/PROJECT.md and .planning/GENESIS.md]",
+    "honestyRule": "Every quantitative claim in BUSINESS.md is labeled [evidence] or [assumption: basis]."
+  },
+  "customer": {
+    "primary": "United States resident with a concrete civic issue who would contact government if research, official targeting, drafting, and delivery were handled [evidence: .planning/GENESIS.md].",
+    "excluded": "Legal claimants, regulatory filers, business-entity advocacy buyers, bulk campaign operators, harassment targets, and users trying to send threats or defamatory allegations [evidence: MASTER_PLAN.md and moderation/compliance design].",
+    "unproven": "Willingness to pay $5-$25 is unvalidated [assumption: no customer artifact found]."
+  },
+  "market": {
+    "method": "Bottom-up wedge model, not sourced TAM.",
+    "localWedge": "240 annual paid submissions and $3,360 annual gross revenue [assumption: 10 niches times 100 monthly visitors times 2.0% conversion times 12 months times $14 AOV].",
+    "regionalWedge": "3,000 annual paid submissions and $42,000 annual gross revenue [assumption: 50 niches times 250 monthly visitors times 2.0% conversion times 12 months times $14 AOV].",
+    "matureNiche": "24,000 annual paid submissions and $336,000 annual gross revenue [assumption: 200 niches times 500 monthly visitors times 2.0% conversion times 12 months times $14 AOV].",
+    "vcRead": "Useful if validated, not yet a venture-scale case by itself [assumption: funding-fit judgment]."
+  },
+  "businessModel": {
+    "active": "One-time paid letter-delivery packages [evidence: apps/api/src/routes/payments.ts].",
+    "pricing": [
+      "$5 single-official package [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three-official package [evidence: apps/api/src/routes/payments.ts]",
+      "$25 all-matched-official package [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "deferred": "Subscriptions, organization API access, certified mail, follow-up letters, and coalition pages [evidence: .planning/GENESIS.md and MASTER_PLAN.md].",
+    "marginPolicy": "Underwrite 70% gross margin until live costs are measured [assumption: risk-adjusted policy]; prior plan claims 91% gross margin [evidence: .planning/PROJECT.md as prior-plan claim]."
+  },
+  "financialModel": {
+    "currency": "USD",
+    "revenueAssumptions": [
+      "$14 blended AOV [assumption: weighted tier mix].",
+      "2.0% paid conversion [assumption: wedge model].",
+      "24,000 annual submissions in mature wedge [assumption: market-sizing model]."
+    ],
+    "costAssumptions": [
+      "$2 variable cost per submission [assumption: token, email, queue, and review allowance].",
+      "$132.50 monthly fixed burn [evidence: .planning/PROJECT.md].",
+      "$120,000 Year 3 review/support/legal capacity [assumption: scaled operations]."
+    ],
+    "sensitivityTests": [
+      "Paid conversion below 1.0% breaks the SEO wedge [assumption: sensitivity test].",
+      "Variable cost above $3 per submission compresses margin [assumption: sensitivity test].",
+      "Human review above 30 minutes per day violates the operator model [evidence: .planning/PROJECT.md operator constraint]."
+    ],
+    "pnlSketch": [
+      {
+        "period": "Year 1 [assumption: P&L period]",
+        "paidSubmissions": "1,200 [assumption]",
+        "revenue": "$16,800 [assumption: 1,200 times $14]",
+        "operatingContribution": "$6,810 [assumption: revenue less costs]"
+      },
+      {
+        "period": "Year 2 [assumption: P&L period]",
+        "paidSubmissions": "8,000 [assumption]",
+        "revenue": "$112,000 [assumption: 8,000 times $14]",
+        "operatingContribution": "$56,400 [assumption: revenue less costs]"
+      },
+      {
+        "period": "Year 3 [assumption: P&L period]",
+        "paidSubmissions": "24,000 [assumption]",
+        "revenue": "$336,000 [assumption: 24,000 times $14]",
+        "operatingContribution": "$158,400 [assumption: revenue less costs]"
+      },
+      {
+        "period": "Downside",
+        "paidSubmissions": "240 [assumption]",
+        "revenue": "$3,360 [assumption: 240 times $14]",
+        "operatingContribution": "-$1,950 [assumption: revenue less costs]"
+      }
+    ]
+  },
+  "alternatives": [
+    "Resistbot [assumption: category knowledge, no live lookup]",
+    "Change.org [assumption: category knowledge, no live lookup]",
+    "Quorum [assumption: category knowledge, no live lookup]",
+    "VoterVoice / FiscalNote advocacy tools [assumption: category knowledge, no live lookup]",
+    "Manual email and phone calls [assumption: substitute behavior]",
+    "Attorneys or legal aid for legal matters [assumption: substitute category]"
+  ],
+  "antiPlan": {
+    "holes": [
+      "Demand may be too weak because manual outreach is free [assumption: demand risk].",
+      "Government email deliverability may fail [assumption: delivery risk].",
+      "Citation defects could create user harm or reputational damage [assumption: compliance risk].",
+      "Registry identity mismatch could make the asset unpitchable until resolved [evidence: dispatch versus source tree]."
+    ],
+    "mitigations": [
+      "Closed beta with paid checkout before public launch [assumption].",
+      "Human review of every beta letter before delivery [assumption].",
+      "Require operator ruling on CivicState versus Brooks History framing [assumption].",
+      "Refresh market and competitor evidence with network sources before investor publication [assumption]."
+    ],
+    "residualRisks": [
+      "Even validated beta demand may not imply repeatable acquisition [assumption].",
+      "Legal/compliance boundaries may require counsel and higher operating cost [assumption].",
+      "A small validated niche may still be non-venture-scale [assumption]."
+    ]
+  },
+  "strategy": {
+    "nearTerm": "Validate business identity, paid demand, deliverability, citation quality, and operator load before adding features.",
+    "platformPosture": "WrkPlug client posture is draft/operator-gated [assumption: WrkPlug Phase 0 not yet signed].",
+    "moat": "Officials directory, bounce/response history, verified citation library, and opt-in campaign archive are hypotheses until volume exists [evidence: .planning/GENESIS.md as hypothesis]."
+  },
+  "goToMarket": {
+    "first100": "30 testers plus 20 paid submissions in closed beta, then 80 additional customers across 3 issue categories [assumption: GTM design].",
+    "channels": [
+      "Local civic groups [assumption]",
+      "City forums [assumption]",
+      "Personal networks [assumption]",
+      "SEO only after successful beta and legal/privacy review [assumption]"
+    ],
+    "gates": [
+      "At least 3% qualified preview-to-paid conversion [evidence: .planning/PROJECT.md].",
+      "At least 85% .gov inbox placement [evidence: .planning/PROJECT.md].",
+      "0 critical citation defects in reviewed beta letters [assumption: quality bar]."
+    ]
+  },
+  "operatorWorkflow": {
+    "routineTarget": "Below 30 minutes per day [evidence: .planning/PROJECT.md].",
+    "betaMode": "Human review every beta letter before delivery [assumption: safety workflow].",
+    "escalations": "Threats, defamation risk, citation failure, deliverability failure, refunds, and official opt-out requests [evidence: moderation/compliance design]."
+  },
+  "constraints": {
+    "registry": "Watchlist; personal/research asset; not near-term investible BOS unless operator confirms business framing [evidence: dispatch registry note].",
+    "legal": "No legal advice, legal representation, claim filing, or regulatory submissions [evidence: .planning/PROJECT.md and .planning/REQUIREMENTS.md].",
+    "data": "Political opinion and issue text are sensitive; Prisma schema marks key fields as encrypted at app level [evidence: packages/shared/prisma/schema.prisma].",
+    "workspace": "No network research used [evidence: dispatch instruction]."
+  },
+  "metrics": {
+    "conversion": "At least 3% qualified preview-to-paid conversion [evidence: .planning/PROJECT.md].",
+    "deliverability": "At least 85% .gov inbox placement [evidence: .planning/PROJECT.md].",
+    "coverageFederalState": "At least 95% federal/state official coverage [evidence: .planning/PROJECT.md].",
+    "coverageLocal": "At least 60% local official coverage [evidence: .planning/PROJECT.md].",
+    "chargebacks": "Below 0.5% chargeback rate [evidence: .planning/PROJECT.md].",
+    "citationQuality": "0 critical defects in reviewed beta letters [assumption: quality bar]."
+  },
+  "aiWorkGovernance": {
+    "policy": "AI output is never market evidence; it is only repo evidence when present as source/planning text [evidence: dispatch instruction].",
+    "citationControl": "Researcher may only cite provided search results and verifies citations before downstream drafting [evidence: apps/worker/src/agents/researcher.ts].",
+    "disclosure": "Letters include AI disclosure according to planning requirements [evidence: .planning/REQUIREMENTS.md]."
+  },
+  "unknowns": [
+    "Operator business ruling [evidence: registry note requires confirmation].",
+    "Paid demand [assumption: no customer artifact found].",
+    "Live deliverability [assumption: no Postmark artifact found].",
+    "Official coverage benchmark [assumption: no benchmark artifact found].",
+    "External market and competitor research [assumption: workspace-only limitation]."
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Users will pay $5-$25 for one-off civic-letter help.",
+      "basis": "Implemented pricing and prior plan [evidence: payment route and planning docs].",
+      "evidenceOrAssumption": "Demand is [assumption: unvalidated].",
+      "test": "At least 3% qualified preview-to-paid conversion [evidence: prior validation gate]."
+    },
+    {
+      "claim": "$14 blended AOV can hold.",
+      "basis": "Current package mix [assumption: unknown distribution].",
+      "evidenceOrAssumption": "[assumption: no Stripe export found].",
+      "test": "Paid AOV at least $10 [assumption: margin floor]."
+    },
+    {
+      "claim": "Citation verification can prevent critical hallucinations.",
+      "basis": "Verifier flow exists [evidence: researcher agent].",
+      "evidenceOrAssumption": "Safety outcome is [assumption: unvalidated].",
+      "test": "0% critical citation defects in reviewed beta set [assumption: quality bar]."
+    },
+    {
+      "claim": "Government delivery can work.",
+      "basis": "Postmark and DNS warming are planned [evidence: scripts/setup-dns.md and planning docs].",
+      "evidenceOrAssumption": "Live delivery is [assumption: unvalidated].",
+      "test": "At least 85% .gov inbox placement [evidence: prior validation gate]."
+    },
+    {
+      "claim": "One operator can handle review/support.",
+      "basis": "Exception-based workflow is planned [evidence: .planning/PROJECT.md].",
+      "evidenceOrAssumption": "Operating reality is [assumption: unvalidated].",
+      "test": "Routine load below 30 minutes per day [evidence: .planning/PROJECT.md]."
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-23 [evidence: runner current date]",
+      "change": "Created EIR soul upgrade and marked business plan gate needs-revision pending operator/market validation."
+    }
+  ],
+  "roadmapGate": {
+    "file": "ROADMAP.md",
+    "status": "aligned-but-not-approved [assumption: operator merge required]",
+    "nextCheckboxes": "7 [evidence: ROADMAP.md]",
+    "servesBusinessPlan": true
+  },
+  "next": {
+    "operatorRuling": "Due 2026-06-30 [assumption: governance target].",
+    "dryRun": "Due 2026-07-15 [assumption: validation target].",
+    "beta": "20 paid-submission attempts by 2026-08-15 [assumption: beta target].",
+    "scorecard": "Due 2026-08-31 [assumption: validation target]."
+  }
+}
