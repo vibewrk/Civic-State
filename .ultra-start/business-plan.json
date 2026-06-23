@@ -1,0 +1,408 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "one_liner": "AI researched civic letters for constituents, gated until paid demand and .gov delivery are proven.",
+  "planId": "bp_civicstate_brooks_history",
+  "createdAt": "2026-06-23T00:00:00Z",
+  "updatedAt": "2026-06-23T00:00:00Z",
+  "staleAfterAt": "2026-07-23T00:00:00Z",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "packetId": "brooks-history",
+    "acceptedStatus": "ready-for-business-plan"
+  },
+  "status": "needs-revision",
+  "directive": "WAIT",
+  "humanReadablePath": "BUSINESS.md",
+  "financialsPath": "BUSINESS.md#financial-model",
+  "authority": {
+    "decider": "POM-with-operator-review",
+    "quorum": "POM soul-review plus wrk.dog merge constitute adoption; operator ruling 2026-06-12.",
+    "decisionRecord": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12; see the PR's POM record.",
+    "rationale": "Status remains needs-revision because only the operator merge can upgrade authority; the registry says watchlist/personal research, not near-term investible BOS.",
+    "pomReviews": [
+      {
+        "model": "wrk.dog EIR",
+        "verdict": "revise",
+        "summary": "Plan is refreshed for scrutiny, but commercial authority waits on operator validation of demand, deliverability, coverage, and registry posture."
+      }
+    ]
+  },
+  "research": {
+    "summary": "Workspace-only review of planning docs and implementation found a real CivicState civic-letter product, stale/inconsistent planning status, unvalidated market claims, and a watchlist registry posture.",
+    "sources": [
+      ".planning/PROJECT.md [evidence]",
+      ".planning/GENESIS.md [evidence]",
+      ".planning/ROADMAP.md [evidence]",
+      ".planning/REQUIREMENTS.md [evidence]",
+      ".planning/STATE.md [evidence]",
+      "package.json [evidence]",
+      "packages/shared/prisma/schema.prisma [evidence]",
+      "apps/api/src/routes/submissions.ts [evidence]",
+      "apps/api/src/routes/payments.ts [evidence]",
+      "apps/api/src/routes/officials.ts [evidence]",
+      "apps/api/src/routes/compliance.ts [evidence]",
+      "apps/worker/src/agents/researcher.ts [evidence]",
+      "apps/worker/src/agents/drafter.ts [evidence]",
+      "apps/worker/src/agents/delivery.ts [evidence]",
+      "dispatch registry notes [evidence]"
+    ],
+    "methods": [
+      "Read existing soul/planning docs before writing root soul.",
+      "Cross-checked implementation against planning claims.",
+      "Marked all external market, competitor, conversion, and valuation claims as assumptions because no network research was available.",
+      "Built bottom-up TAM/SAM/SOM and three-year financial model from implemented pricing tiers and explicit assumptions."
+    ]
+  },
+  "planningMethod": {
+    "mode": "workspace-only EIR soul upgrade",
+    "evidenceHarvest": "Preserved true claims from planning docs and implementation files.",
+    "marketResearch": "Used bottom-up assumptions only; no external research performed.",
+    "financialValidation": "Reconciled revenue as paid submissions x blended AOV plus staged organization pilots.",
+    "alternativeSearch": "Compared consumer civic transaction, organization advocacy workflow, generic AI drafting, and research-asset options.",
+    "antiPlan": "Killed weak claims around demand, deliverability, citation relevance, compliance readiness, and venture scale.",
+    "finalSynthesis": "WAIT for operator merge and market validation before roadmap or investibility authority."
+  },
+  "customer": {
+    "segments": [
+      {
+        "name": "Individual US constituents",
+        "painfulJob": "Need to turn a civic concern into a researched, routed, compliant letter without knowing law, jurisdiction, or official contacts."
+      },
+      {
+        "name": "Future civic organizations",
+        "painfulJob": "Need repeated campaign research, drafting, delivery, and status tracking after the individual pipeline proves quality."
+      }
+    ],
+    "currentSubstitutes": [
+      "Manual search and email.",
+      "Resistbot or similar free advocacy tools [assumption: model-knowledge competitor].",
+      "Quorum/FiscalNote/VoterVoice style organization advocacy suites [assumption: model-knowledge competitor].",
+      "Generic AI drafting in ChatGPT or Claude [assumption: model-knowledge substitute]."
+    ],
+    "willingnessToPayEvidence": [
+      "$5/$15/$25 tiers are implemented in the payment route [evidence: apps/api/src/routes/payments.ts].",
+      "No paid demand is validated yet [evidence: .planning/PROJECT.md says validated requirements are none].",
+      "Preview-to-paid conversion must be tested at >=3% [assumption: validation gate from .planning/PROJECT.md]."
+    ]
+  },
+  "market": {
+    "category": "Consumer civic-tech workflow with possible organization/API expansion.",
+    "competitiveLandscape": "Free civic-action bots, enterprise advocacy CRMs, generic AI assistants, manual email, consultants, and legal help solve parts of the workflow.",
+    "wedge": "Start with paid individual constituent letters; expand only if demand, delivery, and citation evidence justify an organization/API wedge.",
+    "tam": "$15,000,000 annual gross bookings from 1,000,000 assumed paid civic-letter submissions x $15 blended AOV [assumption: bottom-up model].",
+    "sam": "$750,000 annual gross bookings from 50,000 reachable submissions x $15 blended AOV [assumption: reachable organic wedge].",
+    "som": "$36,000 annual gross bookings from 2,400 first-year paid submissions x $15 blended AOV [assumption: single-operator case]."
+  },
+  "businessModel": {
+    "valueCreation": "Collapse jurisdiction lookup, legal-source research, citation verification, professional drafting, payment, delivery, and tracking into one paid workflow.",
+    "valueDelivery": "Self-serve web wizard backed by API routes, BullMQ workers, legal-source integrations, Stripe, Postmark, dashboards, and admin review.",
+    "valueCapture": "$5 one-off, $15 three-pack, and $25 full-spread campaign tiers [evidence: apps/api/src/routes/payments.ts].",
+    "pricing": "$15 blended AOV assumed from the implemented $5/$15/$25 tiers [assumption: tier mix].",
+    "revenuePath": "Consumer paid campaigns first; organization/API pilots only after validation.",
+    "unitEconomics": "90%+ contribution margin before support if variable costs stay near $0.20/$0.40/$0.60 per tier [assumption: tests/payment.test.ts cost references, not invoice evidence].",
+    "operatingCosts": "Hosting/tooling, model calls, email delivery, official-data provider, moderation, citation review, support, and compliance maintenance.",
+    "marginLogic": "Low variable cost is plausible, but human review and deliverability support can overwhelm low AOV."
+  },
+  "financialModel": {
+    "summary": "Base case reaches $57,000 revenue in 2027 and $300,000 revenue in 2028 only if consumer flow works and organization pilots begin [assumption: model].",
+    "modelPath": "BUSINESS.md#financial-model",
+    "validationStatus": "Needs operator/market validation; not approved for roadmap authority.",
+    "revenueAssumptions": [
+      "200 paid submissions x $15 blended AOV produces $3,000 in 2026 launch revenue [assumption].",
+      "3,000 paid submissions x $15 plus 2 organization pilots x $6,000/year produces $57,000 in 2027 revenue [assumption].",
+      "12,000 paid submissions x $15 plus 10 organization pilots x $12,000/year produces $300,000 in 2028 revenue [assumption]."
+    ],
+    "costAssumptions": [
+      "Hosting/tooling starts from the prior $132.50/month planning burn and scales upward [evidence: .planning/PROJECT.md; assumption: scale].",
+      "Variable cost remains below $0.60 per campaign in base case [assumption: tests/payment.test.ts cost references].",
+      "Support and human review are the dominant cost risk if moderation or citation exceptions are frequent [assumption]."
+    ],
+    "sensitivityTests": [
+      "If 2027 paid submissions are only 1,000 x $15 with no pilots, revenue is $15,000 [assumption: bear case].",
+      "If human review averages $8 per paid campaign, $5 and $15 tiers are likely unattractive [assumption: support stress].",
+      "If preview-to-paid conversion is under 3%, self-serve consumer scaling pauses [assumption: demand gate].",
+      "If .gov inbox placement is under 85%, paid delivery is not credible [assumption: deliverability gate]."
+    ]
+  },
+  "alternatives": [
+    {
+      "name": "Consumer civic-letter transaction",
+      "thesis": "Individuals will pay a small fee for research, drafting, routing, and delivery.",
+      "expectedUpside": "Low variable cost and data compounding if volume exists.",
+      "financialCase": "$15 blended AOV with 90%+ pre-support margin [assumption].",
+      "rejectionOrSelectionRationale": "Selected as current repo reality, but demand is unproven."
+    },
+    {
+      "name": "Organization advocacy workflow",
+      "thesis": "Small civic groups may pay recurring fees for repeated workflows.",
+      "expectedUpside": "Higher AOV than consumer transactions.",
+      "financialCase": "$500 to $2,000/month pilots [assumption: future model].",
+      "rejectionOrSelectionRationale": "Deferred until consumer quality and deliverability are proven."
+    },
+    {
+      "name": "Research asset only",
+      "thesis": "The code and planning are useful as a personal/research asset, not a venture.",
+      "expectedUpside": "Avoids over-pitching an unvalidated product.",
+      "financialCase": "$0 to $25,000 bear value band [assumption].",
+      "rejectionOrSelectionRationale": "Still plausible because registry note says personal/research and not near-term investible."
+    }
+  ],
+  "antiPlan": {
+    "summary": "The plan fails if users will not pay, officials do not receive the emails, citations are not substantively reliable, or the operator never approves business posture.",
+    "holes": [
+      {
+        "hole": "Users may prefer free AI drafts or free civic tools over paying.",
+        "whyItMatters": "Low AOV leaves little room for CAC or support.",
+        "repair": "Run paid preview tests and pause if conversion is under 3% [assumption]."
+      },
+      {
+        "hole": "Government email deliverability may be too weak.",
+        "whyItMatters": "A paid delivery product cannot sell messages that land in spam.",
+        "repair": "Require .gov inbox placement tests, bounce tracking, SPF/DKIM/DMARC, and warming evidence."
+      },
+      {
+        "hole": "Citation verification can verify existence but not legal fit.",
+        "whyItMatters": "Misapplied citations create trust and liability risk.",
+        "repair": "Audit 50 letters for citation relevance before launch [assumption]."
+      },
+      {
+        "hole": "Docs overstate readiness.",
+        "whyItMatters": "Investor and operator trust falls if planning says complete but code/readiness disagree.",
+        "repair": "Run launch-readiness tests and reconcile stale planning state."
+      }
+    ],
+    "mitigations": [
+      "Keep status needs-revision until operator merge.",
+      "Treat all market claims as assumptions until tested.",
+      "Use buildable roadmap items focused on evidence, not new speculative features.",
+      "Preserve registry warning that the asset may remain personal/research."
+    ],
+    "residualRisks": [
+      "Operator may decide not to pitch this as a business.",
+      "Consumer TAM may be too small without organization/API expansion.",
+      "Compliance and deliverability defects may require more work than the AOV supports.",
+      "Competitors or generic AI assistants may satisfy enough of the job for free."
+    ]
+  },
+  "strategy": {
+    "diagnosis": "CivicState has real code but lacks market proof, launch-readiness proof, and operator authority to pitch as investible.",
+    "guidingPolicy": "Validate demand, delivery, citation quality, and compliance before expanding scope or making venture claims.",
+    "whereToPlay": "US individual constituents first, then small civic organizations if the individual flow proves quality.",
+    "howToWin": "Own the full transaction from civic intent to verified, routed, delivered constituent letter.",
+    "moatHypothesis": "Official contact quality, bounce history, opt-out state, citation outcomes, and campaign proof compound with volume [assumption].",
+    "coherentActions": [
+      "Run beta submissions.",
+      "Instrument economics and exceptions.",
+      "Repair launch-readiness defects.",
+      "Ask operator to decide business versus research posture."
+    ],
+    "tradeoffs": [
+      "Do not scale paid acquisition before conversion proof.",
+      "Do not claim legal advice.",
+      "Do not hard-wire WrkPlug before operator approval.",
+      "Do not pitch as VC-ready while registry says watchlist/research."
+    ]
+  },
+  "goToMarket": {
+    "channels": [
+      "SEO pages for narrow civic issue categories [assumption].",
+      "Concierge beta with direct user observation [assumption].",
+      "Local civic-community outreach to issue moderators/newsletters [assumption].",
+      "Organization pilots after individual pipeline proof [assumption]."
+    ],
+    "assumptions": [
+      "Long-tail civic search can create low-CAC demand.",
+      "Previewing the drafted letter before payment increases conversion.",
+      "Issue-specific templates will outperform generic civic positioning."
+    ]
+  },
+  "operatorWorkflow": {
+    "jobs": [
+      "Review flagged submissions.",
+      "Audit citations and letters before broad launch.",
+      "Monitor treasury, bounce rates, and delivery failures.",
+      "Decide whether to pitch, archive, or pivot after validation."
+    ],
+    "aiNativeAutomationTargets": [
+      "Moderation triage.",
+      "Legal-source research synthesis.",
+      "Letter drafting with verified citations.",
+      "Delivery exception surfacing.",
+      "Validation evidence summarization."
+    ]
+  },
+  "constraints": {
+    "regulatory": [
+      "Not legal advice.",
+      "CAN-SPAM compliance for outbound emails.",
+      "AI disclosure in letters.",
+      "No invented legal/regulatory conclusions."
+    ],
+    "privacy": [
+      "Political/civic opinions are sensitive personal data.",
+      "Tier 1 fields are app-level encrypted in schema comments [evidence: packages/shared/prisma/schema.prisma].",
+      "Deletion/export flows need verification."
+    ],
+    "security": [
+      "HMAC audit and ledger records are designed in schema [evidence: packages/shared/prisma/schema.prisma].",
+      "Admin routes require Clerk/admin middleware [evidence: apps/api/src/routes/admin.ts]."
+    ],
+    "brand": [
+      "Non-partisan civic communication.",
+      "Must not overstate legal authority or government response likelihood."
+    ],
+    "operational": [
+      "Single-operator launch assumption.",
+      "No 24/7 staffing.",
+      "Workspace-only plan uses repo evidence and assumptions, not external research."
+    ]
+  },
+  "metrics": {
+    "successMetrics": [
+      ">=3% preview-to-paid conversion [assumption].",
+      ">=85% .gov inbox placement [assumption].",
+      "Citation relevance audit passes 50-letter sample [assumption].",
+      "Official coverage measured across 100 ZIP lookups [assumption]."
+    ],
+    "killTriggers": [
+      "Preview-to-paid conversion below 3% after adequate traffic [assumption].",
+      ".gov inbox placement below 85% after remediation [assumption].",
+      "Operator confirms research-only posture."
+    ],
+    "pivotTriggers": [
+      "Consumers like output but will not pay.",
+      "Organizations show stronger willingness to pay than individuals.",
+      "Deliverability works only for selected official domains."
+    ],
+    "reviseTriggers": [
+      "Compliance export defect confirmed.",
+      "Local official coverage below target.",
+      "Human review cost exceeds $8 per paid campaign [assumption]."
+    ],
+    "wakeConditions": [
+      "Operator approves commercial validation.",
+      "Beta produces paid conversion and delivery evidence.",
+      "WrkPlug Phase 0 becomes signed and relevant [assumption]."
+    ]
+  },
+  "aiWorkGovernance": {
+    "wedge": "AI assists civic research and drafting, but citation, moderation, delivery, and operator review gates govern action.",
+    "problem": "Ungated AI civic letters can hallucinate citations, create threatening or defamatory content, and send low-quality messages to officials.",
+    "promise": "The workflow only uses retrieved legal-source results, strips unverified citations, logs moderation/admin decisions, and keeps launch authority pending validation.",
+    "duplicatePrevention": [
+      "Root soul now names current product and project identity mismatch.",
+      "Roadmap items tie directly to BUSINESS.md headings.",
+      "Operator decision required before new business/pitch work."
+    ],
+    "coordinationMetrics": [
+      "Scrutiny gaps closed.",
+      "Launch-readiness tests completed.",
+      "Validation evidence attached to future decisions."
+    ],
+    "tokenSpendControls": [
+      "Do not scale AI runs before beta validation.",
+      "Track model cost per campaign.",
+      "Pause jobs when review/citation failures exceed thresholds [assumption]."
+    ],
+    "risk": "AI output can look authoritative even when the market, legal applicability, or deliverability is unproven."
+  },
+  "unknowns": {
+    "items": [
+      "Whether users pay.",
+      "Whether .gov deliverability works.",
+      "Whether local official data coverage is sufficient.",
+      "Whether citation verification is legally meaningful enough.",
+      "Whether operator wants this pitched as a business.",
+      "Whether WrkPlug should replace direct Clerk/Stripe integrations."
+    ],
+    "experiments": [
+      {
+        "question": "Will users pay after preview?",
+        "method": "Run 25 beta submissions and measure conversion intent.",
+        "successSignal": ">=3% preview-to-paid conversion [assumption]."
+      },
+      {
+        "question": "Can emails reach officials?",
+        "method": "Run controlled .gov deliverability tests after DNS/warming.",
+        "successSignal": ">=85% inbox placement [assumption]."
+      },
+      {
+        "question": "Are citations substantively reliable?",
+        "method": "Audit 50 letters manually.",
+        "successSignal": "No material hallucinated or irrelevant citations in audited set [assumption]."
+      }
+    ]
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "Users will pay at least $15 blended AOV.",
+      "evidence": "$5/$15/$25 tiers exist in payment route [evidence: apps/api/src/routes/payments.ts]; mix is unproven.",
+      "challenge": "Free substitutes may be good enough.",
+      "confidence": "low",
+      "owner": "operator"
+    },
+    {
+      "assumption": "Preview-to-paid conversion can reach >=3%.",
+      "evidence": "Old planning gate names >=3%; no market data found.",
+      "challenge": "Users may preview and copy without paying.",
+      "confidence": "low",
+      "owner": "operator"
+    },
+    {
+      "assumption": ".gov inbox placement can reach >=85%.",
+      "evidence": "Delivery worker and DNS plan exist; no inbox evidence found.",
+      "challenge": "Government spam filters may block messages.",
+      "confidence": "low",
+      "owner": "operator"
+    },
+    {
+      "assumption": "Citation verification reduces legal-adjacent risk enough for launch.",
+      "evidence": "Researcher strips unverified citations [evidence: apps/worker/src/agents/researcher.ts].",
+      "challenge": "Existence verification is not applicability verification.",
+      "confidence": "medium",
+      "owner": "operator"
+    },
+    {
+      "assumption": "Consumer wedge can lead to organization/API revenue.",
+      "evidence": ".planning/PROJECT.md lists API consumers as future stakeholders.",
+      "challenge": "Consumer and organization workflows may diverge.",
+      "confidence": "low",
+      "owner": "operator"
+    },
+    {
+      "assumption": "This should be pitched as a business.",
+      "evidence": "Registry note says watchlist/personal research, not near-term investible BOS.",
+      "challenge": "Operator may keep it as research asset.",
+      "confidence": "low",
+      "owner": "operator"
+    }
+  ],
+  "versionHistory": {
+    "v1": "2026-04-25 planning docs created CivicState product narrative [evidence: .planning/PROJECT.md].",
+    "v2": "2026-06-23 wrk.dog EIR created root soul and gate artifacts from workspace-only evidence.",
+    "v3": "Pending operator merge, validation evidence, and registry posture decision."
+  },
+  "roadmapGate": {
+    "allowed": false,
+    "status": "pending-operator",
+    "reason": "Status is needs-revision; roadmap work should focus on validation and launch-readiness until operator merge."
+  },
+  "evidence": [
+    ".planning/PROJECT.md",
+    ".planning/GENESIS.md",
+    ".planning/ROADMAP.md",
+    ".planning/REQUIREMENTS.md",
+    ".planning/STATE.md",
+    "package.json",
+    "packages/shared/prisma/schema.prisma",
+    "apps/api/src/routes/payments.ts",
+    "apps/worker/src/agents/researcher.ts",
+    "dispatch registry notes"
+  ],
+  "next": {
+    "status": "awaiting-operator-merge",
+    "target": "Operator/POM review of refreshed CivicState soul.",
+    "why": "Only the operator merge upgrades authority beyond needs-revision.",
+    "expectedProof": "Merged PR or POM record plus validation follow-up plan."
+  }
+}
