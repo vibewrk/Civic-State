@@ -1,0 +1,413 @@
+{
+  "schemaVersion": "wrk.dog.soul-gate.v1",
+  "projectId": "brooks-history",
+  "repo": "RPLogic-Inc/brookss-history",
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history-civicstate-business-plan"
+  },
+  "status": "proposed",
+  "currentThesis": "Watchlist: current repo is CivicState, not Brooks History; validate identity and paid delivery before pitching.",
+  "adoptionNote": "POM soul-review + wrk.dog merge constitute adoption -- operator ruling 2026-06-12; see the PR's POM record",
+  "adoptionNoteHonesty": "evidence: required gate contract text supplied in worker dispatch",
+  "authority": {
+    "state": "proposed",
+    "upgradeCondition": "operator merge",
+    "notClaimed": "adopted"
+  },
+  "provenance": {
+    "createdAt": "2026-06-23",
+    "createdAtHonesty": "evidence: worker dispatch current date",
+    "mode": "workspace-only",
+    "networkResearch": false,
+    "sources": [
+      {
+        "path": "package.json",
+        "method": "read",
+        "usedFor": "product name, monorepo scripts, description"
+      },
+      {
+        "path": "apps/api/src/index.ts",
+        "method": "read",
+        "usedFor": "API routes and Bull Board surface"
+      },
+      {
+        "path": "apps/api/src/routes/payments.ts",
+        "method": "read",
+        "usedFor": "pricing tiers and Stripe checkout"
+      },
+      {
+        "path": "apps/api/src/routes/submissions.ts",
+        "method": "read",
+        "usedFor": "submission creation, moderation, queue enqueue"
+      },
+      {
+        "path": "apps/api/src/routes/compliance.ts",
+        "method": "read",
+        "usedFor": "privacy/deletion/export implementation risk"
+      },
+      {
+        "path": "apps/worker/src/index.ts",
+        "method": "read",
+        "usedFor": "registered worker agents"
+      },
+      {
+        "path": "apps/worker/src/engine/state-machine.ts",
+        "method": "read",
+        "usedFor": "job lifecycle and implementation risk"
+      },
+      {
+        "path": "apps/worker/src/agents/delivery.ts",
+        "method": "read",
+        "usedFor": "Postmark delivery, bounce threshold, opt-out handling"
+      },
+      {
+        "path": "packages/shared/prisma/schema.prisma",
+        "method": "read",
+        "usedFor": "implemented data model"
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "method": "read",
+        "usedFor": "legacy business profile, constraints, pricing, validation gates"
+      },
+      {
+        "path": ".planning/GENESIS.md",
+        "method": "read",
+        "usedFor": "assumptions, distribution hypothesis, moat hypothesis"
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "method": "read",
+        "usedFor": "legacy roadmap and stale completion claims"
+      },
+      {
+        "path": ".planning/REQUIREMENTS.md",
+        "method": "read",
+        "usedFor": "requirements, financial controls, compliance targets"
+      },
+      {
+        "path": ".planning/existing-state.md",
+        "method": "read",
+        "usedFor": "stale audit, revenue/data baseline, contradiction with current code"
+      },
+      {
+        "path": "MASTER_PLAN.md",
+        "method": "read",
+        "usedFor": "architecture, business model, competitor framing, exclusions"
+      }
+    ],
+    "limitations": [
+      "No network research permitted by worker dispatch.",
+      "External market and competitor claims are assumptions unless they describe repo content.",
+      "Factory or AI-generated planning text was not treated as market evidence."
+    ]
+  },
+  "honestyLabels": {
+    "rule": "Every quantitative or external market claim must carry evidence or assumption basis.",
+    "externalClaims": "assumption-labeled",
+    "repoClaims": "evidence-labeled",
+    "factoryOutputAsEvidence": false
+  },
+  "registryContext": {
+    "watchlist": true,
+    "note": "personal/research asset, not near-term investible BOS; operator confirm if it should pitch as a business",
+    "sensitivity": "civic/legal-adjacent communications; privacy, harassment, CAN-SPAM, AI disclosure, and official opt-out constraints"
+  },
+  "thesis": {
+    "oneSentence": "CivicState may become a narrow paid civic-letter workflow, but the asset is not pitchable until identity and paid delivery are proven.",
+    "asOf": {
+      "date": "2026-06-23",
+      "honesty": "evidence: worker dispatch"
+    },
+    "confidence": {
+      "label": "conditional",
+      "reason": "repo has real product code, but no customer, revenue, deliverability, or identity validation evidence"
+    }
+  },
+  "customerDefinition": {
+    "primaryCustomer": "United States resident with a concrete civic concern, desired outcome, and ZIP code who wants help identifying officials and drafting a formal letter",
+    "evidence": [
+      ".planning/PROJECT.md",
+      ".planning/GENESIS.md",
+      "apps/api/src/routes/submissions.ts"
+    ],
+    "excludedCustomers": [
+      "business entities",
+      "legal claimants",
+      "campaign committees",
+      "bulk advocacy organizations",
+      "users targeting private individuals"
+    ]
+  },
+  "productReality": {
+    "real": [
+      "monorepo with web, API, worker, and shared packages",
+      "Express route surface for submissions, officials, payments, campaigns, compliance, admin, and webhooks",
+      "Prisma data model for users, submissions, campaigns, letters, officials, payments, deliveries, ledger, audit, agent logs, and jobs",
+      "worker agents for classifier, researcher, drafter, delivery, treasury, and reconciliation",
+      "Stripe Checkout route with implemented tiers; values are listed in revenueModel with evidence labels",
+      "Postmark delivery path with bounce-rate gating; threshold is listed in financialFigures with evidence label"
+    ],
+    "notProven": [
+      "live revenue",
+      "live user demand",
+      "government-domain deliverability",
+      "official coverage quality",
+      "end-to-end paid production workflow",
+      "operator review load"
+    ],
+    "implementationRisks": [
+      "worker state transition appears to pass submissionId where job id is required",
+      "classifier/researcher payload fields do not clearly align with submission route payload fields",
+      "compliance export selects fields not present in Prisma schema"
+    ]
+  },
+  "marketSizing": {
+    "method": "bottom-up validation model due workspace-only mode",
+    "rows": [
+      {
+        "label": "Initial validation cohort",
+        "value": 100,
+        "unit": "submitted issues",
+        "honesty": "assumption: small manual beta"
+      },
+      {
+        "label": "Paid conversion hurdle",
+        "value": 3,
+        "unit": "percent",
+        "honesty": "assumption: inherited from legacy plan"
+      },
+      {
+        "label": "Starter operating case",
+        "value": 400,
+        "unit": "paid submissions/month",
+        "honesty": "assumption: legacy month-scale planning figure"
+      },
+      {
+        "label": "Average package price",
+        "value": 15,
+        "unit": "USD",
+        "honesty": "assumption: midpoint of implemented tiers"
+      },
+      {
+        "label": "Starter monthly revenue",
+        "value": 6000,
+        "unit": "USD/month",
+        "honesty": "assumption: 400 paid submissions/month x $15"
+      },
+      {
+        "label": "Starter annualized revenue",
+        "value": 72000,
+        "unit": "USD/year",
+        "honesty": "assumption: $6,000/month x 12 months"
+      }
+    ]
+  },
+  "revenueModel": {
+    "type": "transactional checkout",
+    "tiers": [
+      {
+        "name": "single",
+        "priceUsd": 5,
+        "officials": 1,
+        "honesty": "evidence: apps/api/src/routes/payments.ts"
+      },
+      {
+        "name": "three_pack",
+        "priceUsd": 15,
+        "officials": 3,
+        "honesty": "evidence: apps/api/src/routes/payments.ts"
+      },
+      {
+        "name": "full_spread",
+        "priceUsd": 25,
+        "officials": "all matched",
+        "honesty": "evidence: apps/api/src/routes/payments.ts"
+      }
+    ],
+    "futureStreamsDeferred": [
+      "organization API access",
+      "certified mail",
+      "fax delivery",
+      "subscription/community products"
+    ]
+  },
+  "financialFigures": [
+    {
+      "label": "Current revenue evidence",
+      "value": 0,
+      "unit": "USD",
+      "honesty": "evidence: .planning/existing-state.md"
+    },
+    {
+      "label": "Backend droplet plan",
+      "value": 96,
+      "unit": "USD/month",
+      "honesty": "evidence: .planning/PROJECT.md and MASTER_PLAN.md"
+    },
+    {
+      "label": "Mercury reserve target",
+      "value": 1500,
+      "unit": "USD",
+      "honesty": "evidence: .planning/PROJECT.md"
+    },
+    {
+      "label": "Treasury warning threshold",
+      "value": 2000,
+      "unit": "USD",
+      "honesty": "evidence: .planning/PROJECT.md"
+    },
+    {
+      "label": "Treasury emergency threshold",
+      "value": 500,
+      "unit": "USD",
+      "honesty": "evidence: .planning/PROJECT.md"
+    },
+    {
+      "label": "Reconciliation discrepancy alert",
+      "value": 0.1,
+      "unit": "USD",
+      "honesty": "evidence: .planning/REQUIREMENTS.md"
+    },
+    {
+      "label": "Margin floor",
+      "value": 40,
+      "unit": "percent",
+      "honesty": "evidence: .planning/PROJECT.md"
+    },
+    {
+      "label": "Job overage pause",
+      "value": 150,
+      "unit": "percent",
+      "honesty": "evidence: .planning/REQUIREMENTS.md"
+    },
+    {
+      "label": "Bounce pause threshold",
+      "value": 10,
+      "unit": "percent",
+      "honesty": "evidence: apps/worker/src/agents/delivery.ts"
+    }
+  ],
+  "competition": {
+    "honesty": "assumption: named competitors inherited from repo planning; no network verification",
+    "named": [
+      "Resistbot",
+      "Change.org",
+      "LegalZoom",
+      "Quorum",
+      "VoterVoice"
+    ],
+    "positioning": "differentiation must be verified official routing, citation verification, safe delivery, and compliance rather than generic AI drafting"
+  },
+  "goToMarket": {
+    "primary": "operator-recruited beta before SEO",
+    "legacyHypothesis": "opt-in public campaign pages can become long-tail SEO acquisition",
+    "legacyHypothesisHonesty": "assumption: .planning/GENESIS.md and MASTER_PLAN.md describe it, but no live SEO evidence is present",
+    "killSwitch": "do not scale content or paid acquisition if preview-to-payment fails"
+  },
+  "risksAntiPlan": {
+    "killDealRisks": [
+      "identity mismatch between Brooks History dispatch and CivicState repo",
+      "no live revenue or customer evidence",
+      "government-domain deliverability uncertainty",
+      "legal-adjacent and privacy-sensitive content",
+      "official data and citation accuracy risk",
+      "current implementation flow may not run end-to-end",
+      "generic AI substitution risk if data/delivery moat is not built"
+    ],
+    "antiPlan": "Do not pitch, raise, or scale marketing until identity is resolved and a paid audited delivery loop works."
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "Users will pay the implemented tiers after preview",
+      "basis": "implemented Stripe pricing plus legacy plan",
+      "validation": "measure preview-to-payment conversion in beta"
+    },
+    {
+      "assumption": "Official lookup can reach sufficient federal/state/local coverage",
+      "basis": "official lookup code paths exist",
+      "validation": "manual ZIP-code coverage audit"
+    },
+    {
+      "assumption": "Government-domain delivery will be accepted",
+      "basis": "Postmark path and domain-warming plan exist",
+      "validation": "seeded deliverability tests and bounce tracking"
+    },
+    {
+      "assumption": "One operator can handle review workload",
+      "basis": "legacy plan",
+      "validation": "track flagged queue depth, oldest item age, review minutes"
+    },
+    {
+      "assumption": "SEO can acquire users later",
+      "basis": "legacy distribution hypothesis",
+      "validation": "publish opt-in pages only after paid loop works, then measure impressions and conversion"
+    }
+  ],
+  "holesMitigationsResidualRisks": [
+    {
+      "hole": "Asset identity mismatch",
+      "mitigation": "operator ruling before external packaging",
+      "residualRisk": "repo may need rename or full rescope"
+    },
+    {
+      "hole": "No paid demand proof",
+      "mitigation": "manual beta with preview-to-payment measurement",
+      "residualRisk": "users may like previews but not pay"
+    },
+    {
+      "hole": "End-to-end workflow uncertainty",
+      "mitigation": "repair job ids, payloads, and schema mismatches; run paid test flow",
+      "residualRisk": "provider and data edge cases still break live delivery"
+    },
+    {
+      "hole": "Legal/compliance ambiguity",
+      "mitigation": "keep non-legal-advice scope, moderation, AI disclosure, opt-out, and audit logs mandatory",
+      "residualRisk": "jurisdiction-specific rules may still require counsel"
+    },
+    {
+      "hole": "No independently researched market/competitor data",
+      "mitigation": "maintain assumption labels until network research is permitted",
+      "residualRisk": "competitive position may be materially wrong"
+    }
+  ],
+  "roadmapBuildableShape": {
+    "source": "ROADMAP.md",
+    "items": [
+      "resolve project identity",
+      "repair end-to-end job flow",
+      "enforce margin control",
+      "run constrained beta",
+      "audit official coverage",
+      "harden compliance paths",
+      "defer SEO pages until proof"
+    ]
+  },
+  "freshness": {
+    "businessDocDate": {
+      "date": "2026-06-23",
+      "honesty": "evidence: worker dispatch"
+    },
+    "nextReviewDate": {
+      "date": "2026-07-23",
+      "honesty": "assumption: 30-day watchlist review cadence"
+    },
+    "staleSourcesFlagged": [
+      ".planning/existing-state.md",
+      ".planning/ROADMAP.md completion claims"
+    ]
+  },
+  "decisionLog": {
+    "path": "DECISIONS.md",
+    "entryDate": "2026-06-23",
+    "entryDateHonesty": "evidence: worker dispatch current date",
+    "summary": "EIR soul upgrade (wrk.dog)"
+  },
+  "allowedWrites": [
+    "BUSINESS.md",
+    "ROADMAP.md",
+    "DECISIONS.md",
+    ".ultra-start/gate.json"
+  ]
+}
