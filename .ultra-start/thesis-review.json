@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "wrk.thesis-review.v1",
+  "status": "needs-revision",
+  "project": "brooks-history",
+  "repo": "RPLogic-Inc/brookss-history",
+  "one_liner": "AI-assisted civic letters with citations; real repo, watchlist until paid demand is proven.",
+  "thesisCurrent": "CivicState can be a profitable narrow civic workflow if ordinary United States residents pay $5-$25 [evidence: apps/api/src/routes/payments.ts] for researched constituent letters and if deliverability, moderation, and legal boundaries hold.",
+  "honestyPosture": "Workspace-only review; external market claims are assumptions; repo files and dispatch registry notes are evidence.",
+  "scrutinyGapsAddressed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "evidenceReviewed": [
+    "MASTER_PLAN.md",
+    ".planning/PROJECT.md",
+    ".planning/ROADMAP.md",
+    "package.json",
+    "packages/shared/prisma/schema.prisma",
+    "apps/api/src/routes/submissions.ts",
+    "apps/api/src/routes/payments.ts",
+    "apps/worker/src/agents/researcher.ts",
+    "apps/worker/src/agents/drafter.ts",
+    "dispatch registry notes"
+  ],
+  "operatorQuestions": [
+    "Should CivicState pitch as a business or remain a personal/research asset?",
+    "Can legal/compliance review approve the constituent-communication boundary?",
+    "What beta channel can generate enough paid checkout data without partisan brand risk?"
+  ],
+  "requiredValidation": [
+    "3% paid conversion [assumption: planning gate]",
+    "85% official-domain deliverability [assumption: planning gate]",
+    "chargebacks below 0.5% [evidence: .planning/PROJECT.md]",
+    "operator ruling logged after 2026-06-23 [evidence: worker session date]"
+  ]
+}
+

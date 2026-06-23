@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history/civicstate-soul-upgrade"
+  },
+  "status": "needs-revision",
+  "directive": "Treat CivicState as watchlist until operator confirmation and market validation replace assumptions.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12 [evidence: dispatch brief]; see the PR's POM record",
+  "one_liner": "AI-assisted civic letters with citations; real repo, watchlist until paid demand is proven.",
+  "research": {
+    "mode": "workspace-only",
+    "sources": [
+      "BUSINESS.md",
+      "ROADMAP.md",
+      "DECISIONS.md",
+      "MASTER_PLAN.md",
+      ".planning/PROJECT.md",
+      ".planning/ROADMAP.md",
+      "package.json",
+      "packages/shared/prisma/schema.prisma",
+      "apps/api/src/routes/submissions.ts",
+      "apps/api/src/routes/payments.ts",
+      "apps/worker/src/agents/researcher.ts",
+      "apps/worker/src/agents/drafter.ts",
+      "dispatch registry notes"
+    ],
+    "methods": [
+      "repo-file review",
+      "implementation sampling",
+      "bottom-up assumption model",
+      "watchlist anti-plan review"
+    ],
+    "networkResearch": false
+  },
+  "planningMethod": "Preserve existing CivicState narrative, distinguish implemented code from aspirational market proof, and label all external quantitative claims as assumptions.",
+  "customer": {
+    "definition": "United States residents with civic concerns who need researched, citation-backed letters routed to officials.",
+    "segments": [
+      "individual civic complainants",
+      "local issue advocates",
+      "future nonprofits or HOAs after citizen workflow validation"
+    ],
+    "evidence": [
+      ".planning/PROJECT.md",
+      "MASTER_PLAN.md",
+      "apps/web/app/page.tsx"
+    ]
+  },
+  "market": {
+    "method": "bottom-up",
+    "tam": "$3,870,000,000 [assumption: 258,000,000 adults x 1 issue/year x $15]",
+    "sam": "$387,000,000 [assumption: TAM adults x 10% willing digital-paid use x $15]",
+    "som": "$1,935,000 [assumption: SAM users x 0.5% early reach x $15]",
+    "notes": "All population and behavior inputs are assumptions because this run had no network access."
+  },
+  "businessModel": {
+    "pricing": [
+      "$5 single official [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three officials [evidence: apps/api/src/routes/payments.ts]",
+      "$25 full spread [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "streams": [
+      "transactional letter packages",
+      "future higher-touch review only after validation",
+      "future API access only after citizen workflow validation"
+    ],
+    "unitEconomics": {
+      "aov": "$15 [evidence: tier midpoint]",
+      "variableCost": "$1.10/order [assumption]",
+      "grossProfit": "$13.90/order [assumption: arithmetic]",
+      "grossMargin": "92.7% [assumption: arithmetic]"
+    }
+  },
+  "financialModel": {
+    "revenueBuild": "paid campaigns x $15 AOV [evidence: current tiers]",
+    "rows": [
+      {
+        "period": "validation",
+        "paidCampaigns": "1,000 [assumption]",
+        "revenue": "$15,000 [assumption]"
+      },
+      {
+        "period": "launch",
+        "paidCampaigns": "6,000 [assumption]",
+        "revenue": "$90,000 [assumption]"
+      },
+      {
+        "period": "scale",
+        "paidCampaigns": "30,000 [assumption]",
+        "revenue": "$450,000 [assumption]"
+      }
+    ],
+    "revenueAssumptions": [
+      "AOV remains $15 [evidence: tier midpoint]",
+      "Paid conversion reaches 3% [assumption: preserved planning gate]",
+      "Full-spread uptake is excluded from upside until observed [assumption]"
+    ],
+    "costAssumptions": [
+      "Variable cost is $1.10/order [assumption]",
+      "Initial backend hosting is about $96/month [evidence: MASTER_PLAN.md]",
+      "Local official data may cost $100-$500/month [assumption: .planning/PROJECT.md]"
+    ],
+    "sensitivityTests": [
+      "Conversion at 1% cuts revenue by about 67% [assumption: arithmetic]",
+      "Deliverability below 85% pauses launch [assumption: planning gate]",
+      "Variable cost at $3/order preserves margin but may hide support burden [assumption]"
+    ]
+  },
+  "alternatives": [
+    "Manual official email",
+    "Resistbot",
+    "Change.org",
+    "LegalZoom",
+    "Quorum/VoterVoice"
+  ],
+  "antiPlan": {
+    "holes": [
+      {
+        "hole": "Users may not pay for something they can do free.",
+        "mitigation": "Charge before delivery and track preview-to-checkout conversion.",
+        "residualRisk": "High until paid beta data exists."
+      },
+      {
+        "hole": "Government domains may suppress AI-assisted bulk-like mail.",
+        "mitigation": "Warm domains, monitor bounces, and pause on complaint signals.",
+        "residualRisk": "High until deliverability evidence exists."
+      },
+      {
+        "hole": "Legal advice, lobbying, defamation, privacy, or threat boundary failures could be existential.",
+        "mitigation": "Disclaimers, moderation, audit logs, and counsel review.",
+        "residualRisk": "Medium-high because boundary facts are case-specific."
+      }
+    ],
+    "mitigations": [
+      "validation-first roadmap",
+      "operator ruling before investible posture",
+      "compliance review before public launch"
+    ],
+    "residualRisks": [
+      "weak willingness to pay",
+      "deliverability failure",
+      "regulatory or reputational failure"
+    ]
+  },
+  "strategy": "Narrow to researched constituent communication, keep nonpartisan framing, and validate payment plus deliverability before expanding.",
+  "goToMarket": {
+    "firstWedge": "small nonpartisan beta around concrete local civic issues",
+    "firstCustomers": "25 beta users [assumption]",
+    "validationEvents": [
+      "100 previews [assumption]",
+      "3% paid conversion gate [assumption]",
+      "85% deliverability gate [assumption]"
+    ]
+  },
+  "operatorWorkflow": {
+    "routine": "review flagged submissions, monitor deliverability, monitor treasury and payments, update assumption ledger",
+    "exceptionQueues": [
+      "moderation",
+      "delivery failures",
+      "payment disputes",
+      "official opt-outs"
+    ]
+  },
+  "constraints": [
+    "watchlist personal/research registry note",
+    "workspace-only research",
+    "no legal advice positioning",
+    "no lobbying firm positioning",
+    "operator confirmation required before business pitch"
+  ],
+  "metrics": [
+    "preview-to-paid conversion",
+    "AOV",
+    "inbox placement",
+    "bounce rate",
+    "spam complaint rate",
+    "chargeback rate",
+    "moderation incident rate"
+  ],
+  "aiWorkGovernance": {
+    "disclosures": "AI disclosure and not-legal-advice language are present in drafter code.",
+    "citationPolicy": "Researcher is instructed to use only provided search results and citation verification strips failures.",
+    "humanReview": "Flagged moderation and all-citation-failure paths require operator review."
+  },
+  "unknowns": [
+    "operator business-vs-research ruling",
+    "paid conversion",
+    "official-domain deliverability",
+    "legal/compliance acceptance",
+    "repeatable acquisition channel"
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Users will pay $15 [evidence: current tier midpoint] average order value.",
+      "basis": "current tier midpoint",
+      "evidenceOrAssumption": "evidence",
+      "test": "checkout conversion data"
+    },
+    {
+      "claim": "SAM is $387,000,000 [assumption: bottom-up placeholder].",
+      "basis": "bottom-up placeholder",
+      "evidenceOrAssumption": "assumption",
+      "test": "replace with survey and funnel data"
+    },
+    {
+      "claim": "3% conversion [assumption: planning gate] is a continuation gate.",
+      "basis": "planning note",
+      "evidenceOrAssumption": "assumption",
+      "test": "beta cohort"
+    },
+    {
+      "claim": "85% deliverability [assumption: planning gate] is required.",
+      "basis": "planning note",
+      "evidenceOrAssumption": "assumption",
+      "test": "government-domain seed tests"
+    },
+    {
+      "claim": "WrkPlug posture lowers platform overhead.",
+      "basis": "shared chassis theory",
+      "evidenceOrAssumption": "assumption",
+      "test": "operator architecture decision"
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-23 [evidence: worker session date]",
+      "change": "Created EIR soul upgrade and gate from workspace-only evidence."
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "next": "Execute root ROADMAP.md validation steps before investible posture."
+  }
+}
