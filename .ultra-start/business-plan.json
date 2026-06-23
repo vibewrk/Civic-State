@@ -1,0 +1,218 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "one_liner": "CivicState turns civic concerns into paid, cited official letters; investibility remains unproven.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history",
+    "productName": "CivicState",
+    "date": "2026-06-23 [evidence: wrk.dog dispatch]"
+  },
+  "status": "needs-revision",
+  "directive": "Treat this as a watchlist EIR soul upgrade, not final adoption or investment approval.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption - operator ruling 2026-06-12 [evidence: wrk.dog dispatch]; see the PR's POM record",
+  "research": {
+    "mode": "workspace-only, no network",
+    "sources": [
+      "BUSINESS.md",
+      "ROADMAP.md",
+      "DECISIONS.md",
+      "package.json",
+      "apps/api/src/index.ts",
+      "apps/api/src/routes/payments.ts",
+      "apps/api/src/routes/submissions.ts",
+      "apps/api/src/routes/officials.ts",
+      "apps/api/src/routes/compliance.ts",
+      "apps/worker/src/index.ts",
+      "packages/shared/prisma/schema.prisma",
+      ".planning/PROJECT.md",
+      ".planning/GENESIS.md",
+      ".planning/ROADMAP.md",
+      ".planning/existing-state.md",
+      "wrk.dog registry dispatch"
+    ],
+    "methods": [
+      "Compared registry identity against package/planning identity.",
+      "Separated implemented repo surfaces from unproven commercial claims.",
+      "Tagged external market claims as assumptions because network was unavailable."
+    ]
+  },
+  "planningMethod": "Bottom-up EIR model: paid submissions x blended ASP, with explicit validation gates for demand, delivery, compliance, and operator posture.",
+  "customer": {
+    "primary": "US residents with specific civic concerns who want researched, formal letters sent to the correct officials [assumption: inferred from planning docs, not market-validated]",
+    "nonCustomers": [
+      "Legal claimants seeking advice or filings [evidence: .planning/PROJECT.md]",
+      "Businesses seeking lobbying services [evidence: .planning/GENESIS.md]",
+      "Bulk advocacy organizations before policy review [evidence: .planning/raw-intake.md]"
+    ],
+    "validationGate": "25 paid campaigns by 2026-09-30, 3.0% conversion, 85.0% delivery success [assumption: EIR beta gate]"
+  },
+  "market": {
+    "tam": "USD 30,000,000 = 2,000,000 annual paid civic-letter events x USD 15.00 [assumption: no external research]",
+    "sam": "USD 3,000,000 = 200,000 reachable events x USD 15.00 [assumption: initial reach constraint]",
+    "som": "USD 180,000 by 2027-12-31 = 12,000 paid submissions x USD 15.00 [assumption: single-operator ramp]",
+    "freshness": "Assumption-led as of 2026-06-23 [evidence: wrk.dog dispatch]; must be replaced with sourced data."
+  },
+  "businessModel": {
+    "pricing": [
+      "USD 5.00 single official [evidence: apps/api/src/routes/payments.ts]",
+      "USD 15.00 three officials [evidence: apps/api/src/routes/payments.ts]",
+      "USD 25.00 full spread [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "streams": [
+      "One-time letter packages [evidence: apps/api/src/routes/payments.ts]",
+      "Priority review [assumption: deferred stream from planning corpus]",
+      "API access for organizations [assumption: deferred stream from planning corpus]"
+    ],
+    "unitEconomics": "USD 15.00 blended ASP, USD 2.20 variable COGS, 85.3% gross margin [assumption: EIR model]"
+  },
+  "financialModel": {
+    "baseCase": [
+      {
+        "yearEnding": "2026-12-31 [assumption: launch year]",
+        "paidSubmissions": "1,200 [assumption: beta ramp]",
+        "revenue": "USD 18,000 [assumption: 1,200 x USD 15.00]",
+        "ebitda": "USD -12,640 [assumption: model]"
+      },
+      {
+        "yearEnding": "2027-12-31 [assumption: first full year]",
+        "paidSubmissions": "12,000 [assumption: 1,000 monthly exit run-rate]",
+        "revenue": "USD 180,000 [assumption: 12,000 x USD 15.00]",
+        "ebitda": "USD 13,600 [assumption: model]"
+      },
+      {
+        "yearEnding": "2028-12-31 [assumption: scaled niche]",
+        "paidSubmissions": "48,000 [assumption: 4,000 monthly average]",
+        "revenue": "USD 720,000 [assumption: 48,000 x USD 15.00]",
+        "ebitda": "USD 254,400 [assumption: model]"
+      }
+    ],
+    "revenueAssumptions": [
+      "Blended ASP USD 15.00 [assumption: tier mix]",
+      "Paid conversion reaches 3.0% [assumption: unvalidated planning gate]",
+      "Refund and chargeback loss stays below 1.0% [assumption: EIR constraint]"
+    ],
+    "costAssumptions": [
+      "Backend droplet begins near USD 96 per month [evidence: .planning/PROJECT.md]",
+      "Variable COGS is USD 2.20 per paid job [assumption: no invoices]",
+      "Legal/compliance review budget is USD 25,000 in 2026 [assumption: risk budget]"
+    ],
+    "sensitivityTests": [
+      "Conversion at 1.0% lowers revenue by about 66.7% [assumption: linear funnel]",
+      "Variable cost at USD 4.40 lowers gross margin to 70.7% [assumption: unit model]",
+      "Delivery below 70.0% should pause paid launch [assumption: trust threshold]"
+    ]
+  },
+  "alternatives": [
+    "Manual outreach by email [assumption: substitute behavior]",
+    "Resistbot [assumption: named competitor without network]",
+    "Change.org [assumption: named competitor without network]",
+    "Quorum and VoterVoice/Capitol Canary [assumption: enterprise competitors without network]"
+  ],
+  "antiPlan": {
+    "holes": [
+      "Users may not pay before seeing official response.",
+      "Government inbox deliverability may fail.",
+      "Citation-backed drafting may create legal or trust risk.",
+      "Registry identity mismatch may mean this asset should not pitch as CivicState."
+    ],
+    "mitigations": [
+      "Run paid beta before more feature work.",
+      "Use domain warming, bounce controls, and opt-out suppression.",
+      "Keep citation verification, disclaimers, and human review gates.",
+      "Require operator identity ruling before investor-facing use."
+    ],
+    "residualRisks": [
+      "High demand risk.",
+      "High deliverability risk.",
+      "High legal/compliance risk.",
+      "Medium identity/governance risk."
+    ]
+  },
+  "strategy": "Narrow consumer paid civic-letter workflow first; defer organizations, subscriptions, public community mechanics, native apps, certified mail, and API products.",
+  "goToMarket": {
+    "primary": "Controlled beta and SEO-led public campaign pages [assumption: .planning/GENESIS.md hypothesis]",
+    "firstCustomers": "First 100 paid customers from manual civic communities, operator network, SEO tests, and nonprofit/HOA interviews [assumption: EIR plan]",
+    "paidAcquisition": "Deferred until CAC and conversion are measured [assumption: no analytics evidence]"
+  },
+  "operatorWorkflow": {
+    "routine": "Monitor flagged submissions, treasury, official opt-outs, bounces, and compliance requests [evidence: admin/compliance source files]",
+    "target": "Less than 30 minutes per day [evidence: .planning/PROJECT.md]",
+    "gates": [
+      "Human review for threats, defamation risk, legal-adjacent claims, and bulk patterns [evidence: .planning/raw-intake.md]",
+      "Pause launch if delivery or legal controls fail [assumption: EIR gate]"
+    ]
+  },
+  "constraints": [
+    "Watchlist, not near-term investible BOS [evidence: wrk.dog registry notes]",
+    "No legal advice or claim filing [evidence: .planning/PROJECT.md]",
+    "CAN-SPAM, CCPA/GDPR, AI disclosure, and citation verification constraints [evidence: .planning/PROJECT.md]",
+    "Workspace-only research in this run [evidence: wrk.dog dispatch]"
+  ],
+  "metrics": [
+    "25 paid campaigns by 2026-09-30 [assumption: EIR gate]",
+    "3.0% visitor-to-paid conversion [assumption: planning gate]",
+    "85.0% delivery success [assumption: planning gate]",
+    "0 unresolved compliance incidents [assumption: EIR gate]",
+    "90-day repeat campaign rate [assumption: retention proxy]"
+  ],
+  "aiWorkGovernance": {
+    "disclosure": "AI disclosure required in letters and product surfaces [evidence: .planning/PROJECT.md]",
+    "citationPolicy": "Unverified citations must be stripped or human-reviewed [evidence: .planning/REQUIREMENTS.md]",
+    "humanReview": "Flagged content goes to admin queue [evidence: apps/api/src/routes/submissions.ts, apps/api/src/routes/admin.ts]"
+  },
+  "unknowns": [
+    "Whether brooks-history is intentionally this CivicState asset.",
+    "Whether operator wants it pitched as a business.",
+    "Whether code currently passes CI in this worktree.",
+    "Whether official-directory APIs are configured and legally usable.",
+    "Whether users pay for the workflow."
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Users pay USD 5 to USD 25 [evidence: apps/api/src/routes/payments.ts for price; willingness is assumption].",
+      "basis": "Pricing implemented.",
+      "label": "Price is evidence; willingness is assumption.",
+      "test": "Paid beta by 2026-09-30 [assumption: EIR checkpoint]."
+    },
+    {
+      "claim": "TAM is USD 30,000,000 [assumption: EIR model].",
+      "basis": "Bottom-up event model.",
+      "label": "assumption",
+      "test": "Replace with sourced market data."
+    },
+    {
+      "claim": "85.3% gross margin [assumption: EIR unit model].",
+      "basis": "Unit model.",
+      "label": "assumption",
+      "test": "Reconcile first 100 paid jobs [assumption: beta sample]."
+    },
+    {
+      "claim": "SEO is viable.",
+      "basis": ".planning/GENESIS.md.",
+      "label": "assumption",
+      "test": "Measure indexed clicks."
+    },
+    {
+      "claim": "Compliance controls are adequate.",
+      "basis": "Moderation/compliance implementation.",
+      "label": "assumption pending counsel/operator review",
+      "test": "External review before public paid launch."
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-23 [evidence: wrk.dog dispatch]",
+      "change": "EIR soul upgrade created root plan, roadmap, decisions entry, and gate artifacts.",
+      "author": "wrk.dog fleet worker"
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "reason": "Build artifacts exist, but operator identity, market validation, deliverability, and compliance proof remain open."
+  },
+  "next": [
+    "Operator ruling on brooks-history versus CivicState by 2026-07-15 [assumption: EIR checkpoint]",
+    "Staging smoke test by 2026-08-15 [assumption: EIR checkpoint]",
+    "Paid beta gate by 2026-09-30 [assumption: EIR checkpoint]"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "wrk.thesis-review.v1",
+  "project": "brooks-history",
+  "productName": "CivicState",
+  "status": "needs-revision",
+  "date": "2026-06-23 [evidence: wrk.dog dispatch]",
+  "currentThesis": "CivicState can become a transaction-priced civic advocacy utility if users pay USD 5 to USD 25 for researched, cited letters to officials [evidence: apps/api/src/routes/payments.ts; willingness-to-pay is assumption].",
+  "review": {
+    "freshness": "Updated on 2026-06-23 [evidence: wrk.dog dispatch] after inspecting current source and planning files.",
+    "evidenceStrength": "Medium for build existence; low for market demand, revenue, legal adequacy, and deliverability.",
+    "registryConcern": "Watchlist; personal/research asset, not near-term investible BOS until operator confirms business posture [evidence: wrk.dog registry notes].",
+    "surpriseSpikes": [
+      "Registry id says brooks-history while repo/product files say CivicState [evidence: wrk.dog dispatch, package.json, .planning/PROJECT.md].",
+      ".planning/existing-state.md says zero app code existed, but current source includes web, API, worker, and Prisma code [evidence: source tree].",
+      ".planning/ROADMAP.md marks 4 phases complete by 2026-04-25, but no revenue or customer evidence is present [evidence: .planning/ROADMAP.md; no telemetry files found]."
+    ]
+  },
+  "gates": [
+    {
+      "name": "Operator identity ruling",
+      "due": "2026-07-15 [assumption: EIR checkpoint]",
+      "pass": "Operator confirms whether brooks-history maps to CivicState or should be renamed/archived."
+    },
+    {
+      "name": "Staging smoke test",
+      "due": "2026-08-15 [assumption: EIR checkpoint]",
+      "pass": "Submission through delivery/admin/compliance workflow passes in staging."
+    },
+    {
+      "name": "Paid beta",
+      "due": "2026-09-30 [assumption: EIR checkpoint]",
+      "pass": "25 paid campaigns, 3.0% conversion, 85.0% delivery success, and 0 unresolved compliance incidents [assumption: EIR validation target]."
+    }
+  ],
+  "decision": "Do not mark approved-for-roadmap or investible. Keep as needs-revision until operator merge and validation evidence exist."
+}
