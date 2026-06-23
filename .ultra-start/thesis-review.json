@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "ultra-start.business-plan.v2",
+  "one_liner": "CivicState is a watchlist civic-letter workflow: built surface, unproven demand and delivery.",
+  "projectId": "brooks-history",
+  "observedProject": "CivicState [evidence: package.json and MASTER_PLAN.md]",
+  "status": "needs-revision",
+  "asOf": "2026-06-23 [evidence: wrk.dog dispatch date]",
+  "thesis": "US residents may pay $5-$25 for researched, citation-checked civic letters if official coverage, deliverability, and trust are validated [evidence: apps/api/src/routes/payments.ts; assumption: demand unvalidated].",
+  "review": {
+    "decision": "watchlist",
+    "why": [
+      "Registry note says personal/research asset, not near-term investible BOS unless operator confirms business pitch [evidence: dispatch]",
+      "Repo implements meaningful CivicState product surface [evidence: apps/ and packages/shared/prisma/schema.prisma]",
+      "Demand, delivery, local coverage, legal posture, and repo identity remain unvalidated [evidence: BUSINESS.md Surprise Spikes]"
+    ],
+    "mustResolve": [
+      "Resolve brooks-history versus CivicState identity mismatch [evidence: dispatch and package.json]",
+      "Fix frontend/backend payment tier mismatch [evidence: apps/web/lib/api.ts; evidence: apps/api/src/routes/payments.ts]",
+      "Replace or explicitly scope around local official stub [evidence: apps/api/src/lib/officials/cicero.ts]",
+      "Run paid beta before investible classification [assumption: validation requirement]"
+    ]
+  },
+  "authority": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record [evidence: dispatch brief]"
+}

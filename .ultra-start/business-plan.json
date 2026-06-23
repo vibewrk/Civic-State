@@ -1,0 +1,244 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "one_liner": "CivicState is a watchlist civic-letter workflow: built surface, unproven demand and delivery.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "projectId": "brooks-history",
+    "repoObserved": "civicstate package and CivicState planning docs",
+    "createdAsOf": "2026-06-23 [evidence: wrk.dog dispatch date]"
+  },
+  "status": "needs-revision",
+  "directive": "Treat as watchlist until operator resolves project identity and validates paid delivery.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record [evidence: dispatch brief]",
+  "research": {
+    "mode": "workspace-only; no network",
+    "sources": [
+      "BUSINESS.md [evidence: newly written synthesis]",
+      "MASTER_PLAN.md [evidence: prior CivicState plan]",
+      ".planning/PROJECT.md [evidence: prior project context and validation targets]",
+      ".planning/GENESIS.md [evidence: assumptions and exclusions]",
+      ".planning/STATE.md [evidence: current planning state]",
+      ".planning/ROADMAP.md [evidence: conflicting completion claims]",
+      "apps/api/src/routes/payments.ts [evidence: implemented pricing route]",
+      "apps/web/lib/api.ts [evidence: payment client mismatch]",
+      "apps/api/src/lib/officials/cicero.ts [evidence: local official stub]",
+      "packages/shared/prisma/schema.prisma [evidence: implemented data model]"
+    ],
+    "methods": [
+      "Read root and planning docs",
+      "Inspected representative API, worker, web, and schema files",
+      "Labeled all external market claims as assumptions"
+    ]
+  },
+  "planningMethod": {
+    "approach": "VC-grade EIR soul upgrade with explicit anti-plan and assumption ledger",
+    "freshness": "2026-06-23 [evidence: dispatch date]",
+    "knownStaleness": "MASTER_PLAN.md says March 2026 and .planning/PROJECT.md says 2026-04-25 [evidence: repo docs]"
+  },
+  "customer": {
+    "icp": "US resident with a concrete civic issue, desired outcome, and ZIP code [evidence: .planning/GENESIS.md]",
+    "buyer": "Individual constituent paying $5/$15/$25 [evidence: apps/api/src/routes/payments.ts]",
+    "notCustomer": "Enterprise advocacy teams, law firms, campaigns, filing claimants, and community/social users at launch [evidence: .planning/GENESIS.md]"
+  },
+  "market": {
+    "tam": "$150,000,000 [assumption: 10,000,000 high-intent civic-action households x $15]",
+    "sam": "$1,500,000 [assumption: 100,000 reachable early adopters x $15]",
+    "som": "$54,000 launch-year revenue [assumption: 300 paid submissions/month x $15 x 12]",
+    "validationTargets": [
+      "3% willingness-to-pay conversion [evidence: .planning/PROJECT.md target]",
+      "85% .gov inbox placement [evidence: .planning/PROJECT.md target]",
+      "95% federal/state coverage [evidence: .planning/PROJECT.md target]",
+      "60% local coverage [evidence: .planning/PROJECT.md target]"
+    ]
+  },
+  "businessModel": {
+    "streams": [
+      "$5 single official [evidence: apps/api/src/routes/payments.ts]",
+      "$15 three-pack [evidence: apps/api/src/routes/payments.ts]",
+      "$25 full-spread [evidence: apps/api/src/routes/payments.ts]"
+    ],
+    "deferredStreams": [
+      "API access [evidence: .planning/GENESIS.md]",
+      "certified mail [evidence: .planning/GENESIS.md]",
+      "community/coalition features [evidence: .planning/GENESIS.md]"
+    ],
+    "unitEconomics": [
+      "84% gross margin on $5 single [assumption: $0.80 modeled variable cost]",
+      "88% gross margin on $15 three-pack [assumption: $1.80 modeled variable cost]",
+      "88% gross margin on $25 full-spread [assumption: $3.00 modeled variable cost]"
+    ]
+  },
+  "financialModel": {
+    "revenueAssumptions": [
+      "Launch average package price $15 [evidence: implemented price tier; assumption: mix]",
+      "Launch volume 300 paid submissions/month [assumption: unvalidated demand]",
+      "Scale test average package price $20 [assumption: full-spread mix shift]"
+    ],
+    "costAssumptions": [
+      "Variable COGS 12% of revenue [assumption: 8% variable plus 4% Stripe-fee proxy]",
+      "Launch fixed costs $18,000/year [assumption: lean ops stack]",
+      "Growth fixed costs $60,000/year [assumption: support, data, compliance, contractor ops]"
+    ],
+    "sensitivityTests": [
+      "Downside demand: 75 paid submissions/month x $15 x 12 = $13,500 [assumption: EIR model]",
+      "COGS shock: 24% of $54,000 = $12,960 [assumption: EIR model]",
+      "Local data provider: $500/month = $6,000/year incremental fixed cost [assumption: EIR model]"
+    ],
+    "pnl": [
+      {
+        "period": "Launch year",
+        "revenueBuild": "300/month x $15 x 12 [assumption: EIR model]",
+        "revenue": "$54,000 [assumption: EIR model]",
+        "variableCogs": "$6,480 [assumption: EIR model]",
+        "fixedCosts": "$18,000 [assumption: EIR model]",
+        "operatingResult": "$29,520 [assumption: EIR model]"
+      },
+      {
+        "period": "Growth year",
+        "revenueBuild": "1,000/month x $18 x 12 [assumption: EIR model]",
+        "revenue": "$216,000 [assumption: EIR model]",
+        "variableCogs": "$25,920 [assumption: EIR model]",
+        "fixedCosts": "$60,000 [assumption: EIR model]",
+        "operatingResult": "$130,080 [assumption: EIR model]"
+      },
+      {
+        "period": "Scale test year",
+        "revenueBuild": "3,000/month x $20 x 12 [assumption: EIR model]",
+        "revenue": "$720,000 [assumption: EIR model]",
+        "variableCogs": "$86,400 [assumption: EIR model]",
+        "fixedCosts": "$180,000 [assumption: EIR model]",
+        "operatingResult": "$453,600 [assumption: EIR model]"
+      }
+    ]
+  },
+  "alternatives": [
+    "Manual email to officials [assumption: free substitute]",
+    "Resistbot [assumption: competitor category from prior plan]",
+    "Change.org [assumption: competitor category from prior plan]",
+    "LegalZoom [assumption: competitor category from prior plan]",
+    "Quorum/VoterVoice [assumption: enterprise advocacy substitutes from prior plan]"
+  ],
+  "antiPlan": {
+    "summary": "This may be a polished demo for a low-frequency task that users expect to be free and officials may ignore.",
+    "holes": [
+      {
+        "hole": "Willingness to pay at $5-$25 is unproven [evidence: .planning/PROJECT.md says none validated]",
+        "mitigation": "Run narrow paid beta before scale spend",
+        "residualRisk": "No viable CAC or repeat use [assumption: EIR model]"
+      },
+      {
+        "hole": "Local official coverage is not real because Cicero is a stub [evidence: apps/api/src/lib/officials/cicero.ts]",
+        "mitigation": "Manual verification or provider decision before launch",
+        "residualRisk": "Local issues may be the highest-intent demand [assumption: EIR model]"
+      },
+      {
+        "hole": "Government deliverability can fail even with Postmark [evidence: .planning/PROJECT.md identifies deliverability as hardest problem]",
+        "mitigation": "Domain warming, bounce tracking, complaint suppression",
+        "residualRisk": ".gov filters may suppress AI-generated mail [assumption: EIR model]"
+      },
+      {
+        "hole": "Legal/compliance claims have no counsel review in workspace [evidence: legal pages exist but no counsel evidence]",
+        "mitigation": "Operator/counsel review before public launch",
+        "residualRisk": "Compliance overhead can exceed revenue [assumption: EIR model]"
+      }
+    ]
+  },
+  "strategy": {
+    "nearTerm": "Validate paid delivery loop before scaling.",
+    "platformPosture": "WrkPlug client posture recommended only if operator confirms shared rails [assumption: WrkPlug Phase 0 not yet signed].",
+    "defer": "Community, API, certified mail, and broad SEO scale until paid loop evidence exists [evidence: .planning/GENESIS.md]."
+  },
+  "goToMarket": {
+    "primary": "Issue/location search and narrow civic cohorts [assumption: .planning/GENESIS.md distribution hypothesis]",
+    "firstCohort": "30 completed previews and 10 paid submissions [assumption: beta target]",
+    "proofEvents": [
+      "Preview completion",
+      "Stripe session creation",
+      "Paid conversion",
+      "Delivery non-bounce",
+      "Official reply or user satisfaction"
+    ]
+  },
+  "operatorWorkflow": {
+    "routine": "Review flagged submissions, verify official records, monitor delivery, process refunds, update evidence.",
+    "constraints": [
+      "No 24/7 staffing [evidence: .planning/PROJECT.md]",
+      "Operator handles exceptions within 24 hours [evidence: .planning/PROJECT.md]",
+      "Admin pages exist for flagged items and operations [evidence: apps/web/app/admin]"
+    ]
+  },
+  "constraints": [
+    "Watchlist; personal/research asset unless operator confirms business pitch [evidence: registry note in dispatch]",
+    "Workspace-only research; no external source validation [evidence: dispatch]",
+    "No legal/regulatory conclusions invented",
+    "Project identity mismatch: brooks-history dispatch vs CivicState repo contents [evidence: package.json and dispatch]"
+  ],
+  "metrics": [
+    "Paid conversion above 3% [evidence: .planning/PROJECT.md target]",
+    "Inbox placement above 85% [evidence: .planning/PROJECT.md target]",
+    "Federal/state coverage above 95% [evidence: .planning/PROJECT.md target]",
+    "Local coverage above 60% [evidence: .planning/PROJECT.md target]",
+    "Chargeback below 0.5% [evidence: .planning/PROJECT.md]"
+  ],
+  "aiWorkGovernance": {
+    "currentControls": [
+      "Citation verifier strips unverified citations [evidence: apps/worker/src/agents/researcher.ts]",
+      "AI disclosure included in drafted letters [evidence: apps/worker/src/agents/drafter.ts]",
+      "Moderation before submission job enqueue [evidence: apps/api/src/routes/submissions.ts]"
+    ],
+    "requiredBeforeLaunch": [
+      "Human audit of 50 generated letters [assumption: QA sample]",
+      "Operator/counsel review of claims [assumption: compliance gate]"
+    ]
+  },
+  "unknowns": [
+    "Whether users pay $5-$25 [assumption: unvalidated]",
+    "Whether officials receive and respond to AI-assisted letters [assumption: unvalidated]",
+    "Whether local official data can be reliable [evidence: current stub]",
+    "Whether the dispatch project identity is wrong [evidence: mismatch]",
+    "Whether WrkPlug adoption is intended [assumption: operator decision needed]"
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Users will pay $5-$25 [assumption: demand unvalidated; price tiers implemented]",
+      "basis": "Implemented pricing",
+      "evidenceOrAssumption": "Price [evidence: apps/api/src/routes/payments.ts]; demand [assumption: EIR model]",
+      "test": "30 previews and 10 payments [assumption: EIR model]"
+    },
+    {
+      "claim": "Citation quality can be trusted",
+      "basis": "Verifier workflow",
+      "evidenceOrAssumption": "[evidence: apps/worker/src/agents/researcher.ts]",
+      "test": "Human audit 50 letters [assumption: EIR model]"
+    },
+    {
+      "claim": "Email-first works",
+      "basis": "Prior scope",
+      "evidenceOrAssumption": "Scope [evidence: .planning/GENESIS.md]; effectiveness [assumption: EIR model]",
+      "test": "Track first 100 sent letters [assumption: EIR model]"
+    },
+    {
+      "claim": "SEO can acquire users",
+      "basis": "Genesis distribution hypothesis",
+      "evidenceOrAssumption": "Hypothesis [evidence: .planning/GENESIS.md]; outcome [assumption: EIR model]",
+      "test": "25 indexed public pages by 2026-09-30 [assumption: EIR model]"
+    },
+    {
+      "claim": "One operator can manage exceptions",
+      "basis": "Admin workflow exists",
+      "evidenceOrAssumption": "Tooling [evidence: apps/web/app/admin]; workload [assumption: EIR model]",
+      "test": "Measure minutes per flagged item [assumption: EIR model]"
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-23 [evidence: dispatch date]",
+      "actor": "wrk.dog EIR worker",
+      "change": "Created VC-grade soul and gate artifacts from workspace-only evidence."
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "next": "Use ROADMAP.md Buildable Next items; do not mark approved-for-roadmap until operator merge."
+  }
+}
