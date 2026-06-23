@@ -1,0 +1,12 @@
+{
+  "currentThesis": "CivicState is worth advancing only if individual U.S. residents will pay for verified, correctly routed, citation-backed constituent letters that reliably reach officials without creating legal or safety exposure.",
+  "identityConstraints": [
+    "Never a legal advice service or regulatory filing service.",
+    "Never an uncapped autonomous sender without moderation, opt-out, and deliverability gates.",
+    "Never a near-term investible BOS unless the operator explicitly promotes it from watchlist research asset.",
+    "Never a platform owner for auth, billing, or identity if WrkPlug shared rails become available."
+  ],
+  "reviewedAt": "2026-06-23",
+  "reviewedBy": "wrk.dog EIR",
+  "verdict": "refreshed"
+}
