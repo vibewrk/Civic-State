@@ -1,0 +1,260 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "artifact": "schemas/business-plan-gate.v1.schema.json",
+  "one_liner": "CivicState is a watchlist civic-letter MVP; paid demand, deliverability, and identity mismatch remain unproven.",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history",
+    "repoRealityName": "CivicState"
+  },
+  "status": "needs-revision",
+  "directive": "Treat as watchlist until operator confirms this research asset should be pitched as a business.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+  "research": {
+    "mode": "workspace-only/no-network",
+    "sources": [
+      "dispatch wrapper and registry note",
+      "package.json",
+      ".planning/PROJECT.md",
+      ".planning/ROADMAP.md",
+      ".planning/REQUIREMENTS.md",
+      ".planning/GENESIS.md",
+      ".planning/existing-state.md",
+      "apps/api/src",
+      "apps/web",
+      "apps/worker/src",
+      "packages/shared/prisma/schema.prisma",
+      "tests/payment.test.ts",
+      "tests/citation-verifier.test.ts"
+    ],
+    "methods": [
+      "Read existing planning soul and registry context",
+      "Sampled implementation files to separate real code from aspiration",
+      "Tagged repo facts as evidence and external/commercial claims as assumptions",
+      "Built bottom-up market and financial model from implemented price points"
+    ]
+  },
+  "planningMethod": {
+    "approach": "EIR review with repo-grounded evidence, bottom-up economics, explicit anti-plan, and operator-gated investibility.",
+    "freshnessAsOf": "2026-06-23",
+    "externalResearchAvailable": false
+  },
+  "customer": {
+    "primary": "US resident with a specific civic concern who needs research, official routing, drafting, and delivery handled.",
+    "secondary": "Repeat local issue advocate; future organization buyer only after consumer pipeline validation.",
+    "honesty": "Customer definition is repo-supported, but willingness to pay is assumption until beta data exists."
+  },
+  "market": {
+    "tam": {
+      "valueUsd": 15000000,
+      "method": "1,000,000 assumed paid civic-letter jobs per year x $15 blended order value.",
+      "label": "assumption: EIR planning ceiling; no network access"
+    },
+    "sam": {
+      "valueUsd": 1500000,
+      "method": "100,000 assumed reachable self-serve jobs per year x $15 blended order value.",
+      "label": "assumption: EIR reachable-market model; no network access"
+    },
+    "som": {
+      "valueUsd": 72000,
+      "method": "4,800 paid submissions per year x $15 blended order value.",
+      "label": "assumption: planning anchor from repo scale note; no sales evidence"
+    }
+  },
+  "businessModel": {
+    "currentRevenue": "Transactional checkout at $5, $15, and $25 tiers.",
+    "repoEvidence": "apps/api/src/routes/payments.ts and tests/payment.test.ts",
+    "futureRevenue": "Organization API, subscriptions, certified mail, and reply intelligence remain deferred assumptions.",
+    "marginFloor": "40% net margin floor in .planning/REQUIREMENTS.md"
+  },
+  "financialModel": {
+    "revenueAssumptions": [
+      {
+        "claim": "40% single, 40% three-pack, 20% full-spread mix.",
+        "label": "assumption: EIR model; no network access"
+      },
+      {
+        "claim": "$13 blended order value.",
+        "label": "assumption: calculated from $5/$15/$25 mix"
+      },
+      {
+        "claim": "4,800 paid submissions in second operating year.",
+        "label": "assumption: adapted from .planning/existing-state.md month-twelve scale"
+      }
+    ],
+    "costAssumptions": [
+      {
+        "claim": "$0.60 direct AI/vendor cost per submission.",
+        "label": "assumption: conservative use of highest test fixture"
+      },
+      {
+        "claim": "5% processor/refund load.",
+        "label": "assumption: rounded planning load; no network access"
+      },
+      {
+        "claim": "$96/month backend droplet baseline.",
+        "label": "evidence: .planning/PROJECT.md"
+      }
+    ],
+    "sensitivityTests": [
+      {
+        "test": "Paid conversion 50% below base.",
+        "result": "First operating year revenue falls from $15,600 to $7,800.",
+        "label": "assumption: model stress"
+      },
+      {
+        "test": "Direct job cost doubles to $1.20.",
+        "result": "First operating year direct cost rises to $1,440.",
+        "label": "assumption: vendor stress"
+      },
+      {
+        "test": "Human review cost triples to $18,000.",
+        "result": "First operating year contribution turns negative.",
+        "label": "assumption: moderation stress"
+      }
+    ]
+  },
+  "alternatives": [
+    {
+      "name": "Resistbot",
+      "type": "constituent messaging competitor",
+      "label": "assumption: model knowledge; no network access"
+    },
+    {
+      "name": "Quorum/FiscalNote/VoterVoice",
+      "type": "enterprise advocacy incumbent",
+      "label": "assumption: model knowledge; no network access"
+    },
+    {
+      "name": "ChatGPT plus manual email",
+      "type": "generic substitute",
+      "label": "assumption: model knowledge; no network access"
+    }
+  ],
+  "antiPlan": {
+    "holes": [
+      "Registry says research asset, not investible business.",
+      "Deliverability to government inboxes may fail.",
+      "Legal-adjacent AI letters can create regulatory, reputational, and defamation exposure.",
+      "Local official coverage is currently stubbed.",
+      "Free substitutes may be good enough."
+    ],
+    "mitigations": [
+      "Operator ruling before wrk.vc promotion.",
+      "Human-reviewed beta before public launch.",
+      "Citation verification, moderation, audit logging, and opt-out handling.",
+      "Local provider spike before paid traffic.",
+      "Measure paid conversion, not preview usage alone."
+    ],
+    "residualRisks": [
+      "Operator may archive as research.",
+      "One unsafe letter can reset trust.",
+      "Official domains can still classify mail as spam.",
+      "CAC may exceed low transaction revenue."
+    ]
+  },
+  "strategy": {
+    "nearTerm": "Validate paid, safe, delivered civic letters with a narrow concierge beta.",
+    "doNotDo": "Do not scale SEO, paid ads, or organization sales before coverage and safety gates pass."
+  },
+  "goToMarket": {
+    "first100Customers": "Manual outreach to issue-specific local civic communities and concierge beta users.",
+    "channels": [
+      "Concierge beta",
+      "Issue-specific templates",
+      "Opt-in SEO pages only after legal/operator review"
+    ],
+    "proofNeeded": [
+      "Paid checkout completion",
+      "Delivered letters",
+      "Low bounce/complaint rates",
+      "User-reported value"
+    ]
+  },
+  "operatorWorkflow": {
+    "daily": "Review flagged submissions, delivery failures, bounce/complaint events, and treasury alerts.",
+    "launchConstraint": "No unattended public scale until operator has reviewed beta incidents and queue load."
+  },
+  "constraints": [
+    "Workspace-only research; no external market validation.",
+    "Watchlist registry note.",
+    "Project id/name mismatch: brooks-history vs CivicState.",
+    "Civic/political content sensitivity.",
+    "Legal-adjacent output but not legal advice.",
+    "No claim of approved authority before operator merge."
+  ],
+  "metrics": {
+    "activation": "Preview generated from submitted issue.",
+    "conversion": "Paid checkout completed.",
+    "delivery": "Letter sent and not bounced.",
+    "safety": "No unresolved moderation/citation incident.",
+    "unitEconomics": "Revenue covers direct cost, processor cost, and operator review time."
+  },
+  "aiWorkGovernance": {
+    "rules": [
+      "AI output is never evidence.",
+      "Every quantitative claim in BUSINESS.md carries evidence or assumption label.",
+      "Citation verification is mandatory before delivery.",
+      "Human review handles flagged legal-adjacent or unsafe content."
+    ],
+    "repoEvidence": [
+      "apps/api/src/lib/moderation.ts",
+      "apps/worker/src/lib/legal/citation-verifier.ts",
+      "apps/worker/src/agents/researcher.ts"
+    ]
+  },
+  "unknowns": [
+    "Whether operator wants to pitch this as a business.",
+    "Actual willingness to pay.",
+    "Official data coverage by ZIP.",
+    "Inbox deliverability by government domain.",
+    "Review queue load and legal risk.",
+    "Search demand and CAC."
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Users will pay $5-$25.",
+      "basis": "Implemented pricing exists.",
+      "evidenceOrAssumption": "demand is assumption",
+      "test": "Paid beta checkout completion"
+    },
+    {
+      "claim": "$13 blended order value.",
+      "basis": "EIR price mix.",
+      "evidenceOrAssumption": "assumption",
+      "test": "Measure actual tier mix after beta"
+    },
+    {
+      "claim": "Email-first is enough.",
+      "basis": "Roadmap excludes certified mail at launch.",
+      "evidenceOrAssumption": "mixed evidence and assumption",
+      "test": "Track delivered/bounced/complaint events"
+    },
+    {
+      "claim": "Local official coverage can be solved.",
+      "basis": "Cicero stub exists.",
+      "evidenceOrAssumption": "assumption",
+      "test": "Provider spike"
+    },
+    {
+      "claim": "One operator can manage safety.",
+      "basis": "Prior planning assumption.",
+      "evidenceOrAssumption": "assumption",
+      "test": "Measure minutes per flagged case"
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-23",
+      "change": "Created EIR soul upgrade from workspace evidence.",
+      "author": "wrk.dog fleet worker"
+    }
+  ],
+  "roadmapGate": "needs-revision",
+  "next": [
+    "Operator identity ruling for brooks-history vs CivicState.",
+    "Local official coverage spike.",
+    "Human-reviewed paid beta.",
+    "Replace assumptions with measured funnel, delivery, and safety data."
+  ]
+}

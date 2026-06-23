@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "ultra-start.thesis-review.v1",
+  "status": "needs-revision",
+  "one_liner": "CivicState has real MVP code but remains watchlist until business identity, paid demand, and delivery safety are proven.",
+  "projectId": "brooks-history",
+  "repoRealityName": "CivicState",
+  "reviewedAt": "2026-06-23",
+  "thesis": "CivicState can become a small paid civic-letter completion business if users pay $5-$25 for verified, delivered, official-directed correspondence and the operator can control deliverability and legal-adjacent AI risk.",
+  "verdict": {
+    "label": "watchlist",
+    "score": 38,
+    "scoreLabel": "assumption: EIR judgment; no network access",
+    "rationale": "Implementation is stronger than the stale planning audit, but the registry note, identity mismatch, absent market proof, local official stub, and deliverability/legal risks block investibility."
+  },
+  "evidence": [
+    {
+      "path": "package.json",
+      "finding": "Repo is named civicstate and describes an AI-powered civic advocacy platform."
+    },
+    {
+      "path": ".planning/PROJECT.md",
+      "finding": "Existing soul defines CivicState as a $5-$25 civic letter product."
+    },
+    {
+      "path": "apps/api/src/routes/payments.ts",
+      "finding": "Stripe checkout pricing tiers are implemented."
+    },
+    {
+      "path": "packages/shared/prisma/schema.prisma",
+      "finding": "Core user, submission, campaign, letter, official, payment, delivery, ledger, audit, and job models exist."
+    },
+    {
+      "path": "apps/api/src/lib/officials/cicero.ts",
+      "finding": "Local official lookup remains a stub."
+    }
+  ],
+  "assumptions": [
+    "Market size is modeled bottom-up because no network research was available.",
+    "Competitor references are model-knowledge assumptions, not verified current market research.",
+    "Paid willingness to pay is unvalidated until beta checkout data exists.",
+    "Operator review load is unvalidated until real flagged submissions exist."
+  ],
+  "gapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ],
+  "operatorRulingNeeded": [
+    "Confirm whether brooks-history should map to CivicState or be renamed/archived.",
+    "Confirm whether this personal/research asset should be pitched as a business.",
+    "Approve beta safety thresholds before public promotion."
+  ],
+  "nextReviewTrigger": "After operator ruling or paid beta data is available."
+}
