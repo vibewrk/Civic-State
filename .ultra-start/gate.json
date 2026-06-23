@@ -1,0 +1,244 @@
+{
+  "schemaVersion": "wrk.soul.gate.v1",
+  "projectId": "brooks-history",
+  "projectName": "CivicState / brookss-history",
+  "status": "provisional",
+  "summary": "Conditional civic-letter workflow: real code exists, but demand and deliverability are unvalidated.",
+  "seed": {
+    "path": "BUSINESS.md",
+    "id": "business-plan-2026-06-23"
+  },
+  "reviewedAt": "2026-06-23 [evidence: dispatch current_date]",
+  "authority": "provisional",
+  "adoptionNote": "POM soul-review + wrk.dog merge constitute adoption — operator ruling 2026-06-12; see the PR's POM record",
+  "operatorContext": {
+    "registryStatus": "Watchlist",
+    "registryNote": "Personal/research asset, not near-term investible BOS; operator must confirm whether it should pitch as a business. [evidence: dispatch registry note]"
+  },
+  "sourcesAndMethods": {
+    "networkAccess": "none; workspace-only per dispatch",
+    "methods": [
+      "Read root and planning soul files where present.",
+      "Read representative web, API, worker, Prisma, and test files.",
+      "Compared stale planning audit against current worktree shape.",
+      "Tagged repo-backed claims as evidence and external/market claims as assumptions."
+    ],
+    "sources": [
+      "MASTER_PLAN.md [evidence]",
+      ".planning/PROJECT.md [evidence]",
+      ".planning/GENESIS.md [evidence]",
+      ".planning/ROADMAP.md [evidence]",
+      ".planning/REQUIREMENTS.md [evidence]",
+      ".planning/existing-state.md [evidence]",
+      "packages/shared/prisma/schema.prisma [evidence]",
+      "apps/api/src/index.ts [evidence]",
+      "apps/api/src/routes/payments.ts [evidence]",
+      "apps/api/src/routes/submissions.ts [evidence]",
+      "apps/api/src/routes/compliance.ts [evidence]",
+      "apps/worker/src/index.ts [evidence]",
+      "tests/payment.test.ts [evidence]"
+    ]
+  },
+  "thesisCurrent": {
+    "asOf": "2026-06-23 [evidence: dispatch current_date]",
+    "statement": "CivicState can become a transactional civic communication product if it proves residents pay $5-$25, official routing works, citations remain safe, and government email delivery clears quality gates. [evidence: BUSINESS.md]",
+    "confidence": "conditional; no live revenue, traffic, or deliverability evidence in workspace [assumption: workspace review]"
+  },
+  "customerDefinition": {
+    "primaryCustomer": "United States resident with a specific civic frustration who wants the right officials contacted but will not do the research, drafting, and routing manually. [evidence: .planning/GENESIS.md]",
+    "excludedCustomers": [
+      "Legal claimants seeking advice or filings [evidence: .planning/GENESIS.md]",
+      "Enterprise advocacy buyers [assumption: current pricing and code are consumer transactional]",
+      "Community/social movement users requiring co-signing, comments, or coalition tools [evidence: .planning/GENESIS.md]"
+    ]
+  },
+  "marketSizing": {
+    "knownMarketSize": "Unknown; no external research performed. [assumption: network disabled]",
+    "method": "Bottom-up validation ladder rather than top-down TAM.",
+    "validationWedge": [
+      {
+        "claim": "Break-even at about $340/month and about 25 Amplify submissions/month.",
+        "honesty": "evidence: MASTER_PLAN.md section 19.3"
+      },
+      {
+        "claim": "At the repo's 3% willingness-to-pay gate, about 850 qualified visitors/month are needed for about 25 paid submissions.",
+        "honesty": "evidence: .planning/PROJECT.md for 3%; assumption: arithmetic 25 / 0.03 rounded"
+      },
+      {
+        "claim": "Year-one plan scenario is 400 submissions at $18 average order value for $7,200/month.",
+        "honesty": "evidence: MASTER_PLAN.md section 19.2"
+      }
+    ]
+  },
+  "revenueModel": {
+    "type": "One-time transactional letter packages.",
+    "tiers": [
+      {
+        "name": "single",
+        "price": "$5 [evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "name": "three_pack",
+        "price": "$15 [evidence: apps/api/src/routes/payments.ts]"
+      },
+      {
+        "name": "full_spread",
+        "price": "$25 [evidence: apps/api/src/routes/payments.ts]"
+      }
+    ],
+    "financialModel": [
+      {
+        "package": "Amplify",
+        "revenue": "$15.00 [evidence: MASTER_PLAN.md section 19.1]",
+        "cogs": "$1.20 [evidence: MASTER_PLAN.md section 19.1]",
+        "contribution": "$13.80 [evidence: MASTER_PLAN.md section 19.1]",
+        "margin": "92% [evidence: MASTER_PLAN.md section 19.1]",
+        "reconciles": true
+      },
+      {
+        "package": "Complex",
+        "revenue": "$25.00 [evidence: MASTER_PLAN.md section 19.1]",
+        "cogs": "$1.94 [evidence: MASTER_PLAN.md section 19.1]",
+        "contribution": "$23.06 [evidence: MASTER_PLAN.md section 19.1]",
+        "margin": "92% [evidence: MASTER_PLAN.md section 19.1]",
+        "reconciles": true
+      }
+    ]
+  },
+  "competition": [
+    {
+      "name": "Resistbot",
+      "position": "Citizen letter tool; CivicState differentiates through research and citations.",
+      "honesty": "evidence: .planning/PROJECT.md; assumption: not independently verified"
+    },
+    {
+      "name": "Change.org",
+      "position": "Petition hosting; CivicState differentiates through individualized delivery.",
+      "honesty": "evidence: MASTER_PLAN.md; assumption: not independently verified"
+    },
+    {
+      "name": "LegalZoom",
+      "position": "Document drafting; CivicState differentiates by avoiding legal advice and focusing on civic communication.",
+      "honesty": "evidence: MASTER_PLAN.md; assumption: not independently verified"
+    },
+    {
+      "name": "Quorum / VoterVoice",
+      "position": "Enterprise advocacy; CivicState targets individual transactional buyers.",
+      "honesty": "evidence: .planning/PROJECT.md; assumption: not independently verified"
+    }
+  ],
+  "validationGates": [
+    {
+      "gate": "paidConversion",
+      "threshold": "3% [evidence: .planning/PROJECT.md]",
+      "status": "unvalidated"
+    },
+    {
+      "gate": "governmentInboxPlacement",
+      "threshold": "85% [evidence: .planning/PROJECT.md]",
+      "status": "unvalidated"
+    },
+    {
+      "gate": "officialCoverageFederalState",
+      "threshold": "95% [evidence: .planning/PROJECT.md]",
+      "status": "unvalidated"
+    },
+    {
+      "gate": "officialCoverageLocal",
+      "threshold": "60% [evidence: .planning/PROJECT.md]",
+      "status": "unvalidated"
+    }
+  ],
+  "risksAntiplan": {
+    "skepticalView": "This may be a useful personal/research demo rather than a business: users may not pay, officials may ignore AI-assisted mail, official data may be sparse, and legal/compliance burden may overwhelm low transaction prices. [assumption: EIR anti-plan from workspace review]",
+    "holes": [
+      "No live revenue or paid conversion evidence. [assumption: workspace review]",
+      "No government inbox-placement evidence. [assumption: workspace review]",
+      "No official coverage audit by ZIP. [assumption: workspace review]",
+      "No independent legal review of disclaimers, AI disclosure, or CAN-SPAM posture. [assumption: workspace review]"
+    ],
+    "mitigations": [
+      "Run beta conversion against 3% threshold. [evidence: .planning/PROJECT.md]",
+      "Run deliverability tests against 85% inbox placement threshold. [evidence: .planning/PROJECT.md]",
+      "Audit official coverage against 95% federal/state and 60% local thresholds. [evidence: .planning/PROJECT.md]",
+      "Keep legal advice and filings excluded from scope. [evidence: .planning/GENESIS.md]"
+    ],
+    "residualRisks": [
+      "Even passing deliverability does not prove officials will respond.",
+      "Even passing paid conversion does not prove retention or repeat use.",
+      "Even accurate citations may not eliminate legal/compliance risk."
+    ]
+  },
+  "assumptionLedger": [
+    {
+      "assumption": "Residents will pay $5-$25.",
+      "basis": "Repo pricing and thesis [evidence: apps/api/src/routes/payments.ts; evidence: .planning/PROJECT.md]",
+      "validation": "Paid beta conversion"
+    },
+    {
+      "assumption": "SEO can become primary acquisition.",
+      "basis": "Repo GTM hypothesis [evidence: .planning/GENESIS.md]",
+      "validation": "Search impressions and paid conversions"
+    },
+    {
+      "assumption": "One operator can handle review workload.",
+      "basis": "Repo operating model [evidence: .planning/GENESIS.md]",
+      "validation": "Flag queue depth and review-time measurement"
+    }
+  ],
+  "goToMarket": {
+    "primary": "Organic search from opt-in public civic campaign/reference pages [evidence: .planning/GENESIS.md; assumption: no traffic proof]",
+    "secondary": "Social sharing of public campaign pages [evidence: .planning/GENESIS.md; assumption: no sharing proof]",
+    "nearTerm": "Manual beta cohort to produce conversion and deliverability evidence [assumption: needed because SEO proof is absent]"
+  },
+  "honestyLabels": {
+    "evidence": "Repository or dispatch artifact supports the claim.",
+    "assumption": "Reasoned inference or external market claim not independently verified in workspace-only mode.",
+    "factoryOutputNotEvidence": true
+  },
+  "freshness": {
+    "planningDocsDate": "2026-04-25 [evidence: .planning/PROJECT.md]",
+    "reviewDate": "2026-06-23 [evidence: dispatch current_date]",
+    "staleItems": [
+      ".planning/existing-state.md says no application code exists, but current worktree contains app code. [evidence: .planning/existing-state.md; evidence: apps/]",
+      "External market and competitor claims were not refreshed due to no-network constraint. [evidence: dispatch instruction]"
+    ]
+  },
+  "roadmapBuildableShape": {
+    "path": "ROADMAP.md",
+    "nextActionCount": "8 checkbox items [evidence: ROADMAP.md]",
+    "properties": [
+      "single-worker-sized",
+      "non-speculative",
+      "traceable to BUSINESS.md headings"
+    ]
+  },
+  "files": {
+    "business": "BUSINESS.md",
+    "roadmap": "ROADMAP.md",
+    "decisions": "DECISIONS.md",
+    "gate": ".ultra-start/gate.json"
+  },
+  "scrutinyGapsClosed": [
+    "business-file",
+    "roadmap-file",
+    "decisions-file",
+    "gate-json",
+    "thesis-current",
+    "financial-figures",
+    "percent-figures",
+    "market-sizing",
+    "customer-definition",
+    "revenue-model",
+    "competition",
+    "risks-antiplan",
+    "assumption-ledger",
+    "go-to-market",
+    "honesty-labels",
+    "doc-dates",
+    "doc-structure",
+    "evidence-sources",
+    "freshness-stale",
+    "roadmap-buildable-shape"
+  ]
+}
