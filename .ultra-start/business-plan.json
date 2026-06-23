@@ -1,0 +1,316 @@
+{
+  "schemaVersion": "wrk.business-plan-gate.v1",
+  "artifact": "business-plan",
+  "projectId": "brooks-history",
+  "productName": "CivicState",
+  "seedPacket": {
+    "path": "BUSINESS.md",
+    "id": "brooks-history-civicstate-business-2026-06-23"
+  },
+  "status": "needs-revision",
+  "directive": "Preserve the CivicState repo narrative while holding it at watchlist until paid demand, deliverability, and official-data coverage are validated.",
+  "authority": "POM soul-review + wrk.dog merge constitute adoption \u2014 operator ruling 2026-06-12; see the PR's POM record",
+  "one_liner": "Watchlist civic-letter tool: real repo surface, unproven paid demand and deliverability.",
+  "research": {
+    "mode": "workspace-only",
+    "networkResearchAvailable": false,
+    "sources": [
+      {
+        "path": "MASTER_PLAN.md",
+        "method": "read existing business and financial plan"
+      },
+      {
+        "path": ".planning/PROJECT.md",
+        "method": "read current project soul and validation gates"
+      },
+      {
+        "path": ".planning/REQUIREMENTS.md",
+        "method": "read requirement status and constraints"
+      },
+      {
+        "path": ".planning/ROADMAP.md",
+        "method": "read historical roadmap completion claims"
+      },
+      {
+        "path": "packages/shared/prisma/schema.prisma",
+        "method": "inspect actual data model"
+      },
+      {
+        "path": "apps/api/src/routes/payments.ts",
+        "method": "inspect pricing and payment implementation"
+      },
+      {
+        "path": "apps/web/lib/api.ts",
+        "method": "inspect frontend API contract"
+      },
+      {
+        "path": "apps/worker/src/agents/researcher.ts",
+        "method": "inspect research and citation verification"
+      }
+    ]
+  },
+  "planningMethod": "EIR workspace review: repo evidence first, external claims marked as assumptions, contradictions raised as surprise spikes.",
+  "customer": {
+    "primary": "Individual United States resident with a civic issue who wants a researched constituent letter",
+    "evidence": "BUSINESS.md#problem--customer",
+    "validationNeeded": [
+      "Paid conversion from preview to checkout",
+      "Repeat/referral intent",
+      "Support load for flagged submissions"
+    ]
+  },
+  "market": {
+    "method": "Bottom-up early reachable audience model because network research was unavailable",
+    "tam": {
+      "label": "not claimed",
+      "honesty": "assumption",
+      "basis": "Top-down civic participation TAM would be hand-waving without network research"
+    },
+    "sam": {
+      "amountUsdPerYear": 27000,
+      "honesty": "assumption",
+      "basis": "50,000 issue-intent visitors x 3% conversion x $18 AOV"
+    },
+    "som": {
+      "amountUsdPerYear": 86400,
+      "honesty": "assumption",
+      "basis": "400 monthly submissions x $18 AOV x 12 months, annualized from MASTER_PLAN.md scenario"
+    }
+  },
+  "businessModel": {
+    "pricing": [
+      {
+        "tier": "single",
+        "priceUsd": 5,
+        "honesty": "evidence",
+        "evidence": "apps/api/src/routes/payments.ts"
+      },
+      {
+        "tier": "three_pack",
+        "priceUsd": 15,
+        "honesty": "evidence",
+        "evidence": "apps/api/src/routes/payments.ts"
+      },
+      {
+        "tier": "full_spread",
+        "priceUsd": 25,
+        "honesty": "evidence",
+        "evidence": "apps/api/src/routes/payments.ts"
+      }
+    ],
+    "streams": [
+      "Paid letter packages",
+      "Priority complex review later",
+      "Organization/API access future only"
+    ],
+    "marginFloorPercent": {
+      "value": 40,
+      "honesty": "evidence",
+      "evidence": "MASTER_PLAN.md"
+    }
+  },
+  "financialModel": {
+    "revenueAssumptions": [
+      {
+        "claim": "AOV can reach $18 in the base case",
+        "honesty": "evidence",
+        "basis": "MASTER_PLAN.md Month Twelve scenario"
+      },
+      {
+        "claim": "Paid conversion gate is 3%",
+        "honesty": "evidence",
+        "basis": ".planning/PROJECT.md"
+      },
+      {
+        "claim": "Month Twelve target is 400 submissions per month",
+        "honesty": "evidence",
+        "basis": "MASTER_PLAN.md"
+      }
+    ],
+    "costAssumptions": [
+      {
+        "claim": "Variable COGS are 8% of revenue",
+        "honesty": "evidence",
+        "basis": "MASTER_PLAN.md"
+      },
+      {
+        "claim": "Stripe fees are 4% of revenue",
+        "honesty": "evidence",
+        "basis": "MASTER_PLAN.md"
+      },
+      {
+        "claim": "Phase One fixed costs are about $200 per month",
+        "honesty": "evidence",
+        "basis": "MASTER_PLAN.md"
+      }
+    ],
+    "sensitivityTests": [
+      {
+        "name": "conversion miss",
+        "case": "1% paid conversion instead of 3%",
+        "impact": "early revenue falls by about 67%",
+        "honesty": "assumption"
+      },
+      {
+        "name": "deliverability miss",
+        "case": "below 85% .gov inbox placement",
+        "impact": "pause paid delivery until remediated",
+        "honesty": "evidence for threshold, assumption for action"
+      },
+      {
+        "name": "cost overrun",
+        "case": "variable and payment costs rise to 20% of revenue",
+        "impact": "unit economics remain positive but trust and support risk increase",
+        "honesty": "assumption"
+      }
+    ]
+  },
+  "competition": {
+    "alternatives": [
+      "Resistbot",
+      "Change.org",
+      "LegalZoom",
+      "manual constituent outreach",
+      "Quorum",
+      "VoterVoice"
+    ],
+    "basis": "Named or implied in MASTER_PLAN.md and .planning/PROJECT.md; external details treated as assumptions in BUSINESS.md"
+  },
+  "antiPlan": {
+    "summary": "This can fail because users may not pay, officials may not receive emails, official data may be brittle, and the legal-advice boundary may create unacceptable risk.",
+    "holes": [
+      {
+        "hole": "Paid demand unproven",
+        "mitigation": "Run real paid beta before investment posture",
+        "residualRisk": "Users may like previews but refuse checkout"
+      },
+      {
+        "hole": "Government deliverability brittle",
+        "mitigation": "Domain warmup and inbox-placement gate",
+        "residualRisk": ".gov filtering may still block mail"
+      },
+      {
+        "hole": "Official coverage incomplete",
+        "mitigation": "Coverage audit before launch",
+        "residualRisk": "Local data may be costly or stale"
+      },
+      {
+        "hole": "Legal boundary fragile",
+        "mitigation": "Disclaimers, citation verification, human review",
+        "residualRisk": "Users may rely on output as legal advice"
+      }
+    ]
+  },
+  "strategy": "Narrow paid individual constituent workflow first; no organization API, coalition mechanics, or channel expansion before validation.",
+  "goToMarket": {
+    "firstWedge": "Single metro, constrained issue categories, paid beta",
+    "channels": [
+      "operator network",
+      "local civic groups",
+      "issue-specific SEO",
+      "neighborhood associations"
+    ],
+    "gates": [
+      "3% paid conversion",
+      "85% .gov inbox placement",
+      "95% federal/state official coverage",
+      "60% local official coverage"
+    ]
+  },
+  "operatorWorkflow": {
+    "daily": "Review flagged submissions, delivery failures, treasury discrepancies, and bounced officials",
+    "launchConstraint": "No 24/7 staffing; exception-based workflow only",
+    "honesty": "evidence",
+    "basis": "MASTER_PLAN.md"
+  },
+  "constraints": [
+    "Registry says watchlist and personal/research asset",
+    "Workspace-only research; no external sources fetched",
+    "Civic communications only; not legal advice, filings, claims, or lobbying firm",
+    "Sensitive political/civic opinion data requires encryption, retention, and deletion discipline"
+  ],
+  "metrics": {
+    "paidConversionPercent": {
+      "target": 3,
+      "honesty": "evidence",
+      "basis": ".planning/PROJECT.md"
+    },
+    "govInboxPlacementPercent": {
+      "target": 85,
+      "honesty": "evidence",
+      "basis": ".planning/PROJECT.md"
+    },
+    "federalStateCoveragePercent": {
+      "target": 95,
+      "honesty": "evidence",
+      "basis": ".planning/PROJECT.md"
+    },
+    "localCoveragePercent": {
+      "target": 60,
+      "honesty": "evidence",
+      "basis": ".planning/PROJECT.md"
+    }
+  },
+  "aiWorkGovernance": {
+    "requirements": [
+      "Citation verification before delivery",
+      "AI disclosure in letters",
+      "Human review for threats, defamation risk, legal-demand posture, and unverifiable claims",
+      "No fabricated citations or official contact data"
+    ],
+    "evidence": [
+      "apps/worker/src/agents/researcher.ts",
+      "apps/worker/src/agents/drafter.ts",
+      "apps/api/src/lib/moderation.ts"
+    ]
+  },
+  "unknowns": [
+    "Whether operator wants brooks-history/CivicState pitched as a business",
+    "Actual paid conversion",
+    "Actual deliverability to government domains",
+    "Actual local official coverage cost",
+    "Whether WrkPlug replaces current Clerk/Stripe rails"
+  ],
+  "assumptionLedger": [
+    {
+      "claim": "Early SAM is $27,000 per year",
+      "basis": "50,000 visitors x 3% conversion x $18 AOV",
+      "kind": "assumption",
+      "test": "Replace with actual traffic and conversion"
+    },
+    {
+      "claim": "WrkPlug shared rails reduce platform work",
+      "basis": "Platform strategy",
+      "kind": "assumption",
+      "test": "Operator architecture ruling"
+    },
+    {
+      "claim": "Official-contact data can become a moat",
+      "basis": "EIR judgment",
+      "kind": "assumption",
+      "test": "Track bounce and response improvements"
+    },
+    {
+      "claim": "Users will pay $5-$25",
+      "basis": "Repo pricing",
+      "kind": "evidence",
+      "test": "Paid beta checkout conversion"
+    },
+    {
+      "claim": "Project is not near-term investible",
+      "basis": "Registry note",
+      "kind": "evidence",
+      "test": "Operator confirms posture"
+    }
+  ],
+  "versionHistory": [
+    {
+      "date": "2026-06-23",
+      "change": "EIR soul upgrade created BUSINESS.md, ROADMAP.md, DECISIONS.md, and gate artifacts"
+    }
+  ],
+  "roadmapGate": {
+    "status": "needs-revision",
+    "next": "Complete Buildable Now items in ROADMAP.md before any investible pitch"
+  }
+}

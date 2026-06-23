@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "ultra-start.thesis-review.v1",
+  "projectId": "brooks-history",
+  "productName": "CivicState",
+  "reviewDate": "2026-06-23",
+  "reviewDateHonesty": "evidence: worker current_date and dispatch context",
+  "status": "needs-revision",
+  "one_liner": "Watchlist civic-letter tool: real repo surface, unproven paid demand and deliverability.",
+  "currentThesis": "CivicState can become a narrow paid civic-communications business if residents pay for researched, citation-backed constituent letters and government email delivery remains reliable.",
+  "honestyLabel": "workspace-only evidence plus assumptions; no network research",
+  "evidence": [
+    "BUSINESS.md",
+    "MASTER_PLAN.md",
+    ".planning/PROJECT.md",
+    ".planning/REQUIREMENTS.md",
+    ".planning/ROADMAP.md",
+    "apps/api/src/routes/payments.ts",
+    "apps/web/lib/api.ts",
+    "apps/worker/src/agents/researcher.ts"
+  ],
+  "watchlistReasons": [
+    "Dispatch registry says personal/research asset and not near-term investible BOS",
+    "Paid demand is unproven",
+    "Deliverability to government domains is unproven",
+    "Official data coverage is unproven",
+    "Repo has contract mismatches that may block checkout"
+  ],
+  "validationGates": [
+    {
+      "metric": "paidConversionPercent",
+      "target": 3,
+      "honesty": "evidence",
+      "basis": ".planning/PROJECT.md"
+    },
+    {
+      "metric": "govInboxPlacementPercent",
+      "target": 85,
+      "honesty": "evidence",
+      "basis": ".planning/PROJECT.md"
+    },
+    {
+      "metric": "federalStateCoveragePercent",
+      "target": 95,
+      "honesty": "evidence",
+      "basis": ".planning/PROJECT.md"
+    },
+    {
+      "metric": "localCoveragePercent",
+      "target": 60,
+      "honesty": "evidence",
+      "basis": ".planning/PROJECT.md"
+    }
+  ],
+  "operatorQuestions": [
+    "Should brooks-history present CivicState as a business or remain a personal research asset?",
+    "Should identity and billing migrate to WrkPlug shared rails or keep Clerk and Stripe direct?",
+    "What legal review threshold is required before paid civic letters launch?"
+  ]
+}
