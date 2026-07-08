@@ -72,11 +72,6 @@ vi.mock('ioredis', () => ({
   })),
 }));
 
-// Mock express-rate-limit
-vi.mock('express-rate-limit', () => ({
-  default: vi.fn(() => (_req: unknown, _res: unknown, next: () => void) => next()),
-}));
-
 // Mock the officials lookup module
 vi.mock('../apps/api/src/lib/officials/lookup.js', () => ({
   lookupOfficials: vi.fn(),
