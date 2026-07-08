@@ -6,6 +6,10 @@ import { getAuth } from '@clerk/express';
 import { computeRowHmac } from 'shared/hmac';
 import { moderateContent } from '../lib/moderation.js';
 import type { ModerationResult } from '../lib/moderation.js';
+import {
+  buildPricingPackagesResponse,
+  buildPricingTiersResponse,
+} from '../lib/pricing.js';
 
 const router: IRouter = Router();
 
@@ -13,8 +17,18 @@ const createSubmissionSchema = z.object({
   issueDescription: z.string().min(10).max(5000),
   desiredOutcome: z.string().min(10).max(2000),
   zipCode: z.string().regex(/^\d{5}(-\d{4})?$/),
-  isAnonymous: z.boolean().default(true),
-});
+  isAnonymous: z.boolean().optional(),
+  anonymous: z.boolean().optional(),
+}).transform(({ anonymous, isAnonymous, ...body }) => ({
+  ...body,
+  isAnonymous: isAnonymous ?? anonymous ?? true,
+}));
+
+function extractInlineCitations(content: string): string[] {
+  return Array.from(content.matchAll(/\[Citation:\s*([^\]]+)\]/g)).map(
+    (match) => match[1].trim(),
+  );
+}
 
 // Singleton Redis connection for queue operations (apps/api owns this connection).
 // Each BullMQ Queue needs its own connection (per Pitfall 2 in RESEARCH.md),
@@ -389,6 +403,7 @@ router.get('/api/submissions/:id/preview', async (req, res) => {
         party: letter.official.party,
       },
       content: letter.content,
+      citations: extractInlineCitations(letter.content),
       aiDisclosure: letter.aiDisclosure ? AI_DISCLOSURE_TEXT : null,
       disclaimer: DISCLAIMER_TEXT,
       createdAt: letter.createdAt,
@@ -399,6 +414,8 @@ router.get('/api/submissions/:id/preview', async (req, res) => {
       campaignId: campaign.id,
       campaignStatus: campaign.status,
       pricingTier: campaign.pricingTier,
+      pricingTiers: buildPricingTiersResponse(),
+      packages: buildPricingPackagesResponse(),
       officialCount: campaign.officialCount,
       lettersCount: letterPreviews.length,
       letters: letterPreviews,

@@ -38,7 +38,7 @@ export function LocationForm({ data, onChange, onBack, onSubmit }: LocationFormP
         desiredOutcome: data.desiredOutcome,
         zipCode: data.zipCode,
         fullName: data.anonymous ? undefined : data.fullName || undefined,
-        anonymous: data.anonymous,
+        isAnonymous: data.anonymous,
       });
       onSubmit(result.id);
     } catch (err) {

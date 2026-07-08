@@ -13,7 +13,8 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
     throw new Error(
-      (body as { message?: string }).message ||
+      (body as { message?: string; error?: string }).message ||
+        (body as { error?: string }).error ||
         `Request failed with status ${res.status}`
     );
   }
@@ -28,7 +29,7 @@ export interface SubmissionInput {
   desiredOutcome: string;
   zipCode: string;
   fullName?: string;
-  anonymous: boolean;
+  isAnonymous: boolean;
 }
 
 export interface Submission {
@@ -43,24 +44,49 @@ export interface ResearchStatus {
 }
 
 export interface Official {
+  id?: string;
   name: string;
   title: string;
+  email?: string;
   jurisdiction: string;
+  level?: string;
+  district?: string;
+  state?: string;
+  party?: string;
 }
 
+export type PricingTier = "single" | "three_pack" | "full_spread";
+
 export interface LetterPreview {
+  letterId: string;
+  status: string;
   official: Official;
   content: string;
   citations: string[];
+  aiDisclosure: string | null;
+  disclaimer: string;
+  createdAt: string;
+}
+
+export interface PricingPackage {
+  tier: PricingTier;
+  amount: number;
+  amountCents: number;
+  officialCount: number;
+  label: string;
+  description: string;
 }
 
 export interface LetterPreviewResponse {
+  submissionId: string;
+  campaignId: string;
+  campaignStatus: string;
+  pricingTier: PricingTier;
+  officialCount: number;
+  lettersCount: number;
   letters: LetterPreview[];
-  pricingTiers: {
-    single: number;
-    three: number;
-    all: number;
-  };
+  pricingTiers: Record<PricingTier, number>;
+  packages: PricingPackage[];
 }
 
 // --- API functions ---
@@ -75,7 +101,25 @@ export async function createSubmission(
 }
 
 export async function getResearchStatus(id: string): Promise<ResearchStatus> {
-  return request<ResearchStatus>(`/api/submissions/${id}/research`);
+  const response = await request<{
+    status: string;
+    research: { stage: string; label: string; progress: number };
+  }>(`/api/submissions/${id}/research`);
+
+  const statusMap: Record<string, ResearchStatus["status"]> = {
+    queued: "classifying",
+    classifying_issue: "classifying",
+    researching_regulations: "researching",
+    drafting_letters: "drafting",
+    ready: "ready",
+    failed: "error",
+  };
+
+  return {
+    status: statusMap[response.research.stage] ?? "classifying",
+    progress: response.research.progress,
+    message: response.research.label,
+  };
 }
 
 export async function getLetterPreviews(
@@ -103,12 +147,10 @@ export async function createPaymentSession(
 ): Promise<PaymentSession> {
   return request<PaymentSession>(`/api/submissions/${submissionId}/pay`, {
     method: "POST",
-    body: JSON.stringify({ pricingTier }),
+    body: JSON.stringify({ tier: pricingTier }),
     credentials: "include",
   });
 }
-
-type PricingTier = "single" | "three" | "all";
 
 // --- Dashboard / Campaign Types ---
 

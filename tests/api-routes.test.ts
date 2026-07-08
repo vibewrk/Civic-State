@@ -377,7 +377,7 @@ describe('API Routes', () => {
             {
               id: 'letter-1',
               status: 'draft',
-              content: 'Dear Senator, I am writing about...',
+              content: 'Dear Senator, I am writing about... [Citation: 42 U.S.C. § 5301]',
               aiDisclosure: true,
               createdAt: new Date('2026-01-01'),
               official: {
@@ -410,6 +410,25 @@ describe('API Routes', () => {
           submissionId: 'sub-1',
           campaignId: 'camp-1',
           lettersCount: 1,
+          pricingTiers: {
+            single: 5,
+            three_pack: 15,
+            full_spread: 25,
+          },
+          packages: expect.arrayContaining([
+            expect.objectContaining({
+              tier: 'single',
+              amountCents: 500,
+            }),
+            expect.objectContaining({
+              tier: 'three_pack',
+              amountCents: 1500,
+            }),
+            expect.objectContaining({
+              tier: 'full_spread',
+              amountCents: 2500,
+            }),
+          ]),
           letters: expect.arrayContaining([
             expect.objectContaining({
               letterId: 'letter-1',
@@ -417,6 +436,7 @@ describe('API Routes', () => {
                 name: 'Jane Senator',
               }),
               content: expect.any(String),
+              citations: ['42 U.S.C. § 5301'],
               disclaimer: expect.any(String),
             }),
           ]),

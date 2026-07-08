@@ -16,19 +16,12 @@ import {
   createPaymentSession,
   type LetterPreview as LetterPreviewType,
   type LetterPreviewResponse,
+  type PricingTier,
 } from "@/lib/api";
 
 interface LetterPreviewProps {
   submissionId: string;
 }
-
-type PricingTier = "single" | "three" | "all";
-
-const TIER_LABELS: Record<PricingTier, string> = {
-  single: "1 Official",
-  three: "3 Officials",
-  all: "All Officials",
-};
 
 export function LetterPreview({ submissionId }: LetterPreviewProps) {
   const [data, setData] = useState<LetterPreviewResponse | null>(null);
@@ -58,6 +51,7 @@ export function LetterPreview({ submissionId }: LetterPreviewProps) {
       try {
         const result = await getLetterPreviews(submissionId);
         setData(result);
+        setSelectedTier(result.pricingTier ?? result.packages[0]?.tier ?? "single");
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to load previews");
       } finally {
@@ -89,7 +83,9 @@ export function LetterPreview({ submissionId }: LetterPreviewProps) {
     );
   }
 
-  const tierPrice = data.pricingTiers[selectedTier];
+  const selectedPackage =
+    data.packages.find((pkg) => pkg.tier === selectedTier) ?? data.packages[0];
+  const tierPrice = selectedPackage?.amount ?? data.pricingTiers[selectedTier];
 
   return (
     <div className="space-y-6">
@@ -129,9 +125,9 @@ export function LetterPreview({ submissionId }: LetterPreviewProps) {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-3 gap-3">
-            {(Object.entries(TIER_LABELS) as [PricingTier, string][]).map(
-              ([tier, label]) => {
-                const price = data.pricingTiers[tier];
+            {data.packages.map(
+              (pkg) => {
+                const tier = pkg.tier;
                 const isSelected = selectedTier === tier;
                 return (
                   <button
@@ -144,9 +140,12 @@ export function LetterPreview({ submissionId }: LetterPreviewProps) {
                     }`}
                   >
                     <div className="text-2xl font-bold text-navy-700">
-                      ${price}
+                      ${pkg.amount}
                     </div>
-                    <div className="mt-1 text-sm text-navy-500">{label}</div>
+                    <div className="mt-1 text-sm text-navy-500">{pkg.label}</div>
+                    <div className="mt-2 text-xs text-muted-foreground">
+                      {pkg.description}
+                    </div>
                   </button>
                 );
               }
@@ -157,7 +156,7 @@ export function LetterPreview({ submissionId }: LetterPreviewProps) {
           <Button
             className="w-full bg-gold-500 text-navy-800 hover:bg-gold-400 font-semibold text-base py-6"
             size="lg"
-            disabled={paying}
+            disabled={paying || !selectedPackage || data.lettersCount === 0}
             onClick={handlePayment}
           >
             {paying ? "Creating checkout session..." : `Proceed to Payment - $${tierPrice}`}
