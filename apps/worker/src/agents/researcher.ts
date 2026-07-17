@@ -46,6 +46,32 @@ interface ResearchResult {
   recommendedArguments: string[];
 }
 
+function buildVerifiedResearchBrief(
+  research: ResearchResult,
+  verification: VerificationSummary,
+): string {
+  if (verification.unverifiedCount === 0) {
+    return research.researchBrief;
+  }
+
+  const verifiedCitationLines = verification.verified.map((citation) => {
+    const reference =
+      citation.evidence.canonicalReference ?? citation.reference;
+    return `- ${citation.text} (${reference})`;
+  });
+
+  return [
+    research.summary ? `Summary: ${research.summary}` : 'Summary unavailable.',
+    '',
+    'Verified legal citations:',
+    verifiedCitationLines.length > 0
+      ? verifiedCitationLines.join('\n')
+      : 'No citations passed provenance validation.',
+    '',
+    `Original research narrative omitted because ${verification.unverifiedCount} citation(s) failed provenance validation.`,
+  ].join('\n');
+}
+
 /**
  * Parse the LLM response into structured research results.
  * Falls back gracefully if the response is not valid JSON.
@@ -155,32 +181,31 @@ ${searchContext}`;
   // ---------------------------------------------------------------
   // Step 4: Verify all citations (SUBM-07)
   // ---------------------------------------------------------------
-  let verification: VerificationSummary;
-  if (research.citations.length > 0) {
-    verification = await verifyCitations(research.citations);
-  } else {
-    verification = {
-      verified: [],
-      unverified: [],
-      total: 0,
-      verifiedCount: 0,
-      unverifiedCount: 0,
-      allFailed: true,
-    };
-  }
+  const verification: VerificationSummary = await verifyCitations(
+    research.citations,
+  );
 
   // ---------------------------------------------------------------
   // Step 5: Strip unverified citations (SUBM-07)
   // ---------------------------------------------------------------
   const verifiedCitations = verification.verified.map(
-    ({ verified: _v, ...rest }) => rest,
+    ({
+      verified: _verified,
+      qualityTier: _qualityTier,
+      canonicalId: _canonicalId,
+      evidence: _evidence,
+      failureReasons: _failureReasons,
+      ...rest
+    }) => rest,
   );
 
   // Update the research brief to only reference verified citations
-  const verifiedResearchBrief =
-    verification.unverifiedCount > 0
-      ? `${research.researchBrief}\n\n[Note: ${verification.unverifiedCount} citation(s) could not be verified and were removed.]`
-      : research.researchBrief;
+  const verifiedResearchBrief = buildVerifiedResearchBrief(
+    research,
+    verification,
+  );
+  const verifiedRecommendedArguments =
+    verification.unverifiedCount > 0 ? [] : research.recommendedArguments;
 
   // ---------------------------------------------------------------
   // Step 6: Flag for human review if ALL citations fail (SUBM-08)
@@ -197,10 +222,12 @@ ${searchContext}`;
     totalSourcesSearched: totalSourcesFound,
     citationsVerified: verification.verifiedCount,
     citationsStripped: verification.unverifiedCount,
+    citationQuality: verification.qualityCounts,
+    citationProvenance: verification.results,
     needsHumanReview,
     researchBrief: verifiedResearchBrief,
     citations: verifiedCitations,
-    recommendedArguments: research.recommendedArguments,
+    recommendedArguments: verifiedRecommendedArguments,
     summary: research.summary,
   };
 

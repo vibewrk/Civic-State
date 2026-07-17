@@ -17,6 +17,8 @@ export interface StateCacheEntry {
   source: 'state_cache';
 }
 
+export const STATE_CACHE_LAST_VERIFIED_AT = '2026-04-25';
+
 type StateCode = string;
 type Category = string;
 
@@ -244,6 +246,24 @@ export function searchStateCache(
   }
 
   return results;
+}
+
+/**
+ * Find a single curated statute by its stable cache identifier.
+ */
+export function findStateCacheEntry(statuteId: string): StateCacheEntry | null {
+  const normalizedId = statuteId.trim().toUpperCase();
+
+  for (const stateData of Object.values(STATUTE_CACHE)) {
+    for (const entries of Object.values(stateData)) {
+      const match = entries.find(
+        (entry) => entry.statuteId.toUpperCase() === normalizedId,
+      );
+      if (match) return match;
+    }
+  }
+
+  return null;
 }
 
 /**
