@@ -9,6 +9,10 @@ import type { OfficialRecord, OfficialLookupResult, JurisdictionLevel } from 'sh
 import { lookupFederalOfficials } from './congress.js';
 import { lookupStateOfficials } from './openstates.js';
 import { lookupLocalOfficials } from './cicero.js';
+import {
+  filterOfficialsForJurisdiction,
+  resolveZipJurisdiction,
+} from './jurisdiction.js';
 
 /**
  * Derive a confidence label from the coverage counts.
@@ -21,24 +25,46 @@ function deriveConfidence(coverage: Record<JurisdictionLevel, number>): string {
   return 'low';
 }
 
+function countCoverage(officials: OfficialRecord[]): Record<JurisdictionLevel, number> {
+  const coverage: Record<JurisdictionLevel, number> = {
+    federal: 0,
+    state: 0,
+    local: 0,
+  };
+
+  for (const official of officials) {
+    coverage[official.level] += 1;
+  }
+
+  return coverage;
+}
+
 /**
  * Look up all officials for a ZIP code across federal, state, and local sources.
  * Runs all three API clients in parallel via Promise.all.
  */
 export async function lookupOfficials(zipCode: string): Promise<OfficialLookupResult> {
+  const jurisdiction = await resolveZipJurisdiction(zipCode);
+  if (!jurisdiction) {
+    const coverage = countCoverage([]);
+    return {
+      officials: [],
+      coverage,
+      confidenceLabel: deriveConfidence(coverage),
+    };
+  }
+
   const [federal, state, local] = await Promise.all([
-    lookupFederalOfficials(zipCode),
-    lookupStateOfficials(zipCode),
+    lookupFederalOfficials(zipCode, jurisdiction),
+    lookupStateOfficials(zipCode, jurisdiction),
     lookupLocalOfficials(zipCode),
   ]);
 
-  const officials = [...federal, ...state, ...local];
-
-  const coverage: Record<JurisdictionLevel, number> = {
-    federal: federal.length,
-    state: state.length,
-    local: local.length,
-  };
+  const officials = filterOfficialsForJurisdiction(
+    [...federal, ...state, ...local],
+    jurisdiction,
+  );
+  const coverage = countCoverage(officials);
 
   return {
     officials,

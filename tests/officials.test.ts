@@ -33,6 +33,9 @@ vi.mock('shared', () => ({
 const { lookupOfficials, cacheAndFilterOfficials } = await import(
   '../apps/api/src/lib/officials/lookup.js'
 );
+const { resolveZipJurisdiction, filterOfficialsForJurisdiction } = await import(
+  '../apps/api/src/lib/officials/jurisdiction.js'
+);
 const { lookupFederalOfficials } = await import(
   '../apps/api/src/lib/officials/congress.js'
 );
@@ -118,10 +121,10 @@ describe('Officials Lookup', () => {
       federalMock.mockResolvedValue([
         makeFederal({ name: 'Senator A' }),
         makeFederal({ name: 'Senator B' }),
-        makeFederal({ name: 'Rep C', title: 'U.S. Representative', district: '12' }),
+        makeFederal({ name: 'Rep C', title: 'U.S. Representative', district: '36' }),
       ]);
       stateMock.mockResolvedValue([
-        makeState({ name: 'State Sen D' }),
+        makeState({ name: 'State Rep D', district: '51' }),
       ]);
       localMock.mockResolvedValue([]);
 
@@ -150,7 +153,10 @@ describe('Officials Lookup', () => {
 
     it('returns "medium" confidence with only federal or only state', async () => {
       vi.mocked(lookupFederalOfficials).mockResolvedValue([
-        makeFederal(),
+        makeFederal({
+          state: 'NY',
+          jurisdiction: 'NY (statewide)',
+        }),
       ]);
       vi.mocked(lookupStateOfficials).mockResolvedValue([]);
       vi.mocked(lookupLocalOfficials).mockResolvedValue([]);
@@ -164,7 +170,13 @@ describe('Officials Lookup', () => {
       vi.mocked(lookupFederalOfficials).mockResolvedValue([]);
       vi.mocked(lookupStateOfficials).mockResolvedValue([]);
       vi.mocked(lookupLocalOfficials).mockResolvedValue([
-        makeFederal({ level: 'local', sourceApi: 'cicero', name: 'Mayor X' }),
+        makeFederal({
+          level: 'local',
+          sourceApi: 'cicero',
+          name: 'Mayor X',
+          state: 'GA',
+          jurisdiction: 'Atlanta, GA',
+        }),
       ]);
 
       const result = await lookupOfficials('30301');
@@ -175,7 +187,9 @@ describe('Officials Lookup', () => {
 
     it('merges officials from all three sources', async () => {
       vi.mocked(lookupFederalOfficials).mockResolvedValue([makeFederal()]);
-      vi.mocked(lookupStateOfficials).mockResolvedValue([makeState()]);
+      vi.mocked(lookupStateOfficials).mockResolvedValue([
+        makeState({ district: '51' }),
+      ]);
       vi.mocked(lookupLocalOfficials).mockResolvedValue([
         makeFederal({ level: 'local', name: 'Council Member', sourceApi: 'cicero' }),
       ]);
@@ -187,6 +201,184 @@ describe('Officials Lookup', () => {
       expect(levels).toContain('federal');
       expect(levels).toContain('state');
       expect(levels).toContain('local');
+    });
+
+    it('filters out officials whose state does not match the ZIP authority', async () => {
+      vi.mocked(lookupFederalOfficials).mockResolvedValue([
+        makeFederal({ name: 'California Senator' }),
+        makeFederal({
+          name: 'Nevada Senator',
+          state: 'NV',
+          jurisdiction: 'NV (statewide)',
+        }),
+      ]);
+      vi.mocked(lookupStateOfficials).mockResolvedValue([
+        makeState({ name: 'California Assemblymember', district: '51' }),
+        makeState({
+          name: 'Nevada Assemblymember',
+          state: 'NV',
+          jurisdiction: 'NV District 5',
+        }),
+      ]);
+      vi.mocked(lookupLocalOfficials).mockResolvedValue([
+        makeFederal({
+          level: 'local',
+          sourceApi: 'cicero',
+          name: 'Beverly Hills Mayor',
+        }),
+        makeFederal({
+          level: 'local',
+          sourceApi: 'cicero',
+          name: 'Las Vegas Mayor',
+          state: 'NV',
+          jurisdiction: 'Las Vegas, NV',
+        }),
+      ]);
+
+      const result = await lookupOfficials('90210');
+
+      expect(result.officials.map((official) => official.name)).toEqual([
+        'California Senator',
+        'California Assemblymember',
+        'Beverly Hills Mayor',
+      ]);
+      expect(result.coverage).toEqual({
+        federal: 1,
+        state: 1,
+        local: 1,
+      });
+      expect(result.confidenceLabel).toBe('medium');
+    });
+
+    it('filters out same-state officials outside the ZIP districts', async () => {
+      vi.mocked(lookupFederalOfficials).mockResolvedValue([
+        makeFederal({
+          name: 'Wrong CA Representative',
+          title: 'U.S. Representative',
+          district: '12',
+        }),
+        makeFederal({
+          name: 'Correct CA Representative',
+          title: 'U.S. Representative',
+          district: '36',
+        }),
+      ]);
+      vi.mocked(lookupStateOfficials).mockResolvedValue([
+        makeState({ name: 'Wrong CA Assemblymember', district: '52' }),
+        makeState({ name: 'Correct CA Assemblymember', district: '51' }),
+      ]);
+      vi.mocked(lookupLocalOfficials).mockResolvedValue([]);
+
+      const result = await lookupOfficials('90210');
+
+      expect(result.officials.map((official) => official.name)).toEqual([
+        'Correct CA Representative',
+        'Correct CA Assemblymember',
+      ]);
+      expect(result.coverage).toEqual({
+        federal: 1,
+        state: 1,
+        local: 0,
+      });
+    });
+
+    it('fails closed without calling providers when ZIP has no state authority', async () => {
+      vi.mocked(lookupFederalOfficials).mockResolvedValue([
+        makeFederal({ name: 'Should Not Be Used' }),
+      ]);
+      vi.mocked(lookupStateOfficials).mockResolvedValue([makeState()]);
+      vi.mocked(lookupLocalOfficials).mockResolvedValue([
+        makeFederal({ level: 'local', sourceApi: 'cicero' }),
+      ]);
+
+      const result = await lookupOfficials('00000');
+
+      expect(result).toEqual({
+        officials: [],
+        coverage: { federal: 0, state: 0, local: 0 },
+        confidenceLabel: 'none',
+      });
+      expect(lookupFederalOfficials).not.toHaveBeenCalled();
+      expect(lookupStateOfficials).not.toHaveBeenCalled();
+      expect(lookupLocalOfficials).not.toHaveBeenCalled();
+    });
+  });
+
+  // ─── ZIP Authority Filtering ───────────────────────────────────────────────
+
+  describe('ZIP authority filtering', () => {
+    it('resolves fixture-backed authority from supported ZIP codes', async () => {
+      await expect(resolveZipJurisdiction('90210')).resolves.toEqual({
+        zipCode: '90210',
+        state: 'CA',
+        stateFips: '06',
+        congressionalDistrict: '36',
+        stateSenateDistrict: '24',
+        stateHouseDistrict: '51',
+      });
+      await expect(resolveZipJurisdiction('10001')).resolves.toMatchObject({
+        zipCode: '10001',
+        state: 'NY',
+        congressionalDistrict: '12',
+      });
+      await expect(resolveZipJurisdiction('39813')).resolves.toMatchObject({
+        zipCode: '39813',
+        state: 'GA',
+        congressionalDistrict: '2',
+      });
+      await expect(resolveZipJurisdiction('83414')).resolves.toMatchObject({
+        zipCode: '83414',
+        state: 'WY',
+        congressionalDistrict: '0',
+      });
+    });
+
+    it('fails closed for malformed or unresolved ZIPs', async () => {
+      await expect(resolveZipJurisdiction('90210-1234')).resolves.toBeNull();
+      await expect(resolveZipJurisdiction('abcde')).resolves.toBeNull();
+      await expect(resolveZipJurisdiction('00000')).resolves.toBeNull();
+    });
+
+    it('keeps only officials with the fixture-resolved jurisdiction authority', () => {
+      const officials: OfficialRecord[] = [
+        makeFederal({ name: 'California Senator' }),
+        makeFederal({
+          name: 'Wrong California Representative',
+          title: 'U.S. Representative',
+          district: '12',
+        }),
+        makeFederal({
+          name: 'Correct California Representative',
+          title: 'U.S. Representative',
+          district: '36',
+        }),
+        makeState({ name: 'California Assemblymember', district: '51' }),
+        makeFederal({
+          name: 'Oregon Senator',
+          state: 'OR',
+          jurisdiction: 'OR (statewide)',
+        }),
+        makeFederal({
+          level: 'local',
+          name: 'Unknown State Mayor',
+          state: '',
+          sourceApi: 'cicero',
+        }),
+      ];
+
+      const filtered = filterOfficialsForJurisdiction(officials, {
+        zipCode: '90210',
+        state: 'CA',
+        congressionalDistrict: '36',
+        stateSenateDistrict: '24',
+        stateHouseDistrict: '51',
+      });
+
+      expect(filtered.map((official) => official.name)).toEqual([
+        'California Senator',
+        'Correct California Representative',
+        'California Assemblymember',
+      ]);
     });
   });
 
