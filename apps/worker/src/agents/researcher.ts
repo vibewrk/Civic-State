@@ -46,6 +46,122 @@ interface ResearchResult {
   recommendedArguments: string[];
 }
 
+interface ResearchSourceCounts {
+  regulationsFound: number;
+  caseLawFound: number;
+  stateStatutesFound: number;
+  totalSourcesFound: number;
+}
+
+function buildVerifiedSummary(
+  research: ResearchResult,
+  verification: VerificationSummary,
+): string {
+  if (verification.unverifiedCount === 0) {
+    return research.summary;
+  }
+
+  return [
+    'Verified-only summary.',
+    `${verification.verifiedCount} citation(s) passed provenance validation; ${verification.unverifiedCount} citation(s) failed and were omitted.`,
+    verification.verifiedCount > 0
+      ? 'Use only the verified citations carried in this handoff.'
+      : 'No citation-backed legal summary is available without human review.',
+  ].join(' ');
+}
+
+function buildVerifiedResearchBrief(
+  research: ResearchResult,
+  verification: VerificationSummary,
+  verifiedSummary = buildVerifiedSummary(research, verification),
+): string {
+  if (verification.unverifiedCount === 0) {
+    return research.researchBrief;
+  }
+
+  const verifiedCitationLines = verification.verified.map((citation) => {
+    const reference =
+      citation.evidence.canonicalReference ?? citation.reference;
+    return `- ${citation.text} (${reference})`;
+  });
+
+  return [
+    verifiedSummary ? `Summary: ${verifiedSummary}` : 'Summary unavailable.',
+    '',
+    'Verified legal citations:',
+    verifiedCitationLines.length > 0
+      ? verifiedCitationLines.join('\n')
+      : 'No citations passed provenance validation.',
+    '',
+    `Original research narrative omitted because ${verification.unverifiedCount} citation(s) failed provenance validation.`,
+  ].join('\n');
+}
+
+function buildDrafterCitationProvenance(verification: VerificationSummary) {
+  return {
+    total: verification.total,
+    verifiedCount: verification.verifiedCount,
+    unverifiedCount: verification.unverifiedCount,
+    allFailed: verification.allFailed,
+    failClosed: verification.failClosed,
+    qualityCounts: verification.qualityCounts,
+    results: verification.results.map((citation, index) => ({
+      index,
+      source: citation.source,
+      verified: citation.verified,
+      qualityTier: citation.qualityTier,
+      failureReasons: citation.failureReasons,
+      evidence: {
+        citationWellFormed: citation.evidence.citationWellFormed,
+        sourceResolved: citation.evidence.sourceResolved,
+        quoteMatched: citation.evidence.quoteMatched,
+        checkedAt: citation.evidence.checkedAt,
+      },
+    })),
+  };
+}
+
+export function buildResearchHandoff(
+  research: ResearchResult,
+  verification: VerificationSummary,
+  sourceCounts: ResearchSourceCounts,
+) {
+  const verifiedCitations = verification.verified.map(
+    ({
+      verified: _verified,
+      qualityTier: _qualityTier,
+      canonicalId: _canonicalId,
+      evidence: _evidence,
+      failureReasons: _failureReasons,
+      ...rest
+    }) => rest,
+  );
+
+  const verifiedSummary = buildVerifiedSummary(research, verification);
+  const verifiedResearchBrief = buildVerifiedResearchBrief(
+    research,
+    verification,
+    verifiedSummary,
+  );
+  const verifiedRecommendedArguments =
+    verification.unverifiedCount > 0 ? [] : research.recommendedArguments;
+
+  return {
+    regulationsFound: sourceCounts.regulationsFound,
+    caseLawFound: sourceCounts.caseLawFound,
+    stateStatutesFound: sourceCounts.stateStatutesFound,
+    totalSourcesSearched: sourceCounts.totalSourcesFound,
+    citationsVerified: verification.verifiedCount,
+    citationsStripped: verification.unverifiedCount,
+    citationQuality: verification.qualityCounts,
+    citationProvenance: buildDrafterCitationProvenance(verification),
+    researchBrief: verifiedResearchBrief,
+    citations: verifiedCitations,
+    recommendedArguments: verifiedRecommendedArguments,
+    summary: verifiedSummary,
+  };
+}
+
 /**
  * Parse the LLM response into structured research results.
  * Falls back gracefully if the response is not valid JSON.
@@ -155,32 +271,9 @@ ${searchContext}`;
   // ---------------------------------------------------------------
   // Step 4: Verify all citations (SUBM-07)
   // ---------------------------------------------------------------
-  let verification: VerificationSummary;
-  if (research.citations.length > 0) {
-    verification = await verifyCitations(research.citations);
-  } else {
-    verification = {
-      verified: [],
-      unverified: [],
-      total: 0,
-      verifiedCount: 0,
-      unverifiedCount: 0,
-      allFailed: true,
-    };
-  }
-
-  // ---------------------------------------------------------------
-  // Step 5: Strip unverified citations (SUBM-07)
-  // ---------------------------------------------------------------
-  const verifiedCitations = verification.verified.map(
-    ({ verified: _v, ...rest }) => rest,
+  const verification: VerificationSummary = await verifyCitations(
+    research.citations,
   );
-
-  // Update the research brief to only reference verified citations
-  const verifiedResearchBrief =
-    verification.unverifiedCount > 0
-      ? `${research.researchBrief}\n\n[Note: ${verification.unverifiedCount} citation(s) could not be verified and were removed.]`
-      : research.researchBrief;
 
   // ---------------------------------------------------------------
   // Step 6: Flag for human review if ALL citations fail (SUBM-08)
@@ -191,17 +284,13 @@ ${searchContext}`;
   // Step 7: Build result and store on job.data for downstream Drafter
   // ---------------------------------------------------------------
   const result = {
-    regulationsFound: ecfrResults.length,
-    caseLawFound: courtListenerResults.length,
-    stateStatutesFound: stateCacheResults.length,
-    totalSourcesSearched: totalSourcesFound,
-    citationsVerified: verification.verifiedCount,
-    citationsStripped: verification.unverifiedCount,
+    ...buildResearchHandoff(research, verification, {
+      regulationsFound: ecfrResults.length,
+      caseLawFound: courtListenerResults.length,
+      stateStatutesFound: stateCacheResults.length,
+      totalSourcesFound,
+    }),
     needsHumanReview,
-    researchBrief: verifiedResearchBrief,
-    citations: verifiedCitations,
-    recommendedArguments: research.recommendedArguments,
-    summary: research.summary,
   };
 
   // Store research data on the job for the Drafter agent
