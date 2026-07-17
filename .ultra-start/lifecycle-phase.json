@@ -1,0 +1,16 @@
+{
+  "schema": "ultra-start.lifecycle-phase.v1",
+  "project": "CivicState",
+  "repository": "vibewrk/Civic-State",
+  "phase": "BUILD",
+  "source": {
+    "binary_star_issue": 1,
+    "binary_star_head": "5e30dbef98cff23f82e2be39eb0c5af634302d4d",
+    "thesis": "MASTER_PLAN.md v2.1"
+  },
+  "pairing": {
+    "binary_star": true,
+    "brownfield_admission": true,
+    "planning_context": ".planning/"
+  }
+}
