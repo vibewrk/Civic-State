@@ -125,6 +125,126 @@ describe('official ZIP jurisdiction authority', () => {
     ]);
   });
 
+  it.each([
+    {
+      office: 'federal representative',
+      matching: makeOfficial({
+        name: 'Correct Congressional Representative',
+        title: 'U.S. Representative',
+        district: '36',
+      }),
+      wrongDistrict: makeOfficial({
+        name: 'Wrong Congressional Representative',
+        title: 'U.S. Representative',
+        district: '12',
+      }),
+    },
+    {
+      office: 'state senator',
+      matching: makeOfficial({
+        name: 'Correct State Senator',
+        title: 'State Senator',
+        level: 'state',
+        district: '24',
+        sourceApi: 'openstates',
+      }),
+      wrongDistrict: makeOfficial({
+        name: 'State Senator In House District',
+        title: 'State Senator',
+        level: 'state',
+        district: '51',
+        sourceApi: 'openstates',
+      }),
+    },
+    {
+      office: 'state representative',
+      matching: makeOfficial({
+        name: 'Correct State Representative',
+        title: 'State Representative',
+        level: 'state',
+        district: '51',
+        sourceApi: 'openstates',
+      }),
+      wrongDistrict: makeOfficial({
+        name: 'State Representative In Senate District',
+        title: 'State Representative',
+        level: 'state',
+        district: '24',
+        sourceApi: 'openstates',
+      }),
+    },
+  ])(
+    'keeps the right same-state $office and drops the wrong district',
+    ({ matching, wrongDistrict }) => {
+      const filtered = filterOfficialsForJurisdiction(
+        [wrongDistrict, matching],
+        {
+          zipCode: '90210',
+          state: 'CA',
+          congressionalDistrict: '36',
+          stateSenateDistrict: '24',
+          stateHouseDistrict: '51',
+        },
+      );
+
+      expect(filtered.map((official) => official.name)).toEqual([
+        matching.name,
+      ]);
+    },
+  );
+
+  it('keeps same-state trusted local providers and drops other local records', () => {
+    const filtered = filterOfficialsForJurisdiction(
+      [
+        makeOfficial({
+          name: 'Wrong City Cicero Mayor',
+          title: 'Mayor',
+          jurisdiction: 'San Diego, CA',
+          level: 'local',
+          district: '',
+          sourceApi: 'cicero',
+        }),
+        makeOfficial({
+          name: 'Wrong City BallotReady Councilmember',
+          title: 'Councilmember',
+          jurisdiction: 'Oakland, CA',
+          level: 'local',
+          district: '',
+          sourceApi: 'ballotready',
+        }),
+        makeOfficial({
+          name: 'Different State Cicero Mayor',
+          title: 'Mayor',
+          jurisdiction: 'Las Vegas, NV',
+          level: 'local',
+          district: '',
+          state: 'NV',
+          sourceApi: 'cicero',
+        }),
+        makeOfficial({
+          name: 'Same State Untrusted Local',
+          title: 'Mayor',
+          jurisdiction: 'San Diego, CA',
+          level: 'local',
+          district: '',
+          sourceApi: 'unknown-local',
+        }),
+      ],
+      {
+        zipCode: '90210',
+        state: 'CA',
+        congressionalDistrict: '36',
+        stateSenateDistrict: '24',
+        stateHouseDistrict: '51',
+      },
+    );
+
+    expect(filtered.map((official) => official.name)).toEqual([
+      'Wrong City Cicero Mayor',
+      'Wrong City BallotReady Councilmember',
+    ]);
+  });
+
   it('computes lookup coverage after fail-closed jurisdiction filtering', async () => {
     vi.mocked(lookupFederalOfficials).mockResolvedValue([
       makeOfficial({ name: 'California Senator' }),

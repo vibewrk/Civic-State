@@ -165,6 +165,9 @@ function isStateOfficialEligible(
 }
 
 function isLocalOfficialEligible(official: OfficialRecord): boolean {
+  // Deliberate limitation: the ZIP jurisdiction fixture has state and district
+  // authority only, with no city/place/county granularity. Local records are
+  // therefore gated by the top-level same-state check plus trusted source here.
   const sourceApi = official.sourceApi.trim().toLowerCase();
   return sourceApi === 'cicero' || sourceApi === 'ballotready';
 }
