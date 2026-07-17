@@ -33,8 +33,8 @@ function getQueueRedis(): InstanceType<typeof Redis> {
 /**
  * Helper: write a moderation decision to audit_logs with HMAC checksum.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any -- prisma client type from dynamic import
 async function logModerationAudit(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- prisma client type from dynamic import
   prisma: any,
   userId: string | null,
   action: string,

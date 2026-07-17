@@ -21,8 +21,8 @@ const authMiddleware = [requireAuth()];
 /**
  * Write a compliance action to audit_logs with HMAC checksum.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function logComplianceAudit(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   prisma: any,
   userId: string,
   action: string,

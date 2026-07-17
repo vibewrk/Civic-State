@@ -91,6 +91,7 @@ router.get('/api/campaigns', async (req, res) => {
       createdAt: campaign.createdAt,
       updatedAt: campaign.updatedAt,
       submission: campaign.submission,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       letters: campaign.letters.map((letter: any) => ({
         id: letter.id,
         status: letter.status,

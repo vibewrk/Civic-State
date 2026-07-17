@@ -27,8 +27,8 @@ const adminAuth = [requireAuth(), requireAdmin];
 /**
  * Write an admin action to audit_logs with HMAC (ADMN-07).
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function logAdminAudit(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   prisma: any,
   userId: string,
   action: string,
