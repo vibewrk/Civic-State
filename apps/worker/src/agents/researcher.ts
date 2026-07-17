@@ -46,9 +46,34 @@ interface ResearchResult {
   recommendedArguments: string[];
 }
 
+interface ResearchSourceCounts {
+  regulationsFound: number;
+  caseLawFound: number;
+  stateStatutesFound: number;
+  totalSourcesFound: number;
+}
+
+function buildVerifiedSummary(
+  research: ResearchResult,
+  verification: VerificationSummary,
+): string {
+  if (verification.unverifiedCount === 0) {
+    return research.summary;
+  }
+
+  return [
+    'Verified-only summary.',
+    `${verification.verifiedCount} citation(s) passed provenance validation; ${verification.unverifiedCount} citation(s) failed and were omitted.`,
+    verification.verifiedCount > 0
+      ? 'Use only the verified citations carried in this handoff.'
+      : 'No citation-backed legal summary is available without human review.',
+  ].join(' ');
+}
+
 function buildVerifiedResearchBrief(
   research: ResearchResult,
   verification: VerificationSummary,
+  verifiedSummary = buildVerifiedSummary(research, verification),
 ): string {
   if (verification.unverifiedCount === 0) {
     return research.researchBrief;
@@ -61,7 +86,7 @@ function buildVerifiedResearchBrief(
   });
 
   return [
-    research.summary ? `Summary: ${research.summary}` : 'Summary unavailable.',
+    verifiedSummary ? `Summary: ${verifiedSummary}` : 'Summary unavailable.',
     '',
     'Verified legal citations:',
     verifiedCitationLines.length > 0
@@ -70,6 +95,71 @@ function buildVerifiedResearchBrief(
     '',
     `Original research narrative omitted because ${verification.unverifiedCount} citation(s) failed provenance validation.`,
   ].join('\n');
+}
+
+function buildDrafterCitationProvenance(verification: VerificationSummary) {
+  return {
+    total: verification.total,
+    verifiedCount: verification.verifiedCount,
+    unverifiedCount: verification.unverifiedCount,
+    allFailed: verification.allFailed,
+    failClosed: verification.failClosed,
+    qualityCounts: verification.qualityCounts,
+    results: verification.results.map((citation, index) => ({
+      index,
+      source: citation.source,
+      verified: citation.verified,
+      qualityTier: citation.qualityTier,
+      failureReasons: citation.failureReasons,
+      evidence: {
+        citationWellFormed: citation.evidence.citationWellFormed,
+        sourceResolved: citation.evidence.sourceResolved,
+        quoteMatched: citation.evidence.quoteMatched,
+        checkedAt: citation.evidence.checkedAt,
+      },
+    })),
+  };
+}
+
+export function buildResearchHandoff(
+  research: ResearchResult,
+  verification: VerificationSummary,
+  sourceCounts: ResearchSourceCounts,
+) {
+  const verifiedCitations = verification.verified.map(
+    ({
+      verified: _verified,
+      qualityTier: _qualityTier,
+      canonicalId: _canonicalId,
+      evidence: _evidence,
+      failureReasons: _failureReasons,
+      ...rest
+    }) => rest,
+  );
+
+  const verifiedSummary = buildVerifiedSummary(research, verification);
+  const verifiedResearchBrief = buildVerifiedResearchBrief(
+    research,
+    verification,
+    verifiedSummary,
+  );
+  const verifiedRecommendedArguments =
+    verification.unverifiedCount > 0 ? [] : research.recommendedArguments;
+
+  return {
+    regulationsFound: sourceCounts.regulationsFound,
+    caseLawFound: sourceCounts.caseLawFound,
+    stateStatutesFound: sourceCounts.stateStatutesFound,
+    totalSourcesSearched: sourceCounts.totalSourcesFound,
+    citationsVerified: verification.verifiedCount,
+    citationsStripped: verification.unverifiedCount,
+    citationQuality: verification.qualityCounts,
+    citationProvenance: buildDrafterCitationProvenance(verification),
+    researchBrief: verifiedResearchBrief,
+    citations: verifiedCitations,
+    recommendedArguments: verifiedRecommendedArguments,
+    summary: verifiedSummary,
+  };
 }
 
 /**
@@ -186,28 +276,6 @@ ${searchContext}`;
   );
 
   // ---------------------------------------------------------------
-  // Step 5: Strip unverified citations (SUBM-07)
-  // ---------------------------------------------------------------
-  const verifiedCitations = verification.verified.map(
-    ({
-      verified: _verified,
-      qualityTier: _qualityTier,
-      canonicalId: _canonicalId,
-      evidence: _evidence,
-      failureReasons: _failureReasons,
-      ...rest
-    }) => rest,
-  );
-
-  // Update the research brief to only reference verified citations
-  const verifiedResearchBrief = buildVerifiedResearchBrief(
-    research,
-    verification,
-  );
-  const verifiedRecommendedArguments =
-    verification.unverifiedCount > 0 ? [] : research.recommendedArguments;
-
-  // ---------------------------------------------------------------
   // Step 6: Flag for human review if ALL citations fail (SUBM-08)
   // ---------------------------------------------------------------
   const needsHumanReview = verification.allFailed && totalSourcesFound > 0;
@@ -216,19 +284,13 @@ ${searchContext}`;
   // Step 7: Build result and store on job.data for downstream Drafter
   // ---------------------------------------------------------------
   const result = {
-    regulationsFound: ecfrResults.length,
-    caseLawFound: courtListenerResults.length,
-    stateStatutesFound: stateCacheResults.length,
-    totalSourcesSearched: totalSourcesFound,
-    citationsVerified: verification.verifiedCount,
-    citationsStripped: verification.unverifiedCount,
-    citationQuality: verification.qualityCounts,
-    citationProvenance: verification.results,
+    ...buildResearchHandoff(research, verification, {
+      regulationsFound: ecfrResults.length,
+      caseLawFound: courtListenerResults.length,
+      stateStatutesFound: stateCacheResults.length,
+      totalSourcesFound,
+    }),
     needsHumanReview,
-    researchBrief: verifiedResearchBrief,
-    citations: verifiedCitations,
-    recommendedArguments: verifiedRecommendedArguments,
-    summary: research.summary,
   };
 
   // Store research data on the job for the Drafter agent
