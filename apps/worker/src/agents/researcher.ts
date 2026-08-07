@@ -1,4 +1,5 @@
 import { Worker, Job } from 'bullmq';
+import { computeRowHmac } from 'shared/hmac';
 import { createRedisConnection } from '../engine/connection.js';
 import { getAgentConfig } from '../engine/config.js';
 import { transitionJob } from '../engine/state-machine.js';
@@ -52,6 +53,12 @@ interface ResearchSourceCounts {
   stateStatutesFound: number;
   totalSourcesFound: number;
 }
+
+type CitationReviewFlagOutcome =
+  | 'flagged'
+  | 'already_flagged'
+  | 'terminal_submission'
+  | 'stale_job';
 
 function buildVerifiedSummary(
   research: ResearchResult,
@@ -119,6 +126,100 @@ function buildDrafterCitationProvenance(verification: VerificationSummary) {
       },
     })),
   };
+}
+
+async function flagSubmissionForCitationReview(
+  submissionId: string,
+  jobId: string | undefined,
+  verification: VerificationSummary,
+  sourceCounts: ResearchSourceCounts,
+): Promise<CitationReviewFlagOutcome> {
+  const { prisma } = await import('shared');
+  const reviewDetails =
+    verification.total > 0
+      ? 'All cited authorities failed provenance validation; submission requires human review before drafting.'
+      : 'Search found legal sources, but the research handoff contained no verifiable citations; submission requires human review before drafting.';
+
+  const details = {
+    tier: 'flag',
+    reason: 'citation_verification_failed',
+    confidence: 1,
+    citationsVerified: verification.verifiedCount,
+    citationsStripped: verification.unverifiedCount,
+    totalCitations: verification.total,
+    totalSourcesSearched: sourceCounts.totalSourcesFound,
+    citationQuality: verification.qualityCounts,
+    citationFailures: verification.unverified.map((citation) => ({
+      source: citation.source,
+      reference: citation.evidence.canonicalReference ?? citation.reference,
+      qualityTier: citation.qualityTier,
+      failureReasons: citation.failureReasons,
+      evidence: {
+        citationWellFormed: citation.evidence.citationWellFormed,
+        sourceResolved: citation.evidence.sourceResolved,
+        quoteMatched: citation.evidence.quoteMatched ?? null,
+      },
+    })),
+    details: reviewDetails,
+  };
+
+  return prisma.$transaction(async (transactionClient) => {
+    const tx = transactionClient as typeof prisma;
+
+    const [submission, latestJob] = await Promise.all([
+      tx.submission.findUnique({
+        where: { id: submissionId },
+        select: { userId: true, status: true },
+      }),
+      jobId
+        ? tx.job.findFirst({
+            where: { submissionId },
+            orderBy: { createdAt: 'desc' },
+            select: { id: true },
+          })
+        : Promise.resolve(null),
+    ]);
+
+    if (!submission) {
+      throw new Error(`Submission ${submissionId} not found for citation review`);
+    }
+    if (latestJob && latestJob.id !== jobId) {
+      return 'stale_job';
+    }
+    if (submission.status === 'flagged') {
+      return 'already_flagged';
+    }
+    if (submission.status === 'rejected') {
+      return 'terminal_submission';
+    }
+
+    const updatedSubmission = await tx.submission.update({
+      where: { id: submissionId },
+      data: { status: 'flagged' },
+      select: { userId: true },
+    });
+
+    const hmacFields = {
+      userId: updatedSubmission.userId ?? 'system',
+      action: 'submission.flagged',
+      resource: 'submission',
+      resourceId: submissionId,
+      details: JSON.stringify(details),
+    };
+
+    await tx.auditLog.create({
+      data: {
+        userId: updatedSubmission.userId,
+        action: 'submission.flagged',
+        resource: 'submission',
+        resourceId: submissionId,
+        details,
+        hmacChecksum: computeRowHmac(hmacFields),
+      },
+    });
+
+    return 'flagged';
+  });
 }
 
 export function buildResearchHandoff(
@@ -190,13 +291,15 @@ function parseResearchResponse(text: string): ResearchResult {
   }
 }
 
-async function processJob(job: Job): Promise<void> {
-  const { submissionId, concern, state, issueCategories } = job.data as {
+export async function processJob(job: Job): Promise<void> {
+  const { submissionId, jobId, concern, state, issueCategories } = job.data as {
     submissionId: string;
+    jobId?: string;
     concern: string;
     state?: string;
     issueCategories?: string[];
   };
+  const jobRecordId = jobId ?? submissionId;
   const startTime = Date.now();
   const categories = issueCategories ?? [];
 
@@ -259,7 +362,7 @@ ${searchContext}`;
   // ---------------------------------------------------------------
   const llmResult = await callWithLogging({
     agentName: 'researcher',
-    jobId: submissionId,
+    jobId: jobRecordId,
     action: 'research_synthesis',
     systemPrompt: RESEARCHER_SYSTEM_PROMPT,
     userMessage,
@@ -275,33 +378,38 @@ ${searchContext}`;
     research.citations,
   );
 
+  const sourceCounts = {
+    regulationsFound: ecfrResults.length,
+    caseLawFound: courtListenerResults.length,
+    stateStatutesFound: stateCacheResults.length,
+    totalSourcesFound,
+  };
+
   // ---------------------------------------------------------------
   // Step 6: Flag for human review if ALL citations fail (SUBM-08)
   // ---------------------------------------------------------------
-  const needsHumanReview = verification.allFailed && totalSourcesFound > 0;
+  const allSubmittedCitationsFailed =
+    verification.total > 0 && verification.allFailed;
+  const citationsOmittedDespiteSources =
+    verification.total === 0 && totalSourcesFound > 0;
+  const needsHumanReview =
+    allSubmittedCitationsFailed || citationsOmittedDespiteSources;
 
   // ---------------------------------------------------------------
   // Step 7: Build result and store on job.data for downstream Drafter
   // ---------------------------------------------------------------
   const result = {
-    ...buildResearchHandoff(research, verification, {
-      regulationsFound: ecfrResults.length,
-      caseLawFound: courtListenerResults.length,
-      stateStatutesFound: stateCacheResults.length,
-      totalSourcesFound,
-    }),
+    ...buildResearchHandoff(research, verification, sourceCounts),
     needsHumanReview,
   };
 
-  // Store research data on the job for the Drafter agent
-  await job.updateData({
+  const updateResearchJobData = () => job.updateData({
     ...job.data,
     research: result,
   });
 
-  // Log agent action with token usage (per AGNT-05, AGNT-06)
-  await logAgentAction({
-    jobId: submissionId,
+  const logResearchAction = () => logAgentAction({
+    jobId: jobRecordId,
     agent: config.name,
     action: 'research',
     result: {
@@ -319,13 +427,43 @@ ${searchContext}`;
   });
 
   if (needsHumanReview) {
-    console.warn(
-      `[Researcher] Job ${submissionId}: ALL citations failed verification -- flagged for human review (SUBM-08)`,
+    const flagOutcome = await flagSubmissionForCitationReview(
+      submissionId,
+      jobId,
+      verification,
+      sourceCounts,
     );
+    await transitionJob(jobRecordId, 'researching', 'failed', config.name);
+    try {
+      await updateResearchJobData();
+    } catch (err) {
+      console.warn(
+        `[Researcher] Could not persist research handoff for flagged job ${jobRecordId}:`,
+        err instanceof Error ? err.message : err,
+      );
+    }
+    try {
+      await logResearchAction();
+    } catch (err) {
+      console.warn(
+        `[Researcher] Could not log research action for flagged job ${jobRecordId}:`,
+        err instanceof Error ? err.message : err,
+      );
+    }
+    console.warn(
+      `[Researcher] Job ${jobRecordId}: ALL citations failed verification -- ${flagOutcome} before drafting (SUBM-08)`,
+    );
+    return;
   }
 
+  // Store research data on the job for the Drafter agent
+  await updateResearchJobData();
+
+  // Log agent action with token usage (per AGNT-05, AGNT-06)
+  await logResearchAction();
+
   // Transition to next state
-  await transitionJob(submissionId, 'researching', 'drafting', config.name);
+  await transitionJob(jobRecordId, 'researching', 'drafting', config.name);
 }
 
 // Each Worker gets its own Redis connection (CRITICAL -- per BullMQ docs)
