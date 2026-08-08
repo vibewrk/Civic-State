@@ -27,6 +27,27 @@ const zipCodeSchema = z.object({
   zipCode: z.string().regex(/^\d{5}$/, 'zipCode must be a 5-digit US ZIP code'),
 });
 
+router.get('/api/officials/coverage', officialsLimiter, async (req, res) => {
+  try {
+    const { zipCode } = zipCodeSchema.parse(req.query);
+    const result = await lookupOfficials(zipCode);
+
+    res.set('Cache-Control', 'no-store');
+    res.json({
+      zipCode,
+      count: result.officials.length,
+      coverage: result.coverage,
+      confidence: result.confidenceLabel,
+      sources: [...new Set(result.officials.map((official) => official.sourceApi))],
+    });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return res.status(400).json({ error: 'Validation failed', details: err.issues });
+    }
+    throw err;
+  }
+});
+
 router.get('/api/officials', officialsLimiter, async (req, res) => {
   try {
     const { zipCode } = zipCodeSchema.parse(req.query);

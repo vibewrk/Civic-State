@@ -6,6 +6,7 @@ import { getAuth } from '@clerk/express';
 import { computeRowHmac } from 'shared/hmac';
 import { moderateContent } from '../lib/moderation.js';
 import type { ModerationResult } from '../lib/moderation.js';
+import { cacheOfficialsForSubmissionZip } from '../lib/officials/submission-cache.js';
 
 const router: IRouter = Router();
 
@@ -178,6 +179,15 @@ router.post('/api/submissions', async (req, res) => {
     });
 
     await logModerationAudit(prisma, userId, 'submission.moderated', submission.id, moderation);
+
+    try {
+      await cacheOfficialsForSubmissionZip(body.zipCode);
+    } catch (officialErr) {
+      console.warn(
+        `Could not cache officials for submission ${submission.id} (ZIP ${body.zipCode}):`,
+        officialErr,
+      );
+    }
 
     // Create job record
     const job = await prisma.job.create({

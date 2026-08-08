@@ -97,6 +97,7 @@ function mockReq(overrides: Record<string, unknown> = {}) {
 function mockRes() {
   const res: Record<string, unknown> = {};
   res.status = vi.fn(() => res);
+  res.set = vi.fn(() => res);
   res.json = vi.fn(() => res);
   return res;
 }
@@ -486,6 +487,75 @@ describe('API Routes', () => {
   // ─── GET /api/officials ─────────────────────────────────────────────────────
 
   describe('GET /api/officials', () => {
+    it('returns coverage without caching officials for pre-submission ZIP preview', async () => {
+      const { lookupOfficials, cacheAndFilterOfficials } = await import(
+        '../apps/api/src/lib/officials/lookup.js'
+      );
+
+      vi.mocked(lookupOfficials).mockResolvedValueOnce({
+        officials: [
+          {
+            name: 'Senator Test',
+            title: 'U.S. Senator',
+            email: 'test@senate.gov',
+            jurisdiction: 'CA',
+            level: 'federal' as const,
+            district: 'statewide',
+            state: 'CA',
+            party: 'Independent',
+            sourceApi: 'congress.gov',
+          },
+          {
+            name: 'Assembly Test',
+            title: 'State Assemblymember',
+            email: 'assembly@ca.gov',
+            jurisdiction: 'CA District 51',
+            level: 'state' as const,
+            district: '51',
+            state: 'CA',
+            party: 'Independent',
+            sourceApi: 'openstates',
+          },
+        ],
+        coverage: { federal: 1, state: 1, local: 0 },
+        confidenceLabel: 'medium',
+      });
+
+      const officialsRouter = (await import('../apps/api/src/routes/officials.js')).default;
+      const handler = findHandler(officialsRouter, 'get', '/api/officials/coverage');
+      expect(handler).toBeDefined();
+
+      const req = mockReq({ query: { zipCode: '90210' } });
+      const res = mockRes();
+
+      await handler!(req, res);
+
+      expect(cacheAndFilterOfficials).not.toHaveBeenCalled();
+      expect(res.set).toHaveBeenCalledWith('Cache-Control', 'no-store');
+      expect(res.json).toHaveBeenCalledWith({
+        zipCode: '90210',
+        count: 2,
+        coverage: { federal: 1, state: 1, local: 0 },
+        confidence: 'medium',
+        sources: ['congress.gov', 'openstates'],
+      });
+    });
+
+    it('returns 400 for invalid ZIP code on coverage preview', async () => {
+      const officialsRouter = (await import('../apps/api/src/routes/officials.js')).default;
+      const handler = findHandler(officialsRouter, 'get', '/api/officials/coverage');
+
+      const req = mockReq({ query: { zipCode: 'bad' } });
+      const res = mockRes();
+
+      await handler!(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.json).toHaveBeenCalledWith(
+        expect.objectContaining({ error: 'Validation failed' }),
+      );
+    });
+
     it('validates ZIP code and returns officials', async () => {
       const { lookupOfficials, cacheAndFilterOfficials } = await import(
         '../apps/api/src/lib/officials/lookup.js'
