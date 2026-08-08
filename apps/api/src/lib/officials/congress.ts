@@ -7,6 +7,7 @@
  */
 
 import type { OfficialRecord } from 'shared';
+import { formatOfficialLookupErrorForLog } from './logging.js';
 
 interface CensusGeocoderResult {
   result?: {
@@ -72,7 +73,7 @@ async function zipToDistrict(
     const res = await fetch(url, { signal: AbortSignal.timeout(10_000) });
 
     if (!res.ok) {
-      console.warn(`Census geocoder returned ${res.status} for ZIP ${zipCode}`);
+      console.warn(`Census geocoder returned ${res.status} for requested ZIP`);
       return null;
     }
 
@@ -91,7 +92,10 @@ async function zipToDistrict(
       district: cd.CD118,
     };
   } catch (err) {
-    console.warn('Census geocoder lookup failed:', err);
+    console.warn(
+      'Census geocoder lookup failed for requested ZIP:',
+      formatOfficialLookupErrorForLog(err),
+    );
     return null;
   }
 }

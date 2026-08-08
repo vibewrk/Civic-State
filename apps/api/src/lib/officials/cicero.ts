@@ -29,6 +29,6 @@ export async function lookupLocalOfficials(zipCode: string): Promise<OfficialRec
   // Endpoint: https://cicero.azavea.com/v3.1/official
   // Query params: search_loc={zipCode}&search_country=US
   // Auth: via API key header or query param
-  console.info(`Cicero stub called for ZIP ${zipCode} — integration pending`);
+  console.info('Cicero stub called for requested ZIP — integration pending');
   return [];
 }
