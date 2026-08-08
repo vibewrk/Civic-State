@@ -78,7 +78,7 @@ export async function lookupStateOfficials(zipCode: string): Promise<OfficialRec
   try {
     const stateAbbr = zipToStateAbbr(zipCode);
     if (!stateAbbr) {
-      console.warn(`Could not map ZIP ${zipCode} to a state`);
+      console.warn('Could not map requested ZIP to a state');
       return [];
     }
 
