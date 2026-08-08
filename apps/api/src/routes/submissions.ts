@@ -184,7 +184,7 @@ router.post('/api/submissions', async (req, res) => {
       await cacheOfficialsForSubmissionZip(body.zipCode);
     } catch (officialErr) {
       console.warn(
-        `Could not cache officials for submission ${submission.id} (ZIP ${body.zipCode}):`,
+        `Could not cache officials for submission ${submission.id}:`,
         officialErr,
       );
     }
