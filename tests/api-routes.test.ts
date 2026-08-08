@@ -83,6 +83,19 @@ vi.mock('../apps/api/src/lib/officials/lookup.js', () => ({
   cacheAndFilterOfficials: vi.fn(),
 }));
 
+vi.mock('../apps/api/src/lib/officials/submission-cache.js', () => ({
+  cacheOfficialsForSubmissionZip: vi.fn(),
+}));
+
+vi.mock('../apps/api/src/lib/moderation.js', () => ({
+  moderateContent: vi.fn(),
+}));
+
+const { cacheOfficialsForSubmissionZip } = await import(
+  '../apps/api/src/lib/officials/submission-cache.js'
+);
+const { moderateContent } = await import('../apps/api/src/lib/moderation.js');
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function mockReq(overrides: Record<string, unknown> = {}) {
@@ -97,6 +110,7 @@ function mockReq(overrides: Record<string, unknown> = {}) {
 function mockRes() {
   const res: Record<string, unknown> = {};
   res.status = vi.fn(() => res);
+  res.set = vi.fn(() => res);
   res.json = vi.fn(() => res);
   return res;
 }
@@ -122,9 +136,37 @@ function findHandler(
   return undefined;
 }
 
+async function defaultModerateContent(issueDescription: string, desiredOutcome: string) {
+  const text = `${issueDescription} ${desiredOutcome}`;
+
+  if (/\b(i\s+will\s+kill|going\s+to\s+kill|plan\s+to\s+kill|threat(en)?\s+to\s+kill)\b/i.test(text)) {
+    return {
+      tier: 'block' as const,
+      reason: 'threat_of_violence' as const,
+      confidence: 1,
+      details: 'Explicit threat of lethal violence detected',
+    };
+  }
+
+  return {
+    tier: 'flag' as const,
+    reason: 'policy_violation' as const,
+    confidence: 0,
+    details: 'LLM classification failed: test fallback. Flagged for human review.',
+  };
+}
+
 describe('API Routes', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.mocked(moderateContent).mockReset();
+    vi.mocked(moderateContent).mockImplementation(defaultModerateContent);
+    vi.mocked(cacheOfficialsForSubmissionZip).mockReset();
+    vi.mocked(cacheOfficialsForSubmissionZip).mockResolvedValue({
+      zipCode: '00000',
+      count: 0,
+      confidence: 'none',
+    });
     mockPrisma.user.upsert.mockResolvedValue({
       id: '00000000-0000-0000-0000-000000000000',
     });
@@ -257,6 +299,66 @@ describe('API Routes', () => {
 
       // Should not fail validation (ZIP+4 accepted)
       expect(res.status).not.toHaveBeenCalledWith(400);
+    });
+
+    it('does not log the submitted ZIP when official caching fails', async () => {
+      const submittedZip = '10453-9876';
+      const cacheError = new Error('cache unavailable');
+      vi.mocked(moderateContent).mockResolvedValueOnce({
+        tier: 'pass',
+        reason: 'clean',
+        confidence: 1,
+        details: 'Test moderation pass',
+      });
+      vi.mocked(cacheOfficialsForSubmissionZip).mockRejectedValueOnce(cacheError);
+      mockPrisma.submission.create.mockResolvedValueOnce({
+        id: 'sub-cache-failure',
+        status: 'submitted',
+      });
+      mockPrisma.job.create.mockResolvedValueOnce({
+        id: 'job-cache-failure',
+        status: 'submitted',
+      });
+
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+      try {
+        const submissionsRouter = (await import('../apps/api/src/routes/submissions.js')).default;
+        const handler = findHandler(submissionsRouter, 'post', '/api/submissions');
+        expect(handler).toBeDefined();
+
+        const req = mockReq({
+          body: {
+            issueDescription: 'The bus stop near the school needs safer lighting',
+            desiredOutcome: 'I want the city to install lighting this quarter',
+            zipCode: submittedZip,
+            isAnonymous: false,
+          },
+        });
+        const res = mockRes();
+
+        await handler!(req, res);
+
+        expect(cacheOfficialsForSubmissionZip).toHaveBeenCalledWith(submittedZip);
+        expect(warnSpy).toHaveBeenCalledWith(
+          'Could not cache officials for submission sub-cache-failure:',
+          cacheError,
+        );
+
+        const warnPayload = warnSpy.mock.calls.flat().map(String).join('\n');
+        expect(warnPayload).not.toContain(submittedZip);
+        expect(warnPayload).not.toContain('10453');
+        expect(res.status).toHaveBeenCalledWith(201);
+        expect(res.json).toHaveBeenCalledWith(
+          expect.objectContaining({
+            id: 'sub-cache-failure',
+            jobId: 'job-cache-failure',
+            status: 'submitted',
+          }),
+        );
+      } finally {
+        warnSpy.mockRestore();
+      }
     });
   });
 
@@ -486,6 +588,75 @@ describe('API Routes', () => {
   // ─── GET /api/officials ─────────────────────────────────────────────────────
 
   describe('GET /api/officials', () => {
+    it('returns coverage without caching officials for pre-submission ZIP preview', async () => {
+      const { lookupOfficials, cacheAndFilterOfficials } = await import(
+        '../apps/api/src/lib/officials/lookup.js'
+      );
+
+      vi.mocked(lookupOfficials).mockResolvedValueOnce({
+        officials: [
+          {
+            name: 'Senator Test',
+            title: 'U.S. Senator',
+            email: 'test@senate.gov',
+            jurisdiction: 'CA',
+            level: 'federal' as const,
+            district: 'statewide',
+            state: 'CA',
+            party: 'Independent',
+            sourceApi: 'congress.gov',
+          },
+          {
+            name: 'Assembly Test',
+            title: 'State Assemblymember',
+            email: 'assembly@ca.gov',
+            jurisdiction: 'CA District 51',
+            level: 'state' as const,
+            district: '51',
+            state: 'CA',
+            party: 'Independent',
+            sourceApi: 'openstates',
+          },
+        ],
+        coverage: { federal: 1, state: 1, local: 0 },
+        confidenceLabel: 'medium',
+      });
+
+      const officialsRouter = (await import('../apps/api/src/routes/officials.js')).default;
+      const handler = findHandler(officialsRouter, 'get', '/api/officials/coverage');
+      expect(handler).toBeDefined();
+
+      const req = mockReq({ query: { zipCode: '90210' } });
+      const res = mockRes();
+
+      await handler!(req, res);
+
+      expect(cacheAndFilterOfficials).not.toHaveBeenCalled();
+      expect(res.set).toHaveBeenCalledWith('Cache-Control', 'no-store');
+      expect(res.json).toHaveBeenCalledWith({
+        zipCode: '90210',
+        count: 2,
+        coverage: { federal: 1, state: 1, local: 0 },
+        confidence: 'medium',
+        sources: ['congress.gov', 'openstates'],
+      });
+    });
+
+    it('returns 400 for invalid ZIP code on coverage preview', async () => {
+      const officialsRouter = (await import('../apps/api/src/routes/officials.js')).default;
+      const handler = findHandler(officialsRouter, 'get', '/api/officials/coverage');
+
+      const req = mockReq({ query: { zipCode: 'bad' } });
+      const res = mockRes();
+
+      await handler!(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.json).toHaveBeenCalledWith(
+        expect.objectContaining({ error: 'Validation failed' }),
+      );
+    });
+
     it('validates ZIP code and returns officials', async () => {
       const { lookupOfficials, cacheAndFilterOfficials } = await import(
         '../apps/api/src/lib/officials/lookup.js'

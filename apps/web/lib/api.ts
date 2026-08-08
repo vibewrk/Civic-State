@@ -1,3 +1,8 @@
+import type {
+  JurisdictionLevel,
+  OfficialCoverageResponse,
+} from "./official-coverage";
+
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 
@@ -43,9 +48,25 @@ export interface ResearchStatus {
 }
 
 export interface Official {
+  id?: string;
   name: string;
   title: string;
+  email?: string;
   jurisdiction: string;
+  level?: JurisdictionLevel;
+  district?: string;
+  state?: string;
+  party?: string;
+  phone?: string | null;
+  sourceApi?: string;
+}
+
+export interface OfficialLookupResponse {
+  zipCode: string;
+  officials: Official[];
+  coverage: Record<JurisdictionLevel, number>;
+  confidence: OfficialCoverageResponse["confidence"];
+  count: number;
 }
 
 export interface LetterPreview {
@@ -86,8 +107,18 @@ export async function getLetterPreviews(
 
 export async function lookupOfficials(
   zipCode: string
-): Promise<Official[]> {
-  return request<Official[]>(`/api/officials?zipCode=${zipCode}`);
+): Promise<OfficialLookupResponse> {
+  return request<OfficialLookupResponse>(`/api/officials?zipCode=${zipCode}`);
+}
+
+export async function lookupOfficialCoverage(
+  zipCode: string,
+  options?: RequestInit
+): Promise<OfficialCoverageResponse> {
+  return request<OfficialCoverageResponse>(
+    `/api/officials/coverage?zipCode=${zipCode}`,
+    options
+  );
 }
 
 // --- Payment ---
