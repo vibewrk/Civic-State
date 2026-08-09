@@ -55,6 +55,8 @@ export interface OfficialRecord {
   party: string;
   phone?: string;
   sourceApi: string;
+  sourceUrl?: string;
+  sourceLastVerifiedAt?: string;
   optedOut?: boolean;
 }
 

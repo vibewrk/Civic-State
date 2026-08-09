@@ -674,6 +674,8 @@ describe('API Routes', () => {
             state: 'CA',
             party: 'Independent',
             sourceApi: 'congress.gov',
+            sourceUrl: 'https://www.congress.gov/member/test',
+            sourceLastVerifiedAt: '2026-08-09',
           },
         ],
         coverage: { federal: 1, state: 0, local: 0 },
@@ -692,6 +694,8 @@ describe('API Routes', () => {
           state: 'CA',
           party: 'Independent',
           sourceApi: 'congress.gov',
+          sourceUrl: 'https://www.congress.gov/member/test',
+          sourceLastVerifiedAt: '2026-08-09',
         },
       ]);
 
@@ -709,7 +713,11 @@ describe('API Routes', () => {
           zipCode: '90210',
           count: 1,
           officials: expect.arrayContaining([
-            expect.objectContaining({ name: 'Senator Test' }),
+            expect.objectContaining({
+              name: 'Senator Test',
+              sourceUrl: 'https://www.congress.gov/member/test',
+              sourceLastVerifiedAt: '2026-08-09',
+            }),
           ]),
         }),
       );

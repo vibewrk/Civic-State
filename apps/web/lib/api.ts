@@ -59,6 +59,8 @@ export interface Official {
   party?: string;
   phone?: string | null;
   sourceApi?: string;
+  sourceUrl?: string;
+  sourceLastVerifiedAt?: string;
 }
 
 export interface OfficialLookupResponse {
