@@ -18,6 +18,7 @@ import { computeRowHmac } from 'shared/hmac';
 import { getAuth } from '@clerk/express';
 
 const router: IRouter = Router();
+type SharedPrismaClient = typeof import('shared')['prisma'];
 
 // All admin routes require authentication + admin role
 const adminAuth = [requireAuth(), requireAdmin];
@@ -27,9 +28,8 @@ const adminAuth = [requireAuth(), requireAdmin];
 /**
  * Write an admin action to audit_logs with HMAC (ADMN-07).
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function logAdminAudit(
-  prisma: any,
+  prisma: SharedPrismaClient,
   userId: string,
   action: string,
   resource: string,

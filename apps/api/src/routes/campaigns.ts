@@ -1,15 +1,59 @@
-import { Router, type IRouter } from 'express';
+import { Router, type IRouter, type Request } from 'express';
 import { getAuth } from '@clerk/express';
 import { computeRowHmac } from 'shared/hmac';
 
 const router: IRouter = Router();
+type SharedPrismaClient = typeof import('shared')['prisma'];
+
+type CampaignListRow = {
+  id: string;
+  status: string;
+  pricingTier: string;
+  officialCount: number;
+  createdAt: Date;
+  updatedAt: Date;
+  submission: {
+    id: string;
+    issueDescription: string;
+    desiredOutcome: string;
+    zipCode: string;
+    isAnonymous: boolean;
+    status: string;
+    createdAt: Date;
+  };
+  letters: Array<{
+    id: string;
+    status: string;
+    official: {
+      id: string;
+      name: string;
+      title: string;
+      email: string;
+      jurisdiction: string;
+      level: string;
+      district: string;
+      state: string;
+      party: string;
+    };
+    deliveries: Array<{
+      id: string;
+      status: string;
+      sentAt: Date | null;
+      deliveredAt: Date | null;
+      bouncedAt: Date | null;
+      bounceType: string | null;
+    }>;
+  }>;
+};
 
 /**
  * Resolve the internal userId from a Clerk session.
  * Returns null if unauthenticated or no matching user record.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-async function resolveUserId(req: any, prisma: any): Promise<string | null> {
+async function resolveUserId(
+  req: Request,
+  prisma: SharedPrismaClient,
+): Promise<string | null> {
   try {
     const auth = getAuth(req);
     if (!auth?.userId) return null;
@@ -33,7 +77,7 @@ router.get('/api/campaigns', async (req, res) => {
       return res.status(401).json({ error: 'Authentication required' });
     }
 
-    const campaigns = await prisma.campaign.findMany({
+    const campaigns: CampaignListRow[] = await prisma.campaign.findMany({
       where: { userId, deletedAt: null },
       orderBy: { createdAt: 'desc' },
       include: {
@@ -82,8 +126,7 @@ router.get('/api/campaigns', async (req, res) => {
       },
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const result = campaigns.map((campaign: any) => ({
+    const result = campaigns.map((campaign) => ({
       id: campaign.id,
       status: campaign.status,
       pricingTier: campaign.pricingTier,
@@ -91,7 +134,7 @@ router.get('/api/campaigns', async (req, res) => {
       createdAt: campaign.createdAt,
       updatedAt: campaign.updatedAt,
       submission: campaign.submission,
-      letters: campaign.letters.map((letter: any) => ({
+      letters: campaign.letters.map((letter) => ({
         id: letter.id,
         status: letter.status,
         official: letter.official,
