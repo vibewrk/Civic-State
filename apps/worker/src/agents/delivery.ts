@@ -57,13 +57,27 @@ function getSelectedLetterLimit(campaign: {
   pricingTier: string;
   officialCount: number;
 }): number | null {
-  if (campaign.pricingTier === 'full_spread') return null;
-  if (Number.isInteger(campaign.officialCount) && campaign.officialCount > 0) {
-    return campaign.officialCount;
+  function assertValidOfficialCount(): void {
+    if (Number.isInteger(campaign.officialCount) && campaign.officialCount > 0) {
+      return;
+    }
+    throw new Error(
+      `Invalid official count for pricing tier ${campaign.pricingTier}: ${campaign.officialCount}`,
+    );
   }
-  if (campaign.pricingTier === 'single') return 1;
-  if (campaign.pricingTier === 'three_pack') return 3;
-  return null;
+
+  switch (campaign.pricingTier) {
+    case 'full_spread':
+      return null;
+    case 'single':
+      assertValidOfficialCount();
+      return 1;
+    case 'three_pack':
+      assertValidOfficialCount();
+      return 3;
+    default:
+      throw new Error(`Unknown pricing tier: ${campaign.pricingTier}`);
+  }
 }
 
 /**
@@ -130,7 +144,13 @@ export async function processJob(job: Job): Promise<void> {
     throw new Error(`No letters to deliver for campaign ${campaign.id}`);
   }
 
-  const letterLimit = getSelectedLetterLimit(campaign);
+  let letterLimit: number | null;
+  try {
+    letterLimit = getSelectedLetterLimit(campaign);
+  } catch (err) {
+    await transitionJob(submissionId, 'delivering', 'failed', config.name);
+    throw err;
+  }
   const selectedLetters =
     letterLimit === null ? campaign.letters : campaign.letters.slice(0, letterLimit);
 
