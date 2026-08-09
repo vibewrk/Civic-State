@@ -57,6 +57,45 @@ describe('web officials coverage client', () => {
       expect.objectContaining({ signal: controller.signal }),
     );
   });
+
+  it('returns source metadata on official lookup responses', async () => {
+    const response = {
+      zipCode: '10001',
+      officials: [
+        {
+          id: 'off-local-1',
+          name: 'Carl Wilson',
+          title: 'Council Member',
+          email: 'district3@council.nyc.gov',
+          jurisdiction: 'New York City Council District 3',
+          level: 'local',
+          district: '3',
+          state: 'NY',
+          party: 'Nonpartisan',
+          phone: '212-564-7757',
+          sourceApi: 'local_fixture',
+          sourceUrl: 'https://council.nyc.gov/district-3/',
+          sourceLastVerifiedAt: '2026-08-09',
+        },
+      ],
+      coverage: { federal: 0, state: 0, local: 1 },
+      confidence: 'low',
+      count: 1,
+    } as const;
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => response,
+    });
+    vi.stubGlobal('fetch', fetchMock);
+
+    const { lookupOfficials } = await import('../apps/web/lib/api.js');
+
+    await expect(lookupOfficials('10001')).resolves.toEqual(response);
+    expect(fetchMock).toHaveBeenCalledWith(
+      'http://localhost:3001/api/officials?zipCode=10001',
+      expect.any(Object),
+    );
+  });
 });
 
 describe('official coverage summary copy', () => {
