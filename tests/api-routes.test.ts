@@ -31,6 +31,7 @@ const mockPrisma = {
   },
   campaign: {
     findMany: vi.fn(),
+    findFirst: vi.fn(),
   },
   auditLog: {
     create: vi.fn(),
@@ -441,6 +442,11 @@ describe('API Routes', () => {
 
       expect(res.json).toHaveBeenCalledWith(
         expect.objectContaining({
+          status: 'payment_pending',
+          clientStatus: 'ready',
+          progress: 100,
+          message: 'Letters ready for review',
+          jobStatus: 'payment_pending',
           research: expect.objectContaining({
             stage: 'ready',
             progress: 100,
@@ -468,35 +474,33 @@ describe('API Routes', () => {
 
   describe('GET /api/submissions/:id/preview', () => {
     it('returns letter previews with proper structure', async () => {
-      mockPrisma.campaign.findMany.mockResolvedValueOnce([
-        {
-          id: 'camp-1',
-          status: 'pending_payment',
-          pricingTier: 'three_pack',
-          officialCount: 3,
-          createdAt: new Date('2026-01-01'),
-          letters: [
-            {
-              id: 'letter-1',
-              status: 'draft',
-              content: 'Dear Senator, I am writing about...',
-              aiDisclosure: true,
-              createdAt: new Date('2026-01-01'),
-              official: {
-                id: 'off-1',
-                name: 'Jane Senator',
-                title: 'U.S. Senator',
-                email: 'jane@senate.gov',
-                jurisdiction: 'CA (statewide)',
-                level: 'federal',
-                district: 'statewide',
-                state: 'CA',
-                party: 'Democrat',
-              },
+      mockPrisma.campaign.findFirst.mockResolvedValueOnce({
+        id: 'camp-1',
+        status: 'pending_payment',
+        pricingTier: 'three_pack',
+        officialCount: 3,
+        createdAt: new Date('2026-01-01'),
+        letters: [
+          {
+            id: 'letter-1',
+            status: 'draft',
+            content: 'Dear Senator, I am writing about crosswalk safety. [Citation: 23 CFR 655.603]',
+            aiDisclosure: true,
+            createdAt: new Date('2026-01-01'),
+            official: {
+              id: 'off-1',
+              name: 'Jane Senator',
+              title: 'U.S. Senator',
+              email: 'jane@senate.gov',
+              jurisdiction: 'CA (statewide)',
+              level: 'federal',
+              district: 'statewide',
+              state: 'CA',
+              party: 'Democrat',
             },
-          ],
-        },
-      ]);
+          },
+        ],
+      });
 
       const submissionsRouter = (await import('../apps/api/src/routes/submissions.js')).default;
       const handler = findHandler(submissionsRouter, 'get', '/api/submissions/:id/preview');
@@ -512,6 +516,11 @@ describe('API Routes', () => {
           submissionId: 'sub-1',
           campaignId: 'camp-1',
           lettersCount: 1,
+          pricingTiers: {
+            single: 5,
+            three: 15,
+            all: 25,
+          },
           letters: expect.arrayContaining([
             expect.objectContaining({
               letterId: 'letter-1',
@@ -519,6 +528,7 @@ describe('API Routes', () => {
                 name: 'Jane Senator',
               }),
               content: expect.any(String),
+              citations: ['23 CFR 655.603'],
               disclaimer: expect.any(String),
             }),
           ]),
@@ -527,35 +537,33 @@ describe('API Routes', () => {
     });
 
     it('includes AI disclosure text when aiDisclosure is true', async () => {
-      mockPrisma.campaign.findMany.mockResolvedValueOnce([
-        {
-          id: 'camp-2',
-          status: 'paid',
-          pricingTier: 'single',
-          officialCount: 1,
-          createdAt: new Date('2026-01-01'),
-          letters: [
-            {
-              id: 'letter-2',
-              status: 'approved',
-              content: 'Letter content...',
-              aiDisclosure: true,
-              createdAt: new Date('2026-01-01'),
-              official: {
-                id: 'off-2',
-                name: 'Rep Test',
-                title: 'U.S. Representative',
-                email: 'rep@house.gov',
-                jurisdiction: 'CA-12',
-                level: 'federal',
-                district: '12',
-                state: 'CA',
-                party: 'Republican',
-              },
+      mockPrisma.campaign.findFirst.mockResolvedValueOnce({
+        id: 'camp-2',
+        status: 'paid',
+        pricingTier: 'single',
+        officialCount: 1,
+        createdAt: new Date('2026-01-01'),
+        letters: [
+          {
+            id: 'letter-2',
+            status: 'approved',
+            content: 'Letter content...',
+            aiDisclosure: true,
+            createdAt: new Date('2026-01-01'),
+            official: {
+              id: 'off-2',
+              name: 'Rep Test',
+              title: 'U.S. Representative',
+              email: 'rep@house.gov',
+              jurisdiction: 'CA-12',
+              level: 'federal',
+              district: '12',
+              state: 'CA',
+              party: 'Republican',
             },
-          ],
-        },
-      ]);
+          },
+        ],
+      });
 
       const submissionsRouter = (await import('../apps/api/src/routes/submissions.js')).default;
       const handler = findHandler(submissionsRouter, 'get', '/api/submissions/:id/preview');
@@ -571,7 +579,7 @@ describe('API Routes', () => {
     });
 
     it('returns 404 when no campaign exists', async () => {
-      mockPrisma.campaign.findMany.mockResolvedValueOnce([]);
+      mockPrisma.campaign.findFirst.mockResolvedValueOnce(null);
 
       const submissionsRouter = (await import('../apps/api/src/routes/submissions.js')).default;
       const handler = findHandler(submissionsRouter, 'get', '/api/submissions/:id/preview');

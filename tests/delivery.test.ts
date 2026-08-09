@@ -10,6 +10,10 @@
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
+const { mockSendEmail } = vi.hoisted(() => ({
+  mockSendEmail: vi.fn(),
+}));
+
 // ─── Mocks ────────────────────────────────────────────────────────────────────
 
 const mockPrisma = {
@@ -34,14 +38,6 @@ vi.mock('shared', () => ({
 
 vi.mock('shared/hmac', () => ({
   computeRowHmac: vi.fn(() => 'mock-hmac-checksum'),
-}));
-
-// Mock Postmark
-const mockSendEmail = vi.fn();
-vi.mock('postmark', () => ({
-  ServerClient: vi.fn(() => ({
-    sendEmail: mockSendEmail,
-  })),
 }));
 
 // Mock BullMQ
@@ -84,10 +80,69 @@ vi.mock('../apps/worker/src/lib/logger.js', () => ({
   logAgentAction: vi.fn(),
 }));
 
+const { processJob, setPostmarkClientForTest } = await import(
+  '../apps/worker/src/agents/delivery.js'
+);
+
+function buildDeliverableLetter(index: number) {
+  return {
+    id: `letter-${index}`,
+    content: `Letter ${index} content`,
+    status: 'approved',
+    official: {
+      id: `off-${index}`,
+      name: `Official ${index}`,
+      email: `official-${index}@gov.test`,
+      optedOut: false,
+      district: `${index}`,
+    },
+  };
+}
+
 describe('Delivery Agent', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     process.env.POSTMARK_SERVER_TOKEN = 'test-token';
+    mockSendEmail.mockResolvedValue({ MessageID: 'msg-test' });
+    setPostmarkClientForTest({ sendEmail: mockSendEmail });
+    mockPrisma.delivery.findMany.mockResolvedValue([]);
+    mockPrisma.delivery.create.mockResolvedValue({ id: 'delivery-test' });
+    mockPrisma.letter.update.mockResolvedValue({ id: 'letter-test' });
+  });
+
+  // ─── Pricing Tier Enforcement ───────────────────────────────────────────
+
+  describe('Pricing tier delivery limits', () => {
+    it.each([
+      { pricingTier: 'single', officialCount: 1, expectedRecipients: 1 },
+      { pricingTier: 'three_pack', officialCount: 3, expectedRecipients: 3 },
+      { pricingTier: 'full_spread', officialCount: 0, expectedRecipients: 5 },
+    ])(
+      'sends only the selected $pricingTier recipient count',
+      async ({ pricingTier, officialCount, expectedRecipients }) => {
+        mockPrisma.campaign.findFirst.mockResolvedValueOnce({
+          id: 'camp-tier',
+          pricingTier,
+          officialCount,
+          letters: [1, 2, 3, 4, 5].map(buildDeliverableLetter),
+          submission: { zipCode: '10001' },
+        });
+
+        await processJob({
+          data: { submissionId: 'sub-tier' },
+        } as unknown as Parameters<typeof processJob>[0]);
+
+        expect(mockSendEmail).toHaveBeenCalledTimes(expectedRecipients);
+        expect(mockPrisma.delivery.create).toHaveBeenCalledTimes(expectedRecipients);
+        expect(mockPrisma.letter.update).toHaveBeenCalledTimes(expectedRecipients);
+        expect(mockSendEmail.mock.calls.map(([message]) => message.To)).toEqual(
+          Array.from(
+            { length: expectedRecipients },
+            (_unused, index) => `official-${index + 1}@gov.test`,
+          ),
+        );
+      },
+    );
   });
 
   // ─── Bounce Rate Calculation ─────────────────────────────────────────────

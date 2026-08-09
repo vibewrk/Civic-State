@@ -1,15 +1,9 @@
 import { Router, type IRouter } from 'express';
 import { getAuth } from '@clerk/express';
 import Stripe from 'stripe';
+import { isPricingTier, PRICING_TIERS } from '../lib/pricing.js';
 
 const router: IRouter = Router();
-
-// Pricing tiers: amount in cents
-const PRICING_TIERS: Record<string, { amount: number; officialCount: number; label: string }> = {
-  single:      { amount: 500,  officialCount: 1,  label: 'Single Official' },
-  three_pack:  { amount: 1500, officialCount: 3,  label: 'Three Officials' },
-  full_spread: { amount: 2500, officialCount: -1, label: 'All Officials' }, // -1 = all matched
-};
 
 // Lazy-init Stripe client
 let stripeInstance: Stripe | null = null;
@@ -34,9 +28,9 @@ router.post('/api/submissions/:id/pay', async (req, res) => {
 
     const { prisma } = await import('shared');
     const submissionId = req.params.id;
-    const { tier } = req.body as { tier?: string };
+    const { tier } = req.body as { tier?: unknown };
 
-    if (!tier || !PRICING_TIERS[tier]) {
+    if (!isPricingTier(tier)) {
       return res.status(400).json({
         error: 'Invalid pricing tier',
         validTiers: Object.keys(PRICING_TIERS),

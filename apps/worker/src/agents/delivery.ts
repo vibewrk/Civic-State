@@ -7,9 +7,11 @@ import { logAgentAction } from '../lib/logger.js';
 
 const config = getAgentConfig('delivery');
 
+type EmailClient = Pick<ServerClient, 'sendEmail'>;
+
 // Postmark client — initialized lazily to avoid startup errors when env var is missing
-let postmarkClient: ServerClient | null = null;
-function getPostmarkClient(): ServerClient {
+let postmarkClient: EmailClient | null = null;
+function getPostmarkClient(): EmailClient {
   if (!postmarkClient) {
     const token = process.env.POSTMARK_SERVER_TOKEN;
     if (!token) {
@@ -18,6 +20,13 @@ function getPostmarkClient(): ServerClient {
     postmarkClient = new ServerClient(token);
   }
   return postmarkClient;
+}
+
+export function setPostmarkClientForTest(client: EmailClient | null): void {
+  if (process.env.NODE_ENV !== 'test' && process.env.VITEST !== 'true') {
+    throw new Error('setPostmarkClientForTest may only be used in tests');
+  }
+  postmarkClient = client;
 }
 
 const FROM_EMAIL = process.env.POSTMARK_FROM_EMAIL || 'letters@civicstate.com';
@@ -42,6 +51,19 @@ interface DeliveryResult {
  */
 function getEmailDomain(email: string): string {
   return email.split('@')[1]?.toLowerCase() || '';
+}
+
+function getSelectedLetterLimit(campaign: {
+  pricingTier: string;
+  officialCount: number;
+}): number | null {
+  if (campaign.pricingTier === 'full_spread') return null;
+  if (Number.isInteger(campaign.officialCount) && campaign.officialCount > 0) {
+    return campaign.officialCount;
+  }
+  if (campaign.pricingTier === 'single') return 1;
+  if (campaign.pricingTier === 'three_pack') return 3;
+  return null;
 }
 
 /**
@@ -73,7 +95,7 @@ async function getDomainBounceRate(domain: string): Promise<number> {
   return bounced / deliveries.length;
 }
 
-async function processJob(job: Job): Promise<void> {
+export async function processJob(job: Job): Promise<void> {
   const { submissionId } = job.data;
   const startTime = Date.now();
   const { prisma } = await import('shared');
@@ -108,6 +130,14 @@ async function processJob(job: Job): Promise<void> {
     throw new Error(`No letters to deliver for campaign ${campaign.id}`);
   }
 
+  const letterLimit = getSelectedLetterLimit(campaign);
+  const selectedLetters =
+    letterLimit === null ? campaign.letters : campaign.letters.slice(0, letterLimit);
+
+  if (selectedLetters.length === 0) {
+    throw new Error(`No selected letters to deliver for campaign ${campaign.id}`);
+  }
+
   const result: DeliveryResult = {
     sent: 0,
     skipped: 0,
@@ -117,7 +147,7 @@ async function processJob(job: Job): Promise<void> {
 
   const client = getPostmarkClient();
 
-  for (const letter of campaign.letters) {
+  for (const letter of selectedLetters) {
     const official = letter.official;
 
     // Skip opted-out officials
@@ -258,7 +288,8 @@ async function processJob(job: Job): Promise<void> {
       sent: result.sent,
       skipped: result.skipped,
       failed: result.failed,
-      total: campaign.letters.length,
+      total: selectedLetters.length,
+      availableLetters: campaign.letters.length,
       details: result.details,
     },
     modelUsed: config.model,
@@ -274,7 +305,7 @@ async function processJob(job: Job): Promise<void> {
     // All letters failed or were skipped — transition to failed
     await transitionJob(submissionId, 'delivering', 'failed', config.name);
     throw new Error(
-      `Delivery failed: 0 of ${campaign.letters.length} letters sent (${result.skipped} skipped, ${result.failed} failed)`,
+      `Delivery failed: 0 of ${selectedLetters.length} selected letters sent (${result.skipped} skipped, ${result.failed} failed)`,
     );
   }
 

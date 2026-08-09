@@ -98,6 +98,92 @@ describe('web officials coverage client', () => {
   });
 });
 
+describe('web submit flow API client', () => {
+  beforeEach(() => {
+    vi.resetModules();
+    vi.unstubAllGlobals();
+    delete process.env.NEXT_PUBLIC_API_URL;
+  });
+
+  it('sends the anonymity choice with the backend submission field name', async () => {
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        id: 'sub-123',
+        status: 'submitted',
+      }),
+    });
+    vi.stubGlobal('fetch', fetchMock);
+
+    const { createSubmission } = await import('../apps/web/lib/api.js');
+    await createSubmission({
+      issueDescription: 'Traffic signals near the school are mistimed',
+      desiredOutcome: 'Retune the crossing signals before the school year',
+      zipCode: '10001',
+      fullName: 'Riley Constituent',
+      anonymous: false,
+    });
+
+    const requestBody = JSON.parse(String(fetchMock.mock.calls[0][1]?.body));
+    expect(requestBody).toEqual({
+      issueDescription: 'Traffic signals near the school are mistimed',
+      desiredOutcome: 'Retune the crossing signals before the school year',
+      zipCode: '10001',
+      isAnonymous: false,
+    });
+  });
+
+  it('maps UI checkout tier names to the payment API contract', async () => {
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        checkoutUrl: 'https://checkout.stripe.test/session',
+        sessionId: 'cs_test_123',
+      }),
+    });
+    vi.stubGlobal('fetch', fetchMock);
+
+    const { createPaymentSession } = await import('../apps/web/lib/api.js');
+    await createPaymentSession('sub-123', 'all');
+
+    expect(fetchMock).toHaveBeenCalledWith(
+      'http://localhost:3001/api/submissions/sub-123/pay',
+      expect.objectContaining({
+        body: JSON.stringify({ tier: 'full_spread' }),
+        credentials: 'include',
+      }),
+    );
+  });
+
+  it('normalizes raw research job status for the wizard', async () => {
+    const fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        submissionId: 'sub-123',
+        jobId: 'job-123',
+        status: 'payment_pending',
+        clientStatus: 'ready',
+        progress: 100,
+        message: 'Letters ready for review',
+        research: {
+          stage: 'ready',
+          label: 'Letters ready for review',
+          progress: 100,
+        },
+      }),
+    });
+    vi.stubGlobal('fetch', fetchMock);
+
+    const { getResearchStatus } = await import('../apps/web/lib/api.js');
+
+    await expect(getResearchStatus('sub-123')).resolves.toEqual({
+      status: 'ready',
+      progress: 100,
+      message: 'Letters ready for review',
+    });
+  });
+});
+
 describe('official coverage summary copy', () => {
   it('describes useful coverage without hiding missing local officials', async () => {
     const { summarizeOfficialCoverage } = await import(

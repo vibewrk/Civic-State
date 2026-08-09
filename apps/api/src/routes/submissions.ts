@@ -4,11 +4,57 @@ import { Queue } from 'bullmq';
 import Redis from 'ioredis';
 import { getAuth } from '@clerk/express';
 import { computeRowHmac } from 'shared/hmac';
+import type { JobStatus } from 'shared';
 import { moderateContent } from '../lib/moderation.js';
 import type { ModerationResult } from '../lib/moderation.js';
 import { cacheOfficialsForSubmissionZip } from '../lib/officials/submission-cache.js';
+import { PREVIEW_PRICING_TIERS } from '../lib/pricing.js';
 
 const router: IRouter = Router();
+
+type ResearchClientStatus = 'classifying' | 'researching' | 'drafting' | 'ready' | 'error';
+
+interface ResearchProgressMapping {
+  status: ResearchClientStatus;
+  stage: string;
+  label: string;
+  progress: number;
+}
+
+const RESEARCH_STATUS_BY_JOB_STATUS = {
+  submitted:       { status: 'classifying', stage: 'queued',                  label: 'Queued for processing',        progress: 0 },
+  classifying:     { status: 'classifying', stage: 'classifying_issue',       label: 'Classifying your concern',     progress: 20 },
+  researching:     { status: 'researching', stage: 'researching_regulations', label: 'Researching regulations',      progress: 40 },
+  drafting:        { status: 'drafting',    stage: 'drafting_letters',        label: 'Drafting your letters',        progress: 70 },
+  payment_pending: { status: 'ready',       stage: 'ready',                   label: 'Letters ready for review',     progress: 100 },
+  paid:            { status: 'ready',       stage: 'ready',                   label: 'Letters ready for delivery',   progress: 100 },
+  delivering:      { status: 'ready',       stage: 'ready',                   label: 'Letters being delivered',      progress: 100 },
+  delivered:       { status: 'ready',       stage: 'ready',                   label: 'Letters delivered',            progress: 100 },
+  failed:          { status: 'error',       stage: 'failed',                  label: 'Processing failed',            progress: 0 },
+} satisfies Record<JobStatus, ResearchProgressMapping>;
+
+const DEFAULT_RESEARCH_STATUS: ResearchProgressMapping = {
+  status: 'classifying',
+  stage: 'queued',
+  label: 'Processing',
+  progress: 10,
+};
+
+function extractCitationReferences(content: string): string[] {
+  const seen = new Set<string>();
+  const citations: string[] = [];
+  const citationPattern = /\[Citation:\s*([^\]]+)\]/g;
+
+  for (const match of content.matchAll(citationPattern)) {
+    const reference = match[1]?.trim();
+    if (reference && !seen.has(reference)) {
+      seen.add(reference);
+      citations.push(reference);
+    }
+  }
+
+  return citations;
+}
 
 const createSubmissionSchema = z.object({
   issueDescription: z.string().min(10).max(5000),
@@ -300,29 +346,17 @@ router.get('/api/submissions/:id/research', async (req, res) => {
       return res.status(404).json({ error: 'Submission not found' });
     }
 
-    // Map internal statuses to user-friendly research progress labels
-    const statusMap: Record<string, { stage: string; label: string; progress: number }> = {
-      submitted:       { stage: 'queued',                  label: 'Queued for processing',        progress: 0 },
-      classifying:     { stage: 'classifying_issue',       label: 'Classifying your concern',     progress: 20 },
-      researching:     { stage: 'researching_regulations', label: 'Researching regulations',      progress: 40 },
-      drafting:        { stage: 'drafting_letters',        label: 'Drafting your letters',        progress: 70 },
-      payment_pending: { stage: 'ready',                   label: 'Letters ready for review',     progress: 100 },
-      paid:            { stage: 'ready',                   label: 'Letters ready for delivery',   progress: 100 },
-      delivering:      { stage: 'ready',                   label: 'Letters being delivered',      progress: 100 },
-      delivered:       { stage: 'ready',                   label: 'Letters delivered',             progress: 100 },
-      failed:          { stage: 'failed',                  label: 'Processing failed',            progress: 0 },
-    };
-
-    const mapped = statusMap[job.status] ?? {
-      stage: 'queued',
-      label: 'Processing',
-      progress: 10,
-    };
+    const mapped =
+      RESEARCH_STATUS_BY_JOB_STATUS[job.status as JobStatus] ?? DEFAULT_RESEARCH_STATUS;
 
     res.json({
       submissionId,
       jobId: job.id,
       status: job.status,
+      clientStatus: mapped.status,
+      progress: mapped.progress,
+      message: mapped.label,
+      jobStatus: job.status,
       research: {
         stage: mapped.stage,
         label: mapped.label,
@@ -344,8 +378,8 @@ router.get('/api/submissions/:id/preview', async (req, res) => {
     const { prisma } = await import('shared');
     const submissionId = req.params.id;
 
-    // Look up campaigns for this submission, including letters and officials
-    const campaigns = await prisma.campaign.findMany({
+    // Look up the latest campaign for this submission, including letters and officials.
+    const campaign = await prisma.campaign.findFirst({
       where: { submissionId },
       orderBy: { createdAt: 'desc' },
       include: {
@@ -370,15 +404,12 @@ router.get('/api/submissions/:id/preview', async (req, res) => {
       },
     });
 
-    if (campaigns.length === 0) {
+    if (!campaign) {
       return res.status(404).json({
         error: 'No campaign found for this submission',
         hint: 'Letters are generated during the drafting stage. Check /api/submissions/:id/research for progress.',
       });
     }
-
-    // Use the most recent campaign
-    const campaign = campaigns[0];
 
     const AI_DISCLOSURE_TEXT = 'This letter was drafted with the assistance of artificial intelligence. The research, citations, and legal references have been verified against public government databases.';
     const DISCLAIMER_TEXT = 'This letter does not constitute legal advice. CivicState is a civic technology platform that assists constituents in communicating with their elected officials.';
@@ -399,6 +430,7 @@ router.get('/api/submissions/:id/preview', async (req, res) => {
         party: letter.official.party,
       },
       content: letter.content,
+      citations: extractCitationReferences(letter.content),
       aiDisclosure: letter.aiDisclosure ? AI_DISCLOSURE_TEXT : null,
       disclaimer: DISCLAIMER_TEXT,
       createdAt: letter.createdAt,
@@ -409,6 +441,7 @@ router.get('/api/submissions/:id/preview', async (req, res) => {
       campaignId: campaign.id,
       campaignStatus: campaign.status,
       pricingTier: campaign.pricingTier,
+      pricingTiers: PREVIEW_PRICING_TIERS,
       officialCount: campaign.officialCount,
       lettersCount: letterPreviews.length,
       letters: letterPreviews,

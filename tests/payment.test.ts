@@ -12,6 +12,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { isPricingTier, PRICING_TIERS } from '../apps/api/src/lib/pricing.js';
 
 // ─── Mocks ────────────────────────────────────────────────────────────────────
 
@@ -50,13 +51,6 @@ describe('Payment Flow', () => {
   // ─── Pricing Tiers ─────────────────────────────────────────────────────────
 
   describe('Pricing tiers', () => {
-    // These values are defined in apps/api/src/routes/payments.ts
-    const PRICING_TIERS: Record<string, { amount: number; officialCount: number; label: string }> = {
-      single:      { amount: 500,  officialCount: 1,  label: 'Single Official' },
-      three_pack:  { amount: 1500, officialCount: 3,  label: 'Three Officials' },
-      full_spread: { amount: 2500, officialCount: -1, label: 'All Officials' },
-    };
-
     it('single tier is $5.00 (500 cents) for 1 official', () => {
       expect(PRICING_TIERS.single.amount).toBe(500);
       expect(PRICING_TIERS.single.officialCount).toBe(1);
@@ -96,12 +90,6 @@ describe('Payment Flow', () => {
   // ─── Invalid Tier Rejection ────────────────────────────────────────────────
 
   describe('Invalid pricing tier rejection', () => {
-    const PRICING_TIERS: Record<string, { amount: number; officialCount: number; label: string }> = {
-      single:      { amount: 500,  officialCount: 1,  label: 'Single Official' },
-      three_pack:  { amount: 1500, officialCount: 3,  label: 'Three Officials' },
-      full_spread: { amount: 2500, officialCount: -1, label: 'All Officials' },
-    };
-
     it('rejects unknown tier names', () => {
       const tier = 'premium_deluxe';
       const isValid = tier in PRICING_TIERS;
@@ -137,6 +125,15 @@ describe('Payment Flow', () => {
       expect(validTiers).toContain('three_pack');
       expect(validTiers).toContain('full_spread');
       expect(validTiers).toHaveLength(3);
+    });
+
+    it('rejects inherited object property names in the pricing guard', () => {
+      expect(isPricingTier('single')).toBe(true);
+      expect(isPricingTier('three_pack')).toBe(true);
+      expect(isPricingTier('full_spread')).toBe(true);
+      expect(isPricingTier('toString')).toBe(false);
+      expect(isPricingTier('constructor')).toBe(false);
+      expect(isPricingTier('__proto__')).toBe(false);
     });
   });
 
