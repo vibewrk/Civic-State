@@ -21,7 +21,7 @@ jobs:
         ports:
           - 5432:5432
         options: >-
-          --health-cmd "pg_isready -U civicstate -d civicstate_test"
+          --health-cmd "pg_isready -U civicstate"
           --health-interval 5s
           --health-timeout 5s
           --health-retries 5
@@ -70,6 +70,6 @@ jobs:
           NODE_ENV: test
 
       - name: Push test schema
-        run: cd packages/shared && npx prisma db push
+        run: cd packages/shared && npx prisma db push --skip-generate
         env:
           DATABASE_URL: postgresql://civicstate:testpassword@localhost:5432/civicstate_test

@@ -89,7 +89,6 @@ app.use(
     res: express.Response,
     _next: express.NextFunction
   ) => {
-    void _next;
     console.error("Unhandled error:", err);
     res.status(500).json({
       error:

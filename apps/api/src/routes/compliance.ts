@@ -12,7 +12,6 @@ import { requireAuth, getAuth } from '@clerk/express';
 import { computeRowHmac } from 'shared/hmac';
 
 const router: IRouter = Router();
-type SharedPrismaClient = typeof import('shared')['prisma'];
 
 // All compliance routes require authentication
 const authMiddleware = [requireAuth()];
@@ -22,8 +21,9 @@ const authMiddleware = [requireAuth()];
 /**
  * Write a compliance action to audit_logs with HMAC checksum.
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function logComplianceAudit(
-  prisma: SharedPrismaClient,
+  prisma: any,
   userId: string,
   action: string,
   resource: string,

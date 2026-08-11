@@ -7,11 +7,9 @@ import { logAgentAction } from '../lib/logger.js';
 
 const config = getAgentConfig('delivery');
 
-type EmailClient = Pick<ServerClient, 'sendEmail'>;
-
 // Postmark client — initialized lazily to avoid startup errors when env var is missing
-let postmarkClient: EmailClient | null = null;
-function getPostmarkClient(): EmailClient {
+let postmarkClient: ServerClient | null = null;
+function getPostmarkClient(): ServerClient {
   if (!postmarkClient) {
     const token = process.env.POSTMARK_SERVER_TOKEN;
     if (!token) {
@@ -20,13 +18,6 @@ function getPostmarkClient(): EmailClient {
     postmarkClient = new ServerClient(token);
   }
   return postmarkClient;
-}
-
-export function setPostmarkClientForTest(client: EmailClient | null): void {
-  if (process.env.NODE_ENV !== 'test' && process.env.VITEST !== 'true') {
-    throw new Error('setPostmarkClientForTest may only be used in tests');
-  }
-  postmarkClient = client;
 }
 
 const FROM_EMAIL = process.env.POSTMARK_FROM_EMAIL || 'letters@civicstate.com';
@@ -51,33 +42,6 @@ interface DeliveryResult {
  */
 function getEmailDomain(email: string): string {
   return email.split('@')[1]?.toLowerCase() || '';
-}
-
-function getSelectedLetterLimit(campaign: {
-  pricingTier: string;
-  officialCount: number;
-}): number | null {
-  function assertValidOfficialCount(): void {
-    if (Number.isInteger(campaign.officialCount) && campaign.officialCount > 0) {
-      return;
-    }
-    throw new Error(
-      `Invalid official count for pricing tier ${campaign.pricingTier}: ${campaign.officialCount}`,
-    );
-  }
-
-  switch (campaign.pricingTier) {
-    case 'full_spread':
-      return null;
-    case 'single':
-      assertValidOfficialCount();
-      return 1;
-    case 'three_pack':
-      assertValidOfficialCount();
-      return 3;
-    default:
-      throw new Error(`Unknown pricing tier: ${campaign.pricingTier}`);
-  }
 }
 
 /**
@@ -109,7 +73,7 @@ async function getDomainBounceRate(domain: string): Promise<number> {
   return bounced / deliveries.length;
 }
 
-export async function processJob(job: Job): Promise<void> {
+async function processJob(job: Job): Promise<void> {
   const { submissionId } = job.data;
   const startTime = Date.now();
   const { prisma } = await import('shared');
@@ -144,20 +108,6 @@ export async function processJob(job: Job): Promise<void> {
     throw new Error(`No letters to deliver for campaign ${campaign.id}`);
   }
 
-  let letterLimit: number | null;
-  try {
-    letterLimit = getSelectedLetterLimit(campaign);
-  } catch (err) {
-    await transitionJob(submissionId, 'delivering', 'failed', config.name);
-    throw err;
-  }
-  const selectedLetters =
-    letterLimit === null ? campaign.letters : campaign.letters.slice(0, letterLimit);
-
-  if (selectedLetters.length === 0) {
-    throw new Error(`No selected letters to deliver for campaign ${campaign.id}`);
-  }
-
   const result: DeliveryResult = {
     sent: 0,
     skipped: 0,
@@ -167,7 +117,7 @@ export async function processJob(job: Job): Promise<void> {
 
   const client = getPostmarkClient();
 
-  for (const letter of selectedLetters) {
+  for (const letter of campaign.letters) {
     const official = letter.official;
 
     // Skip opted-out officials
@@ -308,8 +258,7 @@ export async function processJob(job: Job): Promise<void> {
       sent: result.sent,
       skipped: result.skipped,
       failed: result.failed,
-      total: selectedLetters.length,
-      availableLetters: campaign.letters.length,
+      total: campaign.letters.length,
       details: result.details,
     },
     modelUsed: config.model,
@@ -325,7 +274,7 @@ export async function processJob(job: Job): Promise<void> {
     // All letters failed or were skipped — transition to failed
     await transitionJob(submissionId, 'delivering', 'failed', config.name);
     throw new Error(
-      `Delivery failed: 0 of ${selectedLetters.length} selected letters sent (${result.skipped} skipped, ${result.failed} failed)`,
+      `Delivery failed: 0 of ${campaign.letters.length} letters sent (${result.skipped} skipped, ${result.failed} failed)`,
     );
   }
 
