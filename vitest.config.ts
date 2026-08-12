@@ -13,6 +13,7 @@ export default defineConfig({
   resolve: {
     alias: {
       shared: path.resolve(__dirname, 'packages/shared/src'),
+      'shared/append-only-integrity': path.resolve(__dirname, 'packages/shared/src/append-only-integrity'),
       'shared/hmac': path.resolve(__dirname, 'packages/shared/src/hmac'),
     },
   },

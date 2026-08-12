@@ -4,6 +4,7 @@ import Stripe from 'stripe';
 import { Queue } from 'bullmq';
 import Redis from 'ioredis';
 import { computeRowHmac } from 'shared/hmac';
+import { auditLogHmacFields } from 'shared/append-only-integrity';
 
 const router: IRouter = Router();
 
@@ -132,13 +133,14 @@ router.post(
           currency: session.currency,
         };
 
-        const hmacFields = {
-          userId: userId ?? 'system',
+        const hmacFields = auditLogHmacFields({
+          userId,
+          userIdFallback: 'system',
           action: 'payment.completed',
           resource: 'payment',
           resourceId: session.id,
-          details: JSON.stringify(auditDetails),
-        };
+          details: auditDetails,
+        });
 
         const hmacChecksum = computeRowHmac(hmacFields);
 
@@ -261,12 +263,12 @@ router.post(
             officialName: delivery.letter.official.name,
           };
 
-          const hmacFields = {
+          const hmacFields = auditLogHmacFields({
             action: 'spam_complaint',
             resource: 'official',
             resourceId: delivery.letter.officialId,
-            details: JSON.stringify(auditDetails),
-          };
+            details: auditDetails,
+          });
 
           const hmacChecksum = computeRowHmac(hmacFields);
 
@@ -356,13 +358,13 @@ router.post(
         receivedAt: new Date().toISOString(),
       };
 
-      const hmacFields = {
+      const hmacFields = auditLogHmacFields({
         userId: campaign.userId,
         action: 'reply.received',
         resource: 'campaign',
         resourceId: campaignId,
-        details: JSON.stringify(replyDetails),
-      };
+        details: replyDetails,
+      });
 
       const hmacChecksum = computeRowHmac(hmacFields);
 

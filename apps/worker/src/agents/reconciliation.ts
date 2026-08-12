@@ -166,6 +166,7 @@ async function processJob(_job: Job): Promise<void> {
   try {
     const { prisma } = await import('shared');
     const { computeRowHmac } = await import('shared/hmac');
+    const { auditLogHmacFields } = await import('shared/append-only-integrity');
 
     const now = new Date();
     const twentyFourMonthsAgo = new Date(now);
@@ -220,13 +221,13 @@ async function processJob(_job: Job): Promise<void> {
         policy: 'LGAL-05: agent logs 24mo, completed jobs 12mo, financial/audit 7yr (no delete)',
       };
 
-      const hmacFields = {
+      const hmacFields = auditLogHmacFields({
         userId: 'system',
         action: 'data_retention_enforcement',
         resource: 'system',
         resourceId: 'daily-reconciliation',
-        details: JSON.stringify(retentionDetails),
-      };
+        details: retentionDetails,
+      });
 
       await prisma.auditLog.create({
         data: {

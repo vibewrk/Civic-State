@@ -1,4 +1,9 @@
-import { computeRowHmac, type PricingTier, type LedgerEntryType } from 'shared';
+import {
+  computeRowHmac,
+  ledgerEntryHmacFields,
+  type LedgerEntryType,
+  type PricingTier,
+} from 'shared';
 
 /** Cost estimate per pricing tier (cents) */
 const TIER_COST_ESTIMATE: Record<PricingTier, number> = {
@@ -58,7 +63,7 @@ export async function recordLedgerEntry(input: LedgerEntryInput): Promise<string
     createdAt: new Date(),
   };
 
-  const hmacChecksum = computeRowHmac(data);
+  const hmacChecksum = computeRowHmac(ledgerEntryHmacFields(data));
 
   const entry = await prisma.ledgerEntry.create({
     data: {

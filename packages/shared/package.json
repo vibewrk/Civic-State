@@ -7,6 +7,7 @@
   "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
+    "./append-only-integrity": "./src/append-only-integrity.ts",
     "./db": "./src/db.ts",
     "./crypto": "./src/crypto.ts",
     "./hmac": "./src/hmac.ts"

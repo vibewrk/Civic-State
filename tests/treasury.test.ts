@@ -24,6 +24,7 @@ const mockPrisma = {
 vi.mock('shared', () => ({
   prisma: mockPrisma,
   computeRowHmac: vi.fn(() => 'mock-hmac-checksum'),
+  ledgerEntryHmacFields: vi.fn((row: Record<string, unknown>) => row),
 }));
 
 vi.mock('shared/hmac', () => ({
