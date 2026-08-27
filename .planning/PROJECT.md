@@ -131,4 +131,85 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-25 after initialization*
+
+## v3 Thesis Revision (2026-06-03 — issue #12)
+
+> **Pivot.** CivicState moves from a single-buyer paid-letter platform (v2.1) to a **community-funded civic-action board** (v3). Anyone can launch or sign a cause, share it, and chip in money that funds REAL outbound pressure (mailed letters/postcards + emails) to targeted officials. Platform fee on contributions (recommended 8–12%). v2.1 single-buyer path preserved as legacy secondary route; nothing shipped in Phases 1–4 is discarded.
+
+**Source of truth:** `MASTER_PLAN.md` v3.0 — June 2026 (this revision); see §23 (Crowdfunding & Threshold Engine), §24 (Regulatory & Moderation Guardrails), §18 (v3 Phases 5–8 + decomposed handshake-issue table).
+
+### v3 What This Is (delta)
+
+The platform composes existing APIs rather than building infrastructure. v3 adds: **Stripe Connect (platform-owns-funds posture)** for crowdfunding, **Lob** for physical mail, **threshold-triggered dispatch** in the engine, and an extended cause moderation tier (political-classifier + named-individual review). Existing officials lookup (congress.gov + OpenStates + Cicero), AI engine (Anthropic), and treasury ledger remain.
+
+### v3 Active Requirements (promoted from v2.1 Out of Scope or newly added)
+
+- [ ] Cause CRUD: anyone with Clerk can post a cause; cause body moderated before publish
+- [ ] Signatures (anonymous + named); dedup by email; named co-signer display
+- [ ] Stripe Connect contribution flow (platform-owns-funds, no creator Connect onboarding)
+- [ ] Threshold-triggered dispatch (multi-channel: email via Postmark + postcard/letter via Lob)
+- [ ] Refund-on-failure state machine (threshold-failed / dispatch-failed / withdrawn / moderation-rejected)
+- [ ] Per-cause Stripe escrow + platform-fee ledger entries
+- [ ] Cause public pages with paid-influence disclosure surface (mandatory)
+- [ ] Cause-author dashboard + share counters + OG metadata + sitemap
+- [ ] Admin cause-moderation queue + paid-influence disclosure audit view
+- [ ] Political-content moderation tier (constituent-to-elected-official only; block candidate targeting)
+- [ ] Named-individual pre-publish review (mandatory if cause names a private citizen)
+- [ ] Per-jurisdiction lobbying-disclosure trigger logic + per-state threshold table
+- [ ] Per-official cap-per-window throttle (default 2/30d)
+- [ ] Political CAN-SPAM variant disclosure copy
+- [ ] Drafter extension: emit {petitionMarkdown, letterMarkdown, postcardCopy, mailerCopy}
+
+### v3 Key Decisions
+
+| Decision | Rationale | Outcome |
+|----------|-----------|---------|
+| Platform-owns-funds (no per-creator Connect onboarding) | Funds pay vendor cost, not creator wallets. Reduces lobbying-disclosure exposure, eliminates creator KYC friction, simplifies refund mechanics. | — Pending §24 legal review |
+| Lob for physical mail (postcards + letters) | LEAN compose-don't-build: print-and-mail API rather than carrier integration. Existing Phase 3 Postmark deliverability is warmed; bulk-email vendor change deferred. | — Pending Lob AUP verification |
+| Cause aggregate distinct from Campaign | v2.1 `Campaign` is per-submission-per-tier; v3 `Cause` is community-owned. Bridge model `causes.legacy_campaign_id` available; never mutate `Campaign`. | — |
+| Threshold-triggered dispatch with refund-on-failure | Aligns spend with demonstrated community demand; reduces refund frequency; simplifies regulatory posture (single dispatch event). | — |
+| Default platform-fee 8–12% (recommend 10%) | Covers hosting + AI fixed + per-cause overhead at small/medium causes; final percentage gated on legal review of fee-disclosure copy. | — Pending legal review |
+| Postmark retained for v3 launch per-letter email; Resend/SES decision-flagged | Re-warming a new sender domain mid-launch is operationally riskier than scaling existing warmed Postmark stack. | — |
+| Constituent-to-elected-official only (no candidate targeting) | Avoids FEC PAC registration exposure; new political-classifier moderation tier enforces. | — |
+| Named-individual pre-publish review (private citizens blocked) | Defamation amplification risk; extension of existing MODR-02. | — |
+| Per-official cap-per-window: default N=2 / M=30d | Volume jumps materially in v3; reuse v2.1 per-domain bounce + add per-official throttle. | — Pending tuning |
+| Cause page paid-influence disclosure surface mandatory + above-the-fold | §24 guardrail; cannot be hidden or edited after publish; saved as JSON for audit. | — |
+| Maximum contribution per contributor per cause: default $200 at launch | Below most state-lobbying-disclosure individual thresholds; reviewable. | — Pending legal review |
+| Anonymous signers allowed; named signers require Clerk | Reduces signing friction; named co-signers add social proof. | — |
+| Refund policy: platform absorbs Stripe processing loss on full refunds | Stripe per-transaction flat fees often non-refundable; reserve 1% revenue against this line. | — Pending policy review |
+
+### v3 Constraints (additive to v2.1 constraints above)
+
+- **Stripe Connect**: platform-owns-funds posture; merchant-of-record is the platform; no per-creator onboarding
+- **Lob**: postcards primary, letters for higher-impact targets; advocacy-mail AUP `[NEEDS VENDOR-TOS VERIFICATION 2026-06]`
+- **Platform fee**: 8–12% target; final number gated on disclosure-copy review
+- **Regulatory**: per-state lobbying-disclosure trigger logic; political-classifier moderation tier; political-CAN-SPAM disclosure variant
+- **State machine**: extended via `canTransition`, never mutates v2.1 transitions; refund states required on every failure path
+
+### v3 Phases (additive to v2.1 Phases 1–4 shipped 2026-04-25)
+
+5. **Cause Board MVP** — Cause/Signature schema + public board + signing + moderation tier extension (6–8 weeks)
+6. **Crowdfunding & Escrow** — Stripe Connect contribute flow + Contribution model + threshold tracking + refund state machine (5–7 weeks)
+7. **Threshold-Triggered Multi-Channel Dispatch** — Lob integration + delivery channel split + state-machine extension + Drafter copy variants (6–8 weeks)
+8. **SEO/Share Surface + Cause-Author Dashboard** — OG metadata + sitemap + cause-author dashboard + admin cause-moderation queue + compliance (4–6 weeks)
+
+See `.planning/ROADMAP.md` for the full Phase 5–8 detail and `MASTER_PLAN.md §18.x` for the decomposed handshake-issue table.
+
+### v3 Risks (top three)
+
+1. **Vendor AUP exposure** — Stripe Connect (political/advocacy at platform-merchant level) and Lob (advocacy mail) both `[NEEDS VENDOR-TOS VERIFICATION 2026-06]`; failure to confirm either blocks Phase 6/7 respectively.
+2. **Lobbying / campaign-finance classification** — Per-state lobbying-disclosure thresholds at scale; FEC + state PAC-registration boundary on "incumbent-acting-in-office vs candidate-qua-candidate"; both `[NEEDS HUMAN/LEGAL REVIEW]`.
+3. **Defamation amplification** — User-authored causes can name individuals; mandatory pre-publish review for cause-naming-individual is the hard mitigation but operator capacity must scale with cause volume.
+
+### v3 Out of Scope (deferred — not killed)
+
+- Cause comments (moderation cost still too high in v3)
+- Coalition / cause-merge mechanics
+- Search-before-create (deferred per v2.1 §21; revisit when duplicate-cause volume is real)
+- HOA / nonprofit API (v2.1 deferred — still deferred)
+- Spanish language support
+- Bulk-email vendor migration (Resend / SES) — decision-flagged; default Postmark per-letter at v3 launch
+
+---
+*v3 thesis revision: 2026-06-03 — see MASTER_PLAN.md §1 changelog + §18.x decomposed-issue table*
+*v2.1 baseline last updated: 2026-04-25 after initialization*
