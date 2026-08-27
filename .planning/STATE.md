@@ -2,85 +2,53 @@
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-04-25)
+See: `.planning/PROJECT.md` and `.planning/ROADMAP.md`.
 
-**Core value:** AI-powered regulation research with verified legal citations, automatic official targeting from ZIP code, and one-click transactional delivery -- the full pipeline from civic frustration to official action, accessible to any individual for $5-$25.
-**Current focus:** Phase 1: Foundation
+**Core value:** CivicState turns a civic concern into official-targeted, citation-backed constituent letters with payment, delivery tracking, compliance controls, and an operator review path.
+
+**Current focus:** Production-currentness and launch readiness after completion of the original four build phases.
 
 ## Current Position
 
-Phase: 1 of 4 (Foundation)
-Plan: 7 of 7 in current phase (COMPLETE)
-Status: Phase 1 Complete
-Last activity: 2026-04-25 -- Plan 01-07 (CI/CD + Backup + DNS + Submissions) complete
+Lifecycle phase: BUILD
+Implementation phase: Post-Phase 4 readiness
+Status: Original v1 build phases are repo-complete; production/account truth is not verified.
+Last activity reflected in repo planning: 2026-04-25 Phase 4 legal compliance completion; 2026-06-05 roadmap refresh issue #20.
 
-Progress: [██████████] 100%
+Progress: [████████░░] feature build complete, launch readiness gated
+
+## Completed Build Evidence
+
+| Area | Repo evidence | Status |
+|------|---------------|--------|
+| Foundation | `.planning/phases/01-foundation/*-SUMMARY.md`, `01-VERIFICATION.md` | Complete with Vercel deployment gap |
+| AI pipeline | `.planning/phases/02-ai-pipeline/*-SUMMARY.md`, API/worker implementation | Complete in repo |
+| Payment and delivery | `.planning/phases/03-payment-delivery/*-SUMMARY.md`, Stripe/Postmark/treasury paths | Complete in repo |
+| Dashboard and compliance | `.planning/phases/04-dashboard-compliance/*-SUMMARY.md`, dashboard/admin/legal routes | Complete in repo |
+
+## Current Gates
+
+- Vercel deployment for `apps/web` remains unverified from repo truth. Phase 1 verification found no `vercel.json` or workflow evidence for frontend deployment.
+- Live credentials and account configuration remain unverified for Clerk, Stripe, Postmark, Anthropic, OpenStates, congress.gov, DigitalOcean, Vercel, Mercury, Sentry, and Plausible.
+- Email DNS/domain warming cannot be treated as production-ready from code alone; live DNS and Postmark account evidence are required.
+- Local officials provider remains a product/vendor decision: Cicero integration exists as a stub/integration surface, but Cicero vs BallotReady must be evaluated before launch commitment.
+- AI model IDs and pricing are implementation assumptions until verified against current official provider docs.
+- Public campaign/SEO publishing remains a decision gate, not an active launch commitment.
 
 ## Performance Metrics
 
-**Velocity:**
-- Total plans completed: 7
-- Average duration: 15 min
-- Total execution time: 1.82 hours
+Historical execution metrics from the initial phase runner are no longer a reliable current-state signal. Preserve phase summaries as build evidence; use fresh CI, deployment, credential, and provider checks for readiness decisions.
 
-**By Phase:**
+## Decisions Carried Forward
 
-| Phase | Plans | Total | Avg/Plan |
-|-------|-------|-------|----------|
-| 01-foundation | 7 | 106 min | 15 min |
+- Keep the launch product narrow: individual civic letter campaigns, email delivery, human review for flagged content, and compliance-first data handling.
+- Treat protected UltraStart schema/lifecycle/workflow/authority paths as review-only until explicit elevated authorization is granted.
+- Keep pricing, compliance posture, deployment authority, provider contracts, and account configuration gated until verified by an owner with production access.
 
-**Recent Trend:**
-- Last 5 plans: 01-03 (3 min), 01-06 (4 min), 01-04 (6 min), 01-05 (3 min), 01-07 (4 min)
-- Trend: Stable
+## Pending Work
 
-*Updated after each plan completion*
-
-## Accumulated Context
-
-### Decisions
-
-Decisions are logged in PROJECT.md Key Decisions table.
-Recent decisions affecting current work:
-
-- Replaced template ci.yml with application-level CI (pnpm + Prisma + typecheck + test)
-- Test submission endpoint uses placeholder user with upsert to satisfy FK constraint
-- Zod v4 uses .issues not .errors for validation error details
-- Domain warming (SPF/DKIM/DMARC + Postmark) must start in Phase 1 -- needs 2-4 weeks lead time before first user delivery in Phase 3
-- COARSE granularity: 4 phases covering 80 requirements
-- Split deployment: Next.js on Vercel, Express+Worker on DigitalOcean Docker Compose
-- Removed deprecated baseUrl from tsconfig.base.json for TypeScript 6 compatibility
-- Express type annotation required for cross-workspace type portability in TS6
-- Express type annotation required for clerkAuth (RequestHandler) and router (IRouter) for TypeScript 6 portability
-- Approved build scripts for prisma, esbuild, sentry-cli, sharp, clerk, msgpackr-extract
-- Tailwind v4 CSS-first config with @theme block (not tailwind.config.ts)
-- HSL CSS custom properties for shadcn/ui (raw CSS, not @apply for base styles)
-- TypeScript 6 CSS module declaration for side-effect imports
-- Prisma 7 requires prisma.config.ts for datasource URL (url no longer in schema.prisma)
-- Prisma 7 requires @prisma/adapter-pg driver adapter instead of direct URL connection
-- Generated Prisma client excluded from git (regenerated on install)
-- PM2 fork mode (not cluster) in containers per RESEARCH anti-pattern guidance
-- Nginx profiles used to disable nginx in dev mode (docker-compose.dev.yml)
-- POSTGRES_PASSWORD uses required error syntax; other env vars default to blank
-
-### Pending Todos
-
-None yet.
-
-### Blockers/Concerns
-
-- Local officials API provider (Cicero vs BallotReady) needs evaluation spike in Phase 2
-- Domain warming timeline: must complete before Phase 3 delivery begins
-
-## Deferred Items
-
-Items acknowledged and carried forward from previous milestone close:
-
-| Category | Item | Status | Deferred At |
-|----------|------|--------|-------------|
-| *(none)* | | | |
+Next-wave work has been decomposed into draft handshake issue bodies under `.binary-star/plans/issue-20/`.
 
 ## Session Continuity
 
-Last session: 2026-04-25
-Stopped at: Completed 01-07-PLAN.md (CI/CD + Backup + DNS + Submissions) -- Phase 1 COMPLETE
-Resume file: .planning/phases/02-ai-pipeline/ (Phase 2 planning needed)
+Resume from the next-wave issue drafts, not from Phase 1. The next operator should select one launch-readiness slice, verify prerequisites, and run it as its own bounded handshake issue.
