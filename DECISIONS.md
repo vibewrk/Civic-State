@@ -1,0 +1,11 @@
+# CivicState Decisions
+
+## 2026-06-15 - EIR soul upgrade (wrk.dog)
+
+What changed: created the root soul for CivicState: [BUSINESS.md](BUSINESS.md), [ROADMAP.md](ROADMAP.md), `.ultra-start/business-plan.json`, and `.ultra-start/thesis-review.json`. The business plan now states a falsifiable thesis, customer definition, bottom-up market model, revenue model, competition, go-to-market plan, reconciled financial model, anti-plan, assumption ledger, dates, source links, and honesty labels.
+
+Scrutiny gaps addressed: business-file, roadmap-file, decisions-file, gate-json, thesis-current, financial-figures, percent-figures, market-sizing, customer-definition, revenue-model, competition, risks-antiplan, assumption-ledger, go-to-market, honesty-labels, doc-dates, doc-structure, evidence-sources, freshness-stale, and roadmap-buildable-shape.
+
+What remains assumption and needs operator/market validation: preview-to-paid conversion, willingness to pay at the implemented USD 5/USD 15/USD 25 tiers [evidence: [apps/api/src/routes/payments.ts](apps/api/src/routes/payments.ts)], government-email deliverability, local official data coverage, citation quality at production scale, one-operator review capacity, SEO acquisition, repeat purchase behavior, WrkPlug platform posture, and organization/API expansion.
+
+Surprise spikes: the internal roadmap marks all phases complete on 2026-04-25 [evidence: [.planning/ROADMAP.md](.planning/ROADMAP.md)], while project state still says only Phase 1 is complete [evidence: [.planning/STATE.md](.planning/STATE.md)]; the master plan references Google Civic API in places [evidence: [MASTER_PLAN.md](MASTER_PLAN.md)], while project context says that path is dead and needs a replacement [evidence: [.planning/PROJECT.md](.planning/PROJECT.md)]; dynamic pricing appears in the master plan [evidence: [MASTER_PLAN.md](MASTER_PLAN.md)], but the implemented route uses fixed tiers [evidence: [apps/api/src/routes/payments.ts](apps/api/src/routes/payments.ts)].
