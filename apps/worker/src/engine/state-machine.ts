@@ -31,7 +31,7 @@ export async function transitionJob(
 
   // Import Prisma lazily to avoid circular deps
   const { prisma } = await import('shared');
-  const { computeRowHmac } = await import('shared');
+  const { agentActionLogHmacFields, computeRowHmac } = await import('shared');
 
   // Update job status in database
   await prisma.job.update({
@@ -57,7 +57,7 @@ export async function transitionJob(
     createdAt: new Date(),
   };
 
-  const hmac = computeRowHmac(logEntry);
+  const hmac = computeRowHmac(agentActionLogHmacFields(logEntry));
 
   await prisma.agentActionLog.create({
     data: {

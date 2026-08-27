@@ -1,5 +1,6 @@
 import { Worker, Job } from 'bullmq';
 import { computeRowHmac } from 'shared/hmac';
+import { auditLogHmacFields } from 'shared/append-only-integrity';
 import { createRedisConnection } from '../engine/connection.js';
 import { getAgentConfig } from '../engine/config.js';
 import { transitionJob } from '../engine/state-machine.js';
@@ -199,13 +200,14 @@ async function flagSubmissionForCitationReview(
       select: { userId: true },
     });
 
-    const hmacFields = {
-      userId: updatedSubmission.userId ?? 'system',
+    const hmacFields = auditLogHmacFields({
+      userId: updatedSubmission.userId,
+      userIdFallback: 'system',
       action: 'submission.flagged',
       resource: 'submission',
       resourceId: submissionId,
-      details: JSON.stringify(details),
-    };
+      details,
+    });
 
     await tx.auditLog.create({
       data: {

@@ -4,8 +4,8 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
  * Compute an HMAC-SHA256 checksum for a set of record fields.
  *
  * Used on append-only tables (LedgerEntry, AuditLog, AgentActionLog) to detect tampering.
- * Fields are sorted alphabetically by key and concatenated deterministically
- * to ensure consistent checksums regardless of insertion order.
+ * Top-level fields are sorted deterministically. Nested values intentionally keep
+ * JSON.stringify semantics so existing append-only rows remain verifiable.
  *
  * @param fields Record fields to checksum (exclude the hmacChecksum field itself)
  * @param secretKey HMAC secret key (defaults to HMAC_SECRET_KEY env var)

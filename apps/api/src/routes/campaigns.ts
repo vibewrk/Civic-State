@@ -1,6 +1,7 @@
 import { Router, type IRouter } from 'express';
 import { getAuth } from '@clerk/express';
 import { computeRowHmac } from 'shared/hmac';
+import { auditLogHmacFields } from 'shared/append-only-integrity';
 
 const router: IRouter = Router();
 
@@ -249,13 +250,13 @@ router.patch('/api/campaigns/:id/anonymity', async (req, res) => {
       newValue,
     };
 
-    const hmacFields = {
+    const hmacFields = auditLogHmacFields({
       userId,
       action: 'anonymity.toggled',
       resource: 'submission',
       resourceId: campaign.submissionId,
-      details: JSON.stringify(auditDetails),
-    };
+      details: auditDetails,
+    });
 
     const hmacChecksum = computeRowHmac(hmacFields);
 

@@ -10,6 +10,7 @@
 import { Router, type IRouter } from 'express';
 import { requireAuth, getAuth } from '@clerk/express';
 import { computeRowHmac } from 'shared/hmac';
+import { auditLogHmacFields } from 'shared/append-only-integrity';
 
 const router: IRouter = Router();
 
@@ -30,13 +31,13 @@ async function logComplianceAudit(
   resourceId: string,
   details: Record<string, unknown>,
 ): Promise<void> {
-  const hmacFields = {
+  const hmacFields = auditLogHmacFields({
     userId,
     action,
     resource,
     resourceId,
-    details: JSON.stringify(details),
-  };
+    details,
+  });
 
   const hmacChecksum = computeRowHmac(hmacFields);
 

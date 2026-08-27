@@ -4,6 +4,7 @@ import { Queue } from 'bullmq';
 import Redis from 'ioredis';
 import { getAuth } from '@clerk/express';
 import { computeRowHmac } from 'shared/hmac';
+import { auditLogHmacFields } from 'shared/append-only-integrity';
 import type { JobStatus } from 'shared';
 import { moderateContent } from '../lib/moderation.js';
 import type { ModerationResult } from '../lib/moderation.js';
@@ -94,13 +95,14 @@ async function logModerationAudit(
     details: moderation.details,
   };
 
-  const hmacFields = {
-    userId: userId ?? 'anonymous',
+  const hmacFields = auditLogHmacFields({
+    userId,
+    userIdFallback: 'anonymous',
     action,
     resource: 'submission',
     resourceId,
-    details: JSON.stringify(details),
-  };
+    details,
+  });
 
   const hmacChecksum = computeRowHmac(hmacFields);
 

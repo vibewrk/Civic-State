@@ -1,4 +1,4 @@
-import { computeRowHmac } from 'shared';
+import { agentActionLogHmacFields, computeRowHmac } from 'shared';
 
 interface AgentLogEntry {
   jobId: string;
@@ -19,7 +19,7 @@ export async function logAgentAction(entry: AgentLogEntry): Promise<void> {
     createdAt: new Date(),
   };
 
-  const hmac = computeRowHmac(logData);
+  const hmac = computeRowHmac(agentActionLogHmacFields(logData));
 
   await prisma.agentActionLog.create({
     data: {

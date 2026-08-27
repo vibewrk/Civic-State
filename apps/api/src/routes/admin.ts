@@ -15,6 +15,7 @@ function paramStr(val: string | string[] | undefined): string {
 }
 import { requireAdmin } from '../middleware/auth.js';
 import { computeRowHmac } from 'shared/hmac';
+import { auditLogHmacFields, verifyPrismaAppendOnlyIntegrity } from 'shared/append-only-integrity';
 import { getAuth } from '@clerk/express';
 
 const router: IRouter = Router();
@@ -36,13 +37,13 @@ async function logAdminAudit(
   resourceId: string,
   details: Record<string, unknown>,
 ): Promise<void> {
-  const hmacFields = {
+  const hmacFields = auditLogHmacFields({
     userId,
     action,
     resource,
     resourceId,
-    details: JSON.stringify(details),
-  };
+    details,
+  });
 
   const hmacChecksum = computeRowHmac(hmacFields);
 
@@ -366,6 +367,38 @@ router.get('/api/admin/treasury', ...adminAuth, async (req, res) => {
   } catch (err) {
     console.error('Admin treasury failed:', err);
     res.status(500).json({ error: 'Failed to load treasury data' });
+  }
+});
+
+// ── Append-Only Integrity ───────────────────────────────────────────────
+
+const appendOnlyIntegrityQuerySchema = z.object({
+  limit: z.coerce.number().int().min(1).max(10000).optional(),
+});
+
+// GET /api/admin/integrity/append-only — verify append-only table HMACs
+router.get('/api/admin/integrity/append-only', ...adminAuth, async (req, res) => {
+  try {
+    const { limit } = appendOnlyIntegrityQuerySchema.parse(req.query);
+    const { prisma } = await import('shared');
+
+    const report = await verifyPrismaAppendOnlyIntegrity(prisma, { limit });
+
+    return res.status(report.ok ? 200 : 409).json(report);
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return res.status(400).json({ error: 'Validation failed', details: err.issues });
+    }
+
+    if (err instanceof Error && err.message.includes('HMAC_SECRET_KEY')) {
+      return res.status(503).json({
+        error: 'Append-only integrity verification is unavailable',
+        details: err.message,
+      });
+    }
+
+    console.error('Append-only integrity verification failed:', err);
+    return res.status(500).json({ error: 'Failed to verify append-only integrity' });
   }
 });
 
